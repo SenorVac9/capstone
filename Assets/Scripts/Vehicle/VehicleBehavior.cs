@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.PostProcessing;
 using ModuloKart.HUD;
+using Assets.MultiAudioListener;
 
 namespace ModuloKart.CustomVehiclePhysics
 {
@@ -24,6 +25,8 @@ namespace ModuloKart.CustomVehiclePhysics
         public bool keepTabsOpen;
         public bool showRunTimeVariablesOnly;
         public SimpleUI playerHUD;
+        //Car Engine Audio
+        private float pitch = 0;
         #region Public Variables
         [Header("Vehicle Components")]
         public Transform vehicle_transform;
@@ -174,6 +177,9 @@ namespace ModuloKart.CustomVehiclePhysics
             if (!isControllerInitialized) return;
             VehicleGroundCheck();
             VehicleMovement();
+            //Audio for the engine updating according to acceleration
+            pitch = accel_magnitude_float / max_accel_float;
+            GetComponent<MultiAudioSource>().Pitch = pitch;
             if(wheel1.active == false && wheel2.active == true && wheel3.active == true && wheel4.active == true && hood.active==true)
             {
                 max_accel_float = 245.0f;
@@ -360,7 +366,7 @@ namespace ModuloKart.CustomVehiclePhysics
         #endregion
 
         #region Steer Rotation Methods
-
+        bool isAudioDrift;
         private void VehicleSteerRotation()
         {
             //This is the direction vector we use to accelerate
@@ -388,7 +394,11 @@ namespace ModuloKart.CustomVehiclePhysics
             //if (Input.GetKey(KeyCode.Space) || Input.GetAxis("RightTrigger_P1") > 0)
             if (Input.GetKey(KeyCode.Space) || Input.GetButton(input_drift))
             {
-
+                if(!isAudioDrift)
+                {
+                    isAudioDrift = true;
+                    AudioManager.instance.Play("Drift");
+                }
                 if (!is_drift)
                 {
                     drift_correction_float = 1f;
@@ -470,6 +480,11 @@ namespace ModuloKart.CustomVehiclePhysics
             //Not Drifting
             else
             {
+                if (isAudioDrift)
+                {
+                    isAudioDrift = false;
+                    AudioManager.instance.Stop("Drift");
+                }
                 if (is_drift)
                 {
                     drift_correction_float = 0;
