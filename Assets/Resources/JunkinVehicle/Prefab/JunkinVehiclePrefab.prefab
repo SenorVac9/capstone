@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 1870334581}
   - component: {fileID: 443800255}
   - component: {fileID: 2219710091349697472}
+  - component: {fileID: 270310861}
   m_Layer: 8
   m_Name: JunkinVehiclePrefab
   m_TagString: GameController
@@ -221,6 +222,36 @@ MonoBehaviour:
   playerTotalProgress: 0
   playerLapTime: 0
   playerRaceTime: 0
+--- !u!114 &270310861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1165680260921162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4e4b89d78821b74aa0e4e14272e2cf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioClip: {fileID: 8300000, guid: 54ae62dce5589454dbacf8f500f09c5b, type: 3}
+  _output: {fileID: 0}
+  _mute: 0
+  _bypassEffects: 0
+  _bypassListenerEffects: 0
+  _bypassReverbZone: 0
+  _playOnAwake: 1
+  _loop: 1
+  _priority: 128
+  _volume: 10
+  _pitch: 0
+  _reverbZoneMix: 1
+  _dopplerLevel: 1
+  _spread: 0
+  _volumeRolloff: 0
+  _minDistance: 1
+  _maxDistance: 500
+  OnlyPlayForClosestCamera: 0
 --- !u!1 &1190379883037866
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,6 +372,7 @@ GameObject:
   - component: {fileID: 4253303299460216}
   - component: {fileID: 20147978221968630}
   - component: {fileID: 347682263}
+  - component: {fileID: 416907664}
   m_Layer: 8
   m_Name: Camera_Main
   m_TagString: CarMain
@@ -393,7 +425,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 19255
+    m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -418,6 +450,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: 2b179e0f0cb0fd248ace0a2cf07dff81, type: 2}
+--- !u!114 &416907664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553501011955064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a047bfb69b78fc499c64ad59026155e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Volume: 10
 --- !u!1 &1580527243465524
 GameObject:
   m_ObjectHideFlags: 0
@@ -1346,13 +1391,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4664460101546618036}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 70.040215, y: 47.689377, z: -1.1737884}
-  m_LocalScale: {x: 0.2862875, y: 0.28628498, z: 0.28628498}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4071689955366572}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!20 &3786842502681052568
 Camera:
   m_ObjectHideFlags: 0
