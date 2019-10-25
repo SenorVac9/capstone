@@ -471,11 +471,14 @@ namespace ModuloKart.CustomVehiclePhysics
                     }
                 }
 
-                //Rotate: Note there should be INCREMENTAL deviation between the Heading rotation V.S. Model rotation
-                if (Quaternion.Angle(vehicle_model_transform.rotation, vehicle_heading_transform.rotation) > 25)
-                {
-                    vehicle_model_transform.rotation = Quaternion.Lerp(vehicle_model_transform.rotation, vehicle_heading_transform.rotation, drift_correction_float);
-                }
+
+                Quaternion tempQ = vehicle_heading_transform.rotation;
+                if (Input.GetAxis(input_steering) < 0)
+                    tempQ = vehicle_heading_transform.rotation * Quaternion.Euler(0, -45, 0);
+                else if (Input.GetAxis(input_steering) > 0)
+                    tempQ = vehicle_heading_transform.rotation * Quaternion.Euler(0, 45, 0);
+
+                vehicle_model_transform.rotation = Quaternion.Lerp(tempQ, vehicle_model_transform.rotation, drift_correction_float);
             }
             //Not Drifting
             else
