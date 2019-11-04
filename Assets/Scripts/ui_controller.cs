@@ -9,13 +9,13 @@ public class ui_controller : MonoBehaviour
     GameObject[] ui_item;
     int item_selected;
 
-    bool has_door_1 = true;
-    bool has_door_2 = true;
-    bool has_tire_1 = true;
-    bool has_tire_2 = true;
-    bool has_tire_3 = true;
-    bool has_tire_4 = true;
-    bool has_hood = true;
+    public bool has_door_1 = true;
+     public bool has_door_2 = true;
+    public bool has_tire_1 = true;
+    public bool has_tire_2 = true;
+    public bool has_tire_3 = true;
+    public bool has_tire_4 = true;
+    public bool has_hood = true;
     public int playerNum;
     public GameObject vechicle;
 

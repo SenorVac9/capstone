@@ -20,7 +20,7 @@ namespace ModuloKart.CustomVehiclePhysics
         [Header("Debug")]
         [SerializeField] public bool isCodeDebug = false;
         public GameObject wheel1, wheel2, wheel3, wheel4, hood;
-
+       
         public bool isEditorGUI = false;
         public bool keepTabsOpen;
         public bool showRunTimeVariablesOnly;
@@ -471,14 +471,11 @@ namespace ModuloKart.CustomVehiclePhysics
                     }
                 }
 
-
-                Quaternion tempQ = vehicle_heading_transform.rotation;
-                if (Input.GetAxis(input_steering) < 0)
-                    tempQ = vehicle_heading_transform.rotation * Quaternion.Euler(0, -45, 0);
-                else if (Input.GetAxis(input_steering) > 0)
-                    tempQ = vehicle_heading_transform.rotation * Quaternion.Euler(0, 45, 0);
-
-                vehicle_model_transform.rotation = Quaternion.Lerp(tempQ, vehicle_model_transform.rotation, drift_correction_float);
+                //Rotate: Note there should be INCREMENTAL deviation between the Heading rotation V.S. Model rotation
+                if (Quaternion.Angle(vehicle_model_transform.rotation, vehicle_heading_transform.rotation) > 25)
+                {
+                    vehicle_model_transform.rotation = Quaternion.Lerp(vehicle_model_transform.rotation, vehicle_heading_transform.rotation, drift_correction_float);
+                }
             }
             //Not Drifting
             else
