@@ -125,7 +125,7 @@ namespace ModuloKart.CustomVehiclePhysics
         [Range(1, 50)] [SerializeField] public float STEER_DECELERATION = 10f;
         [Tooltip("Higher DRIFT_ACCELERATION Values increase max drifting speed")]
         [Range(1, 50)] [SerializeField] public float DRIFT_ACCELERATION = 40f;
-        [Range(1, 50)] [SerializeField] public float DRIFT_STEER_DAMPEN = 10f;
+        [Range(0, 50)] [SerializeField] public float DRIFT_STEER_DAMPEN = 10f;
         #endregion
 
         #region InputSelection
@@ -367,6 +367,7 @@ namespace ModuloKart.CustomVehiclePhysics
 
         #region Steer Rotation Methods
         bool isAudioDrift;
+        public float totalRotationAmount;
         private void VehicleSteerRotation()
         {
             //This is the direction vector we use to accelerate
@@ -385,10 +386,10 @@ namespace ModuloKart.CustomVehiclePhysics
             }
             else
             {
-                vehicle_speed_turn_ratio = 0.01f;
+                vehicle_speed_turn_ratio = 0.1f;
             }
-
-            vehicle_heading_transform.rotation *= Quaternion.Euler(0, steer_magnitude_float * STEER * vehicle_air_control * vehicle_speed_turn_ratio * Time.fixedDeltaTime, 0);
+            totalRotationAmount = steer_magnitude_float * STEER * vehicle_air_control * vehicle_speed_turn_ratio;
+            vehicle_heading_transform.rotation *= Quaternion.Euler(0, totalRotationAmount * Time.fixedDeltaTime, 0);
 
             //Initiate Drift Mode
             //if (Input.GetKey(KeyCode.Space) || Input.GetAxis("RightTrigger_P1") > 0)
@@ -402,7 +403,9 @@ namespace ModuloKart.CustomVehiclePhysics
                 if (!is_drift)
                 {
                     drift_correction_float = 1f;
-                    max_steer_modified = max_steer_float * drift_turn_ratio_float;
+
+                    //20191025: We divide it instead of multiplying the 'drift_turn_ratio_float' to gain more steering ability when drift is on, not lose steering
+                    max_steer_modified = max_steer_float / drift_turn_ratio_float;
                 }
 
                 is_drift = true;
@@ -416,14 +419,14 @@ namespace ModuloKart.CustomVehiclePhysics
                     drift_correction_float = min_drift_correction_float;
                 }
 
-                //Decrease Vehicle Steering Ability as drifting progresses
-                if (max_steer_modified > max_steer_float / DRIFT_STEER_DAMPEN)
+                //20191025: Increase Vehicle Steering Ability as drifting progresses
+                if (max_steer_modified < max_steer_float * DRIFT_STEER_DAMPEN)
                 {
-                    max_steer_modified -= Time.fixedDeltaTime;
+                    max_steer_modified += Time.fixedDeltaTime;
                 }
                 else
                 {
-                    max_steer_modified = max_steer_float / DRIFT_STEER_DAMPEN;
+                    max_steer_modified = max_steer_float * DRIFT_STEER_DAMPEN;
                 }
 
                 //Calculation of Max speed is a function of: max_accel_modified - Steering Deceleration + Drifting Acceleration
@@ -450,22 +453,22 @@ namespace ModuloKart.CustomVehiclePhysics
                 }
                 else
                 {
-                    if (max_accel_modified > max_accel_float - max_steer_float * STEER_DECELERATION + Mathf.Abs(steer_magnitude_float) * DRIFT_ACCELERATION + nitros_speed_float)
+                    if (max_accel_modified > max_accel_float - max_steer_float * STEER_DECELERATION + Mathf.Abs(steer_magnitude_float) * DRIFT_ACCELERATION)
                     {
                         //Drag should be new var 'Friction'
                         max_accel_modified -= ROTATIONAL_DRAG * Time.fixedDeltaTime;
-                        if (max_accel_modified < max_accel_float - max_steer_float * STEER_DECELERATION + Mathf.Abs(steer_magnitude_float) * DRIFT_ACCELERATION + nitros_speed_float)
+                        if (max_accel_modified < max_accel_float - max_steer_float * STEER_DECELERATION + Mathf.Abs(steer_magnitude_float) * DRIFT_ACCELERATION)
                         {
-                            max_accel_modified = max_accel_float - max_steer_float * STEER_DECELERATION + Mathf.Abs(steer_magnitude_float) * DRIFT_ACCELERATION + nitros_speed_float;
+                            max_accel_modified = max_accel_float - max_steer_float * STEER_DECELERATION + Mathf.Abs(steer_magnitude_float) * DRIFT_ACCELERATION;
                         }
                     }
                     else
                     {
                         //Drag should be new var 'Friction'
                         max_accel_modified += ROTATIONAL_DRAG * Time.fixedDeltaTime;
-                        if (max_accel_modified > max_accel_float - max_steer_float * STEER_DECELERATION + Mathf.Abs(steer_magnitude_float) * DRIFT_ACCELERATION + nitros_speed_float)
+                        if (max_accel_modified > max_accel_float - max_steer_float * STEER_DECELERATION + Mathf.Abs(steer_magnitude_float) * DRIFT_ACCELERATION)
                         {
-                            max_accel_modified = max_accel_float - max_steer_float * STEER_DECELERATION + Mathf.Abs(steer_magnitude_float) * DRIFT_ACCELERATION + nitros_speed_float;
+                            max_accel_modified = max_accel_float - max_steer_float * STEER_DECELERATION + Mathf.Abs(steer_magnitude_float) * DRIFT_ACCELERATION;
                         }
 
                     }
@@ -473,10 +476,37 @@ namespace ModuloKart.CustomVehiclePhysics
 
 
                 Quaternion tempQ = vehicle_heading_transform.rotation;
-                if (Input.GetAxis(input_steering) < 0)
-                    tempQ = vehicle_heading_transform.rotation * Quaternion.Euler(0, -45, 0);
-                else if (Input.GetAxis(input_steering) > 0)
-                    tempQ = vehicle_heading_transform.rotation * Quaternion.Euler(0, 45, 0);
+                float startdriftTime;
+
+                float tempSteerValue = Input.GetAxis(input_steering);
+                if (tempSteerValue < 0)
+                {
+                    if (tempDriftModelRotationValue > -45)
+                    {
+                        tempDriftModelRotationValue -= Time.fixedDeltaTime * 150;
+                    }
+                    tempQ = vehicle_heading_transform.rotation * Quaternion.Euler(0, tempDriftModelRotationValue * accel_magnitude_float / max_accel_modified, 0);
+                }
+                else if (tempSteerValue > 0)
+                {
+                    if (tempDriftModelRotationValue < 45)
+                    {
+                        tempDriftModelRotationValue += Time.fixedDeltaTime * 150;
+                    }
+                    tempQ = vehicle_heading_transform.rotation * Quaternion.Euler(0, tempDriftModelRotationValue * accel_magnitude_float / max_accel_modified, 0);
+                }
+                else
+                {
+                    if (tempDriftModelRotationValue < 0)
+                    {
+                        tempDriftModelRotationValue += Time.fixedDeltaTime * 150;
+                    }
+                    else if (tempDriftModelRotationValue > 0)
+                    {
+                        tempDriftModelRotationValue -= Time.fixedDeltaTime * 150;
+                    }
+                    tempQ = vehicle_heading_transform.rotation * Quaternion.Euler(0, tempDriftModelRotationValue * accel_magnitude_float / max_accel_modified, 0);
+                }
 
                 vehicle_model_transform.rotation = Quaternion.Lerp(tempQ, vehicle_model_transform.rotation, drift_correction_float);
             }
@@ -493,6 +523,15 @@ namespace ModuloKart.CustomVehiclePhysics
                     drift_correction_float = 0;
                 }
 
+                if (tempDriftModelRotationValue < 0)
+                {
+                    tempDriftModelRotationValue += Time.fixedDeltaTime * 10;
+                }
+                else if (tempDriftModelRotationValue > 0)
+                {
+                    tempDriftModelRotationValue -= Time.fixedDeltaTime * 10;
+                }
+                tempDriftModelRotationValue = 0;
                 is_drift = false;
 
                 //When not drifting, the model will eventually align its rotation to the actual 'Heading' direction of the Vehicle.
@@ -586,6 +625,10 @@ namespace ModuloKart.CustomVehiclePhysics
                 is_nitrosboost = false;
                 nitros_speed_float = 0;
                 nitros_meter_float = 0;
+                if (vehicle_camera_transform.GetComponent<Camera>().fieldOfView > min_fov_float)
+                {
+                    vehicle_camera_transform.GetComponent<Camera>().fieldOfView -= Time.fixedDeltaTime * pan_toward_float;
+                }
                 return;
             }
 
@@ -707,22 +750,30 @@ namespace ModuloKart.CustomVehiclePhysics
             }
         }
 
+        float tempDriftModelRotationValue;
+        bool tempTurnRight;
+        bool tempBeginSteerRight;
         private void VehicleSteerInput()
         {
             if (!is_drift)
                 max_steer_modified = max_steer_float;
+
+
+
 
             if (Input.GetKey(KeyCode.A) || Input.GetAxis(input_steering) < 0)
             {
                 //Debug.Log("Player" + PlayerNum + ", Pressed: " + input_steering.ToString());
                 wheel_steer_float = wheel_steer_float > -max_steer_float ? wheel_steer_float -= STEER * Time.fixedDeltaTime : -max_steer_float;
                 steer_magnitude_float = steer_magnitude_float > -max_steer_modified ? steer_magnitude_float -= STEER * Time.fixedDeltaTime : -max_steer_modified;
+                tempTurnRight = false;
             }
             else if (Input.GetKey(KeyCode.D) || Input.GetAxis(input_steering) > 0)
             {
                 //Debug.Log("Player" + PlayerNum + ", Pressed: " + input_steering.ToString());
                 wheel_steer_float = wheel_steer_float < max_steer_float ? wheel_steer_float += STEER * Time.fixedDeltaTime : max_steer_float;
                 steer_magnitude_float = steer_magnitude_float < max_steer_modified ? steer_magnitude_float += STEER * Time.fixedDeltaTime : max_steer_modified;
+                tempTurnRight = true;
             }
             else
             {
