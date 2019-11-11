@@ -104,6 +104,7 @@ namespace ModuloKart.Controls
                 {
                     vehicle1.input_steering = "LeftJoyStickX_P" + vehicle1.JoyStick;
                     vehicle1.input_accelerate = "RightTrigger_P" + vehicle1.JoyStick;
+                    vehicle1.input_reverse = "LeftTrigger_P" + vehicle1.JoyStick;
                     vehicle1.input_drift = "B_P" + vehicle1.JoyStick;
                     vehicle1.input_projectile = "X_P" + vehicle1.JoyStick;
                     vehicle1.input_nitros = "A_P" + vehicle1.JoyStick;
@@ -127,6 +128,7 @@ namespace ModuloKart.Controls
                 {
                     vehicle2.input_steering = "LeftJoyStickX_P" + vehicle2.JoyStick;
                     vehicle2.input_accelerate = "RightTrigger_P" + vehicle2.JoyStick;
+                    vehicle2.input_reverse = "LeftTrigger_P" + vehicle2.JoyStick;
                     vehicle2.input_drift = "B_P" + vehicle2.JoyStick;
                     vehicle2.input_projectile = "X_P" + vehicle2.JoyStick;
                     vehicle2.input_nitros = "A_P" + vehicle2.JoyStick;
@@ -150,6 +152,7 @@ namespace ModuloKart.Controls
                 {
                     vehicle3.input_steering = "LeftJoyStickX_P" + vehicle3.JoyStick;
                     vehicle3.input_accelerate = "RightTrigger_P" + vehicle3.JoyStick;
+                    vehicle3.input_reverse = "LeftTrigger_P" + vehicle3.JoyStick;
                     vehicle3.input_drift = "B_P" + vehicle3.JoyStick;
                     vehicle3.input_projectile = "X_P" + vehicle3.JoyStick;
                     vehicle3.input_nitros = "A_P" + vehicle3.JoyStick;
@@ -173,6 +176,7 @@ namespace ModuloKart.Controls
                 {
                     vehicle4.input_steering = "LeftJoyStickX_P" + vehicle4.JoyStick;
                     vehicle4.input_accelerate = "RightTrigger_P" + vehicle4.JoyStick;
+                    vehicle4.input_reverse = "LeftTrigger_P" + vehicle4.JoyStick;
                     vehicle4.input_drift = "B_P" + vehicle4.JoyStick;
                     vehicle4.input_projectile = "X_P" + vehicle4.JoyStick;
                     vehicle4.input_nitros = "A_P" + vehicle4.JoyStick;

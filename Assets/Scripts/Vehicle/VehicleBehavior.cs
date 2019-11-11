@@ -65,9 +65,9 @@ namespace ModuloKart.CustomVehiclePhysics
         [SerializeField] public Ray[] ground_check_ray = new Ray[5];
         [SerializeField] public RaycastHit[] groundCheck_hits = new RaycastHit[255];
         public float gravity_float = 0;
-        [SerializeField] public float max_accel_modified;
+        [SerializeField] public float target_accel_modified;
         [SerializeField] public float wheel_steer_float;
-        [SerializeField] public float max_steer_modified;
+        [SerializeField] public float target_steer_modified;
         public float accel_magnitude_float = 0;
         public float steer_magnitude_float = 0;
         public float brake_magnitude_float = 0;
@@ -80,6 +80,7 @@ namespace ModuloKart.CustomVehiclePhysics
         public float vehicle_air_control = 0;
         public float vehicle_speed_turn_ratio = 0;
 
+        public bool isReverse;
         public bool is_drift;
         public bool is_nitrosboost;
 
@@ -87,6 +88,7 @@ namespace ModuloKart.CustomVehiclePhysics
         [Range(0, 500)] public float max_gravity_float = 250f;
         [Range(0, 50)] public float max_steer_float = 15f;
         [Range(0, 500)] public float max_accel_float = 250f;
+        [Range(-500, 0)] public float min_accel_float = -69;
         [Range(0, 500)] public float max_brake_float = 100f;
         [Range(0, 1)] public float min_drift_correction_float = 0.05f;
         [Range(0, 1)] public float max_drift_correction_float = 1f;
@@ -113,6 +115,8 @@ namespace ModuloKart.CustomVehiclePhysics
         [Header("Input Responsiveness")]
         [Tooltip("Higher ACCEL Values are more responsive")]
         [Range(0, 100)] [SerializeField] public float ACCEL = 50f;
+        [Tooltip("Higher REVERSE Values are more responsive")]
+        [Range(0, 100)] [SerializeField] public float REVERSE = 25;
         [Tooltip("Higher DRAG Values are more responsive")]
         [Range(0, 100)] [SerializeField] public float DRAG = 25f;
         [Tooltip("Higher DRAG Values are more responsive")]
@@ -137,6 +141,7 @@ namespace ModuloKart.CustomVehiclePhysics
         public string input_steering = "LeftJoyStickX_P";
         public string input_projectile = "X_P";
         public string input_accelerate = "RightTrigger_P";
+        public string input_reverse = "LeftTrigger_P";
         public string input_drift = "B_P";
         public string input_nitros = "A_P";
         public string input_ItemPrev = "LeftBumper_P";
@@ -180,96 +185,96 @@ namespace ModuloKart.CustomVehiclePhysics
             //Audio for the engine updating according to acceleration
             pitch = accel_magnitude_float / max_accel_float;
             GetComponent<MultiAudioSource>().Pitch = pitch;
-            if(wheel1.active == false && wheel2.active == true && wheel3.active == true && wheel4.active == true && hood.active==true)
-            {
-                max_accel_float = 245.0f;
-
-            }
-            else if (wheel2.active == false && wheel1.active == true && wheel3.active == true && wheel4.active == true && hood.active == true)
-            {
-                max_accel_float = 245.0f;
-
-            }
-            else if (wheel3.active == false && wheel1.active == true && wheel2.active == true && wheel4.active == true && hood.active == true)
-            {
-                max_accel_float = 245.0f;
-
-            }
-            else if (wheel4.active == false && wheel1.active == true && wheel2.active == true && wheel3.active == true && hood.active == true)
-            {
-                max_accel_float = 245.0f;
-
-            }
-            else if(wheel1.active == true && wheel2.active == true && wheel3.active == true && wheel4.active == true && hood.active == false)
-            {
-                max_accel_float = 240.0f;
-
-            }
-            else if (wheel1.active == false && wheel2.active == false && wheel3.active == true && wheel4.active == true && hood.active == true)
-            {
-                max_accel_float = 240.0f;
-
-            }
-            else if (wheel1.active == false && wheel2.active == true && wheel3.active == false && wheel4.active == true && hood.active == true)
-            {
-                max_accel_float = 240.0f;
-
-            }
-            else if (wheel1.active == false && wheel2.active == true && wheel3.active == true && wheel4.active == false && hood.active == true)
-            {
-                max_accel_float = 240.0f;
-
-            }
-            else if (wheel1.active == false && wheel2.active == true && wheel3.active == true && wheel4.active == true && hood.active == false)
-            {
-                max_accel_float = 235.0f;
-
-            }
-            else if (wheel1.active == false && wheel2.active == false && wheel3.active == false && wheel4.active == true && hood.active == true)
-            {
-                max_accel_float = 235.0f;
-
-            }
-            else if (wheel1.active == false && wheel2.active == false && wheel3.active == true && wheel4.active == false && hood.active == true)
-            {
-                max_accel_float = 235.0f;
-
-            }
-            else if (wheel1.active == false && wheel2.active == false && wheel3.active == true && wheel4.active == true && hood.active == false)
-            {
-                max_accel_float = 230.0f;
-
-            }
-            else if (wheel1.active == false && wheel2.active == false && wheel3.active == false && wheel4.active == false && hood.active == true)
-            {
-                max_accel_float = 230.0f;
-
-            }
-            else if (wheel1.active == false && wheel2.active == false && wheel3.active == false && wheel4.active == true && hood.active == false)
-            {
-                max_accel_float = 225.0f;
-
-            }
-            else if (wheel1.active == false && wheel2.active == false && wheel3.active == false && wheel4.active == false && hood.active == false)
-            {
-                max_accel_float = 220.0f;
-
-            }
-            else if (wheel1.active == true && wheel2.active == false && wheel3.active == true && wheel4.active == true && hood.active == false)
-            {
-                max_accel_float = 230.0f;
-
-            }
-            else if (wheel1.active == true && wheel2.active == true && wheel3.active == false && wheel4.active == true && hood.active == false)
-            {
-                max_accel_float = 230.0f;
-
-            }
-            else if (wheel1.active == true && wheel2.active == true && wheel3.active == true && wheel4.active == false && hood.active == false)
-            {
-                max_accel_float = 230.0f;
-
-            }
+            //if(wheel1.active == false && wheel2.active == true && wheel3.active == true && wheel4.active == true && hood.active==true)
+            //{
+            //    max_accel_float = 245.0f;
+            //
+            //}
+            //else if (wheel2.active == false && wheel1.active == true && wheel3.active == true && wheel4.active == true && hood.active == true)
+            //{
+            //    max_accel_float = 245.0f;
+            //
+            //}
+            //else if (wheel3.active == false && wheel1.active == true && wheel2.active == true && wheel4.active == true && hood.active == true)
+            //{
+            //    max_accel_float = 245.0f;
+            //
+            //}
+            //else if (wheel4.active == false && wheel1.active == true && wheel2.active == true && wheel3.active == true && hood.active == true)
+            //{
+            //    max_accel_float = 245.0f;
+            //
+            //}
+            //else if(wheel1.active == true && wheel2.active == true && wheel3.active == true && wheel4.active == true && hood.active == false)
+            //{
+            //    max_accel_float = 240.0f;
+            //
+            //}
+            //else if (wheel1.active == false && wheel2.active == false && wheel3.active == true && wheel4.active == true && hood.active == true)
+            //{
+            //    max_accel_float = 240.0f;
+            //
+            //}
+            //else if (wheel1.active == false && wheel2.active == true && wheel3.active == false && wheel4.active == true && hood.active == true)
+            //{
+            //    max_accel_float = 240.0f;
+            //
+            //}
+            //else if (wheel1.active == false && wheel2.active == true && wheel3.active == true && wheel4.active == false && hood.active == true)
+            //{
+            //    max_accel_float = 240.0f;
+            //
+            //}
+            //else if (wheel1.active == false && wheel2.active == true && wheel3.active == true && wheel4.active == true && hood.active == false)
+            //{
+            //    max_accel_float = 235.0f;
+            //
+            //}
+            //else if (wheel1.active == false && wheel2.active == false && wheel3.active == false && wheel4.active == true && hood.active == true)
+            //{
+            //    max_accel_float = 235.0f;
+            //
+            //}
+            //else if (wheel1.active == false && wheel2.active == false && wheel3.active == true && wheel4.active == false && hood.active == true)
+            //{
+            //    max_accel_float = 235.0f;
+            //
+            //}
+            //else if (wheel1.active == false && wheel2.active == false && wheel3.active == true && wheel4.active == true && hood.active == false)
+            //{
+            //    max_accel_float = 230.0f;
+            //
+            //}
+            //else if (wheel1.active == false && wheel2.active == false && wheel3.active == false && wheel4.active == false && hood.active == true)
+            //{
+            //    max_accel_float = 230.0f;
+            //
+            //}
+            //else if (wheel1.active == false && wheel2.active == false && wheel3.active == false && wheel4.active == true && hood.active == false)
+            //{
+            //    max_accel_float = 225.0f;
+            //
+            //}
+            //else if (wheel1.active == false && wheel2.active == false && wheel3.active == false && wheel4.active == false && hood.active == false)
+            //{
+            //    max_accel_float = 220.0f;
+            //
+            //}
+            //else if (wheel1.active == true && wheel2.active == false && wheel3.active == true && wheel4.active == true && hood.active == false)
+            //{
+            //    max_accel_float = 230.0f;
+            //
+            //}
+            //else if (wheel1.active == true && wheel2.active == true && wheel3.active == false && wheel4.active == true && hood.active == false)
+            //{
+            //    max_accel_float = 230.0f;
+            //
+            //}
+            //else if (wheel1.active == true && wheel2.active == true && wheel3.active == true && wheel4.active == false && hood.active == false)
+            //{
+            //    max_accel_float = 230.0f;
+            //
+            //}
 
         }
 
@@ -380,9 +385,9 @@ namespace ModuloKart.CustomVehiclePhysics
                 vehicle_air_control = 1;
             }
 
-            if (accel_magnitude_float > 0)
+            if (Mathf.Abs(accel_magnitude_float) > 0)
             {
-                vehicle_speed_turn_ratio = Mathf.Clamp(accel_magnitude_float / 100, 0.1f, 1f);
+                vehicle_speed_turn_ratio = Mathf.Clamp(Mathf.Abs(accel_magnitude_float) / 100, 0.1f, 1f);
             }
             else
             {
@@ -395,7 +400,8 @@ namespace ModuloKart.CustomVehiclePhysics
             //if (Input.GetKey(KeyCode.Space) || Input.GetAxis("RightTrigger_P1") > 0)
             if (Input.GetKey(KeyCode.Space) || Input.GetButton(input_drift))
             {
-                if(!isAudioDrift)
+
+                if (!isAudioDrift)
                 {
                     isAudioDrift = true;
                     AudioManager.instance.Play("Drift");
@@ -405,10 +411,11 @@ namespace ModuloKart.CustomVehiclePhysics
                     drift_correction_float = 1f;
 
                     //20191025: We divide it instead of multiplying the 'drift_turn_ratio_float' to gain more steering ability when drift is on, not lose steering
-                    max_steer_modified = max_steer_float / drift_turn_ratio_float;
+                    target_steer_modified = max_steer_float / drift_turn_ratio_float;
                 }
 
                 is_drift = true;
+
 
                 if (drift_correction_float > min_drift_correction_float)
                 {
@@ -420,80 +427,101 @@ namespace ModuloKart.CustomVehiclePhysics
                 }
 
                 //20191025: Increase Vehicle Steering Ability as drifting progresses
-                if (max_steer_modified < max_steer_float * DRIFT_STEER_DAMPEN)
+                if (target_steer_modified < max_steer_float * DRIFT_STEER_DAMPEN)
                 {
-                    max_steer_modified += Time.fixedDeltaTime;
+                    target_steer_modified += Time.fixedDeltaTime;
                 }
                 else
                 {
-                    max_steer_modified = max_steer_float * DRIFT_STEER_DAMPEN;
+                    target_steer_modified = max_steer_float * DRIFT_STEER_DAMPEN;
                 }
 
-                //Calculation of Max speed is a function of: max_accel_modified - Steering Deceleration + Drifting Acceleration
-                if (is_nitrosboost)
+                if (!isReverse)
                 {
-                    if (max_accel_modified < max_accel_float - max_steer_float * STEER_DECELERATION + Mathf.Abs(steer_magnitude_float) * DRIFT_ACCELERATION + nitros_speed_float)
+                    //Calculation of Max speed is a function of: max_accel_modified - Steering Deceleration + Drifting Acceleration
+                    if (is_nitrosboost)
                     {
-                        //Just make this a factor of 10 in inspector
-                        max_accel_modified += drift_accel_multiplier_float * 10;
-                        if (max_accel_modified > max_accel_float - max_steer_float * STEER_DECELERATION + Mathf.Abs(steer_magnitude_float) * DRIFT_ACCELERATION + nitros_speed_float)
+                        if (target_accel_modified < max_accel_float - max_steer_float * STEER_DECELERATION + Mathf.Abs(steer_magnitude_float) * DRIFT_ACCELERATION + nitros_speed_float)
                         {
-                            max_accel_modified = max_accel_float - max_steer_float * STEER_DECELERATION + Mathf.Abs(steer_magnitude_float) * DRIFT_ACCELERATION + nitros_speed_float;
+                            //Just make this a factor of 10 in inspector
+                            target_accel_modified += drift_accel_multiplier_float * 10;
+                            if (target_accel_modified > max_accel_float - max_steer_float * STEER_DECELERATION + Mathf.Abs(steer_magnitude_float) * DRIFT_ACCELERATION + nitros_speed_float)
+                            {
+                                target_accel_modified = max_accel_float - max_steer_float * STEER_DECELERATION + Mathf.Abs(steer_magnitude_float) * DRIFT_ACCELERATION + nitros_speed_float;
+                            }
+                        }
+                        else
+                        {
+                            //Just make this a factor of 10 in inspector
+                            target_accel_modified -= drift_accel_multiplier_float * 10;
+                            if (target_accel_modified < max_accel_float - max_steer_float * STEER_DECELERATION + Mathf.Abs(steer_magnitude_float) * DRIFT_ACCELERATION + nitros_speed_float)
+                            {
+                                target_accel_modified = max_accel_float - max_steer_float * STEER_DECELERATION + Mathf.Abs(steer_magnitude_float) * DRIFT_ACCELERATION + nitros_speed_float;
+                            }
                         }
                     }
                     else
                     {
-                        //Just make this a factor of 10 in inspector
-                        max_accel_modified -= drift_accel_multiplier_float * 10;
-                        if (max_accel_modified < max_accel_float - max_steer_float * STEER_DECELERATION + Mathf.Abs(steer_magnitude_float) * DRIFT_ACCELERATION + nitros_speed_float)
+                        if (target_accel_modified > max_accel_float - max_steer_float * STEER_DECELERATION + Mathf.Abs(steer_magnitude_float) * DRIFT_ACCELERATION)
                         {
-                            max_accel_modified = max_accel_float - max_steer_float * STEER_DECELERATION + Mathf.Abs(steer_magnitude_float) * DRIFT_ACCELERATION + nitros_speed_float;
+                            //Drag should be new var 'Friction'
+                            target_accel_modified -= ROTATIONAL_DRAG * Time.fixedDeltaTime;
+                            if (target_accel_modified < max_accel_float - max_steer_float * STEER_DECELERATION + Mathf.Abs(steer_magnitude_float) * DRIFT_ACCELERATION)
+                            {
+                                target_accel_modified = max_accel_float - max_steer_float * STEER_DECELERATION + Mathf.Abs(steer_magnitude_float) * DRIFT_ACCELERATION;
+                            }
+                        }
+                        else
+                        {
+                            //Drag should be new var 'Friction'
+                            target_accel_modified += ROTATIONAL_DRAG * Time.fixedDeltaTime;
+                            if (target_accel_modified > max_accel_float - max_steer_float * STEER_DECELERATION + Mathf.Abs(steer_magnitude_float) * DRIFT_ACCELERATION)
+                            {
+                                target_accel_modified = max_accel_float - max_steer_float * STEER_DECELERATION + Mathf.Abs(steer_magnitude_float) * DRIFT_ACCELERATION;
+                            }
+
                         }
                     }
-                }
-                else
-                {
-                    if (max_accel_modified > max_accel_float - max_steer_float * STEER_DECELERATION + Mathf.Abs(steer_magnitude_float) * DRIFT_ACCELERATION)
+
+
+                    Quaternion tempQ = vehicle_heading_transform.rotation;
+                    float startdriftTime;
+
+                    float tempSteerValue = Input.GetAxis(input_steering);
+                    if (tempSteerValue < 0)
                     {
-                        //Drag should be new var 'Friction'
-                        max_accel_modified -= ROTATIONAL_DRAG * Time.fixedDeltaTime;
-                        if (max_accel_modified < max_accel_float - max_steer_float * STEER_DECELERATION + Mathf.Abs(steer_magnitude_float) * DRIFT_ACCELERATION)
+                        if (tempDriftModelRotationValue > -45)
                         {
-                            max_accel_modified = max_accel_float - max_steer_float * STEER_DECELERATION + Mathf.Abs(steer_magnitude_float) * DRIFT_ACCELERATION;
+                            tempDriftModelRotationValue -= Time.fixedDeltaTime * 150;
                         }
+                        tempQ = vehicle_heading_transform.rotation * Quaternion.Euler(0, tempDriftModelRotationValue * Mathf.Abs(accel_magnitude_float / target_accel_modified), 0);
+                    }
+                    else if (tempSteerValue > 0)
+                    {
+                        if (tempDriftModelRotationValue < 45)
+                        {
+                            tempDriftModelRotationValue += Time.fixedDeltaTime * 150;
+                        }
+                        tempQ = vehicle_heading_transform.rotation * Quaternion.Euler(0, tempDriftModelRotationValue * Mathf.Abs(accel_magnitude_float / target_accel_modified), 0);
                     }
                     else
                     {
-                        //Drag should be new var 'Friction'
-                        max_accel_modified += ROTATIONAL_DRAG * Time.fixedDeltaTime;
-                        if (max_accel_modified > max_accel_float - max_steer_float * STEER_DECELERATION + Mathf.Abs(steer_magnitude_float) * DRIFT_ACCELERATION)
+                        if (tempDriftModelRotationValue < 0)
                         {
-                            max_accel_modified = max_accel_float - max_steer_float * STEER_DECELERATION + Mathf.Abs(steer_magnitude_float) * DRIFT_ACCELERATION;
+                            tempDriftModelRotationValue += Time.fixedDeltaTime * 150;
+                            if (tempDriftModelRotationValue > 0)
+                                tempDriftModelRotationValue = 0;
                         }
-
+                        else if (tempDriftModelRotationValue > 0)
+                        {
+                            tempDriftModelRotationValue -= Time.fixedDeltaTime * 150;
+                            if (tempDriftModelRotationValue < 0)
+                                tempDriftModelRotationValue = 0;
+                        }
+                        tempQ = vehicle_heading_transform.rotation * Quaternion.Euler(0, tempDriftModelRotationValue * Mathf.Abs(accel_magnitude_float / target_accel_modified), 0);
                     }
-                }
 
-
-                Quaternion tempQ = vehicle_heading_transform.rotation;
-                float startdriftTime;
-
-                float tempSteerValue = Input.GetAxis(input_steering);
-                if (tempSteerValue < 0)
-                {
-                    if (tempDriftModelRotationValue > -45)
-                    {
-                        tempDriftModelRotationValue -= Time.fixedDeltaTime * 150;
-                    }
-                    tempQ = vehicle_heading_transform.rotation * Quaternion.Euler(0, tempDriftModelRotationValue * accel_magnitude_float / max_accel_modified, 0);
-                }
-                else if (tempSteerValue > 0)
-                {
-                    if (tempDriftModelRotationValue < 45)
-                    {
-                        tempDriftModelRotationValue += Time.fixedDeltaTime * 150;
-                    }
-                    tempQ = vehicle_heading_transform.rotation * Quaternion.Euler(0, tempDriftModelRotationValue * accel_magnitude_float / max_accel_modified, 0);
+                    vehicle_model_transform.rotation = Quaternion.Lerp(tempQ, vehicle_model_transform.rotation, drift_correction_float);
                 }
                 else
                 {
@@ -505,10 +533,10 @@ namespace ModuloKart.CustomVehiclePhysics
                     {
                         tempDriftModelRotationValue -= Time.fixedDeltaTime * 150;
                     }
-                    tempQ = vehicle_heading_transform.rotation * Quaternion.Euler(0, tempDriftModelRotationValue * accel_magnitude_float / max_accel_modified, 0);
-                }
+                    Quaternion tempQ = vehicle_heading_transform.rotation * Quaternion.Euler(0, tempDriftModelRotationValue, 0);
 
-                vehicle_model_transform.rotation = Quaternion.Lerp(tempQ, vehicle_model_transform.rotation, drift_correction_float);
+                    vehicle_model_transform.rotation = Quaternion.Lerp(tempQ, vehicle_model_transform.rotation, drift_correction_float);
+                }
             }
             //Not Drifting
             else
@@ -552,6 +580,7 @@ namespace ModuloKart.CustomVehiclePhysics
                 else
                     vehicle_model_transform.rotation = Quaternion.Lerp(vehicle_model_transform.rotation, vehicle_heading_transform.rotation, 1f);
             }
+
 
         }
         #endregion
@@ -604,12 +633,26 @@ namespace ModuloKart.CustomVehiclePhysics
         #region wheels
         private void RotateWheels()
         {
-            axel_fr_transform.localRotation = Quaternion.Euler(0, wheel_steer_float, 0);
-            axel_fl_transform.localRotation = Quaternion.Euler(0, wheel_steer_float, 0);
-            if (is_4wd)
+            if (accel_magnitude_float > 0)
             {
-                axel_rr_transform.localRotation = Quaternion.Euler(0, -wheel_steer_float, 0);
-                axel_rl_transform.localRotation = Quaternion.Euler(0, -wheel_steer_float, 0);
+                axel_fr_transform.localRotation = Quaternion.Euler(0, wheel_steer_float, 0);
+                axel_fl_transform.localRotation = Quaternion.Euler(0, wheel_steer_float, 0);
+                if (is_4wd)
+                {
+                    axel_rr_transform.localRotation = Quaternion.Euler(0, -wheel_steer_float, 0);
+                    axel_rl_transform.localRotation = Quaternion.Euler(0, -wheel_steer_float, 0);
+                }
+            }
+            else
+            {
+                axel_fr_transform.localRotation = Quaternion.Euler(0, -wheel_steer_float, 0);
+                axel_fl_transform.localRotation = Quaternion.Euler(0, -wheel_steer_float, 0);
+                if (is_4wd)
+                {
+                    axel_rr_transform.localRotation = Quaternion.Euler(0, wheel_steer_float, 0);
+                    axel_rl_transform.localRotation = Quaternion.Euler(0, wheel_steer_float, 0);
+                }
+
             }
         }
         #endregion
@@ -682,51 +725,91 @@ namespace ModuloKart.CustomVehiclePhysics
 
         private void VehicleAccelInput()
         {
-            if (!is_drift)
-            {
+            VehicleReverseInput();
+            if (isReverse) return;
+            
+            
 
-                if (is_nitrosboost)
-                {
-                    max_accel_modified = max_accel_float - Mathf.Abs(steer_magnitude_float) * STEER_DECELERATION + nitros_speed_float;
-                }
-                else
-                {
-                    if (max_accel_modified > max_accel_float - Mathf.Abs(steer_magnitude_float) * STEER_DECELERATION + nitros_speed_float)
-                    {
-                        max_accel_modified -= DRAG * Time.fixedDeltaTime;
-                        if (max_accel_modified < max_accel_float - Mathf.Abs(steer_magnitude_float) * STEER_DECELERATION + nitros_speed_float)
-                        {
-                            max_accel_modified = max_accel_float - Mathf.Abs(steer_magnitude_float) * STEER_DECELERATION + nitros_speed_float;
-                        }
-                    }
-                    else
-                    {
-                        max_accel_modified += DRAG * Time.fixedDeltaTime;
-                        if (max_accel_modified > max_accel_float - Mathf.Abs(steer_magnitude_float) * STEER_DECELERATION + nitros_speed_float)
-                        {
-                            max_accel_modified = max_accel_float - Mathf.Abs(steer_magnitude_float) * STEER_DECELERATION + nitros_speed_float;
-                        }
-                    }
-                }
-            }
+            //if (!is_drift)
+            //{
+            //
+            //    if (is_nitrosboost)
+            //    {
+            //        max_accel_modified = max_accel_float - Mathf.Abs(steer_magnitude_float) * STEER_DECELERATION + nitros_speed_float;
+            //    }
+            //    else
+            //    {
+            //        if (max_accel_modified > max_accel_float - Mathf.Abs(steer_magnitude_float) * STEER_DECELERATION + nitros_speed_float)
+            //        {
+            //            max_accel_modified -= DRAG * Time.fixedDeltaTime;
+            //            if (max_accel_modified < max_accel_float - Mathf.Abs(steer_magnitude_float) * STEER_DECELERATION + nitros_speed_float)
+            //            {
+            //                max_accel_modified = max_accel_float - Mathf.Abs(steer_magnitude_float) * STEER_DECELERATION + nitros_speed_float;
+            //            }
+            //        }
+            //        else
+            //        {
+            //            max_accel_modified += DRAG * Time.fixedDeltaTime;
+            //            if (max_accel_modified > max_accel_float - Mathf.Abs(steer_magnitude_float) * STEER_DECELERATION + nitros_speed_float)
+            //            {
+            //                max_accel_modified = max_accel_float - Mathf.Abs(steer_magnitude_float) * STEER_DECELERATION + nitros_speed_float;
+            //            }
+            //        }
+            //    }
+            //}
 
             //if (Input.GetKey(KeyCode.W) || Input.GetButton("A"))
             if (Input.GetKey(KeyCode.W) || Input.GetAxis(input_accelerate) > 0)
             {
-                if (accel_magnitude_float < max_accel_modified)
+
+                if (!is_drift)
+                {
+                    if (target_accel_modified < 0) target_accel_modified = 0;
+
+                    if (is_nitrosboost)
+                    {
+                        target_accel_modified = max_accel_float - Mathf.Abs(steer_magnitude_float) * STEER_DECELERATION + nitros_speed_float;
+                    }
+                    else
+                    {
+                        if (target_accel_modified > max_accel_float - Mathf.Abs(steer_magnitude_float) * STEER_DECELERATION + nitros_speed_float)
+                        {
+                            target_accel_modified -= DRAG * Time.fixedDeltaTime;
+                            if (target_accel_modified < max_accel_float - Mathf.Abs(steer_magnitude_float) * STEER_DECELERATION + nitros_speed_float)
+                            {
+                                target_accel_modified = max_accel_float - Mathf.Abs(steer_magnitude_float) * STEER_DECELERATION + nitros_speed_float;
+                            }
+                        }
+                        else
+                        {
+                            target_accel_modified += DRAG * Time.fixedDeltaTime;
+                            if (target_accel_modified > max_accel_float - Mathf.Abs(steer_magnitude_float) * STEER_DECELERATION + nitros_speed_float)
+                            {
+                                target_accel_modified = max_accel_float - Mathf.Abs(steer_magnitude_float) * STEER_DECELERATION + nitros_speed_float;
+                            }
+                        }
+                    }
+                }
+
+
+
+
+
+
+                if (accel_magnitude_float < target_accel_modified)
                 {
                     accel_magnitude_float += (ACCEL + nitros_speed_float) * Time.fixedDeltaTime;
-                    if (accel_magnitude_float > max_accel_modified)
+                    if (accel_magnitude_float > target_accel_modified)
                     {
-                        accel_magnitude_float = max_accel_modified;
+                        accel_magnitude_float = target_accel_modified;
                     }
                 }
                 else
                 {
                     accel_magnitude_float -= (ACCEL + nitros_speed_float) * Time.fixedDeltaTime;
-                    if (accel_magnitude_float < max_accel_modified)
+                    if (accel_magnitude_float < target_accel_modified)
                     {
-                        accel_magnitude_float = max_accel_modified;
+                        accel_magnitude_float = target_accel_modified;
                     }
                 }
             }
@@ -745,10 +828,94 @@ namespace ModuloKart.CustomVehiclePhysics
                 }
                 else
                 {
-                    accel_magnitude_float = accel_magnitude_float > 0 ? accel_magnitude_float -= DRAG * Time.fixedDeltaTime : 0;
+                    //accel_magnitude_float = accel_magnitude_float > 0 ? accel_magnitude_float -= DRAG * Time.fixedDeltaTime : 0;
+                    if (accel_magnitude_float > 0)
+                    {
+                        accel_magnitude_float -= DRAG * Time.fixedDeltaTime;
+                        if (accel_magnitude_float < 0)
+                        {
+                            accel_magnitude_float = 0;
+                        }
+                    }
+                    else if (accel_magnitude_float < 0)
+                    {
+                        accel_magnitude_float += DRAG * Time.fixedDeltaTime;
+                        if (accel_magnitude_float > 0)
+                        {
+                            accel_magnitude_float = 0;
+                        }
+                    }
+
                 }
             }
         }
+
+        private void VehicleReverseInput()
+        {
+            if (Input.GetKey(KeyCode.B) || Input.GetAxis(input_reverse) > 0)
+            {
+                isReverse = true;
+                //max_accel_modified -= DRAG * Time.fixedDeltaTime;
+                //if (max_accel_modified < max_accel_float - Mathf.Abs(steer_magnitude_float) * STEER_DECELERATION + nitros_speed_float)
+                //{
+                //    max_accel_modified = max_accel_float - Mathf.Abs(steer_magnitude_float) * STEER_DECELERATION + nitros_speed_float;
+                //}
+
+                if (target_accel_modified > 0) target_accel_modified = 0;
+
+                if (!is_drift)
+                {
+                    target_accel_modified -= REVERSE * Time.fixedDeltaTime;
+                    if (target_accel_modified < min_accel_float + nitros_speed_float)
+                    {
+                        target_accel_modified = min_accel_float + nitros_speed_float;
+                    }
+                }
+                else
+                {
+                    Debug.Log("Drift and Reverse");
+                    if (target_accel_modified > 0)
+                    {
+                        target_accel_modified -= 10 * Time.fixedDeltaTime;
+                        if (target_accel_modified < 0)
+                        {
+                            target_accel_modified = 0;
+                        }
+                    }
+                    else if (target_accel_modified < 0)
+                    {
+                        target_accel_modified += 10 * Time.fixedDeltaTime;
+                        if (target_accel_modified > 0)
+                        {
+                            target_accel_modified = 0;
+                        }
+                    }
+
+                }
+
+                if (accel_magnitude_float < target_accel_modified)
+                {
+                    accel_magnitude_float += (REVERSE + nitros_speed_float) * Time.fixedDeltaTime;
+                    if (accel_magnitude_float > target_accel_modified)
+                    {
+                        accel_magnitude_float = target_accel_modified;
+                    }
+                }
+                else
+                {
+                    accel_magnitude_float -= (REVERSE + nitros_speed_float) * Time.fixedDeltaTime;
+                    if (accel_magnitude_float < target_accel_modified)
+                    {
+                        accel_magnitude_float = target_accel_modified;
+                    }
+                }
+            }
+            else
+            {
+                isReverse = false;
+            }
+        }
+
 
         float tempDriftModelRotationValue;
         bool tempTurnRight;
@@ -756,7 +923,9 @@ namespace ModuloKart.CustomVehiclePhysics
         private void VehicleSteerInput()
         {
             if (!is_drift)
-                max_steer_modified = max_steer_float;
+            {
+                target_steer_modified = max_steer_float;
+            }
 
 
 
@@ -765,14 +934,14 @@ namespace ModuloKart.CustomVehiclePhysics
             {
                 //Debug.Log("Player" + PlayerNum + ", Pressed: " + input_steering.ToString());
                 wheel_steer_float = wheel_steer_float > -max_steer_float ? wheel_steer_float -= STEER * Time.fixedDeltaTime : -max_steer_float;
-                steer_magnitude_float = steer_magnitude_float > -max_steer_modified ? steer_magnitude_float -= STEER * Time.fixedDeltaTime : -max_steer_modified;
+                steer_magnitude_float = steer_magnitude_float > -target_steer_modified ? steer_magnitude_float -= STEER * Time.fixedDeltaTime : -target_steer_modified;
                 tempTurnRight = false;
             }
             else if (Input.GetKey(KeyCode.D) || Input.GetAxis(input_steering) > 0)
             {
                 //Debug.Log("Player" + PlayerNum + ", Pressed: " + input_steering.ToString());
                 wheel_steer_float = wheel_steer_float < max_steer_float ? wheel_steer_float += STEER * Time.fixedDeltaTime : max_steer_float;
-                steer_magnitude_float = steer_magnitude_float < max_steer_modified ? steer_magnitude_float += STEER * Time.fixedDeltaTime : max_steer_modified;
+                steer_magnitude_float = steer_magnitude_float < target_steer_modified ? steer_magnitude_float += STEER * Time.fixedDeltaTime : target_steer_modified;
                 tempTurnRight = true;
             }
             else
@@ -849,9 +1018,9 @@ namespace ModuloKart.CustomVehiclePhysics
 
             is_grounded = true;
             gravity_float = 0;
-            max_accel_modified = 0;
+            target_accel_modified = 0;
             wheel_steer_float = 0;
-            max_steer_modified = 0;
+            target_steer_modified = 0;
             accel_magnitude_float = 0;
             steer_magnitude_float = 0;
             brake_magnitude_float = 0;
@@ -871,7 +1040,8 @@ namespace ModuloKart.CustomVehiclePhysics
 
             max_gravity_float = 250f;
             max_steer_float = 15f;
-            max_accel_float = 250f;
+            max_accel_float = 125f;
+            min_accel_float = -69f;
             max_brake_float = 100f;
             min_drift_correction_float = 0.05f;
             max_drift_correction_float = 1f;
@@ -881,18 +1051,20 @@ namespace ModuloKart.CustomVehiclePhysics
             max_nitros_meter_float = 100f;
             max_nitros_speed_float = 100f;
             nitros_depletion_rate = 10f;
+            min_air_control = 0.1f;
 
             rayCast_layerMask = ~(1 << 1 | 1 << 2 | 1 << 8);
             slope_ray_dist_float = 1000;
 
             ACCEL = 50f;
+            REVERSE = 25;
             DRAG = 25f;
             ROTATIONAL_DRAG = 25f;
             GRAVITY = 1000f;
             STEER = 15f;
-            STEER_DECELERATION = 10f;
-            DRIFT_ACCELERATION = 40f;
-            DRIFT_STEER_DAMPEN = 10f;
+            STEER_DECELERATION = 5f;
+            DRIFT_ACCELERATION = 2.5f;
+            DRIFT_STEER_DAMPEN = 1f;
 
             Start();
         }
