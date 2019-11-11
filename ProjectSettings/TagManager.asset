@@ -15,6 +15,7 @@ TagManager:
   - Tire
   - Door
   - Hood
+  - TrackColliders
   layers:
   - Default
   - TransparentFX
