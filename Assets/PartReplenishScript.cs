@@ -51,8 +51,9 @@ public class PartReplenishScript : MonoBehaviour
                             wheels.wheel_destroy1.SetActive(true);
                             headsUp.has_tire_2 = true;
                             wheels.reservePartsList.Remove(2);
-                                
-                            Debug.Log("FL wheel replenished");
+                            headsUp.ui_item[0].gameObject.SetActive(true);
+
+                    Debug.Log("FL wheel replenished");
                         }
                         else if (wheels.reservePartsList[partBack] == 1)
                         {
@@ -61,15 +62,17 @@ public class PartReplenishScript : MonoBehaviour
                             headsUp.has_tire_1 = true;
                             wheels.reservePartsList.Remove(1);
                             Debug.Log("FR wheel replenished");
+                            headsUp.ui_item[2].gameObject.SetActive(true);
                         }
                          else if (wheels.reservePartsList[partBack] == 4)
                         {
                            
                             car.wheel2.SetActive(true);
                             wheels.wheel_destroy3.SetActive(true);
-                    headsUp.has_tire_4 = true;
+                            headsUp.has_tire_4 = true;
                             wheels.reservePartsList.Remove(4);
                             Debug.Log("RL wheel replenished");
+                            headsUp.ui_item[5].gameObject.SetActive(true);
                         }
                         else if (wheels.reservePartsList[partBack] == 3)
                         {
@@ -78,6 +81,7 @@ public class PartReplenishScript : MonoBehaviour
                             headsUp.has_tire_3 = true;
                             wheels.reservePartsList.Remove(3);
                             Debug.Log("RR wheel replenished");
+                            headsUp.ui_item[6].gameObject.SetActive(true);
                         }
                 else
                 {
@@ -87,15 +91,6 @@ public class PartReplenishScript : MonoBehaviour
                         retry = false;
                     
             }
-            /*else if (wheels.reservePartsList.Find(partBack).Value == 5)
-{
-Debug.Log("Hood replenished");
-car.hood.SetActive(true);
-headsUp.has_hood = true;
-retry = false;
-wheels.reservePartsList.Remove(partBack);
-}*/
-
                  else
                 {
                     //it needs to hit a specific part of the car, otherwise, this activates
@@ -104,163 +99,4 @@ wheels.reservePartsList.Remove(partBack);
                 }   }
                  Destroy(gameObject);
             }
-
-
-
-
-
-            // the "retry" variable is so that if the part that is rolled is already there, then it retries the script. If all parts
-            /*  while (retry == true)
-               {
-                   if (headsUp.has_tire_1 == true && headsUp.has_tire_2 == true && headsUp.has_tire_3 == true && headsUp.has_tire_4 == true && headsUp.has_hood == true)
-                   { 
-                       //if this is true, then it nullifies the script
-                       return;
-                   }
-
-                   if (c.gameObject.name == "PickupCollider")
-                   {
-                       //randomize the item box so it gives a random item
-
-                       switch (partBack)
-                       {
-                           case 1:
-
-                               //replenishes the Front Left wheel if it isn't there, retries the script if not
-                               if (car.wheel4.active == true)
-                               {
-                                   Debug.Log("FL wheel there");
-                                   partBack = Random.Range(1, 6);
-                               }
-                               else
-                               {
-                                   Debug.Log("FL wheel replenished");
-                                   car.wheel4.SetActive(true);
-                                   wheels.wheel_destroy1.SetActive(true);
-                                   headsUp.has_tire_2 = true;
-                                   retry = false;
-                               }
-                               break;
-                           case 2:
-                               //replenishes the Front Right wheel if it isn't there, retries the script if not
-                               if (car.wheel3.active == true)
-                               {
-                                   Debug.Log("FR wheel there");
-                                   partBack = Random.Range(1, 6);
-                               }
-                               else
-                               {
-                                   Debug.Log("FR wheel replenished");
-                                   car.wheel3.SetActive(true);
-                                   wheels.wheel_destroy2.SetActive(true);
-                                   headsUp.has_tire_1 = true;
-                                   retry = false;
-                               }
-                               break;
-                           case 3:
-                               //replenishes the Rear Left wheel if it isn't there, retries the script if not
-                               if (car.wheel2.active == true)
-                               {
-                                   Debug.Log("RL wheel there");
-                                   partBack = Random.Range(1, 6);
-                               }
-                               else
-                               {
-                                   Debug.Log("RL wheel replenished");
-                                   car.wheel2.SetActive(true);
-                                   wheels.wheel_destroy3.SetActive(true);
-                                   headsUp.has_tire_4 = true;
-                                   retry = false;
-                               }
-                               break;
-                           case 4:
-                               //replenishes the Rear Right wheel if it isn't there, retries the script if not
-                               if (car.wheel1.active == true)
-                               {
-                                   Debug.Log("RR wheel there");
-                                   partBack = Random.Range(1, 6);
-
-                               }
-                               else
-                               {
-                                   Debug.Log("RR wheel replenished");
-                                   car.wheel1.SetActive(true);
-                                   wheels.wheel_destroy4.SetActive(true);
-                                   headsUp.has_tire_3 = true;
-                                   retry = false;
-                               }
-                               break;
-                           case 5:
-
-
-                                   if (car.hood.active == true)
-                                   {
-                                       Debug.Log("Hood There");
-                                   partBack = Random.Range(1, 6);
-                               }
-                                   else
-                                   {
-
-                                       Debug.Log("Hood replenished");
-                                       car.hood.SetActive(true);
-                                       headsUp.has_hood = true;
-                                       retry = false;
-
-                                   }
-                                   break;
-
-                           // working doors haven't been implemented in the cars; here's the code for when they do
-                           /*case 6:
-                               {
-                                   //replenishes Door 1 if it isn't there, retries the script if not
-                                   if (headsUp.has_door_1 == true)
-                                   {
-                                       Debug.Log("Door 1 There");
-                                       partBack = Random.Range(1, 5);
-                                   }
-                                   else
-                                   {
-                                       Debug.Log("Door 1 replenished");
-
-                                       headsUp.has_door_1 = true;
-                                       retry = false; 
-                                   }
-                                   break;
-                               }
-                       case 7:
-                               {
-                                   //replenishes Door 2 if it isn't there, retries the script if not
-                                   if (headsUp.has_door_2 == true)
-                                   {
-                                       Debug.Log("Door 2 There");
-                                      partBack = Random.Range(1, 5);
-                                   }
-                                   else
-                                   {
-                                       Debug.Log("Door 2 replenished");
-
-                                       headsUp.has_door_2 = true;
-                                   }
-                                   break;
-                               }*/
-            /*default:
-                {
-                        Debug.Log("Something's Wrong");
-                    retry = false;
-                        break;
-                }
-        }
-                //Destroy the item box
-                Debug.Log("Item Destroyed");
-                Destroy(gameObject);
-
-    }
-    else
-    {
-        //it needs to hit a specific part of the car, otherwise, this activates
-        Debug.Log("Collider Not Hit");
-        return;
-    }
-    }*/
-
     }
