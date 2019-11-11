@@ -169,14 +169,52 @@ namespace ModuloKart.CustomVehiclePhysics
             groundCheck_hits = new RaycastHit[255];
             ground_check_ray = new Ray[255];
 
-        input_steering = "Horizontal";
-        input_accelerate = "Vertical";
-        input_drift = "Jump";
-        input_nitros = "NitroKey";
+            input_steering = "Horizontal";
+            input_accelerate = "Vertical";
+            input_drift = "Jump";
+            input_nitros = "NitroKey";
 
-    }
+        }
 
-    private void FixedUpdate()
+
+        //vehicle performace loss with track collsions
+        //just add yags to colliders and keep the code as it is
+
+        int isCollisionHit;
+        public void OnCollisionEnter(Collision c)
+        {
+            if (c.gameObject.tag == "TrackColliders")
+
+            {
+
+
+                Vector3 tempReflect = Vector3.Reflect(vehicle_heading_transform.forward, c.contacts[0].normal);
+                isCollisionHit = 1;
+                if (Vector3.Dot(vehicle_heading_transform.forward, c.contacts[0].normal) <= 0.75)
+                {
+                    accel_magnitude_float *= 0.25f;
+                    //Vector3 reflectXZDirection = new Vector3()
+                    //vehicle_heading_transform.forward = Vector3.Reflect(vehicle_heading_transform.forward, c.contacts[0].normal);
+                    //vehicle_heading_transform.forward = Vector3.Lerp(vehicle_heading_transform.forward, new Vector3(tempReflect.x, 0, tempReflect.z),0.1f);
+                    //vehicle_heading_transform.forward = new Vector3(tempReflect.x, 0, tempReflect.z);
+                    Debug.Log("hit non direct collision (at an angle)");
+
+
+
+                }
+                else if (Vector3.Dot(vehicle_heading_transform.forward, c.contacts[0].normal) > 0.75)
+                {
+                    accel_magnitude_float *= 0.1f;
+                    //vehicle_heading_transform.forward = Vector3.Reflect(vehicle_heading_transform.forward, c.contacts[0].normal);
+                    //vehicle_heading_transform.forward = Vector3.Lerp(vehicle_heading_transform.forward, new Vector3(tempReflect.x, 0, tempReflect.z), 0.1f);
+                    //vehicle_heading_transform.forward = new Vector3(tempReflect.x, 0, tempReflect.z);
+                    Debug.Log("hit - more or less directly");
+                }
+            }
+            isCollisionHit = 0;
+        }
+
+        private void FixedUpdate()
         {
             //InitializePlayerJoystick();
             if (!isControllerInitialized) return;
@@ -761,6 +799,28 @@ namespace ModuloKart.CustomVehiclePhysics
             //if (Input.GetKey(KeyCode.W) || Input.GetButton("A"))
             if (Input.GetKey(KeyCode.W) || Input.GetAxis(input_accelerate) > 0)
             {
+
+                if (accel_magnitude_float < (target_accel_modified - isCollisionHit * target_accel_modified))
+                {
+                    if (isCollisionHit == 1)
+                    {
+                        Debug.Log("isCollisionHit: " + (isCollisionHit * target_accel_modified) + "vs. " + target_accel_modified);
+                    }
+                    accel_magnitude_float += (ACCEL + nitros_speed_float) * Time.fixedDeltaTime;
+                    if (accel_magnitude_float > target_accel_modified)
+                    {
+                        accel_magnitude_float = target_accel_modified;
+                    }
+                }
+                else
+                {
+                    accel_magnitude_float -= (ACCEL + nitros_speed_float) * Time.fixedDeltaTime;
+                    if (accel_magnitude_float < target_accel_modified)
+                    {
+                        accel_magnitude_float = target_accel_modified;
+                    }
+                }
+
 
                 if (!is_drift)
                 {
