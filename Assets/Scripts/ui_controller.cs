@@ -19,7 +19,6 @@ public class ui_controller : MonoBehaviour
     public int playerNum;
     public GameObject vechicle;
     public GameObject wheeldetacher;
-Player_Wheel_Detach wheels = wheeldetacher.GetComponentInChildren<Player_Wheel_Detach>();
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +54,8 @@ Player_Wheel_Detach wheels = wheeldetacher.GetComponentInChildren<Player_Wheel_D
     // Update is called once per frame
     void Update()
     {
+        Player_Wheel_Detach wheels = wheeldetacher.GetComponentInChildren<Player_Wheel_Detach>();
+
         if (!vechicle.GetComponent<VehicleBehavior>().isControllerInitialized) return;
 
         if (Input.GetButtonDown(vechicle.GetComponent<VehicleBehavior>().input_ItemNext))
