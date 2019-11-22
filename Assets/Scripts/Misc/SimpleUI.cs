@@ -27,6 +27,8 @@ namespace ModuloKart.HUD
         public Text TextRaceTime;
         public Text TextLastLapTime;
         public GameObject WrongDirectionWarning;
+        public GameObject placeshower;
+
 
         private void Start()
         {
