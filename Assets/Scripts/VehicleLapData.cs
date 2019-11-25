@@ -21,6 +21,7 @@ public class VehicleLapData : MonoBehaviour
     public float playerRaceTime;
     float currentTempProgress;
     int LapTrackerValue;
+    float timer;
 
     LegTriggerBehavior[] legDatas;
     LapManager lapManager;
@@ -86,15 +87,24 @@ public class VehicleLapData : MonoBehaviour
                 IsPlayerFinishedRace = true;
                 Debug.Log("PlayerContainer: " + vehicleBehavior.name);
                 vehicleBehavior.playerHUD.GameOverBackgroundObject.SetActive(true);
-
+                vehicleBehavior.playerHUD.placeshower.transform.GetChild(lapManager.racersfinished).gameObject.SetActive(true);
+                lapManager.racersfinished++;
                 vehicleBehavior.playerHUD.TextGameOver.text = "RACE COMPLETED\nWAITING FOR ALL PLAYERS TO FINISH";
 
                 GameLogicManager.Instance.SetIsPlayerFinished();
-                if (GameLogicManager.Instance.CheckEveryPlayerFinished())
-                {
-                    SceneManager.LoadScene(0);
-                }
+                
             }
+
+            if (GameLogicManager.Instance.CheckEveryPlayerFinished() && timer < Time.time && timer > 0)
+            {
+                SceneManager.LoadScene(0);
+            }
+            else if (GameLogicManager.Instance.CheckEveryPlayerFinished() && timer <= 0)
+            {
+                timer = Time.time + 5.0f;
+                Debug.Log("Timer is" + timer);
+            }
+
         }
 
         switch (currentLegID)
