@@ -8,7 +8,8 @@ public class ui_controller : MonoBehaviour
 {
    public GameObject[] ui_item;
    public int item_selected;
-
+    //new bool added to tell which direction the selector is coming from
+    bool next = true;
     public bool has_door_1 = true;
      public bool has_door_2 = true;
     public bool has_tire_1 = true;
@@ -57,9 +58,35 @@ public class ui_controller : MonoBehaviour
         Player_Wheel_Detach wheels = wheeldetacher.GetComponentInChildren<Player_Wheel_Detach>();
 
         if (!vechicle.GetComponent<VehicleBehavior>().isControllerInitialized) return;
+// makes the UI selector go to the next or previous item if item isn't there.
+        if (ui_item[item_selected].gameObject.activeSelf == false)
+        {
+            Debug.Log("Item not there3");
+            if (next == false)
+            {
+                ui_item[item_selected].transform.localScale -= new Vector3(0.5f, 0.5f);
+                item_selected -= 1;
+                if (item_selected < 0)
+                {
+                    item_selected = 6;
+                }
+                ui_item[item_selected].transform.localScale += new Vector3(0.5f, 0.5f);
+            }
+            else if (next == true)
+            {
+                ui_item[item_selected].transform.localScale -= new Vector3(0.5f, 0.5f);
+                item_selected += 1;
+                if (item_selected >= 7)
+                {
+                    item_selected = 0;
+                }
+                ui_item[item_selected].transform.localScale += new Vector3(0.5f, 0.5f);
+            }
+        }
 
         if (Input.GetButtonDown(vechicle.GetComponent<VehicleBehavior>().input_ItemNext))
         {
+            
             Debug.Log("TEST NEXT INPUT");
             // Debug.Log("before" + item_selected);
             ui_item[item_selected].transform.localScale -= new Vector3(0.5f, 0.5f);
@@ -70,35 +97,32 @@ public class ui_controller : MonoBehaviour
             {
                 item_selected = 6;
             }
-
+            next = true;
             
             ui_item[item_selected].transform.localScale += new Vector3(0.5f, 0.5f);
-            if (ui_item[item_selected].gameObject.active == false)
-            {
-                Debug.Log("Item not there");
-                
-            }
+            
 
             //Debug.Log("after" + item_selected);
 
         }
         else if (Input.GetButtonDown(vechicle.GetComponent<VehicleBehavior>().input_ItemPrev))
         {
+           
+
             Debug.Log("TEST PREV INPUT");
             ui_item[item_selected].transform.localScale -= new Vector3(0.5f, 0.5f);
 
 
             item_selected += 1;
-          
             if (item_selected >= 7)
-                item_selected = 0;
-  
-            ui_item[item_selected].transform.localScale += new Vector3(0.5f, 0.5f);
-          if (ui_item[item_selected].gameObject.active == false)
             {
-                Debug.Log("Item not there");
-
+                item_selected = 0;
             }
+
+
+            ui_item[item_selected].transform.localScale += new Vector3(0.5f, 0.5f);
+
+            next = false;
 
         }
 
