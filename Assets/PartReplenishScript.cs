@@ -49,9 +49,10 @@ public class PartReplenishScript : MonoBehaviour
                         {
                             car.wheel4.SetActive(true);
                             wheels.wheel_destroy1.SetActive(true);
-                            headsUp.has_tire_2 = true;
-                            wheels.reservePartsList.Remove(2);
-                            headsUp.ui_item[0].gameObject.SetActive(true);
+                    headsUp.has_tire_2 = true;
+                    wheels.reservePartsList.Remove(2);
+                    headsUp.ui_item[2].gameObject.SetActive(true);
+                    
 
                     Debug.Log("FL wheel replenished");
                         }
@@ -62,7 +63,7 @@ public class PartReplenishScript : MonoBehaviour
                             headsUp.has_tire_1 = true;
                             wheels.reservePartsList.Remove(1);
                             Debug.Log("FR wheel replenished");
-                            headsUp.ui_item[2].gameObject.SetActive(true);
+                            headsUp.ui_item[0].gameObject.SetActive(true);
                         }
                          else if (wheels.reservePartsList[partBack] == 4)
                         {
@@ -72,7 +73,7 @@ public class PartReplenishScript : MonoBehaviour
                             headsUp.has_tire_4 = true;
                             wheels.reservePartsList.Remove(4);
                             Debug.Log("RL wheel replenished");
-                            headsUp.ui_item[5].gameObject.SetActive(true);
+                            headsUp.ui_item[6].gameObject.SetActive(true);
                         }
                         else if (wheels.reservePartsList[partBack] == 3)
                         {
@@ -81,7 +82,7 @@ public class PartReplenishScript : MonoBehaviour
                             headsUp.has_tire_3 = true;
                             wheels.reservePartsList.Remove(3);
                             Debug.Log("RR wheel replenished");
-                            headsUp.ui_item[6].gameObject.SetActive(true);
+                            headsUp.ui_item[5].gameObject.SetActive(true);
                         }
                 else
                 {
