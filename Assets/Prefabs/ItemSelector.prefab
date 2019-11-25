@@ -352,8 +352,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66073b591e053c748b4fdcb6df0fa8ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ui_item: []
+  item_selected: 0
+  has_door_1: 1
+  has_door_2: 1
+  has_tire_1: 1
+  has_tire_2: 1
+  has_tire_3: 1
+  has_tire_4: 1
+  has_hood: 1
   playerNum: 0
-  vechicle: {fileID: 0}
+  vechicle: {fileID: 1165680260921162, guid: da0abe8a147139749b99d326b0abe510, type: 3}
+  wheeldetacher: {fileID: 7709651634955788957, guid: cfd5c6701d938044c9c2be077a35e4ca,
+    type: 3}
 --- !u!222 &8807214252647679132
 CanvasRenderer:
   m_ObjectHideFlags: 0
