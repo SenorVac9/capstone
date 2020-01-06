@@ -28,7 +28,7 @@ namespace ModuloKart.HUD
         public Text TextLastLapTime;
         public GameObject WrongDirectionWarning;
         public GameObject placeshower;
-
+     
 
         private void Start()
         {
@@ -49,10 +49,20 @@ namespace ModuloKart.HUD
             if (Value_Nitros == null) return;
 
             Value_Velocity.text = (Mathf.FloorToInt(vehicleBehavior.accel_magnitude_float)).ToString();
-            Value_Nitros.text = (Mathf.FloorToInt(vehicleBehavior.nitros_meter_float)).ToString();
+            if (vehicleBehavior.is_sci)
+                Value_Nitros.text = (Mathf.FloorToInt(vehicleBehavior.nitros_meter_float_sci)).ToString();
+            else
+                Value_Nitros.text = (Mathf.FloorToInt(vehicleBehavior.nitros_meter_float)).ToString();
+
 
             Speedometer(vehicleBehavior.accel_magnitude_float);
-            NitrosMeter(vehicleBehavior.nitros_meter_float);
+
+            if (vehicleBehavior.is_sci)
+                NitrosMeter(vehicleBehavior.nitros_meter_float_sci);
+            else
+                NitrosMeter(vehicleBehavior.nitros_meter_float);
+           
+
 
             if (BeginBackgroundObject.activeSelf)
             {
@@ -74,9 +84,20 @@ namespace ModuloKart.HUD
 
         void NitrosMeter(float fillValue)
         {
-            float amount = ((fillValue) / 100.0f);
-            
-            nitrosRadial.fillAmount = amount;
+            if (vehicleBehavior.is_sci)
+            {
+                float amount = ((fillValue) / 130.0f);
+
+
+                nitrosRadial.fillAmount = amount;
+            }
+            else
+            {
+                float amount = ((fillValue) / 100.0f);
+
+
+                nitrosRadial.fillAmount = amount;
+            }
         }
     }
 

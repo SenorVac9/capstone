@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.PostProcessing;
@@ -73,6 +73,7 @@ namespace ModuloKart.CustomVehiclePhysics
         public float brake_magnitude_float = 0;
         public float drift_correction_float = 0;
         public float nitros_meter_float = 0;
+        public float nitros_meter_float_sci = 0;
         public float nitros_speed_float = 0;
         [Tooltip("How responsive the slope tilt adjustment is. This is a function of vehicle speed modified in runtime")]
         [SerializeField] public float tiltLerp_float;
@@ -83,6 +84,7 @@ namespace ModuloKart.CustomVehiclePhysics
         public bool isReverse;
         public bool is_drift;
         public bool is_nitrosboost;
+        public bool is_sci;
 
         [Header("Maximum and Minimum Vehicle Movement Values")]
         [Range(0, 500)] public float max_gravity_float = 250f;
@@ -99,6 +101,7 @@ namespace ModuloKart.CustomVehiclePhysics
         [Tooltip("Turn Angle multiplier when drifting")]
         [Range(0, 1f)] public float drift_turn_ratio_float = 0.25f;
         [Range(0, 100f)] public float max_nitros_meter_float = 100f;
+        [Range(0, 130f)] public float max_nitros_meter_float_sci = 130f;
         [Range(0, 100f)] public float max_nitros_speed_float = 100f;
         [Range(0, 20f)] public float nitros_depletion_rate = 2.5f;
         [Range(0, 1)] public float min_air_control = 0.1f;
@@ -319,11 +322,17 @@ namespace ModuloKart.CustomVehiclePhysics
         #region public methods to get and set variables on this script
         public float GetNitrosMeter()
         {
-            return nitros_meter_float;
+            if (is_sci)
+                return nitros_meter_float_sci;
+            else
+                return nitros_meter_float;
         }
         public void SetNitrosMeter(float value)
         {
-            nitros_meter_float = value;
+            if (is_sci)
+                nitros_meter_float_sci = value;
+            else
+                nitros_meter_float = value;
         }
         #endregion
 
@@ -700,17 +709,33 @@ namespace ModuloKart.CustomVehiclePhysics
         private void VehicleNitrosBoostInput()
         {
             //CameraFOVBehavior();
-
-            if (nitros_meter_float <= 0)
+            if (is_sci)
             {
-                is_nitrosboost = false;
-                nitros_speed_float = 0;
-                nitros_meter_float = 0;
-                if (vehicle_camera_transform.GetComponent<Camera>().fieldOfView > min_fov_float)
+                if (nitros_meter_float_sci <= 0)
                 {
-                    vehicle_camera_transform.GetComponent<Camera>().fieldOfView -= Time.fixedDeltaTime * pan_toward_float;
+                    is_nitrosboost = false;
+                    nitros_speed_float = 0;
+                    nitros_meter_float_sci = 0;
+                    if (vehicle_camera_transform.GetComponent<Camera>().fieldOfView > min_fov_float)
+                    {
+                        vehicle_camera_transform.GetComponent<Camera>().fieldOfView -= Time.fixedDeltaTime * pan_toward_float;
+                    }
+                    return;
                 }
-                return;
+            }
+            else
+            {
+                if (nitros_meter_float <= 0)
+                {
+                    is_nitrosboost = false;
+                    nitros_speed_float = 0;
+                    nitros_meter_float = 0;
+                    if (vehicle_camera_transform.GetComponent<Camera>().fieldOfView > min_fov_float)
+                    {
+                        vehicle_camera_transform.GetComponent<Camera>().fieldOfView -= Time.fixedDeltaTime * pan_toward_float;
+                    }
+                    return;
+                }
             }
 
             //if (Input.GetKey(KeyCode.RightControl) || Input.GetAxis("LeftTrigger") > 0)
@@ -734,7 +759,10 @@ namespace ModuloKart.CustomVehiclePhysics
                     }
                 }
 
-                nitros_meter_float = nitros_meter_float > 0 ? nitros_meter_float -= Time.fixedDeltaTime * nitros_depletion_rate : 0;
+                if (!is_sci)
+                    nitros_meter_float = nitros_meter_float > 0 ? nitros_meter_float -= Time.fixedDeltaTime * nitros_depletion_rate : 0;
+                else
+                    nitros_meter_float_sci = nitros_meter_float_sci > 0 ? nitros_meter_float_sci -= Time.fixedDeltaTime * nitros_depletion_rate : 0;
 
             }
             else
@@ -1086,6 +1114,7 @@ namespace ModuloKart.CustomVehiclePhysics
             brake_magnitude_float = 0;
             drift_correction_float = 0;
             nitros_meter_float = 100;
+            nitros_meter_float_sci = 130;
             nitros_speed_float = 0;
 
 
@@ -1109,6 +1138,7 @@ namespace ModuloKart.CustomVehiclePhysics
             drift_accel_multiplier_float = 0.05f;
             drift_turn_ratio_float = 0.25f;
             max_nitros_meter_float = 100f;
+            max_nitros_meter_float_sci = 130f;
             max_nitros_speed_float = 100f;
             nitros_depletion_rate = 10f;
             min_air_control = 0.1f;

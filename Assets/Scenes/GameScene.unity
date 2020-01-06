@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028355, g: 0.22571374, b: 0.30692255, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1190,7 +1190,7 @@ GameObject:
   - component: {fileID: 59437095}
   m_Layer: 0
   m_Name: BigObstacle
-  m_TagString: TrackColliders
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1498,6 +1498,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 62742573}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &64423092 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4027548013006319844, guid: 66efadd9ed136dd418ea823fae13778d,
+    type: 3}
+  m_PrefabInstance: {fileID: 6196138884636632200}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &66878589
 GameObject:
   m_ObjectHideFlags: 0
@@ -5393,6 +5399,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 768462740}
   m_PrefabAsset: {fileID: 0}
+--- !u!54 &270310858 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 443800255, guid: da0abe8a147139749b99d326b0abe510,
+    type: 3}
+  m_PrefabInstance: {fileID: 768462740}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &273234987
 GameObject:
   m_ObjectHideFlags: 0
@@ -5790,6 +5802,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 290565625}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &293205229 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6955711067258522829, guid: 66efadd9ed136dd418ea823fae13778d,
+    type: 3}
+  m_PrefabInstance: {fileID: 6196138884636632200}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &296018320
 GameObject:
   m_ObjectHideFlags: 0
@@ -14084,6 +14102,33 @@ PrefabInstance:
       propertyPath: playerHUD
       value: 
       objectReference: {fileID: 843184874}
+    - target: {fileID: 1870334581, guid: da0abe8a147139749b99d326b0abe510, type: 3}
+      propertyPath: max_nitros_meter_float
+      value: 130
+      objectReference: {fileID: 0}
+    - target: {fileID: 1870334581, guid: da0abe8a147139749b99d326b0abe510, type: 3}
+      propertyPath: is_sci
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1870334581, guid: da0abe8a147139749b99d326b0abe510, type: 3}
+      propertyPath: nitros_meter_float_sci
+      value: 130
+      objectReference: {fileID: 0}
+    - target: {fileID: 2703678531577850221, guid: da0abe8a147139749b99d326b0abe510,
+        type: 3}
+      propertyPath: dF
+      value: 
+      objectReference: {fileID: 270310858}
+    - target: {fileID: 4101350824278306328, guid: da0abe8a147139749b99d326b0abe510,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4823362531286909055, guid: da0abe8a147139749b99d326b0abe510,
+        type: 3}
+      propertyPath: partsUsed
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da0abe8a147139749b99d326b0abe510, type: 3}
 --- !u!4 &768462741 stripped
@@ -18734,6 +18779,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1040704879}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1046642819 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5556525856111095892, guid: 66efadd9ed136dd418ea823fae13778d,
+    type: 3}
+  m_PrefabInstance: {fileID: 6196138884636632200}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1053691959
 GameObject:
   m_ObjectHideFlags: 0
@@ -21402,6 +21453,7 @@ MonoBehaviour:
   isDebugMode: 1
   LapsToComplete: 1
   playerLapDataList: []
+  racersfinished: 0
 --- !u!1 &1199455697
 GameObject:
   m_ObjectHideFlags: 0
@@ -25956,6 +26008,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1508880686}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1508998212 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2633220887800773538, guid: 66efadd9ed136dd418ea823fae13778d,
+    type: 3}
+  m_PrefabInstance: {fileID: 6196138884636632200}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1515364203
 GameObject:
   m_ObjectHideFlags: 0
@@ -26360,6 +26418,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1530144768}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1534415264 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8522218582208205138, guid: 66efadd9ed136dd418ea823fae13778d,
+    type: 3}
+  m_PrefabInstance: {fileID: 6196138884636632200}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1539079546
 GameObject:
   m_ObjectHideFlags: 0
@@ -28845,6 +28909,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1667807672}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1672845011 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3953231764677231102, guid: 66efadd9ed136dd418ea823fae13778d,
+    type: 3}
+  m_PrefabInstance: {fileID: 6196138884636632200}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1673737545
 GameObject:
   m_ObjectHideFlags: 0
@@ -29388,26 +29458,6 @@ PrefabInstance:
       propertyPath: m_NormalizedViewPortRect.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3786842502681052568, guid: da0abe8a147139749b99d326b0abe510,
-        type: 3}
-      propertyPath: m_TargetTexture
-      value: 
-      objectReference: {fileID: 8400000, guid: e160f8543be0b114c90dd91b6a6f7b3d, type: 2}
-    - target: {fileID: 4536376829146305785, guid: da0abe8a147139749b99d326b0abe510,
-        type: 3}
-      propertyPath: cullingMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8061540972334852600, guid: da0abe8a147139749b99d326b0abe510,
-        type: 3}
-      propertyPath: cullingMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8061540972334852600, guid: da0abe8a147139749b99d326b0abe510,
-        type: 3}
-      propertyPath: lengthInSec
-      value: 2.5
-      objectReference: {fileID: 0}
     - target: {fileID: 595517267057655598, guid: da0abe8a147139749b99d326b0abe510,
         type: 3}
       propertyPath: cullingMode
@@ -29417,6 +29467,26 @@ PrefabInstance:
         type: 3}
       propertyPath: cullingMode
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4536376829146305785, guid: da0abe8a147139749b99d326b0abe510,
+        type: 3}
+      propertyPath: cullingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3786842502681052568, guid: da0abe8a147139749b99d326b0abe510,
+        type: 3}
+      propertyPath: m_TargetTexture
+      value: 
+      objectReference: {fileID: 8400000, guid: e160f8543be0b114c90dd91b6a6f7b3d, type: 2}
+    - target: {fileID: 8061540972334852600, guid: da0abe8a147139749b99d326b0abe510,
+        type: 3}
+      propertyPath: cullingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8061540972334852600, guid: da0abe8a147139749b99d326b0abe510,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da0abe8a147139749b99d326b0abe510, type: 3}
@@ -30211,6 +30281,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1749855397}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1753646009 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 422005317255102962, guid: 66efadd9ed136dd418ea823fae13778d,
+    type: 3}
+  m_PrefabInstance: {fileID: 6196138884636632200}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1763978053
 GameObject:
   m_ObjectHideFlags: 0
@@ -32316,6 +32398,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1894017836}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1901469361 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6196138884087335108, guid: 66efadd9ed136dd418ea823fae13778d,
+    type: 3}
+  m_PrefabInstance: {fileID: 6196138884636632200}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1901604678
 GameObject:
   m_ObjectHideFlags: 0
@@ -32986,7 +33080,7 @@ GameObject:
   - component: {fileID: 1941683335}
   m_Layer: 0
   m_Name: BigObstacle
-  m_TagString: TrackColliders
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34245,6 +34339,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2023318613}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2029614531 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5402954568953889108, guid: 66efadd9ed136dd418ea823fae13778d,
+    type: 3}
+  m_PrefabInstance: {fileID: 6196138884636632200}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2035187732
 GameObject:
   m_ObjectHideFlags: 0
@@ -36525,27 +36625,27 @@ PrefabInstance:
       propertyPath: m_NormalizedViewPortRect.x
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 3786842502681052568, guid: da0abe8a147139749b99d326b0abe510,
-        type: 3}
-      propertyPath: m_TargetTexture
-      value: 
-      objectReference: {fileID: 8400000, guid: 1818fd8b43c0c7f47b857a382c500501, type: 2}
-    - target: {fileID: 4536376829146305785, guid: da0abe8a147139749b99d326b0abe510,
-        type: 3}
-      propertyPath: cullingMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8061540972334852600, guid: da0abe8a147139749b99d326b0abe510,
-        type: 3}
-      propertyPath: cullingMode
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 595517267057655598, guid: da0abe8a147139749b99d326b0abe510,
         type: 3}
       propertyPath: cullingMode
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3453021468403693938, guid: da0abe8a147139749b99d326b0abe510,
+        type: 3}
+      propertyPath: cullingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4536376829146305785, guid: da0abe8a147139749b99d326b0abe510,
+        type: 3}
+      propertyPath: cullingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3786842502681052568, guid: da0abe8a147139749b99d326b0abe510,
+        type: 3}
+      propertyPath: m_TargetTexture
+      value: 
+      objectReference: {fileID: 8400000, guid: 1818fd8b43c0c7f47b857a382c500501, type: 2}
+    - target: {fileID: 8061540972334852600, guid: da0abe8a147139749b99d326b0abe510,
         type: 3}
       propertyPath: cullingMode
       value: 0
@@ -36585,11 +36685,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerHUDs
       objectReference: {fileID: 0}
-    - target: {fileID: 6196138884016353753, guid: 66efadd9ed136dd418ea823fae13778d,
+    - target: {fileID: 6196138884007608094, guid: 66efadd9ed136dd418ea823fae13778d,
         type: 3}
-      propertyPath: m_IsActive
+      propertyPath: sciNitro
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6196138884007608094, guid: 66efadd9ed136dd418ea823fae13778d,
+        type: 3}
+      propertyPath: nitrosRadialSci
+      value: 
+      objectReference: {fileID: 1753646009}
+    - target: {fileID: 6196138884007608094, guid: 66efadd9ed136dd418ea823fae13778d,
+        type: 3}
+      propertyPath: Value_Nitros_Sci
+      value: 
+      objectReference: {fileID: 1901469361}
     - target: {fileID: 6196138884016353754, guid: 66efadd9ed136dd418ea823fae13778d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -36647,9 +36757,55 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7471636673038316343, guid: 66efadd9ed136dd418ea823fae13778d,
         type: 3}
+      propertyPath: ui_item.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7471636673038316343, guid: 66efadd9ed136dd418ea823fae13778d,
+        type: 3}
       propertyPath: vechicle
       value: 
       objectReference: {fileID: 270310856}
+    - target: {fileID: 7471636673038316343, guid: 66efadd9ed136dd418ea823fae13778d,
+        type: 3}
+      propertyPath: ui_item.Array.data[0]
+      value: 
+      objectReference: {fileID: 1534415264}
+    - target: {fileID: 7471636673038316343, guid: 66efadd9ed136dd418ea823fae13778d,
+        type: 3}
+      propertyPath: ui_item.Array.data[1]
+      value: 
+      objectReference: {fileID: 64423092}
+    - target: {fileID: 7471636673038316343, guid: 66efadd9ed136dd418ea823fae13778d,
+        type: 3}
+      propertyPath: ui_item.Array.data[2]
+      value: 
+      objectReference: {fileID: 293205229}
+    - target: {fileID: 7471636673038316343, guid: 66efadd9ed136dd418ea823fae13778d,
+        type: 3}
+      propertyPath: ui_item.Array.data[3]
+      value: 
+      objectReference: {fileID: 1046642819}
+    - target: {fileID: 7471636673038316343, guid: 66efadd9ed136dd418ea823fae13778d,
+        type: 3}
+      propertyPath: ui_item.Array.data[4]
+      value: 
+      objectReference: {fileID: 1508998212}
+    - target: {fileID: 7471636673038316343, guid: 66efadd9ed136dd418ea823fae13778d,
+        type: 3}
+      propertyPath: ui_item.Array.data[5]
+      value: 
+      objectReference: {fileID: 2029614531}
+    - target: {fileID: 7471636673038316343, guid: 66efadd9ed136dd418ea823fae13778d,
+        type: 3}
+      propertyPath: ui_item.Array.data[6]
+      value: 
+      objectReference: {fileID: 1672845011}
+    - target: {fileID: 7471636673038316343, guid: 66efadd9ed136dd418ea823fae13778d,
+        type: 3}
+      propertyPath: wheeldetacher
+      value: 
+      objectReference: {fileID: 7709651634955788957, guid: cfd5c6701d938044c9c2be077a35e4ca,
+        type: 3}
     - target: {fileID: 8836776961830357452, guid: 66efadd9ed136dd418ea823fae13778d,
         type: 3}
       propertyPath: vechicle
@@ -36665,6 +36821,16 @@ PrefabInstance:
       propertyPath: vechicle
       value: 
       objectReference: {fileID: 811251491}
+    - target: {fileID: 6196138883955000719, guid: 66efadd9ed136dd418ea823fae13778d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 20.80011
+      objectReference: {fileID: 0}
+    - target: {fileID: 6196138884007608092, guid: 66efadd9ed136dd418ea823fae13778d,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66efadd9ed136dd418ea823fae13778d, type: 3}
 --- !u!1001 &6852940324397199050
@@ -36748,27 +36914,27 @@ PrefabInstance:
       propertyPath: m_NormalizedViewPortRect.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3786842502681052568, guid: da0abe8a147139749b99d326b0abe510,
-        type: 3}
-      propertyPath: m_TargetTexture
-      value: 
-      objectReference: {fileID: 8400000, guid: 70770d9e6ca53824ab9fdf7d77e2cd76, type: 2}
-    - target: {fileID: 4536376829146305785, guid: da0abe8a147139749b99d326b0abe510,
-        type: 3}
-      propertyPath: cullingMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8061540972334852600, guid: da0abe8a147139749b99d326b0abe510,
-        type: 3}
-      propertyPath: cullingMode
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 595517267057655598, guid: da0abe8a147139749b99d326b0abe510,
         type: 3}
       propertyPath: cullingMode
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3453021468403693938, guid: da0abe8a147139749b99d326b0abe510,
+        type: 3}
+      propertyPath: cullingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4536376829146305785, guid: da0abe8a147139749b99d326b0abe510,
+        type: 3}
+      propertyPath: cullingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3786842502681052568, guid: da0abe8a147139749b99d326b0abe510,
+        type: 3}
+      propertyPath: m_TargetTexture
+      value: 
+      objectReference: {fileID: 8400000, guid: 70770d9e6ca53824ab9fdf7d77e2cd76, type: 2}
+    - target: {fileID: 8061540972334852600, guid: da0abe8a147139749b99d326b0abe510,
         type: 3}
       propertyPath: cullingMode
       value: 0
