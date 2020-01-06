@@ -15,6 +15,12 @@ TagManager:
   - Tire
   - Door
   - Hood
+  - third
+  - second
+  - first
+  - fourth
+  - SaveGameManager
+  - Ghost
   layers:
   - Default
   - TransparentFX
