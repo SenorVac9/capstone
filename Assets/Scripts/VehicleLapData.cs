@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using ModuloKart.CustomVehiclePhysics;
 using ModuloKart.HUD;
+using ModuloKart.Controls;
 
 public class VehicleLapData : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class VehicleLapData : MonoBehaviour
     int LapTrackerValue;
     float timer;
 
+ public   SaveGameManager saveGameManager;
     LegTriggerBehavior[] legDatas;
     LapManager lapManager;
 
@@ -38,6 +40,7 @@ public class VehicleLapData : MonoBehaviour
 
     void Awake()
     {
+        saveGameManager = GameObject.FindGameObjectWithTag("SaveGameManager").GetComponent<SaveGameManager>();
         LapsCompleted = 0;
         currentLegID = LegId.Zero;
         legDatas = GameObject.FindObjectsOfType<LegTriggerBehavior>();
@@ -72,6 +75,34 @@ public class VehicleLapData : MonoBehaviour
     {
         //Home to first base (This should be tied to where the player initially spawns)
         GetLegDistance(leg4, leg1);
+        if (vehicleBehavior.isControllerInitialized)
+        {
+
+        }
+    }
+
+    public void GhostFinished()
+    {
+        lapManager.racersfinished++;
+        switch ((lapManager.racersfinished))
+        {
+            case 1:
+                saveGameManager.GameState.FirstRaceTime = saveGameManager.Ghost.ghostTime;
+                saveGameManager.GameState.FirstPlaceID = -1;
+                break;
+            case 2:
+                saveGameManager.GameState.SecondRaceTime = saveGameManager.Ghost.ghostTime;
+                saveGameManager.GameState.SecondPlaceID = -1;
+                break;
+            case 3:
+                saveGameManager.GameState.ThirdRaceTime = saveGameManager.Ghost.ghostTime;
+                saveGameManager.GameState.ThirdPlaceID = -1;
+                break;
+            case 4:
+                saveGameManager.GameState.FourthRaceTime = saveGameManager.Ghost.ghostTime;
+                saveGameManager.GameState.FourthPlaceID = -1;
+                break;
+        }
     }
 
     private void Update()
@@ -87,20 +118,45 @@ public class VehicleLapData : MonoBehaviour
                 IsPlayerFinishedRace = true;
                 Debug.Log("PlayerContainer: " + vehicleBehavior.name);
                 vehicleBehavior.playerHUD.GameOverBackgroundObject.SetActive(true);
+              
                 vehicleBehavior.playerHUD.placeshower.transform.GetChild(lapManager.racersfinished).gameObject.SetActive(true);
+               
                 lapManager.racersfinished++;
-                vehicleBehavior.playerHUD.TextGameOver.text = "RACE COMPLETED\nWAITING FOR ALL PLAYERS TO FINISH";
+              //  GameObject.FindGameObjectWithTag("SaveGameManager").GetComponent<SaveGameManager>().SaveGhost();
+                vehicleBehavior.playerHUD.TextGameOver.text = "RACE COMPLETED\nWAITIifNG FOR ALL PLAYERS TO FINISH";
 
                 GameLogicManager.Instance.SetIsPlayerFinished();
-                
+                switch ((lapManager.racersfinished))
+                {
+                    case 1:
+                        saveGameManager.GameState.FirstRaceTime = playerRaceTime;
+                        saveGameManager.GameState.FirstPlaceID = vehicleBehavior.PlayerID;
+                    break;
+                    case 2:
+                        saveGameManager.GameState.SecondRaceTime = playerRaceTime;
+                        saveGameManager.GameState.SecondPlaceID = vehicleBehavior.PlayerID;
+                        break;
+                    case 3:
+                        saveGameManager.GameState.ThirdRaceTime = playerRaceTime;
+                        saveGameManager.GameState.ThirdPlaceID = vehicleBehavior.PlayerID;
+                        break;
+                    case 4:
+                        saveGameManager.GameState.FourthRaceTime = playerRaceTime;
+                        saveGameManager.GameState.FourthPlaceID = vehicleBehavior.PlayerID;
+                        break;
+                }
+                  
+
+                    
             }
 
             if (GameLogicManager.Instance.CheckEveryPlayerFinished() && timer < Time.time && timer > 0)
             {
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene(3);
             }
             else if (GameLogicManager.Instance.CheckEveryPlayerFinished() && timer <= 0)
             {
+                GameObject.FindGameObjectWithTag("SaveGameManager").GetComponent<SaveGameManager>().Save();
                 timer = Time.time + 5.0f;
                 Debug.Log("Timer is" + timer);
             }
@@ -173,6 +229,14 @@ public class VehicleLapData : MonoBehaviour
             LapTrackerValue++;
             StatManager.Instance.ChangePlayerStats(vehicleBehavior.PlayerID, StatType.LastLapTime, Mathf.Round(playerLapTime * 100) / 100);
             playerHUD.TextLastLapTime.text = (Mathf.Round(playerLapTime * 100) / 100).ToString();
+            switch (vehicleBehavior.PlayerID)
+            {
+                case 1:
+                   
+                    break;
+
+            }
+               
             ResetLapTime();
         }
     }
