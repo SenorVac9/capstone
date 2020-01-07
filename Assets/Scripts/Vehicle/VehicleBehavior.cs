@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
+using Assets.MultiAudioListener;
+using ModuloKart.HUD;
 using UnityEngine;
 using UnityEngine.PostProcessing;
-using ModuloKart.HUD;
-using Assets.MultiAudioListener;
 
 namespace ModuloKart.CustomVehiclePhysics
 {
@@ -36,7 +34,7 @@ namespace ModuloKart.CustomVehiclePhysics
         public Transform vehicle_camera_transform;
         public PostProcessingBehaviour vehicle_camera_postprocess_behavior;
         public PostProcessingProfile vehicle_camera_profile;
-        private bool isPostProfile;
+        public bool isPostProfile;
 
         public Transform axel_rr_transform;
         public Transform axel_rl_transform;
@@ -220,6 +218,7 @@ namespace ModuloKart.CustomVehiclePhysics
             if (!isControllerInitialized) return;
             VehicleGroundCheck();
             VehicleMovement();
+            gainNitrosWithRate( 0.05f);
             //Audio for the engine updating according to acceleration
             pitch = accel_magnitude_float / max_accel_float;
             GetComponent<MultiAudioSource>().Pitch = pitch;
@@ -701,7 +700,7 @@ namespace ModuloKart.CustomVehiclePhysics
         {
             //CameraFOVBehavior();
 
-            if (nitros_meter_float <= 0)
+            if (nitros_meter_float <= 0 )
             {
                 is_nitrosboost = false;
                 nitros_speed_float = 0;
@@ -735,7 +734,7 @@ namespace ModuloKart.CustomVehiclePhysics
                 }
 
                 nitros_meter_float = nitros_meter_float > 0 ? nitros_meter_float -= Time.fixedDeltaTime * nitros_depletion_rate : 0;
-
+                
             }
             else
             {
@@ -1131,7 +1130,40 @@ namespace ModuloKart.CustomVehiclePhysics
         #endregion
 
 
+        //GIACOMO STUFF - NOVEMBER 11, 2:30 PM
+        public bool isGainingNitro = false;
+        public float TargetNitroGain;
+        private void OnTriggerEnter(Collider other)
+        {
 
+            if (other.CompareTag("NitroBoostPickup"))
+            {
+                TargetNitroGain = (nitros_meter_float + 85f) > 100 ? 100 : nitros_meter_float + 85f;
+                Debug.Log("Collected");
+                //TargetNitroGain = nitros_meter_float + 85f;
+                isGainingNitro = true;
+                Destroy(other.gameObject);
+            }
+        }
+        void gainNitrosWithRate(float nitroRate)
+        {
+
+            if (isGainingNitro)
+            {
+                if (nitros_meter_float < TargetNitroGain)
+                {
+                    nitros_meter_float = Mathf.Lerp(nitros_meter_float, TargetNitroGain, nitroRate);
+                    Debug.Log("current nitros is: " + nitros_meter_float);
+                }
+                else
+                {
+                    Debug.Log("The final Nitros value is: " + nitros_meter_float);
+                    isGainingNitro = false;
+                }
+
+            }
+        }
+        //GIACOMO STUFF END- NOVEMBER 11, 2:30 PM
     }
 
 
