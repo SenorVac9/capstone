@@ -150,9 +150,9 @@ namespace ModuloKart.CustomInspector
                 //public bool is_grounded;
                 vehicleBehavior.is_grounded = EditorGUILayout.ToggleLeft("Is Vehicle Grounded", vehicleBehavior.is_grounded);
                 vehicleBehavior.gravity_float = (float)EditorGUILayout.FloatField("Current Gravity", vehicleBehavior.gravity_float);
-                vehicleBehavior.max_accel_modified = EditorGUILayout.FloatField("Current Maximum Target Speed", vehicleBehavior.max_accel_modified);
+                vehicleBehavior.target_accel_modified = EditorGUILayout.FloatField("Current Maximum Target Speed", vehicleBehavior.target_accel_modified);
                 vehicleBehavior.wheel_steer_float = EditorGUILayout.FloatField("Current Wheel Steer", vehicleBehavior.wheel_steer_float);
-                vehicleBehavior.max_steer_modified = EditorGUILayout.FloatField("Current Maximum Target Vehicle Steering", vehicleBehavior.max_steer_modified);
+                vehicleBehavior.target_steer_modified = EditorGUILayout.FloatField("Current Maximum Target Vehicle Steering", vehicleBehavior.target_steer_modified);
                 vehicleBehavior.accel_magnitude_float = EditorGUILayout.FloatField("Current Acceleration", vehicleBehavior.accel_magnitude_float);
                 vehicleBehavior.steer_magnitude_float = EditorGUILayout.FloatField("Current Steering", vehicleBehavior.steer_magnitude_float);
                 vehicleBehavior.brake_magnitude_float = EditorGUILayout.FloatField("Current Breaking", vehicleBehavior.brake_magnitude_float);

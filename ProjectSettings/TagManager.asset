@@ -16,6 +16,11 @@ TagManager:
   - Door
   - Hood
   - TrackColliders
+  - third
+  - second
+  - first
+  - fourth
+  - NitroBoostPickup
   layers:
   - Default
   - TransparentFX

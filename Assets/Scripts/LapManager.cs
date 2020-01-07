@@ -13,7 +13,7 @@ public class LapManager : MonoBehaviour
     private GameObject[] allPlayers;
     public List<VehicleLapData> playerLapDataList;
     int RankVal;
-
+    public int racersfinished;
     void Awake()
     {
         Instance = this;
