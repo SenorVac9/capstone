@@ -36,6 +36,7 @@ public class PartReplenishScript : MonoBehaviour
         Player_Wheel_Detach wheels = player.GetComponentInChildren<Player_Wheel_Detach>();
         ui_controller headsUp = hud.GetComponentInChildren<ui_controller>();
         retry = true;
+        //random mode
         while (retry) {
             if (headsUp.has_tire_1 == true && headsUp.has_tire_2 == true && headsUp.has_tire_3 == true && headsUp.has_tire_4 == true && headsUp.has_hood == true)
             {
@@ -48,7 +49,7 @@ public class PartReplenishScript : MonoBehaviour
                         if (wheels.reservePartsList[partBack] == 2)
                         {
                             car.wheel4.SetActive(true);
-                            wheels.wheel_destroy1.SetActive(true);
+                            wheels.wheel_destroy4.SetActive(true);
                     headsUp.has_tire_2 = true;
                     wheels.reservePartsList.Remove(2);
                     headsUp.ui_item[2].gameObject.SetActive(true);
@@ -59,7 +60,7 @@ public class PartReplenishScript : MonoBehaviour
                         else if (wheels.reservePartsList[partBack] == 1)
                         {
                             car.wheel3.SetActive(true);
-                            wheels.wheel_destroy2.SetActive(true);
+                            wheels.wheel_destroy3.SetActive(true);
                             headsUp.has_tire_1 = true;
                             wheels.reservePartsList.Remove(1);
                             Debug.Log("FR wheel replenished");
@@ -69,7 +70,7 @@ public class PartReplenishScript : MonoBehaviour
                         {
                            
                             car.wheel2.SetActive(true);
-                            wheels.wheel_destroy3.SetActive(true);
+                            wheels.wheel_destroy2.SetActive(true);
                             headsUp.has_tire_4 = true;
                             wheels.reservePartsList.Remove(4);
                             Debug.Log("RL wheel replenished");
@@ -78,7 +79,7 @@ public class PartReplenishScript : MonoBehaviour
                         else if (wheels.reservePartsList[partBack] == 3)
                         {
                             car.wheel1.SetActive(true);
-                            wheels.wheel_destroy4.SetActive(true);
+                            wheels.wheel_destroy1.SetActive(true);
                             headsUp.has_tire_3 = true;
                             wheels.reservePartsList.Remove(3);
                             Debug.Log("RR wheel replenished");
@@ -100,4 +101,90 @@ public class PartReplenishScript : MonoBehaviour
                 }   }
                  Destroy(gameObject);
             }
-    }
+    //Specific order mode
+    /*
+      while (retry) {
+            if (headsUp.has_tire_1 == true && headsUp.has_tire_2 == true && headsUp.has_tire_3 == true && headsUp.has_tire_4 == true && headsUp.has_hood == true)
+            {
+                //if this is true, then it nullifies the script
+                return;
+            }
+            if (c.gameObject.name == "PickupCollider")
+            {
+                        partBack = 1
+                        if (wheels.reservePartsList[partBack] == 2)
+                        {
+                        if(car.wheel4.active == true)
+                        {
+                            car.wheel4.SetActive(true);
+                            wheels.wheel_destroy4.SetActive(true);
+                    headsUp.has_tire_2 = true;
+                    wheels.reservePartsList.Remove(2);
+                    headsUp.ui_item[2].gameObject.SetActive(true);
+                    
+
+                    Debug.Log("FL wheel replenished");
+                        }
+                        else
+                        {partBack++}
+                        }
+                        else if (wheels.reservePartsList[partBack] == 1)
+                        {
+                        if ( car.wheel3.active == true)
+                        {
+                            car.wheel3.SetActive(true);
+                            wheels.wheel_destroy3.SetActive(true);
+                            headsUp.has_tire_1 = true;
+                            wheels.reservePartsList.Remove(1);
+                            Debug.Log("FR wheel replenished");
+                            headsUp.ui_item[0].gameObject.SetActive(true);
+                            }
+                            else
+                            {partBack++;)
+                        }
+                         else if (wheels.reservePartsList[partBack] == 4)
+                        {
+                           if(car.wheel2.active == true)
+                           {
+                            car.wheel2.SetActive(true);
+                            wheels.wheel_destroy2.SetActive(true);
+                            headsUp.has_tire_4 = true;
+                            wheels.reservePartsList.Remove(4);
+                            Debug.Log("RL wheel replenished");
+                            headsUp.ui_item[6].gameObject.SetActive(true);
+                            }
+                            else
+                            (partBack = 1;)
+                        }
+                        else if (wheels.reservePartsList[partBack] == 3)
+                        {
+                        if (car.wheel1.active == true)
+                        {
+                            car.wheel1.SetActive(true);
+                            wheels.wheel_destroy1.SetActive(true);
+                            headsUp.has_tire_3 = true;
+                            wheels.reservePartsList.Remove(3);
+                            Debug.Log("RR wheel replenished");
+                            headsUp.ui_item[5].gameObject.SetActive(true);
+                            }
+                            else
+                            {partBack++;]
+                        }
+                else
+                {
+                    Debug.Log("Not supposed to show");
+                    break;
+                }
+                        retry = false;
+                    
+            }
+                 else
+                {
+                    //it needs to hit a specific part of the car, otherwise, this activates
+                    Debug.Log("Collider Not Hit");
+                    return;
+                }   }
+                 Destroy(gameObject);
+
+    */
+}
