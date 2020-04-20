@@ -16,6 +16,13 @@ TagManager:
   - Door
   - Hood
   - TrackColliders
+  - Ghost
+  - SaveGameManager
+  - second
+  - first
+  - third
+  - fourth
+  - PlayerCountTracker
   layers:
   - Default
   - TransparentFX

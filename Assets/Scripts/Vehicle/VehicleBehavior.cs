@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.PostProcessing;
 using ModuloKart.HUD;
 using Assets.MultiAudioListener;
+using ModuloKart.CustomVehiclePhysics;
+using ModuloKart.PlayerSelectionMenu;
+using ModuloKart.Controls;
 
 namespace ModuloKart.CustomVehiclePhysics
 {
@@ -20,6 +23,7 @@ namespace ModuloKart.CustomVehiclePhysics
         [Header("Debug")]
         [SerializeField] public bool isCodeDebug = false;
         public GameObject wheel1, wheel2, wheel3, wheel4, hood;
+        public SaveGameManager saveGameManager;
 
         public bool isEditorGUI = false;
         public bool keepTabsOpen;
@@ -151,6 +155,8 @@ namespace ModuloKart.CustomVehiclePhysics
         private void Start()
         {
             //Caching variables
+            saveGameManager = GameObject.FindGameObjectWithTag("SaveGameManager").GetComponent<SaveGameManager>();
+            saveGameManager.Ghost.ghostPostions = new List<Vector3>();
             vehicle_transform = GetComponent<Transform>();
             vehicle_rigidbody = GetComponent<Rigidbody>();
             vehicle_heading_transform = vehicle_transform.GetChild(0);
@@ -313,6 +319,29 @@ namespace ModuloKart.CustomVehiclePhysics
             //    max_accel_float = 230.0f;
             //
             //}
+
+            if (PlayerID == 1)
+            {
+                if (saveGameManager.Ghost.ghostPostions == null)
+                {
+                    Debug.Log("No Ghost List");
+                    saveGameManager.Ghost = new SaveGameManager.GhostData();
+                    saveGameManager.Ghost.ghostPostions = new List<Vector3>();
+                }
+
+
+                else
+                {
+                    if (saveGameManager.Ghost.ghostPostions != null)
+                    {
+                        saveGameManager.Ghost.ghostPostions.Add(gameObject.transform.position);
+                        Debug.Log("pos: " + transform.position);
+                    }
+                }
+
+
+
+            }
 
         }
 
