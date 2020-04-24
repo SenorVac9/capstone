@@ -123,7 +123,7 @@ MonoBehaviour:
   axel_fl_transform: {fileID: 4841766516257184}
   width_float: 4
   length_float: 6
-  height_float: 2
+  height_float: 4
   is_4wd: 1
   is_Cinematic_View: 1
   min_fov_float: 90
@@ -151,6 +151,7 @@ MonoBehaviour:
   is_nitrosboost: 0
   max_gravity_float: 250
   max_steer_float: 15
+  min_steer_float: 1
   max_accel_float: 125
   min_accel_float: -69
   max_brake_float: 100
@@ -228,6 +229,7 @@ MonoBehaviour:
   playerTotalProgress: 0
   playerLapTime: 0
   playerRaceTime: 0
+  saveGameManager: {fileID: 0}
 --- !u!114 &270310861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2226,10 +2228,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7725178297829727477}
     m_Modifications:
-    - target: {fileID: 100000, guid: 921a3ff88856fe04ebc86b196fd8cc59, type: 3}
-      propertyPath: m_Name
-      value: Smoke
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 921a3ff88856fe04ebc86b196fd8cc59, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.361
@@ -2285,6 +2283,10 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 921a3ff88856fe04ebc86b196fd8cc59, type: 3}
       propertyPath: m_LocalScale.z
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 921a3ff88856fe04ebc86b196fd8cc59, type: 3}
+      propertyPath: m_Name
+      value: Smoke
       objectReference: {fileID: 0}
     - target: {fileID: 4465922841864535856, guid: 921a3ff88856fe04ebc86b196fd8cc59,
         type: 3}
