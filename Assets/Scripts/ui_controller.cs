@@ -170,9 +170,11 @@ public class ui_controller : MonoBehaviour
                 {
                     if (has_door_1)
                     {
+                        vechicle.GetComponentInChildren<Player_Door_Detach>().Detach_Door(1);
 
                         Debug.Log("used left door");
                         has_door_1 = false;
+                        ui_item[item_selected].gameObject.SetActive(false);
                     }
                     else
                         Debug.Log("door already used");
@@ -182,8 +184,10 @@ public class ui_controller : MonoBehaviour
                 {
                     if (has_door_2)
                     {
+                        vechicle.GetComponentInChildren<Player_Door_Detach>().Detach_Door(2);
                         Debug.Log("used right door");
                         has_door_2 = false;
+                        ui_item[item_selected].gameObject.SetActive(false);
                     }
                     else
                         Debug.Log("door already used");
