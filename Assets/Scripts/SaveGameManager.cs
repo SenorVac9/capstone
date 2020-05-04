@@ -99,7 +99,7 @@ namespace ModuloKart.Controls
                             GhostCar.transform.LookAt(newGhostPostions[GhostFrameCounter]);
                             GhostFrameCounter++;
                         }
-                        else if (GhostDone == false)
+                        else if (GhostDone == false && Time.time >= GameState.oldGhostTime)
                         {
                             GhostDone = true;
                             GameObject.FindGameObjectWithTag("GameController").GetComponent<VehicleLapData>().GhostFinished();

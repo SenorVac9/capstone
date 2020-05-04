@@ -23,6 +23,7 @@ TagManager:
   - third
   - fourth
   - PlayerCountTracker
+  - Milk
   layers:
   - Default
   - TransparentFX

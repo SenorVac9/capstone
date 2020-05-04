@@ -35,10 +35,10 @@ public class Player_Wheel_Detach : MonoBehaviour
     {
 
         /* 
-         1 front left
-         2 front right 
-         3 back left
-         4 back right
+         1 back left
+         2 back right 
+         3 front left
+         4 front right
          */
         if (tirenum == 2)
         {
