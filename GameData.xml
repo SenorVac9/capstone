@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <GameStateData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <FirstPlaceID>1</FirstPlaceID>
-  <SecondPlaceID>0</SecondPlaceID>
+  <FirstPlaceID>-1</FirstPlaceID>
+  <SecondPlaceID>1</SecondPlaceID>
   <ThirdPlaceID>0</ThirdPlaceID>
   <FourthPlaceID>0</FourthPlaceID>
   <FirstRaceTime>18.3502388</FirstRaceTime>
-  <SecondRaceTime>0</SecondRaceTime>
+  <SecondRaceTime>251.373</SecondRaceTime>
   <ThirdRaceTime>0</ThirdRaceTime>
   <FourthRaceTime>0</FourthRaceTime>
-  <oldGhostTime>19</oldGhostTime>
+  <oldGhostTime>18.3502388</oldGhostTime>
   <numPlayer>0</numPlayer>
 </GameStateData>
