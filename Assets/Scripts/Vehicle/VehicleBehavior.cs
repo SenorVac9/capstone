@@ -228,7 +228,7 @@ namespace ModuloKart.CustomVehiclePhysics
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.name == "MilkSpill")
+            if (other.gameObject.name.StartsWith( "MilkSpill"))
             {
                 StartSpinOut();
             }
