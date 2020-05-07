@@ -18,8 +18,10 @@ namespace ModuloKart.Controls
         int GhostFrameMax = 0;
         GameObject GhostCar;
         bool GhostDone = false;
+        bool GhostLoaded = false;
         public List<Vector3> newGhostPostions;
         public ControllerHandler Handler;
+        GameObject GameCar;
 
 
         // Start is called before the first frame update
@@ -34,7 +36,7 @@ namespace ModuloKart.Controls
 
 
                 Handler = GameObject.FindObjectOfType<ControllerHandler>();
-                GhostCar = GameObject.FindGameObjectWithTag("Ghost");
+               
                 GameState = new GameStateData();
 
                 GameState.FirstPlaceID = 0;
@@ -46,9 +48,16 @@ namespace ModuloKart.Controls
                 GameState.ThirdRaceTime = 0;
                 GameState.FourthRaceTime = 0;
                 GameState.numPlayer = Handler.assignedControllerCount;
-                
+
+
+                GhostCar = GameObject.FindGameObjectWithTag("Ghost");
                 LoadGhost();
+               
+                
+                
+                if(GhostLoaded)
                 GameState.oldGhostTime = Ghost.ghostTime;
+
             }
 
 
@@ -59,6 +68,10 @@ namespace ModuloKart.Controls
             }
 
 
+        }
+        public bool isGhostLoaded()
+        {
+            return GhostLoaded;
         }
         public class GhostData
         {
@@ -93,18 +106,31 @@ namespace ModuloKart.Controls
 
                     if(Handler.assignedControllerCount == 1)
                     {
-                        if (GhostFrameCounter < GhostFrameMax)
+                        if (GhostLoaded)
                         {
-                            GhostCar.transform.position = newGhostPostions[GhostFrameCounter];
-                            GhostCar.transform.LookAt(newGhostPostions[GhostFrameCounter]);
-                            GhostFrameCounter++;
-                        }
-                        else if (GhostDone == false && Time.time >= GameState.oldGhostTime)
-                        {
-                            GhostDone = true;
-                            GameObject.FindGameObjectWithTag("GameController").GetComponent<VehicleLapData>().GhostFinished();
-                        }
 
+                            if (GhostFrameCounter < GhostFrameMax)
+                            {
+
+                                GhostCar.transform.position = newGhostPostions[GhostFrameCounter];
+                                //  GhostCar.transform.LookAt(newGhostPostions[GhostFrameCounter]);
+                                GhostFrameCounter++;
+
+                            }
+                            else if (GhostDone == false && GhostFrameCounter >= GhostFrameMax)
+                            {
+                                GhostDone = true;
+                                GameObject.FindGameObjectWithTag("GameController").GetComponent<VehicleLapData>().GhostFinished();
+                            }
+
+                        }
+                        else if (GhostCar)
+                        {
+                            Destroy(GhostCar);
+                        }
+                    //    Debug.Log(GameObject.FindGameObjectWithTag("GameController").transform.position);
+                        Ghost.ghostPostions.Add(GameObject.FindGameObjectWithTag("GameController").transform.position);
+                        
                     }
                    
                 }
@@ -119,15 +145,30 @@ namespace ModuloKart.Controls
         }
         public void LoadGhost()
         {
-            XmlSerializer Serializer = new XmlSerializer(typeof(GhostData));
-            FileStream Stream = new FileStream("Ghost Data.xml", FileMode.Open);
-            Ghost = Serializer.Deserialize(Stream) as GhostData;
-            Stream.Close();
+            if (File.Exists("Ghost Data.xml"))
+            {
+                XmlSerializer Serializer = new XmlSerializer(typeof(GhostData));
+                FileStream Stream = new FileStream("Ghost Data.xml", FileMode.Open);
+                Ghost = Serializer.Deserialize(Stream) as GhostData;
+                Stream.Close();
 
 
-            GhostFrameMax = Ghost.ghostPostions.Count;
-            newGhostPostions = Ghost.ghostPostions;
-            Ghost.ghostPostions = new List<Vector3>();
+                GhostFrameMax = Ghost.ghostPostions.Count;
+                newGhostPostions = Ghost.ghostPostions;
+                Ghost.ghostPostions = new List<Vector3>();
+                GhostLoaded = true;
+
+                Debug.Log("Ghost Loaded");
+
+            }
+            else
+            {
+                Debug.Log("No Ghost");
+                Ghost.ghostPostions = new List<Vector3>();
+            }
+                
+
+          
         }
 
         public void SaveGhost()
@@ -162,7 +203,7 @@ namespace ModuloKart.Controls
             Debug.Log(GameState.FirstPlaceID + ", " + GameState.FirstRaceTime);
             Stream.Close();
 
-            Debug.Log("Test ghost pos:" + Ghost.ghostPostions[0]);
+         //   Debug.Log("Test ghost pos:" + Ghost.ghostPostions[0]);
         }
         public void SaveRacer(string FileName)
         {
@@ -193,7 +234,7 @@ namespace ModuloKart.Controls
                 {
                     if(GameObject.FindGameObjectWithTag("PlayerCountTracker").GetComponent<PlayerSelectionManager>().numPlayerOption == NumPlayerOption.players1)
                     {
-                        GameObject.FindGameObjectWithTag("first").GetComponent<TMPro.TextMeshProUGUI>().text = "Your time was faster than previous fastest time by  " + (GameState.oldGhostTime- GameState.FirstRaceTime ) + " seconds ";
+                        GameObject.FindGameObjectWithTag("first").GetComponent<TMPro.TextMeshProUGUI>().text = "Your new time was faster than previous fastest time by  " + ( GameState.FirstRaceTime - GameState.oldGhostTime ) + " seconds ";
 
                     }
                     else
