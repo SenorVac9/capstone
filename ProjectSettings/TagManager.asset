@@ -24,6 +24,10 @@ TagManager:
   - fourth
   - PlayerCountTracker
   - Milk
+  - Maxine_Extra_Parts
+  - Tire_Smoke
+  - Rim_Sparks
+  - Exhaust_Smoke
   layers:
   - Default
   - TransparentFX
