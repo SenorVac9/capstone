@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using ModuloKart.CustomVehiclePhysics;
+
 public class MilkSpill : MonoBehaviour
 {
     private void Update()
@@ -17,6 +19,7 @@ public class MilkSpill : MonoBehaviour
         {
             //Call spin out function
             Debug.Log("Hit Milk");
+            //other.GetComponent<VehicleBehavior>().StartSpinOut();
             Destroy(gameObject);
         }
     }
