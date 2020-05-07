@@ -8,6 +8,7 @@ public class ui_controller : MonoBehaviour
 {
    public GameObject[] ui_item;
    public int item_selected;
+     VehicleBehavior vehicleBehaviour;
 
     public bool has_door_1 = true; //front right
      public bool has_door_2 = true;
@@ -17,12 +18,15 @@ public class ui_controller : MonoBehaviour
     public bool has_tire_4 = true;
     public bool has_hood = true;
     public bool has_Milk = true;
+    public bool has_Maxine_extra = true;
     public int playerNum;
     public GameObject vechicle;
     public GameObject wheeldetacher;
+    
     // Start is called before the first frame update
     void Start()
     {
+        vehicleBehaviour = GameObject.FindObjectOfType<VehicleBehavior>();
         if (gameObject.tag == "Player1")
             playerNum = 1;
         else if (gameObject.tag == "Player2")
@@ -33,10 +37,10 @@ public class ui_controller : MonoBehaviour
             playerNum = 4;
 
         item_selected = 0;
-        ui_item = new GameObject[8];
+        ui_item = new GameObject[9];
         int i = 0;
         
-        while (i < 8)
+        while (i < 9)
         {
             ui_item[i] = gameObject.transform.GetChild(i).gameObject;
             if (ui_item[i] == null)
@@ -54,7 +58,7 @@ public class ui_controller : MonoBehaviour
 
     bool allItemsGone()
     {
-        if (!has_door_1 && !has_door_2 && !has_hood && !has_Milk && !has_tire_1 && !has_tire_2 && !has_tire_3 && !has_tire_4)
+        if (!has_door_1 && !has_door_2 && !has_hood && !has_Maxine_extra && !has_Milk && !has_tire_1 && !has_tire_2 && !has_tire_3 && !has_tire_4)
         {
             return true;
         }
@@ -87,6 +91,9 @@ public class ui_controller : MonoBehaviour
             case 4:
                 has_door_2 = true;
                 break;
+            case 8:
+                has_Maxine_extra = true;
+                break;
         }
     }
     // Update is called once per frame
@@ -105,7 +112,7 @@ public class ui_controller : MonoBehaviour
             if (item_selected < 0)
 
             {
-                item_selected = 7;
+                item_selected = 8;
             }
 
             while (ui_item[item_selected].gameObject.activeSelf == false && !allItemsGone())
@@ -113,7 +120,7 @@ public class ui_controller : MonoBehaviour
                 item_selected -= 1;
                 if (item_selected < 0)
                 {
-                    item_selected = 7;
+                    item_selected = 8;
                 }
             }
 
@@ -133,12 +140,12 @@ public class ui_controller : MonoBehaviour
             item_selected += 1;
 
 
-            if (item_selected >= 8)
+            if (item_selected >= 9)
                 item_selected = 0;
             while (ui_item[item_selected].gameObject.activeSelf == false && !allItemsGone())
             {
                 item_selected += 1;
-                if (item_selected >= 8)
+                if (item_selected >= 9)
                 {
                     item_selected = 0;
                 }
@@ -215,9 +222,11 @@ public class ui_controller : MonoBehaviour
                 {
                     if (has_door_1)
                     {
+                        vechicle.GetComponentInChildren<Player_Door_Detach>().Detach_Door(1);
 
                         Debug.Log("used left door");
                         has_door_1 = false;
+                        ui_item[item_selected].gameObject.SetActive(false);
                     }
                     else
                         Debug.Log("door already used");
@@ -227,12 +236,15 @@ public class ui_controller : MonoBehaviour
                 {
                     if (has_door_2)
                     {
+                        vechicle.GetComponentInChildren<Player_Door_Detach>().Detach_Door(2);
                         Debug.Log("used right door");
                         has_door_2 = false;
+                        ui_item[item_selected].gameObject.SetActive(false);
                     }
+                }
                     else
                         Debug.Log("door already used");
-                }
+                
             }
             else if (ui_item[item_selected].gameObject.tag == "Hood")
             {
@@ -261,6 +273,16 @@ public class ui_controller : MonoBehaviour
                 }
 
 
+            }   
+            else if (ui_item[item_selected].gameObject.tag== "Maxine_Extra_Parts")
+            {
+                if(item_selected==8)
+                {
+                    vehicleBehaviour.GetComponentInChildren<Player_Maxine>().Maxine_Extrapart();
+                    Debug.Log("Used Maxine spl");
+                    has_Maxine_extra = false;
+                    ui_item[item_selected].gameObject.SetActive(false);
+                }
             }
 
             ui_item[item_selected].SetActive(false);
@@ -268,14 +290,14 @@ public class ui_controller : MonoBehaviour
             item_selected -= 1;
             if (item_selected < 0)
             {
-                item_selected = 7;
+                item_selected = 8;
             }
             while (ui_item[item_selected].gameObject.activeSelf == false && !allItemsGone())
             {
                 item_selected -= 1;
                 if (item_selected < 0)
                 {
-                    item_selected = 7;
+                    item_selected = 8;
                 }
             }
 
