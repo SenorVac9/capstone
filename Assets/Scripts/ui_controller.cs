@@ -276,7 +276,7 @@ public class ui_controller : MonoBehaviour
             }   
             else if (ui_item[item_selected].gameObject.tag== "Maxine_Extra_Parts")
             {
-                if(item_selected==8)
+                if(has_Maxine_extra)
                 {
                     vehicleBehaviour.GetComponentInChildren<Player_Maxine>().Maxine_Extrapart();
                     Debug.Log("Used Maxine spl");
