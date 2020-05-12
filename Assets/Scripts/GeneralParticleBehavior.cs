@@ -24,7 +24,7 @@ public class GeneralParticleBehavior : MonoBehaviour
    // public Color DirtColor;
     //public Color StopColor;
 
-    private void Start()
+    private void Awake()
     {
         particleSystem = GetComponent<ParticleSystem>();
         vehicleBehavior = GameObject.FindObjectOfType<VehicleBehavior>();
@@ -41,6 +41,11 @@ public class GeneralParticleBehavior : MonoBehaviour
 
     private void Update()
     {
+        if (!GameManager.Instance.GameStart)
+            return;
+        if (!ui)
+            return;
+
         switch (particleType)
         {
             case ParticleType.CarTireParticle:

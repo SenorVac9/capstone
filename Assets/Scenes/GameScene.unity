@@ -14027,6 +14027,16 @@ PrefabInstance:
       propertyPath: m_BoundingSphereOverride.w
       value: 2.3510647e-38
       objectReference: {fileID: 0}
+    - target: {fileID: 5195684327882872107, guid: da0abe8a147139749b99d326b0abe510,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.207
+      objectReference: {fileID: 0}
+    - target: {fileID: 5195684327882872107, guid: da0abe8a147139749b99d326b0abe510,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.29
+      objectReference: {fileID: 0}
     - target: {fileID: 4341293593788006540, guid: da0abe8a147139749b99d326b0abe510,
         type: 3}
       propertyPath: m_TagString
@@ -14047,15 +14057,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -2.981
       objectReference: {fileID: 0}
-    - target: {fileID: 5195684327882872107, guid: da0abe8a147139749b99d326b0abe510,
+    - target: {fileID: 20147978221968630, guid: da0abe8a147139749b99d326b0abe510,
         type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.207
+      propertyPath: m_ClearFlags
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5195684327882872107, guid: da0abe8a147139749b99d326b0abe510,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.29
+    - target: {fileID: 347682263, guid: da0abe8a147139749b99d326b0abe510, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da0abe8a147139749b99d326b0abe510, type: 3}
@@ -20704,6 +20713,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0a2398418e96144d96f0a2c2abfaf27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameStart: 0
+  InitializedPlayers: 0
 --- !u!1 &1147677897
 GameObject:
   m_ObjectHideFlags: 0
@@ -28245,7 +28256,7 @@ PrefabInstance:
     - target: {fileID: 2114073813018701011, guid: 57bc66c21fd8093408a2e8a047e6e6a8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 12.8
+      value: 89.6
       objectReference: {fileID: 0}
     - target: {fileID: 2114073813018701011, guid: 57bc66c21fd8093408a2e8a047e6e6a8,
         type: 3}
@@ -29531,6 +29542,11 @@ PrefabInstance:
       propertyPath: m_NormalizedViewPortRect.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 20147978221968630, guid: da0abe8a147139749b99d326b0abe510,
+        type: 3}
+      propertyPath: m_ClearFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 595517267057655598, guid: da0abe8a147139749b99d326b0abe510,
         type: 3}
       propertyPath: cullingMode
@@ -29560,6 +29576,10 @@ PrefabInstance:
         type: 3}
       propertyPath: lengthInSec
       value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 347682263, guid: da0abe8a147139749b99d326b0abe510, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da0abe8a147139749b99d326b0abe510, type: 3}
@@ -36652,6 +36672,11 @@ PrefabInstance:
       propertyPath: m_NormalizedViewPortRect.x
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 20147978221968630, guid: da0abe8a147139749b99d326b0abe510,
+        type: 3}
+      propertyPath: m_ClearFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 595517267057655598, guid: da0abe8a147139749b99d326b0abe510,
         type: 3}
       propertyPath: cullingMode
@@ -36675,6 +36700,10 @@ PrefabInstance:
     - target: {fileID: 8061540972334852600, guid: da0abe8a147139749b99d326b0abe510,
         type: 3}
       propertyPath: cullingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 347682263, guid: da0abe8a147139749b99d326b0abe510, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -36871,6 +36900,51 @@ PrefabInstance:
       propertyPath: m_Name
       value: MilkSpill_UI
       objectReference: {fileID: 0}
+    - target: {fileID: 1231619848982359368, guid: 66efadd9ed136dd418ea823fae13778d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.00024414062
+      objectReference: {fileID: 0}
+    - target: {fileID: 1053475407219561653, guid: 66efadd9ed136dd418ea823fae13778d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2632765726878419982, guid: 66efadd9ed136dd418ea823fae13778d,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.084905684
+      objectReference: {fileID: 0}
+    - target: {fileID: 2632765726878419982, guid: 66efadd9ed136dd418ea823fae13778d,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.084905684
+      objectReference: {fileID: 0}
+    - target: {fileID: 2632765726878419982, guid: 66efadd9ed136dd418ea823fae13778d,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.084905684
+      objectReference: {fileID: 0}
+    - target: {fileID: 2632765726878419982, guid: 66efadd9ed136dd418ea823fae13778d,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.85490197
+      objectReference: {fileID: 0}
+    - target: {fileID: 5740915312747782529, guid: 66efadd9ed136dd418ea823fae13778d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073161112623341733, guid: 66efadd9ed136dd418ea823fae13778d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073161112623341733, guid: 66efadd9ed136dd418ea823fae13778d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.00024414062
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66efadd9ed136dd418ea823fae13778d, type: 3}
 --- !u!1 &6196138884636632201 stripped
@@ -36978,6 +37052,11 @@ PrefabInstance:
       propertyPath: m_NormalizedViewPortRect.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 20147978221968630, guid: da0abe8a147139749b99d326b0abe510,
+        type: 3}
+      propertyPath: m_ClearFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 595517267057655598, guid: da0abe8a147139749b99d326b0abe510,
         type: 3}
       propertyPath: cullingMode
@@ -37001,6 +37080,10 @@ PrefabInstance:
     - target: {fileID: 8061540972334852600, guid: da0abe8a147139749b99d326b0abe510,
         type: 3}
       propertyPath: cullingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 347682263, guid: da0abe8a147139749b99d326b0abe510, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
