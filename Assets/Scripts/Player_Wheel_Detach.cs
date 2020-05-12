@@ -11,6 +11,10 @@ public class Player_Wheel_Detach : MonoBehaviour
     VehicleBehavior vehicleBehavior;
     public int speed = 2;
     public GameObject wheel_destroy1, wheel_destroy2, wheel_destroy3, wheel_destroy4;
+    public int[] reserveParts;
+    public List<int> reservePartsList = new List<int>();
+    public int partsUsed;
+    
 
     // Start is called before the first frame update
 
@@ -31,10 +35,10 @@ public class Player_Wheel_Detach : MonoBehaviour
     {
 
         /* 
-         1 front left
-         2 front right 
-         3 back left
-         4 back right
+         1 back left
+         2 back right 
+         3 front left
+         4 front right
          */
         if (tirenum == 2)
         {
@@ -42,8 +46,11 @@ public class Player_Wheel_Detach : MonoBehaviour
             Wheel.transform.position = spawnpoint1.transform.position;
             Rigidbody rb = Wheel.GetComponent<Rigidbody>();
             rb.velocity = cam_p1.transform.forward * -speed;
-
+            partsUsed++;
+            
+            reservePartsList.Add(2);
             wheel_destroy1.SetActive(false);
+            Debug.Log(reservePartsList);
         }
         else if (tirenum == 1)
         {
@@ -51,8 +58,10 @@ public class Player_Wheel_Detach : MonoBehaviour
             Wheel.transform.position = spawnpoint2.transform.position;
             Rigidbody rb = Wheel.GetComponent<Rigidbody>();
             rb.velocity = cam_p1.transform.forward * -speed;
-
+            reservePartsList.Add(1);
+            Debug.Log(reservePartsList);
             wheel_destroy2.SetActive(false);
+            partsUsed++;
         }
         else if (tirenum == 4)
         {
@@ -60,8 +69,10 @@ public class Player_Wheel_Detach : MonoBehaviour
             Wheel.transform.position = spawnpoint3.transform.position;
             Rigidbody rb = Wheel.GetComponent<Rigidbody>();
             rb.velocity = cam_p1.transform.forward * -speed;
-
+            reservePartsList.Add(4);
+            Debug.Log(reservePartsList);
             wheel_destroy3.SetActive(false);
+            partsUsed++;
         }
         else if (tirenum == 3)
         {
@@ -69,8 +80,10 @@ public class Player_Wheel_Detach : MonoBehaviour
             Wheel.transform.position = spawnpoint4.transform.position;
             Rigidbody rb = Wheel.GetComponent<Rigidbody>();
             rb.velocity = cam_p1.transform.forward * -speed;
-
+            reservePartsList.Add(3);
+            Debug.Log(reservePartsList);
             wheel_destroy4.SetActive(false);
+            partsUsed++;
         }
     }
 
