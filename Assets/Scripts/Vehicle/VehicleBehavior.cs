@@ -195,6 +195,8 @@ namespace ModuloKart.CustomVehiclePhysics
         int isCollisionHit;
         public void OnCollisionEnter(Collision c)
         {
+            if (!GameManager.Instance.GameStart) return;
+
             if (c.gameObject.tag == "TrackColliders")
 
             {
@@ -238,6 +240,8 @@ namespace ModuloKart.CustomVehiclePhysics
         {
             //InitializePlayerJoystick();
             if (!isControllerInitialized) return;
+            if (!GameManager.Instance.GameStart) return;
+
             VehicleGroundCheck();
             VehicleMovement();
 

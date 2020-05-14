@@ -66,20 +66,36 @@ namespace ModuloKart.Controls
                 if (h.PlayerID == 1)
                 {
                     HUDPlayer1 = h;
+                   // HUDPlayer1.gameObject.SetActive(false);
                 }
                 if (h.PlayerID == 2)
                 {
                     HUDPlayer2 = h;
+                   // HUDPlayer2.gameObject.SetActive(false);
                 }
                 if (h.PlayerID == 3)
                 {
                     HUDPlayer3 = h;
+                  //  HUDPlayer3.gameObject.SetActive(false);
                 }
                 if (h.PlayerID == 4)
                 {
                     HUDPlayer4 = h;
+                 //   HUDPlayer4.gameObject.SetActive(false);
                 }
             }
+        }
+
+        public void AssignHUD(bool isActive)
+        {
+            if (HUDPlayer1)
+                HUDPlayer1.gameObject.SetActive(isActive);
+            if (HUDPlayer2)
+                HUDPlayer2.gameObject.SetActive(isActive);
+            if (HUDPlayer3)
+                HUDPlayer3.gameObject.SetActive(isActive);
+            if (HUDPlayer4)
+                HUDPlayer4.gameObject.SetActive(isActive);
         }
 
         private void Update()
@@ -115,6 +131,7 @@ namespace ModuloKart.Controls
 
                     LapManager.Instance.AddPlayerToScoreList(playerID: vehicle1.PlayerID);
                     assignedControllerCount++;
+                    GameManager.Instance.ReadyUp();
                 }
             }
             else if (vehicle2.JoyStick == -1)
@@ -139,6 +156,7 @@ namespace ModuloKart.Controls
 
                     LapManager.Instance.AddPlayerToScoreList(playerID: vehicle2.PlayerID);
                     assignedControllerCount++;
+                    GameManager.Instance.ReadyUp();
                 }
             }
             else if (vehicle3.JoyStick == -1)
@@ -163,6 +181,7 @@ namespace ModuloKart.Controls
 
                     LapManager.Instance.AddPlayerToScoreList(playerID: vehicle3.PlayerID);
                     assignedControllerCount++;
+                    GameManager.Instance.ReadyUp();
                 }
             }
             else if (vehicle4.JoyStick == -1)
@@ -187,6 +206,7 @@ namespace ModuloKart.Controls
 
                     LapManager.Instance.AddPlayerToScoreList(playerID: vehicle4.PlayerID);
                     assignedControllerCount++;
+                    GameManager.Instance.ReadyUp();
                 }
             }
 
