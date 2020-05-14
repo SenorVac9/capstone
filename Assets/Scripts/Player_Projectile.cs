@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Player_Projectile : MonoBehaviour
 {
-    public Transform spawnpoint;// setPoint;
-    public GameObject prefab1,ramp;
+    public Transform spawnpoint, MilkSpawnPoint;// setPoint;
+    public GameObject prefab1, ramp, MilkSpill;
     public Camera cam_p1;
     VehicleBehavior vehicleBehavior;
     public float speed;
@@ -28,12 +28,15 @@ public class Player_Projectile : MonoBehaviour
         speed = 3000 + (vehicleBehavior.accel_magnitude_float   );
 
     }
-  
-   /* public void OnCollisionEnter(Collision c)
-{
-        if(c.gameObject.tag=="Track")
-            Instantiate(ramp, transform.position, Quaternion.Euler(50f, 0f, -90f));
-    }*/
+
+    public void Throw_Milk()
+    {
+        Debug.Log("milk really thrown");
+        GameObject Milk = Instantiate(MilkSpill, MilkSpawnPoint.transform);
+        Milk.transform.parent = null;
+        Milk.transform.position = MilkSpawnPoint.position;
+
+    }
     public void Throw_Hood()
     {
       

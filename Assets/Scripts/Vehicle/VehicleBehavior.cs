@@ -32,6 +32,7 @@ namespace ModuloKart.CustomVehiclePhysics
         public Transform vehicle_transform;
         public Rigidbody vehicle_rigidbody;
         public Transform vehicle_heading_transform;
+        public Transform vehicleSpinOutTransform;
         public Transform vehicle_model_transform;
         public Transform vehicle_camera_transform;
         public PostProcessingBehaviour vehicle_camera_postprocess_behavior;
@@ -83,10 +84,14 @@ namespace ModuloKart.CustomVehiclePhysics
         public bool isReverse;
         public bool is_drift;
         public bool is_nitrosboost;
+        [Header("Vehicle Spin Out")]
+        public bool hasVehicleControl = false;
+
 
         [Header("Maximum and Minimum Vehicle Movement Values")]
         [Range(0, 500)] public float max_gravity_float = 250f;
         [Range(0, 50)] public float max_steer_float = 15f;
+        [Range(0, 50)] public float min_steer_float = 1f;
         [Range(0, 500)] public float max_accel_float = 250f;
         [Range(-500, 0)] public float min_accel_float = -69;
         [Range(0, 500)] public float max_brake_float = 100f;
@@ -97,7 +102,7 @@ namespace ModuloKart.CustomVehiclePhysics
         [Tooltip("Speed at which Model Rotation snaps back to the Heading Rotation")]
         [Range(0, 0.1f)] public float drift_accel_multiplier_float = 0.05f;
         [Tooltip("Turn Angle multiplier when drifting")]
-        [Range(0, 1f)] public float drift_turn_ratio_float = 0.25f;
+        [Range(0, 5f)] public float drift_turn_ratio_float = 0.25f;
         [Range(0, 100f)] public float max_nitros_meter_float = 100f;
         [Range(0, 100f)] public float max_nitros_speed_float = 100f;
         [Range(0, 20f)] public float nitros_depletion_rate = 2.5f;
@@ -148,18 +153,23 @@ namespace ModuloKart.CustomVehiclePhysics
         public string input_ItemNext = "RightBumper_P";
         #endregion
 
+        //Transform tempTransform;
+
         private void Start()
         {
             //Caching variables
-            vehicle_transform = GetComponent<Transform>();
-            vehicle_rigidbody = GetComponent<Rigidbody>();
-            vehicle_heading_transform = vehicle_transform.GetChild(0);
-            vehicle_model_transform = vehicle_transform.GetChild(1);
-            axel_rr_transform = vehicle_model_transform.GetChild(0);
-            axel_rl_transform = vehicle_model_transform.GetChild(1);
-            axel_fr_transform = vehicle_model_transform.GetChild(2);
-            axel_fl_transform = vehicle_model_transform.GetChild(3);
+            //tempTransform = GameObject.FindGameObjectWithTag("TempTransform").transform;
+            //vehicle_transform = GetComponent<Transform>();
+            //vehicle_rigidbody = GetComponent<Rigidbody>();
+            //vehicle_heading_transform = vehicle_transform.GetChild(0).GetChild(0);
+            //vehicle_model_transform = vehicle_transform.GetChild(0).GetChild(1);
+            //axel_rr_transform = vehicle_model_transform.GetChild(1).GetChild(0).GetChild(0);
+            //axel_rl_transform = vehicle_model_transform.GetChild(1).GetChild(0).GetChild(1);
+            //axel_fr_transform = vehicle_model_transform.GetChild(1).GetChild(0).GetChild(2);
+            //axel_fl_transform = vehicle_model_transform.GetChild(1).GetChild(0).GetChild(3);
+
             vehicle_camera_transform = vehicle_heading_transform.GetChild(0);
+
             if (vehicle_heading_transform.GetChild(0).GetComponent<PostProcessingBehaviour>() != null)
             {
                 vehicle_camera_postprocess_behavior = vehicle_heading_transform.GetChild(0).GetComponent<PostProcessingBehaviour>();
@@ -174,6 +184,8 @@ namespace ModuloKart.CustomVehiclePhysics
             input_drift = "Jump";
             input_nitros = "NitroKey";
 
+            hasVehicleControl = true;
+
         }
 
 
@@ -183,6 +195,8 @@ namespace ModuloKart.CustomVehiclePhysics
         int isCollisionHit;
         public void OnCollisionEnter(Collision c)
         {
+            if (!GameManager.Instance.GameStart) return;
+
             if (c.gameObject.tag == "TrackColliders")
 
             {
@@ -214,12 +228,23 @@ namespace ModuloKart.CustomVehiclePhysics
             isCollisionHit = 0;
         }
 
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.name.StartsWith( "MilkSpill"))
+            {
+                StartSpinOut();
+            }
+        }
+
         private void FixedUpdate()
         {
             //InitializePlayerJoystick();
             if (!isControllerInitialized) return;
+            if (!GameManager.Instance.GameStart) return;
+
             VehicleGroundCheck();
             VehicleMovement();
+
             //Audio for the engine updating according to acceleration
             pitch = accel_magnitude_float / max_accel_float;
             GetComponent<MultiAudioSource>().Pitch = pitch;
@@ -331,15 +356,15 @@ namespace ModuloKart.CustomVehiclePhysics
         private void VehicleGroundCheck()
         {
             //Middle Ray
-            ground_check_ray[0] = new Ray(vehicle_transform.position, -vehicle_transform.up);
             //Forward Right
-            ground_check_ray[1] = new Ray(vehicle_transform.position + vehicle_transform.forward * length_float + vehicle_transform.right * width_float, -vehicle_transform.up);
             //Back Left
-            ground_check_ray[2] = new Ray(vehicle_transform.position - vehicle_transform.forward * length_float - vehicle_transform.right * width_float, -vehicle_transform.up);
             //Forward Left
-            ground_check_ray[3] = new Ray(vehicle_transform.position + vehicle_transform.forward * length_float - vehicle_transform.right * width_float, -vehicle_transform.up);
             //Back Right
-            ground_check_ray[4] = new Ray(vehicle_transform.position - vehicle_transform.forward * length_float + vehicle_transform.right * width_float, -vehicle_transform.up);
+            ground_check_ray[0] = new Ray(vehicle_transform.position, -tempUpVectorForSlopeMeasurement);
+            ground_check_ray[1] = new Ray(vehicle_transform.position + tempForwardVectorForSlopeMeasurement * length_float + tempRightVectorForSlopeMeasurement * width_float, -tempUpVectorForSlopeMeasurement);
+            ground_check_ray[2] = new Ray(vehicle_transform.position - tempForwardVectorForSlopeMeasurement * length_float - tempRightVectorForSlopeMeasurement * width_float, -tempUpVectorForSlopeMeasurement);
+            ground_check_ray[3] = new Ray(vehicle_transform.position + tempForwardVectorForSlopeMeasurement * length_float - tempRightVectorForSlopeMeasurement * width_float, -tempUpVectorForSlopeMeasurement);
+            ground_check_ray[4] = new Ray(vehicle_transform.position - tempForwardVectorForSlopeMeasurement * length_float + tempRightVectorForSlopeMeasurement * width_float, -tempUpVectorForSlopeMeasurement);
 
             is_grounded = VehicleGroundRaycast(ground_check_ray, height_float);
         }
@@ -350,11 +375,11 @@ namespace ModuloKart.CustomVehiclePhysics
             {
                 if (isCodeDebug)
                 {
-                    Debug.DrawRay(vehicle_transform.position, -vehicle_transform.up * height_float, Color.red);
-                    Debug.DrawRay(vehicle_transform.position + vehicle_transform.forward * length_float + vehicle_transform.right * width_float, -vehicle_transform.up * height_float, Color.red);
-                    Debug.DrawRay(vehicle_transform.position - vehicle_transform.forward * length_float - vehicle_transform.right * width_float, -vehicle_transform.up * height_float, Color.red);
-                    Debug.DrawRay(vehicle_transform.position + vehicle_transform.forward * length_float - vehicle_transform.right * width_float, -vehicle_transform.up * height_float, Color.red);
-                    Debug.DrawRay(vehicle_transform.position - vehicle_transform.forward * length_float + vehicle_transform.right * width_float, -vehicle_transform.up * height_float, Color.red);
+                    Debug.DrawRay(vehicle_transform.position, -tempUpVectorForSlopeMeasurement * height_float, Color.red);
+                    Debug.DrawRay(vehicle_transform.position + tempForwardVectorForSlopeMeasurement * length_float + tempRightVectorForSlopeMeasurement * width_float, -tempUpVectorForSlopeMeasurement * height_float, Color.red);
+                    Debug.DrawRay(vehicle_transform.position - tempForwardVectorForSlopeMeasurement * length_float - tempRightVectorForSlopeMeasurement * width_float, -tempUpVectorForSlopeMeasurement * height_float, Color.red);
+                    Debug.DrawRay(vehicle_transform.position + tempForwardVectorForSlopeMeasurement * length_float - tempRightVectorForSlopeMeasurement * width_float, -tempUpVectorForSlopeMeasurement * height_float, Color.red);
+                    Debug.DrawRay(vehicle_transform.position - tempForwardVectorForSlopeMeasurement * length_float + tempRightVectorForSlopeMeasurement * width_float, -tempUpVectorForSlopeMeasurement * height_float, Color.red);
                 }
                 if (Physics.RaycastNonAlloc(ray, groundCheck_hits, dist, rayCast_layerMask) > 0)
                 {
@@ -387,6 +412,8 @@ namespace ModuloKart.CustomVehiclePhysics
             //Nitros Boost
             VehicleNitrosBoostInput();
 
+            SpinOutBehavior();
+
 
             vehicle_rigidbody.velocity = Vector3.zero;
 
@@ -411,8 +438,11 @@ namespace ModuloKart.CustomVehiclePhysics
         #region Steer Rotation Methods
         bool isAudioDrift;
         public float totalRotationAmount;
+        Quaternion tempFinalRotationXAlwaysNegative;
         private void VehicleSteerRotation()
         {
+            if (!hasVehicleControl) return;
+
             //This is the direction vector we use to accelerate
             if (vehicle_air_height > 0)
             {
@@ -449,6 +479,8 @@ namespace ModuloKart.CustomVehiclePhysics
                     drift_correction_float = 1f;
 
                     //20191025: We divide it instead of multiplying the 'drift_turn_ratio_float' to gain more steering ability when drift is on, not lose steering
+
+                    //INITIAL STEERING BOOST WHEN DRIFT HAS INITIATED
                     target_steer_modified = max_steer_float / drift_turn_ratio_float;
                 }
 
@@ -465,13 +497,19 @@ namespace ModuloKart.CustomVehiclePhysics
                 }
 
                 //20191025: Increase Vehicle Steering Ability as drifting progresses
-                if (target_steer_modified < max_steer_float * DRIFT_STEER_DAMPEN)
+                //if (target_steer_modified < max_steer_float * DRIFT_STEER_DAMPEN)
+
+                //WHILE DRIFTING OVER TIME, STEERING DECREASES VALUE
+                if (target_steer_modified > min_steer_float * DRIFT_STEER_DAMPEN)
                 {
-                    target_steer_modified += Time.fixedDeltaTime;
+                    //target_steer_modified += Time.fixedDeltaTime;
+                    target_steer_modified -= Time.fixedDeltaTime * 5;
+                    Debug.Log("decreasing steering: " + target_steer_modified);
                 }
                 else
                 {
-                    target_steer_modified = max_steer_float * DRIFT_STEER_DAMPEN;
+                    //target_steer_modified = max_steer_float * DRIFT_STEER_DAMPEN;
+                    target_steer_modified = min_steer_float * DRIFT_STEER_DAMPEN;
                 }
 
                 if (!isReverse)
@@ -598,7 +636,14 @@ namespace ModuloKart.CustomVehiclePhysics
                     tempDriftModelRotationValue -= Time.fixedDeltaTime * 10;
                 }
                 tempDriftModelRotationValue = 0;
+
+                //if(Mathf.Abs(target_steer_modified) < max_steer_float/10)
+                //{
+                //    Debug.Log("Drift is no OFF, when Target_Steer_Modified is: " + target_steer_modified);
                 is_drift = false;
+                //}
+
+                //Debug.Log("Drift is OFF, when Target_Steer_Modified is: " + target_steer_modified);
 
                 //When not drifting, the model will eventually align its rotation to the actual 'Heading' direction of the Vehicle.
                 if (drift_correction_float < max_drift_correction_float)
@@ -609,6 +654,20 @@ namespace ModuloKart.CustomVehiclePhysics
                 {
                     drift_correction_float = max_drift_correction_float;
                 }
+
+                //WHILE NOT DRIFTING OVER, STEERING REGAINS NORMAL STEERING VALUE
+                if (target_steer_modified > max_steer_float * DRIFT_STEER_DAMPEN)
+                {
+                    //target_steer_modified += Time.fixedDeltaTime;
+                    target_steer_modified -= Time.fixedDeltaTime * 5;
+                    Debug.Log("decreasing steering:     " + target_steer_modified);
+                }
+                else
+                {
+                    //target_steer_modified = max_steer_float * DRIFT_STEER_DAMPEN;
+                    target_steer_modified = max_steer_float * DRIFT_STEER_DAMPEN;
+                }
+
 
                 //Rotate: Note there should be DECREMENTAL deviation between the Heading rotation V.S. Model rotation
                 if (Quaternion.Angle(vehicle_model_transform.rotation, vehicle_heading_transform.rotation) > 0)
@@ -630,20 +689,99 @@ namespace ModuloKart.CustomVehiclePhysics
         private RaycastHit right_forward_hit;
         private Vector3 vehicleUpDirection;
 
+        private Vector3 tempForwardVectorForSlopeMeasurement = Vector3.forward;
+        private Vector3 tempRightVectorForSlopeMeasurement = Vector3.right;
+        private Vector3 tempUpVectorForSlopeMeasurement = Vector3.up;
 
         private RaycastHit center_hit;
 
         private Vector3 VehicleGetSlope(Transform tr)
         {
-            Physics.Raycast(tr.position - Vector3.forward * length_float - (Vector3.right * width_float) + Vector3.up, Vector3.down, out left_rear_hit, slope_ray_dist_float, rayCast_layerMask);
-            Physics.Raycast(tr.position - Vector3.forward * length_float + (Vector3.right * width_float) + Vector3.up, Vector3.down, out right_rear_hit, slope_ray_dist_float, rayCast_layerMask);
-            Physics.Raycast(tr.position + Vector3.forward * length_float - (Vector3.right * width_float) + Vector3.up, Vector3.down, out left_forward_hit, slope_ray_dist_float, rayCast_layerMask);
-            Physics.Raycast(tr.position + Vector3.forward * length_float + (Vector3.right * width_float) + Vector3.up, Vector3.down, out right_forward_hit, slope_ray_dist_float, rayCast_layerMask);
+            Physics.Raycast(tr.position - tempForwardVectorForSlopeMeasurement * length_float - (tempRightVectorForSlopeMeasurement * width_float) + tempUpVectorForSlopeMeasurement, -tempUpVectorForSlopeMeasurement, out left_rear_hit, slope_ray_dist_float, rayCast_layerMask);
+            Physics.Raycast(tr.position - tempForwardVectorForSlopeMeasurement * length_float + (tempRightVectorForSlopeMeasurement * width_float) + tempUpVectorForSlopeMeasurement, -tempUpVectorForSlopeMeasurement, out right_rear_hit, slope_ray_dist_float, rayCast_layerMask);
+            Physics.Raycast(tr.position + tempForwardVectorForSlopeMeasurement * length_float - (tempRightVectorForSlopeMeasurement * width_float) + tempUpVectorForSlopeMeasurement, -tempUpVectorForSlopeMeasurement, out left_forward_hit, slope_ray_dist_float, rayCast_layerMask);
+            Physics.Raycast(tr.position + tempForwardVectorForSlopeMeasurement * length_float + (tempRightVectorForSlopeMeasurement * width_float) + tempUpVectorForSlopeMeasurement, -tempUpVectorForSlopeMeasurement, out right_forward_hit, slope_ray_dist_float, rayCast_layerMask);
 
-            vehicleUpDirection = (Vector3.Cross(right_rear_hit.point - Vector3.up, left_rear_hit.point - Vector3.up) +
-                                                    Vector3.Cross(left_rear_hit.point - Vector3.up, left_forward_hit.point - Vector3.up) +
-                                                    Vector3.Cross(left_forward_hit.point - Vector3.up, right_forward_hit.point - Vector3.up) +
-                                                    Vector3.Cross(right_forward_hit.point - Vector3.up, right_rear_hit.point - Vector3.up)
+            if (left_rear_hit.collider)
+            {
+                if (left_rear_hit.collider.GetComponent<Loop>())
+                {
+                    isOnLoop = true;
+                    tempForwardVectorForSlopeMeasurement = vehicle_transform.forward;
+                    tempRightVectorForSlopeMeasurement = vehicle_transform.right;
+                    tempUpVectorForSlopeMeasurement = vehicle_transform.up;
+                }
+                else
+                {
+                    isOnLoop = false;
+                    tempForwardVectorForSlopeMeasurement = Vector3.forward;
+                    tempRightVectorForSlopeMeasurement = Vector3.right;
+                    tempUpVectorForSlopeMeasurement = Vector3.up;
+                }
+            }
+            if (right_rear_hit.collider)
+            {
+                if (right_rear_hit.collider.GetComponent<Loop>())
+                {
+                    isOnLoop = true;
+                    tempForwardVectorForSlopeMeasurement = vehicle_transform.forward;
+                    tempRightVectorForSlopeMeasurement = vehicle_transform.right;
+                    tempUpVectorForSlopeMeasurement = vehicle_transform.up;
+                }
+                else
+                {
+                    isOnLoop = false;
+                    tempForwardVectorForSlopeMeasurement = Vector3.forward;
+                    tempRightVectorForSlopeMeasurement = Vector3.right;
+                    tempUpVectorForSlopeMeasurement = Vector3.up;
+                }
+            }
+            if (left_forward_hit.collider)
+            {
+                if (left_forward_hit.collider.GetComponent<Loop>())
+                {
+                    isOnLoop = true;
+                    tempForwardVectorForSlopeMeasurement = vehicle_transform.forward;
+                    tempRightVectorForSlopeMeasurement = vehicle_transform.right;
+                    tempUpVectorForSlopeMeasurement = vehicle_transform.up;
+                }
+                else
+                {
+                    isOnLoop = false;
+                    tempForwardVectorForSlopeMeasurement = Vector3.forward;
+                    tempRightVectorForSlopeMeasurement = Vector3.right;
+                    tempUpVectorForSlopeMeasurement = Vector3.up;
+                }
+            }
+            if (right_forward_hit.collider)
+            {
+                if (right_forward_hit.collider.GetComponent<Loop>())
+                {
+                    isOnLoop = true;
+                    tempForwardVectorForSlopeMeasurement = vehicle_transform.forward;
+                    tempRightVectorForSlopeMeasurement = vehicle_transform.right;
+                    tempUpVectorForSlopeMeasurement = vehicle_transform.up;
+                }
+                else
+                {
+                    isOnLoop = false;
+                    tempForwardVectorForSlopeMeasurement = Vector3.forward;
+                    tempRightVectorForSlopeMeasurement = Vector3.right;
+                    tempUpVectorForSlopeMeasurement = Vector3.up;
+                }
+            }
+
+            //if (left_rear_hit.collider.GetComponent<Loop>() || right_rear_hit.collider.GetComponent<Loop>() || left_forward_hit.collider.GetComponent<Loop>() || right_forward_hit.collider.GetComponent<Loop>())
+            //{
+            //    tempForwardVectorForSlopeMeasurement = vehicle_transform.forward;
+            //    tempRightVectorForSlopeMeasurement = vehicle_transform.right;
+            //    tempUpVectorForSlopeMeasurement = vehicle_transform.up;
+            //}
+
+            vehicleUpDirection = (Vector3.Cross(right_rear_hit.point - tempUpVectorForSlopeMeasurement, left_rear_hit.point - tempUpVectorForSlopeMeasurement) +
+                                                    Vector3.Cross(left_rear_hit.point - tempUpVectorForSlopeMeasurement, left_forward_hit.point - tempUpVectorForSlopeMeasurement) +
+                                                    Vector3.Cross(left_forward_hit.point - tempUpVectorForSlopeMeasurement, right_forward_hit.point - tempUpVectorForSlopeMeasurement) +
+                                                    Vector3.Cross(right_forward_hit.point - tempUpVectorForSlopeMeasurement, right_rear_hit.point - tempUpVectorForSlopeMeasurement)
                                                     ).normalized;
             if (isCodeDebug)
             {
@@ -653,20 +791,79 @@ namespace ModuloKart.CustomVehiclePhysics
                 Debug.DrawRay(tr.position + Vector3.forward * length_float + (Vector3.right * width_float) + Vector3.up, Vector3.down * 20, Color.green);
             }
 
-            Physics.Raycast(tr.position, Vector3.down, out center_hit, slope_ray_dist_float, rayCast_layerMask);
+            Physics.Raycast(tr.position, -tempUpVectorForSlopeMeasurement, out center_hit, slope_ray_dist_float, rayCast_layerMask);
             vehicle_air_height = Vector3.Distance(tr.position, center_hit.point) - height_float;
 
 
             return vehicleUpDirection;
         }
 
+        Vector3 tempUpDirection;
+        Quaternion tempVehicleRotation;
+        Vector3 properUpDirection;
+        [SerializeField] bool isOnLoop;
+
         private void VehicleTiltSlope()
         {
-            tiltLerp_float = Mathf.Max(.1f, (0.5f - accel_magnitude_float / 60));
-            vehicle_transform.up = Vector3.Lerp(vehicle_transform.up, VehicleGetSlope(vehicle_transform), tiltLerp_float);
+            tiltLerp_float = Mathf.Max(.1f, (1f - accel_magnitude_float / 60));
+            properUpDirection = vehicle_transform.up;
+            if (isOnLoop)
+                vehicle_transform.up = VehicleGetSlope(vehicle_transform);// Vector3.Lerp(vehicle_transform.up, VehicleGetSlope(vehicle_transform), 1);
+            else
+                vehicle_transform.up = Vector3.Lerp(vehicle_transform.up, VehicleGetSlope(vehicle_transform), tiltLerp_float);
+            //if(!(tempUpDirection.x < 0 && properUpDirection.x < 0) || (tempUpDirection.x > 0 && properUpDirection.x > 0))
+
+            //tempTransform.up = tempUpDirection;
+            //vehicle_transform.up = tempUpDirection;
+            //if (tempTransform.rotation.y != 0)
+            //{
+            //transform.up = new Quaternion(tempTransform.rotation.x, 0, tempTransform.rotation.z, tempTransform.rotation.w);
+            //vehicle_transform.rotation = tempVehicleRotation;
+            //}
+            //Debug.Log("Neg X" + vehicle_transform.rotation.y);
+            //vehicle_transform.up = Vector3.Lerp(vehicle_transform.up, VehicleGetSlope(vehicle_transform), tiltLerp_float);
         }
 
         #endregion
+
+        #region Spin Out Behavior
+        
+        public void SpinOutBehavior()
+        {
+            if (!hasVehicleControl)
+            {
+                vehicleSpinOutTransform.rotation *= Quaternion.Euler(Vector3.up * 500 * Time.deltaTime);
+            }
+            else
+                vehicleSpinOutTransform.rotation = Quaternion.Slerp(vehicleSpinOutTransform.rotation, vehicle_model_transform.rotation, 1f);
+        }
+
+        public void StartSpinOut()
+        {
+            //if (spinOutPlayerID == pv.viewID)
+            //{
+            hasVehicleControl = false;
+            if (SpinOutCoroutine == null)
+            {
+                SpinOutCoroutine = SpinOutCO();
+                StartCoroutine(SpinOutCoroutine);
+                hasVehicleControl = true;
+            }
+            //}
+        }
+
+        private IEnumerator SpinOutCoroutine;
+        private IEnumerator SpinOutCO()
+        {
+            hasVehicleControl = false;
+            yield return new WaitForSeconds(2);
+
+            hasVehicleControl = true;
+            SpinOutCoroutine = null;
+        }
+
+        #endregion
+
 
         #region wheels
         private void RotateWheels()
@@ -763,10 +960,12 @@ namespace ModuloKart.CustomVehiclePhysics
 
         private void VehicleAccelInput()
         {
+            if (!hasVehicleControl) return;
+
             VehicleReverseInput();
             if (isReverse) return;
-            
-            
+
+
 
             //if (!is_drift)
             //{
@@ -822,7 +1021,7 @@ namespace ModuloKart.CustomVehiclePhysics
                 }
 
 
-                if (!is_drift)
+                if (!is_drift || 1 == 1)
                 {
                     if (target_accel_modified < 0) target_accel_modified = 0;
 
@@ -982,9 +1181,17 @@ namespace ModuloKart.CustomVehiclePhysics
         bool tempBeginSteerRight;
         private void VehicleSteerInput()
         {
+            if (!hasVehicleControl) return;
+
             if (!is_drift)
             {
-                target_steer_modified = max_steer_float;
+                if (target_steer_modified < max_steer_float)
+                {
+                    target_steer_modified += Time.deltaTime * 5;
+                    if (target_steer_modified > max_steer_float)
+                        target_steer_modified = max_steer_float;
+                }
+                //target_steer_modified = max_steer_float;
             }
 
 
@@ -993,14 +1200,20 @@ namespace ModuloKart.CustomVehiclePhysics
             if (Input.GetKey(KeyCode.A) || Input.GetAxis(input_steering) < 0)
             {
                 //Debug.Log("Player" + PlayerNum + ", Pressed: " + input_steering.ToString());
+                if (wheel_steer_float > 0) wheel_steer_float = 0;
                 wheel_steer_float = wheel_steer_float > -max_steer_float ? wheel_steer_float -= STEER * Time.fixedDeltaTime : -max_steer_float;
+
+                if (steer_magnitude_float > 0) steer_magnitude_float = 0;
                 steer_magnitude_float = steer_magnitude_float > -target_steer_modified ? steer_magnitude_float -= STEER * Time.fixedDeltaTime : -target_steer_modified;
                 tempTurnRight = false;
             }
             else if (Input.GetKey(KeyCode.D) || Input.GetAxis(input_steering) > 0)
             {
                 //Debug.Log("Player" + PlayerNum + ", Pressed: " + input_steering.ToString());
+                if (wheel_steer_float < 0) wheel_steer_float = 0;
                 wheel_steer_float = wheel_steer_float < max_steer_float ? wheel_steer_float += STEER * Time.fixedDeltaTime : max_steer_float;
+
+                if (steer_magnitude_float < 0) steer_magnitude_float = 0;
                 steer_magnitude_float = steer_magnitude_float < target_steer_modified ? steer_magnitude_float += STEER * Time.fixedDeltaTime : target_steer_modified;
                 tempTurnRight = true;
             }

@@ -1538,7 +1538,7 @@ GameObject:
   - component: {fileID: 1473216451}
   m_Layer: 0
   m_Name: PlayerSelectionManager
-  m_TagString: Untagged
+  m_TagString: PlayerCountTracker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1570,6 +1570,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numPlayerOption: 0
+  inGameScene: 0
 --- !u!1 &1509744819
 GameObject:
   m_ObjectHideFlags: 0
