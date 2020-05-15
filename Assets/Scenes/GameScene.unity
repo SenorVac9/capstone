@@ -23810,6 +23810,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: JunkinVehiclePrefab P1
       objectReference: {fileID: 0}
+    - target: {fileID: 443800255, guid: da0abe8a147139749b99d326b0abe510, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4941976934902108, guid: da0abe8a147139749b99d326b0abe510, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -23925,6 +23929,11 @@ PrefabInstance:
         type: 3}
       propertyPath: partsUsed
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 52563094776940099, guid: da0abe8a147139749b99d326b0abe510,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.27
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da0abe8a147139749b99d326b0abe510, type: 3}
@@ -51883,6 +51892,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 443800255, guid: da0abe8a147139749b99d326b0abe510, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4941976934902108, guid: da0abe8a147139749b99d326b0abe510, type: 3}
       propertyPath: m_LocalPosition.x
       value: 60
@@ -64787,6 +64800,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 443800255, guid: da0abe8a147139749b99d326b0abe510, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4941976934902108, guid: da0abe8a147139749b99d326b0abe510, type: 3}
       propertyPath: m_LocalPosition.x
       value: 20
@@ -64878,11 +64895,6 @@ PrefabInstance:
       propertyPath: playerHUD
       value: 
       objectReference: {fileID: 655634375}
-    - target: {fileID: 595517267057655598, guid: da0abe8a147139749b99d326b0abe510,
-        type: 3}
-      propertyPath: cullingMode
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3705522477442178960, guid: da0abe8a147139749b99d326b0abe510,
         type: 3}
       propertyPath: m_BoundingSphereOverride.x
@@ -64897,6 +64909,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_BoundingSphereOverride.w
       value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 595517267057655598, guid: da0abe8a147139749b99d326b0abe510,
+        type: 3}
+      propertyPath: cullingMode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3453021468403693938, guid: da0abe8a147139749b99d326b0abe510,
         type: 3}
@@ -65123,6 +65140,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1165680260921162, guid: da0abe8a147139749b99d326b0abe510, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 443800255, guid: da0abe8a147139749b99d326b0abe510, type: 3}
+      propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4941976934902108, guid: da0abe8a147139749b99d326b0abe510, type: 3}
