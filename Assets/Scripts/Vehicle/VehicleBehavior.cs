@@ -32,6 +32,7 @@ namespace ModuloKart.CustomVehiclePhysics
         public Transform vehicle_transform;
         public Rigidbody vehicle_rigidbody;
         public Transform vehicle_heading_transform;
+        public Transform vehicleSpinOutTransform;
         public Transform vehicle_model_transform;
         public Transform vehicle_camera_transform;
         public PostProcessingBehaviour vehicle_camera_postprocess_behavior;
@@ -83,6 +84,9 @@ namespace ModuloKart.CustomVehiclePhysics
         public bool isReverse;
         public bool is_drift;
         public bool is_nitrosboost;
+        [Header("Vehicle Spin Out")]
+        public bool hasVehicleControl = false;
+
 
         [Header("Maximum and Minimum Vehicle Movement Values")]
         [Range(0, 500)] public float max_gravity_float = 250f;
@@ -155,15 +159,17 @@ namespace ModuloKart.CustomVehiclePhysics
         {
             //Caching variables
             //tempTransform = GameObject.FindGameObjectWithTag("TempTransform").transform;
-            vehicle_transform = GetComponent<Transform>();
-            vehicle_rigidbody = GetComponent<Rigidbody>();
-            vehicle_heading_transform = vehicle_transform.GetChild(0);
-            vehicle_model_transform = vehicle_transform.GetChild(1);
-            axel_rr_transform = vehicle_model_transform.GetChild(0);
-            axel_rl_transform = vehicle_model_transform.GetChild(1);
-            axel_fr_transform = vehicle_model_transform.GetChild(2);
-            axel_fl_transform = vehicle_model_transform.GetChild(3);
+            //vehicle_transform = GetComponent<Transform>();
+            //vehicle_rigidbody = GetComponent<Rigidbody>();
+            //vehicle_heading_transform = vehicle_transform.GetChild(0).GetChild(0);
+            //vehicle_model_transform = vehicle_transform.GetChild(0).GetChild(1);
+            //axel_rr_transform = vehicle_model_transform.GetChild(1).GetChild(0).GetChild(0);
+            //axel_rl_transform = vehicle_model_transform.GetChild(1).GetChild(0).GetChild(1);
+            //axel_fr_transform = vehicle_model_transform.GetChild(1).GetChild(0).GetChild(2);
+            //axel_fl_transform = vehicle_model_transform.GetChild(1).GetChild(0).GetChild(3);
+
             vehicle_camera_transform = vehicle_heading_transform.GetChild(0);
+
             if (vehicle_heading_transform.GetChild(0).GetComponent<PostProcessingBehaviour>() != null)
             {
                 vehicle_camera_postprocess_behavior = vehicle_heading_transform.GetChild(0).GetComponent<PostProcessingBehaviour>();
@@ -178,6 +184,8 @@ namespace ModuloKart.CustomVehiclePhysics
             input_drift = "Jump";
             input_nitros = "NitroKey";
 
+            hasVehicleControl = true;
+
         }
 
 
@@ -187,6 +195,8 @@ namespace ModuloKart.CustomVehiclePhysics
         int isCollisionHit;
         public void OnCollisionEnter(Collision c)
         {
+            if (!GameManager.Instance.GameStart) return;
+
             if (c.gameObject.tag == "TrackColliders")
 
             {
@@ -218,12 +228,23 @@ namespace ModuloKart.CustomVehiclePhysics
             isCollisionHit = 0;
         }
 
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.name.StartsWith( "MilkSpill"))
+            {
+                StartSpinOut();
+            }
+        }
+
         private void FixedUpdate()
         {
             //InitializePlayerJoystick();
             if (!isControllerInitialized) return;
+            if (!GameManager.Instance.GameStart) return;
+
             VehicleGroundCheck();
             VehicleMovement();
+
             //Audio for the engine updating according to acceleration
             pitch = accel_magnitude_float / max_accel_float;
             GetComponent<MultiAudioSource>().Pitch = pitch;
@@ -354,7 +375,7 @@ namespace ModuloKart.CustomVehiclePhysics
             {
                 if (isCodeDebug)
                 {
-                    Debug.DrawRay(vehicle_transform.position, -tempUpVectorForSlopeMeasurement * height_float, Color.red);
+                    Debug.DrawRay(vehicle_transform.position, -tempUpVectorForSlopeMeasurement * height_float*2, Color.red);
                     Debug.DrawRay(vehicle_transform.position + tempForwardVectorForSlopeMeasurement * length_float + tempRightVectorForSlopeMeasurement * width_float, -tempUpVectorForSlopeMeasurement * height_float, Color.red);
                     Debug.DrawRay(vehicle_transform.position - tempForwardVectorForSlopeMeasurement * length_float - tempRightVectorForSlopeMeasurement * width_float, -tempUpVectorForSlopeMeasurement * height_float, Color.red);
                     Debug.DrawRay(vehicle_transform.position + tempForwardVectorForSlopeMeasurement * length_float - tempRightVectorForSlopeMeasurement * width_float, -tempUpVectorForSlopeMeasurement * height_float, Color.red);
@@ -391,9 +412,17 @@ namespace ModuloKart.CustomVehiclePhysics
             //Nitros Boost
             VehicleNitrosBoostInput();
 
+            SpinOutBehavior();
+
 
             vehicle_rigidbody.velocity = Vector3.zero;
+            vehicle_rigidbody.useGravity = false;
+            vehicle_rigidbody.useConeFriction = false;
 
+            if(accel_magnitude_float==0)
+                vehicle_rigidbody.isKinematic = true;
+            else
+                vehicle_rigidbody.isKinematic = false;
 
             if (is_grounded)
             {
@@ -418,6 +447,8 @@ namespace ModuloKart.CustomVehiclePhysics
         Quaternion tempFinalRotationXAlwaysNegative;
         private void VehicleSteerRotation()
         {
+            if (!hasVehicleControl) return;
+
             //This is the direction vector we use to accelerate
             if (vehicle_air_height > 0)
             {
@@ -672,10 +703,10 @@ namespace ModuloKart.CustomVehiclePhysics
 
         private Vector3 VehicleGetSlope(Transform tr)
         {
-            Physics.Raycast(tr.position - tempForwardVectorForSlopeMeasurement * length_float - (tempRightVectorForSlopeMeasurement * width_float) + tempUpVectorForSlopeMeasurement, -tempUpVectorForSlopeMeasurement, out left_rear_hit, slope_ray_dist_float, rayCast_layerMask);
-            Physics.Raycast(tr.position - tempForwardVectorForSlopeMeasurement * length_float + (tempRightVectorForSlopeMeasurement * width_float) + tempUpVectorForSlopeMeasurement, -tempUpVectorForSlopeMeasurement, out right_rear_hit, slope_ray_dist_float, rayCast_layerMask);
-            Physics.Raycast(tr.position + tempForwardVectorForSlopeMeasurement * length_float - (tempRightVectorForSlopeMeasurement * width_float) + tempUpVectorForSlopeMeasurement, -tempUpVectorForSlopeMeasurement, out left_forward_hit, slope_ray_dist_float, rayCast_layerMask);
-            Physics.Raycast(tr.position + tempForwardVectorForSlopeMeasurement * length_float + (tempRightVectorForSlopeMeasurement * width_float) + tempUpVectorForSlopeMeasurement, -tempUpVectorForSlopeMeasurement, out right_forward_hit, slope_ray_dist_float, rayCast_layerMask);
+            Physics.Raycast(tr.position - tempForwardVectorForSlopeMeasurement * length_float - (tempRightVectorForSlopeMeasurement * width_float) + tempUpVectorForSlopeMeasurement, -tempUpVectorForSlopeMeasurement * height_float, out left_rear_hit, slope_ray_dist_float, rayCast_layerMask);
+            Physics.Raycast(tr.position - tempForwardVectorForSlopeMeasurement * length_float + (tempRightVectorForSlopeMeasurement * width_float) + tempUpVectorForSlopeMeasurement, -tempUpVectorForSlopeMeasurement * height_float, out right_rear_hit, slope_ray_dist_float, rayCast_layerMask);
+            Physics.Raycast(tr.position + tempForwardVectorForSlopeMeasurement * length_float - (tempRightVectorForSlopeMeasurement * width_float) + tempUpVectorForSlopeMeasurement, -tempUpVectorForSlopeMeasurement * height_float, out left_forward_hit, slope_ray_dist_float, rayCast_layerMask);
+            Physics.Raycast(tr.position + tempForwardVectorForSlopeMeasurement * length_float + (tempRightVectorForSlopeMeasurement * width_float) + tempUpVectorForSlopeMeasurement, -tempUpVectorForSlopeMeasurement * height_float, out right_forward_hit, slope_ray_dist_float, rayCast_layerMask);
 
             if (left_rear_hit.collider)
             {
@@ -777,7 +808,7 @@ namespace ModuloKart.CustomVehiclePhysics
         Quaternion tempVehicleRotation;
         Vector3 properUpDirection;
         [SerializeField] bool isOnLoop;
-        
+
         private void VehicleTiltSlope()
         {
             tiltLerp_float = Mathf.Max(.1f, (1f - accel_magnitude_float / 60));
@@ -800,6 +831,65 @@ namespace ModuloKart.CustomVehiclePhysics
         }
 
         #endregion
+
+        #region Spin Out Behavior
+        
+        public void SpinOutBehavior()
+        {
+            if (!hasVehicleControl)
+            {
+                vehicleSpinOutTransform.rotation *= Quaternion.Euler(Vector3.up * 500 * Time.deltaTime);
+            }
+            else
+                vehicleSpinOutTransform.rotation = Quaternion.Slerp(vehicleSpinOutTransform.rotation, vehicle_model_transform.rotation, 1f);
+        }
+
+        public void StartSpinOut()
+        {
+            //if (spinOutPlayerID == pv.viewID)
+            //{
+            hasVehicleControl = false;
+            if (SpinOutCoroutine == null)
+            {
+                SpinOutCoroutine = SpinOutCO();
+                StartCoroutine(SpinOutCoroutine);
+                hasVehicleControl = true;
+            }
+            //}
+        }
+
+        private IEnumerator SpinOutCoroutine;
+        private IEnumerator SpinOutCO()
+        {
+            hasVehicleControl = false;
+            yield return new WaitForSeconds(2);
+
+            hasVehicleControl = true;
+            SpinOutCoroutine = null;
+        }
+
+        //[SerializeField] private float LaunchMagnitude;
+        //private Vector3 LaunchVector;
+        //private IEnumerator LaunchVehicle()
+        //{
+        //    LaunchMagnitude = 100f;
+        //    LaunchVector = -transform.up * LaunchMagnitude;
+        //    yield return new WaitForSeconds(.1f);
+        //    if(LaunchMagnitude > 0)
+        //    {
+        //        LaunchVector = +transform.up * LaunchMagnitude;
+        //    }
+        //    else
+        //    {
+        //
+        //    }
+        //
+        //}
+
+
+
+        #endregion
+
 
         #region wheels
         private void RotateWheels()
@@ -896,6 +986,8 @@ namespace ModuloKart.CustomVehiclePhysics
 
         private void VehicleAccelInput()
         {
+            if (!hasVehicleControl) return;
+
             VehicleReverseInput();
             if (isReverse) return;
 
@@ -955,7 +1047,7 @@ namespace ModuloKart.CustomVehiclePhysics
                 }
 
 
-                if (!is_drift || 1==1)
+                if (!is_drift || 1 == 1)
                 {
                     if (target_accel_modified < 0) target_accel_modified = 0;
 
@@ -1115,6 +1207,8 @@ namespace ModuloKart.CustomVehiclePhysics
         bool tempBeginSteerRight;
         private void VehicleSteerInput()
         {
+            if (!hasVehicleControl) return;
+
             if (!is_drift)
             {
                 if (target_steer_modified < max_steer_float)
@@ -1132,15 +1226,47 @@ namespace ModuloKart.CustomVehiclePhysics
             if (Input.GetKey(KeyCode.A) || Input.GetAxis(input_steering) < 0)
             {
                 //Debug.Log("Player" + PlayerNum + ", Pressed: " + input_steering.ToString());
-                wheel_steer_float = wheel_steer_float > -max_steer_float ? wheel_steer_float -= STEER * Time.fixedDeltaTime : -max_steer_float;
-                steer_magnitude_float = steer_magnitude_float > -target_steer_modified ? steer_magnitude_float -= STEER * Time.fixedDeltaTime : -target_steer_modified;
+
+                if (accel_magnitude_float >= 0)
+                {
+                    if (wheel_steer_float > 0) wheel_steer_float = 0;
+                    wheel_steer_float = wheel_steer_float > -max_steer_float ? wheel_steer_float -= STEER * Time.fixedDeltaTime : -max_steer_float;
+
+                    if (steer_magnitude_float > 0) steer_magnitude_float = 0;
+                    steer_magnitude_float = steer_magnitude_float > -target_steer_modified ? steer_magnitude_float -= STEER * Time.fixedDeltaTime : -target_steer_modified;
+                }
+                else
+                {
+                    if (wheel_steer_float < 0) wheel_steer_float = 0;
+                    wheel_steer_float = wheel_steer_float < max_steer_float ? wheel_steer_float += STEER * Time.fixedDeltaTime : max_steer_float;
+
+                    if (steer_magnitude_float < 0) steer_magnitude_float = 0;
+                    steer_magnitude_float = steer_magnitude_float < target_steer_modified ? steer_magnitude_float += STEER * Time.fixedDeltaTime : target_steer_modified;
+                }
+
                 tempTurnRight = false;
             }
             else if (Input.GetKey(KeyCode.D) || Input.GetAxis(input_steering) > 0)
             {
                 //Debug.Log("Player" + PlayerNum + ", Pressed: " + input_steering.ToString());
-                wheel_steer_float = wheel_steer_float < max_steer_float ? wheel_steer_float += STEER * Time.fixedDeltaTime : max_steer_float;
-                steer_magnitude_float = steer_magnitude_float < target_steer_modified ? steer_magnitude_float += STEER * Time.fixedDeltaTime : target_steer_modified;
+
+                if (accel_magnitude_float >= 0)
+                {
+                    if (wheel_steer_float < 0) wheel_steer_float = 0;
+                    wheel_steer_float = wheel_steer_float < max_steer_float ? wheel_steer_float += STEER * Time.fixedDeltaTime : max_steer_float;
+
+                    if (steer_magnitude_float < 0) steer_magnitude_float = 0;
+                    steer_magnitude_float = steer_magnitude_float < target_steer_modified ? steer_magnitude_float += STEER * Time.fixedDeltaTime : target_steer_modified;
+                }
+                else
+                {
+                    if (wheel_steer_float > 0) wheel_steer_float = 0;
+                    wheel_steer_float = wheel_steer_float > -max_steer_float ? wheel_steer_float -= STEER * Time.fixedDeltaTime : -max_steer_float;
+
+                    if (steer_magnitude_float > 0) steer_magnitude_float = 0;
+                    steer_magnitude_float = steer_magnitude_float > -target_steer_modified ? steer_magnitude_float -= STEER * Time.fixedDeltaTime : -target_steer_modified;
+                }
+
                 tempTurnRight = true;
             }
             else
