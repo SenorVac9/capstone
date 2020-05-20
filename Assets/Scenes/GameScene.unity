@@ -7623,6 +7623,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lap1
       objectReference: {fileID: 0}
+    - target: {fileID: 7485231801736429921, guid: 7f177380b515c0a4ba88d56e39adbb52,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5889507038775735154, guid: 7f177380b515c0a4ba88d56e39adbb52,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -35794,6 +35799,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0a2398418e96144d96f0a2c2abfaf27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameStart: 0
+  InitializedPlayers: 0
   lastCheckpoint: {fileID: 1263522688}
 --- !u!1 &1144949363
 GameObject:
