@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     // Start is called before the first frame update
+
+    public Transform lastCheckpoint;
     void Awake()
     {
         Instance = this;
