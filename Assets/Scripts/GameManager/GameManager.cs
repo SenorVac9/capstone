@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public bool GameStart;
     public int InitializedPlayers;
     // Start is called before the first frame update
+
+    public Transform lastCheckpoint;
     void Awake()
     {
         Instance = this;
