@@ -21,6 +21,7 @@ namespace ModuloKart.Controls
         bool GhostLoaded = false;
         public List<Vector3> newGhostPostions;
         public ControllerHandler Handler;
+        public bool wantsToRaceGhost = true;
         GameObject GameCar;
 
 
@@ -101,7 +102,8 @@ namespace ModuloKart.Controls
             if (SceneManager.GetActiveScene().buildIndex == 2)
             {
 
-                if (Handler.ControllersToAssign == 1)
+
+                if (Handler.ControllersToAssign == 1 || wantsToRaceGhost)
                 {
 
                     if(Handler.assignedControllerCount == 1)
@@ -111,9 +113,9 @@ namespace ModuloKart.Controls
 
                             if (GhostFrameCounter < GhostFrameMax)
                             {
-
+                                 GhostCar.transform.LookAt(newGhostPostions[GhostFrameCounter+1]);
                                 GhostCar.transform.position = newGhostPostions[GhostFrameCounter];
-                                //  GhostCar.transform.LookAt(newGhostPostions[GhostFrameCounter]);
+                            
                                 GhostFrameCounter++;
 
                             }
