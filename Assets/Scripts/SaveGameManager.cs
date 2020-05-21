@@ -21,6 +21,7 @@ namespace ModuloKart.Controls
         bool GhostLoaded = false;
         public List<Vector3> newGhostPostions;
         public ControllerHandler Handler;
+        public bool wantsToRaceGhost = true;
         GameObject GameCar;
 
 
@@ -101,7 +102,8 @@ namespace ModuloKart.Controls
             if (SceneManager.GetActiveScene().buildIndex == 2)
             {
 
-                if (Handler.ControllersToAssign == 1)
+
+                if (Handler.ControllersToAssign == 1 || wantsToRaceGhost)
                 {
 
                     if(Handler.assignedControllerCount == 1)
@@ -111,9 +113,18 @@ namespace ModuloKart.Controls
 
                             if (GhostFrameCounter < GhostFrameMax)
                             {
-
+                                //We are at the Last Array Index
+                                if (GhostFrameCounter == GhostFrameMax - 1)
+                                {
+                                    //So if we are at the last position of the array, the next value should be the start.
+                                    GhostCar.transform.LookAt(newGhostPostions[0]);
+                                }
+                                else
+                                {
+                                    GhostCar.transform.LookAt(newGhostPostions[GhostFrameCounter + 1]);
+                                }
                                 GhostCar.transform.position = newGhostPostions[GhostFrameCounter];
-                                //  GhostCar.transform.LookAt(newGhostPostions[GhostFrameCounter]);
+
                                 GhostFrameCounter++;
 
                             }
@@ -234,8 +245,8 @@ namespace ModuloKart.Controls
                 {
                     if(GameObject.FindGameObjectWithTag("PlayerCountTracker").GetComponent<PlayerSelectionManager>().numPlayerOption == NumPlayerOption.players1)
                     {
-                        GameObject.FindGameObjectWithTag("first").GetComponent<TMPro.TextMeshProUGUI>().text = "Your new time was faster than previous fastest time by  " + ( GameState.FirstRaceTime - GameState.oldGhostTime ) + " seconds ";
-
+                        //GameObject.FindGameObjectWithTag("first").GetComponent<TMPro.TextMeshProUGUI>().text = "Your new time was faster than previous fastest time by  " + ( GameState.FirstRaceTime - GameState.oldGhostTime ) + " seconds ";
+                        GameObject.FindGameObjectWithTag("first").GetComponent<TMPro.TextMeshProUGUI>().text = "Your new time was faster than previous fastest time by  " + (GameState.oldGhostTime - GameState.FirstRaceTime) + " seconds ";
                     }
                     else
                     GameObject.FindGameObjectWithTag("first").GetComponent<TMPro.TextMeshProUGUI>().text = "First Place was player " + GameState.FirstPlaceID + " with a time of " + GameState.FirstRaceTime;
