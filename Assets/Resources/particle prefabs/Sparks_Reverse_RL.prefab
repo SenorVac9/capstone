@@ -11,9 +11,8 @@ GameObject:
   - component: {fileID: 7026825691517956785}
   - component: {fileID: 8629697014699422632}
   - component: {fileID: 49567233444939736}
-  - component: {fileID: 4448503000398916630}
   m_Layer: 8
-  m_Name: Sparks
+  m_Name: Sparks_Reverse_RL
   m_TagString: Rim_Sparks
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42,14 +41,14 @@ ParticleSystem:
   m_GameObject: {fileID: 8761066532264796731}
   serializedVersion: 6
   lengthInSec: 5
-  simulationSpeed: 1
+  simulationSpeed: 1.33
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -601,7 +600,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 1000
+    maxNumParticles: 99999999
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -806,7 +805,7 @@ ParticleSystem:
     arc:
       value: 360
       mode: 0
-      spread: 0
+      spread: 1
       speed:
         serializedVersion: 2
         minMaxState: 0
@@ -866,8 +865,8 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 50
-      minScalar: 10
+      scalar: 262.14
+      minScalar: 180
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4732,8 +4731,8 @@ ParticleSystemRenderer:
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
-  m_MinParticleSize: 0
-  m_MaxParticleSize: 0.5
+  m_MinParticleSize: 0.001
+  m_MaxParticleSize: 7.88
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
   m_LengthScale: 2
@@ -4753,19 +4752,3 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &4448503000398916630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8761066532264796731}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05bc0f4eb9c1a944ebd6ed5e7b5ca87c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  multiplier: 1
-  vehicleBehavior: {fileID: 0}
-  particleType: 0
-  particleSystem: {fileID: 0}

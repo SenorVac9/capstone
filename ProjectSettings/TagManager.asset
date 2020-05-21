@@ -24,10 +24,10 @@ TagManager:
   - fourth
   - PlayerCountTracker
   - Milk
-  - Maxine_Extra_Parts
-  - Tire_Smoke
+  - TestField
   - Rim_Sparks
-  - Exhaust_Smoke
+  - Maxine_Extra_Parts
+  - JumpObject
   layers:
   - Default
   - TransparentFX
