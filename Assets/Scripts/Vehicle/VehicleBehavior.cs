@@ -192,7 +192,7 @@ namespace ModuloKart.CustomVehiclePhysics
         //just add yags to colliders and keep the code as it is
 
         int isCollisionHit;
-        public void OnCollisionEnter(Collision c)
+        /*public void OnCollisionEnter(Collision c)
         {
             if (!GameManager.Instance.GameStart) return;
 
@@ -225,7 +225,7 @@ namespace ModuloKart.CustomVehiclePhysics
                 }
             }
             isCollisionHit = 0;
-        }
+        }*/
 
         private void OnTriggerEnter(Collider other)
         {
