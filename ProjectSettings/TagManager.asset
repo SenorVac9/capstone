@@ -28,6 +28,7 @@ TagManager:
   - Tire_Smoke
   - Rim_Sparks
   - Exhaust_Smoke
+  - PickupCollider
   layers:
   - Default
   - TransparentFX

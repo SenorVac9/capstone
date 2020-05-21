@@ -4657,9 +4657,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05bc0f4eb9c1a944ebd6ed5e7b5ca87c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CarRimSparkParticle_rear_left: {fileID: 0}
+  CarRimSparkParticle_front_right: {fileID: 0}
+  CarRimSparkParticle_rear_right: {fileID: 0}
+  CarRimSparkParticle_front_left: {fileID: 0}
+  Spark_Spawnpoint_Front_Left: {fileID: 0}
+  Spark_Spawnpoint_Front_Right: {fileID: 0}
+  Spark_Spawnpoint_Rear_Left: {fileID: 0}
+  Spark_Spawnpoint_Rear_Right: {fileID: 0}
   multiplier: 1
   vehicleBehavior: {fileID: 0}
   particleType: 0
-  particleSystem: {fileID: 0}
-  DirtColor: {r: 1, g: 1, b: 1, a: 1}
-  StopColor: {r: 0.4528302, g: 0.4508544, b: 0.44642222, a: 0.18039216}
+  particleSystem: {fileID: 19800000}

@@ -148,6 +148,7 @@ public class PartReplenishScript : MonoBehaviour
                 if (c.gameObject.name == "PickupCollider")
                 {
 
+               
 
                     partBack = Random.Range(0, wheels.reservePartsList.Count);
                     if (wheels.reservePartsList[partBack] == 2)
