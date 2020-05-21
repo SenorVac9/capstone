@@ -9,7 +9,7 @@ public class Player_Wheel_Detach : MonoBehaviour
     public GameObject prefab1;
     public Camera cam_p1;
     VehicleBehavior vehicleBehavior;
-    public int speed = 2;
+   int speed = 50;
     public GameObject wheel_destroy1, wheel_destroy2, wheel_destroy3, wheel_destroy4;
     public int[] reserveParts;
     public List<int> reservePartsList = new List<int>();
@@ -42,10 +42,11 @@ public class Player_Wheel_Detach : MonoBehaviour
          */
         if (tirenum == 2)
         {
-            GameObject Wheel = Instantiate(prefab1) as GameObject;
-            Wheel.transform.position = spawnpoint1.transform.position;
+           
+            GameObject Wheel = Instantiate<GameObject>(prefab1, spawnpoint1.transform.position, spawnpoint1.rotation);
+          
             Rigidbody rb = Wheel.GetComponent<Rigidbody>();
-            rb.velocity = cam_p1.transform.forward * -speed;
+            rb.velocity = spawnpoint1.transform.forward * speed;
             partsUsed++;
             
             reservePartsList.Add(2);
@@ -54,10 +55,9 @@ public class Player_Wheel_Detach : MonoBehaviour
         }
         else if (tirenum == 1)
         {
-            GameObject Wheel = Instantiate(prefab1) as GameObject;
-            Wheel.transform.position = spawnpoint2.transform.position;
+            GameObject Wheel = Instantiate<GameObject>(prefab1, spawnpoint2.transform.position, spawnpoint2.rotation);
             Rigidbody rb = Wheel.GetComponent<Rigidbody>();
-            rb.velocity = cam_p1.transform.forward * -speed;
+            rb.velocity = spawnpoint2.transform.forward * speed;
             reservePartsList.Add(1);
             Debug.Log(reservePartsList);
             wheel_destroy2.SetActive(false);
@@ -65,10 +65,9 @@ public class Player_Wheel_Detach : MonoBehaviour
         }
         else if (tirenum == 4)
         {
-            GameObject Wheel = Instantiate(prefab1) as GameObject;
-            Wheel.transform.position = spawnpoint3.transform.position;
+            GameObject Wheel = Instantiate<GameObject>(prefab1, spawnpoint3.transform.position, spawnpoint3.rotation);
             Rigidbody rb = Wheel.GetComponent<Rigidbody>();
-            rb.velocity = cam_p1.transform.forward * -speed;
+            rb.velocity = spawnpoint3.transform.forward * speed;
             reservePartsList.Add(4);
             Debug.Log(reservePartsList);
             wheel_destroy3.SetActive(false);
@@ -76,10 +75,9 @@ public class Player_Wheel_Detach : MonoBehaviour
         }
         else if (tirenum == 3)
         {
-            GameObject Wheel = Instantiate(prefab1) as GameObject;
-            Wheel.transform.position = spawnpoint4.transform.position;
+            GameObject Wheel = Instantiate<GameObject>(prefab1, spawnpoint4.transform.position, spawnpoint4.rotation);
             Rigidbody rb = Wheel.GetComponent<Rigidbody>();
-            rb.velocity = cam_p1.transform.forward * -speed;
+            rb.velocity = spawnpoint4.transform.forward * speed;
             reservePartsList.Add(3);
             Debug.Log(reservePartsList);
             wheel_destroy4.SetActive(false);
