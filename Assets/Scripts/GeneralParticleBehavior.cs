@@ -16,6 +16,8 @@ public enum ParticleType
 public class GeneralParticleBehavior : MonoBehaviour
 {
     ui_controller ui;
+    public Transform Spark_Spawnpoint_Rear_Right, Spark_Spawnpoint_Rear_Left, Spark_Spawnpoint_Front_Right, Spark_Spawnpoint_Fornt_Left;
+    public GameObject Prefab1;
     public float multiplier = 1;
     [SerializeField] public VehicleBehavior vehicleBehavior;
     public ParticleType particleType;
@@ -26,6 +28,7 @@ public class GeneralParticleBehavior : MonoBehaviour
 
     private void Awake()
     {
+        
         particleSystem = GetComponent<ParticleSystem>();
         vehicleBehavior = GameObject.FindObjectOfType<VehicleBehavior>();
         ui = GameObject.FindObjectOfType<ui_controller>();
@@ -51,7 +54,7 @@ public class GeneralParticleBehavior : MonoBehaviour
             case ParticleType.CarTireParticle:
                 //if (particleSystem == null) break;
 
-                if (vehicleBehavior.is_drift== true)
+                if (vehicleBehavior.is_drift== true && vehicleBehavior.accel_magnitude_float!=0)
                 {
                     if (!mainModule.loop)
                     {
@@ -74,9 +77,21 @@ public class GeneralParticleBehavior : MonoBehaviour
                 }
                 break;
 
-            case ParticleType.CarRimSparkParticle_rear_left:
+          /*  case ParticleType.CarRimSparkParticle_rear_left:
                 {
-                    if (ui.has_tire_4 == false && vehicleBehavior.accel_magnitude_float != 0)
+                    if (ui.has_tire_4 == false && vehicleBehavior.accel_magnitude_float > 0)
+                    {
+                        if (!mainModule.loop)
+                        {
+                            Instantiate(particleSystem,Spark_Spawnpoint_Rear_Left.transform) ;
+                           
+                            //particleSystem.emission.rateOverTime = 20;
+                            //particleSystem.Clear();
+                            mainModule.loop = true;
+                            particleSystem.Play();
+                        }
+                    }
+                    if (ui.has_tire_4 == false && vehicleBehavior.accel_magnitude_float < 0)
                     {
                         if (!mainModule.loop)
                         {
@@ -179,7 +194,7 @@ public class GeneralParticleBehavior : MonoBehaviour
                     }
                     break;
 
-                }
+                }*/
             default:
                 break;
         }
