@@ -25,6 +25,9 @@ TagManager:
   - PlayerCountTracker
   - Milk
   - TestField
+  - Rim_Sparks
+  - Maxine_Extra_Parts
+  - JumpObject
   layers:
   - Default
   - TransparentFX
