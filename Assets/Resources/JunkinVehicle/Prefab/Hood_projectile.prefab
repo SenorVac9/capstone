@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2402473944766889163}
   - component: {fileID: 8847346171700228289}
   m_Layer: 8
-  m_Name: Hoof_projectile
+  m_Name: Hood_projectile
   m_TagString: Hood_projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

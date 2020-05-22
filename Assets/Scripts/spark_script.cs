@@ -41,11 +41,11 @@ public class spark_script : MonoBehaviour
                 if (!spark_forward_FR.isEmitting)
                 {
                     spark_forward_FR.Play();
-                    Debug.LogError("shooting forward sparks");
+                    Debug.Log("shooting forward sparks");
                 }
                 else
                 {
-                    Debug.LogWarning("forward sparks already shooting");
+                    Debug.Log("forward sparks already shooting");
                 }
             }
             else if (vehicleBehavior.accel_magnitude_float < 0)
@@ -56,18 +56,18 @@ public class spark_script : MonoBehaviour
                 if (!spark_reverse_FR.isEmitting)
                 {
                     spark_reverse_FR.Play();
-                    Debug.LogError("shooting reverse sparks");
+                    Debug.Log("shooting reverse sparks");
                 }
                 else
                 {
-                    Debug.LogWarning("forward sparks already shooting");
+                    Debug.Log("forward sparks already shooting");
                 }
             }
             else
             {
                 spark_reverse_FR.Stop();
                 spark_forward_FR.Stop();
-                Debug.LogError("Not shooting sparks");
+                Debug.Log("Not shooting sparks");
             }
 
 
@@ -87,11 +87,11 @@ public class spark_script : MonoBehaviour
                 if (!spark_forward_FL.isEmitting)
                 {
                     spark_forward_FL.Play();
-                    Debug.LogError("shooting forward sparks");
+                    Debug.Log("shooting forward sparks");
                 }
                 else
                 {
-                    Debug.LogWarning("forward sparks already shooting");
+                    Debug.Log("forward sparks already shooting");
                 }
             }
             else if (vehicleBehavior.accel_magnitude_float < 0)
@@ -102,18 +102,18 @@ public class spark_script : MonoBehaviour
                 if (!spark_reverse_FL.isEmitting)
                 {
                     spark_reverse_FL.Play();
-                    Debug.LogError("shooting reverse sparks");
+                    Debug.Log("shooting reverse sparks");
                 }
                 else
                 {
-                    Debug.LogWarning("forward sparks already shooting");
+                    Debug.Log("forward sparks already shooting");
                 }
             }
             else
             {
                 spark_reverse_FL.Stop();
                 spark_forward_FL.Stop();
-                Debug.LogError("Not shooting sparks");
+                Debug.Log("Not shooting sparks");
             }
 
 
@@ -133,11 +133,11 @@ public class spark_script : MonoBehaviour
                 if (!spark_forward_RR.isEmitting)
                 {
                     spark_forward_RR.Play();
-                    Debug.LogError("shooting forward sparks");
+                    Debug.Log("shooting forward sparks");
                 }
                 else
                 {
-                    Debug.LogWarning("forward sparks already shooting");
+                    Debug.Log("forward sparks already shooting");
                 }
             }
             else if (vehicleBehavior.accel_magnitude_float < 0)
@@ -148,18 +148,18 @@ public class spark_script : MonoBehaviour
                 if (!spark_reverse_RR.isEmitting)
                 {
                     spark_reverse_RR.Play();
-                    Debug.LogError("shooting reverse sparks");
+                    Debug.Log("shooting reverse sparks");
                 }
                 else
                 {
-                    Debug.LogWarning("forward sparks already shooting");
+                    Debug.Log("forward sparks already shooting");
                 }
             }
             else
             {
                 spark_reverse_RR.Stop();
                 spark_forward_RR.Stop();
-                Debug.LogError("Not shooting sparks");
+                Debug.Log("Not shooting sparks");
             }
 
 
@@ -179,11 +179,11 @@ public class spark_script : MonoBehaviour
                 if (!spark_forward_RL.isEmitting)
                 {
                     spark_forward_RL.Play();
-                    Debug.LogError("shooting forward sparks");
+                    Debug.Log("shooting forward sparks");
                 }
                 else
                 {
-                    Debug.LogWarning("forward sparks already shooting");
+                    Debug.Log("forward sparks already shooting");
                 }
             }
             else if (vehicleBehavior.accel_magnitude_float < 0)
@@ -194,18 +194,18 @@ public class spark_script : MonoBehaviour
                 if (!spark_reverse_RL.isEmitting)
                 {
                     spark_reverse_RL.Play();
-                    Debug.LogError("shooting reverse sparks");
+                    Debug.Log("shooting reverse sparks");
                 }
                 else
                 {
-                    Debug.LogWarning("forward sparks already shooting");
+                    Debug.Log("forward sparks already shooting");
                 }
             }
             else
             {
                 spark_reverse_RL.Stop();
                 spark_forward_RL.Stop();
-                Debug.LogError("Not shooting sparks");
+                Debug.Log("Not shooting sparks");
             }
 
 
