@@ -103,7 +103,8 @@ public class VehicleLapData : MonoBehaviour
     }
     private void Update()
     {
-        if (!vehicleBehavior.isControllerInitialized) return;
+        //if (!vehicleBehavior.isControllerInitialized) return;
+        if (!vehicleBehavior.playerHUD.simpleCharacterSeleciton.isCharacterSelected) return;
         //if (!GameLogicManager.Instance.IsGameStarted) return;
         //if (GameLogicManager.Instance.IsGameFinished) return;
 

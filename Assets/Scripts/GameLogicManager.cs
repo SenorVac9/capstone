@@ -24,7 +24,7 @@ public class GameLogicManager : MonoBehaviour
     {
         foreach (VehicleBehavior flickballarenaPlayer in ControllerHandler.Instance.vehicles)
         {
-            if (flickballarenaPlayer.isControllerInitialized)
+            if (flickballarenaPlayer.playerHUD.simpleCharacterSeleciton.isCharacterSelected)
             {
                 if (flickballarenaPlayer.GetComponent<VehicleLapData>().IsPlayerFinishedRace == false)
                 {
@@ -41,7 +41,7 @@ public class GameLogicManager : MonoBehaviour
     {
         foreach (VehicleBehavior v in ControllerHandler.Instance.vehicles)
         {
-            if (v.isControllerInitialized)
+            if (v.playerHUD.simpleCharacterSeleciton.isCharacterSelected)
             {
                 if (!v.GetComponent<VehicleLapData>().IsPlayerFinishedRace)
                 {
