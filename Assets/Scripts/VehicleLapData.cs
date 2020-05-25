@@ -30,13 +30,14 @@ public class VehicleLapData : MonoBehaviour
 
     VehicleBehavior vehicleBehavior;
 
-    Transform leg1, leg2, leg3, leg4;
+    Transform leg1, leg2, leg3, leg4, lapTransform;
 
     SimpleUI playerHUD;
 
     GameObject[] allPlayers;
     int currentPlacement;
 
+    public Vector3 lastCheckPoint;
 
     void Awake()
     {
@@ -46,6 +47,7 @@ public class VehicleLapData : MonoBehaviour
         currentLegID = LegId.Zero;
         legDatas = GameObject.FindObjectsOfType<LegTriggerBehavior>();
         lapManager = GameObject.FindObjectOfType<LapManager>();
+        lapTransform = lapManager.transform;
         vehicleBehavior = GetComponent<VehicleBehavior>();
         playerHUD = GetComponent<VehicleBehavior>().playerHUD;
 
@@ -103,7 +105,8 @@ public class VehicleLapData : MonoBehaviour
     }
     private void Update()
     {
-        if (!vehicleBehavior.isControllerInitialized) return;
+        //if (!vehicleBehavior.isControllerInitialized) return;
+        if (!vehicleBehavior.playerHUD.simpleCharacterSeleciton.isCharacterSelected) return;
         //if (!GameLogicManager.Instance.IsGameStarted) return;
         //if (GameLogicManager.Instance.IsGameFinished) return;
 
@@ -233,5 +236,23 @@ public class VehicleLapData : MonoBehaviour
     public void ResetLapTime()
     {
         playerLapTime = 0;
+    }
+
+    public Transform GetRespawnTransform()
+    {
+        switch (currentLegID)
+        {
+            case LegId.Zero:
+                return lapTransform;
+            case LegId.One:
+                return leg1;
+            case LegId.Two:
+                return leg2;
+            case LegId.Three:
+                return leg3;
+            default:
+                return lapTransform;
+                break;
+        }
     }
 }
