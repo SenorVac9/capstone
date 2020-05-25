@@ -7,7 +7,6 @@ using Assets.MultiAudioListener;
 
 namespace ModuloKart.CustomVehiclePhysics
 {
-
     public enum InputType
     {
         KeyboardAndMouse,
@@ -49,6 +48,7 @@ namespace ModuloKart.CustomVehiclePhysics
         public float length_float = 6f;
         public float height_float = 2f;
         public bool is_4wd = false;
+        public AVerySimpleEnumOfCharacters selectedCharacter;
 
         [Header("Cinematics")]
         public bool is_Cinematic_View;
@@ -230,7 +230,7 @@ namespace ModuloKart.CustomVehiclePhysics
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.name.StartsWith( "MilkSpill"))
+            if (other.gameObject.name.StartsWith("MilkSpill"))
             {
                 StartSpinOut();
             }
@@ -239,7 +239,8 @@ namespace ModuloKart.CustomVehiclePhysics
         private void FixedUpdate()
         {
             //InitializePlayerJoystick();
-            if (!isControllerInitialized) return;
+            //if (!isControllerInitialized) return;
+            if (!playerHUD.simpleCharacterSeleciton.isCharacterSelected) return;
             if (!GameManager.Instance.GameStart) return;
 
             VehicleGroundCheck();
@@ -375,11 +376,11 @@ namespace ModuloKart.CustomVehiclePhysics
             {
                 if (isCodeDebug)
                 {
-                    Debug.DrawRay(vehicle_transform.position, -tempUpVectorForSlopeMeasurement * height_float*2, Color.red);
-                    Debug.DrawRay(vehicle_transform.position + tempForwardVectorForSlopeMeasurement * length_float + tempRightVectorForSlopeMeasurement * width_float, -tempUpVectorForSlopeMeasurement * height_float, Color.red);
-                    Debug.DrawRay(vehicle_transform.position - tempForwardVectorForSlopeMeasurement * length_float - tempRightVectorForSlopeMeasurement * width_float, -tempUpVectorForSlopeMeasurement * height_float, Color.red);
-                    Debug.DrawRay(vehicle_transform.position + tempForwardVectorForSlopeMeasurement * length_float - tempRightVectorForSlopeMeasurement * width_float, -tempUpVectorForSlopeMeasurement * height_float, Color.red);
-                    Debug.DrawRay(vehicle_transform.position - tempForwardVectorForSlopeMeasurement * length_float + tempRightVectorForSlopeMeasurement * width_float, -tempUpVectorForSlopeMeasurement * height_float, Color.red);
+                    Debug.DrawRay(vehicle_transform.position, -tempUpVectorForSlopeMeasurement * height_float * 2, Color.red);
+                    Debug.DrawRay(vehicle_transform.position + tempForwardVectorForSlopeMeasurement * length_float + tempRightVectorForSlopeMeasurement * width_float, -tempUpVectorForSlopeMeasurement * (height_float + 0.1f), Color.red);
+                    Debug.DrawRay(vehicle_transform.position - tempForwardVectorForSlopeMeasurement * length_float - tempRightVectorForSlopeMeasurement * width_float, -tempUpVectorForSlopeMeasurement * (height_float + 0.1f), Color.red);
+                    Debug.DrawRay(vehicle_transform.position + tempForwardVectorForSlopeMeasurement * length_float - tempRightVectorForSlopeMeasurement * width_float, -tempUpVectorForSlopeMeasurement * (height_float + 0.1f), Color.red);
+                    Debug.DrawRay(vehicle_transform.position - tempForwardVectorForSlopeMeasurement * length_float + tempRightVectorForSlopeMeasurement * width_float, -tempUpVectorForSlopeMeasurement * (height_float + 0.1f), Color.red);
                 }
                 if (Physics.RaycastNonAlloc(ray, groundCheck_hits, dist, rayCast_layerMask) > 0)
                 {
@@ -419,26 +420,60 @@ namespace ModuloKart.CustomVehiclePhysics
             vehicle_rigidbody.useGravity = false;
             vehicle_rigidbody.useConeFriction = false;
 
-            if(accel_magnitude_float==0)
+            if (accel_magnitude_float == 0)
                 vehicle_rigidbody.isKinematic = true;
             else
                 vehicle_rigidbody.isKinematic = false;
 
             if (is_grounded)
             {
-                gravity_float = 0;
-                vehicle_transform.position += (vehicle_heading_transform.forward * accel_magnitude_float) * Time.fixedDeltaTime;
+                if (!isJump)
+                    gravity_float = 0;
+                vehicle_transform.position += (vehicle_heading_transform.forward * accel_magnitude_float - Vector3.up * gravity_float) * Time.fixedDeltaTime;
             }
             else
             {
-                gravity_float = gravity_float != 0 ? gravity_float += Time.fixedDeltaTime * gravity_float : gravity_float += Time.fixedDeltaTime * GRAVITY;
+                if (!isJump)
+                    gravity_float = gravity_float < max_gravity_float ? gravity_float += Time.fixedDeltaTime * GRAVITY : max_gravity_float;
+
                 if (gravity_float > max_gravity_float)
                 {
                     gravity_float = max_gravity_float;
                 }
                 vehicle_transform.position += (vehicle_heading_transform.forward * accel_magnitude_float - Vector3.up * gravity_float) * Time.fixedDeltaTime;
             }
+            //Jump();
+            if (isJump)
+            {
+                if (gravity_float > 0) gravity_float = 0;
+                gravity_float -= Time.fixedDeltaTime * GRAVITY;
+                if (gravity_float <= -250)
+                {
+                    isJump = false;
+                }
+            }
         }
+
+        Vector3 vert;
+        bool isJump;
+        float jumpTime;
+        public void Jump()
+        {
+            if (jumpTime<.1f)
+            {
+                jumpTime += Time.fixedDeltaTime;
+                isJump = true;
+                vert = Vector3.up * max_gravity_float * 10;
+                //gravity_float = -max_gravity_float * 10;
+                Debug.Log("Jump!: " + gravity_float);
+            }
+            else
+            {
+                jumpTime = 0;
+                vert = Vector3.zero;
+            }
+        }
+
         #endregion
 
         #region Steer Rotation Methods
@@ -833,7 +868,7 @@ namespace ModuloKart.CustomVehiclePhysics
         #endregion
 
         #region Spin Out Behavior
-        
+
         public void SpinOutBehavior()
         {
             if (!hasVehicleControl)
@@ -1394,8 +1429,6 @@ namespace ModuloKart.CustomVehiclePhysics
             Start();
         }
         #endregion
-
-
 
     }
 

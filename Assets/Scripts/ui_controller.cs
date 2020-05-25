@@ -56,7 +56,7 @@ public class ui_controller : MonoBehaviour
 
     }
 
-    bool allItemsGone()
+ public   bool allItemsGone()
     {
         if (!has_door_1 && !has_door_2 && !has_hood && !has_Maxine_extra && !has_Milk && !has_tire_1 && !has_tire_2 && !has_tire_3 && !has_tire_4)
         {
@@ -99,7 +99,8 @@ public class ui_controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!vechicle.GetComponent<VehicleBehavior>().isControllerInitialized) return;
+        //if (!vechicle.GetComponent<VehicleBehavior>().isControllerInitialized) return;
+        if (!vechicle.GetComponent<VehicleBehavior>().playerHUD.simpleCharacterSeleciton.isCharacterSelected) return;
 
         if (Input.GetButtonDown(vechicle.GetComponent<VehicleBehavior>().input_ItemNext))
         {
@@ -276,7 +277,7 @@ public class ui_controller : MonoBehaviour
             }   
             else if (ui_item[item_selected].gameObject.tag== "Maxine_Extra_Parts")
             {
-                if(item_selected==8)
+                if(has_Maxine_extra)
                 {
                     vehicleBehaviour.GetComponentInChildren<Player_Maxine>().Maxine_Extrapart();
                     Debug.Log("Used Maxine spl");
