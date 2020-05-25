@@ -240,6 +240,7 @@ namespace ModuloKart.PlayerSelectionMenu
                 switch (numPlayerOption)
                 {
                     case NumPlayerOption.players1:
+                        //ask if they wanna race ghost
                         ButtonBehavior_LoadGameScene();
                         break;
                     case NumPlayerOption.players2:
