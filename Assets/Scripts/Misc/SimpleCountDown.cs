@@ -18,6 +18,9 @@ namespace ModuloKart.CountDown
         private void Awake()
         {
             Instance = this;
+            bg_CountDown.enabled = false;
+            CountDown.enabled = false;
+            LabelReadyUp.enabled = false;
         }
 
         public void StartCountDown()
@@ -33,6 +36,10 @@ namespace ModuloKart.CountDown
         IEnumerator StartCountDownCoroutine()
         {
             LabelReadyUp.gameObject.SetActive(false);
+
+            CountDown.enabled = true;
+            bg_CountDown.enabled = true;
+            LabelReadyUp.enabled = true;
 
             CountDown.text = "3";
             yield return new WaitForSeconds(1);
