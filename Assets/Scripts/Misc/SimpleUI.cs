@@ -11,7 +11,7 @@ namespace ModuloKart.HUD
     {
         VehicleBehavior[] vehicleBehaviors;
         [HideInInspector] public VehicleBehavior vehicleBehavior;
-        [HideInInspector] public SimpleCharacterSelection simpleCharacterSeleciton;
+        public SimpleCharacterSelection simpleCharacterSeleciton;
         public int PlayerID;
         public Text Value_Velocity;
         public Text Value_Nitros;
@@ -33,7 +33,8 @@ namespace ModuloKart.HUD
         private void Start()
         {
             simpleCharacterSeleciton = GetComponent<SimpleCharacterSelection>();
-
+            if (simpleCharacterSeleciton)
+                Debug.Log("Has Character Selection");
             vehicleBehaviors = GameObject.FindObjectsOfType<VehicleBehavior>();
             foreach (VehicleBehavior v in vehicleBehaviors)
             {
