@@ -120,23 +120,29 @@ public class VehicleLapData : MonoBehaviour
                 vehicleBehavior.playerHUD.TextGameOver.text = "RACE COMPLETED\nWAITING FOR ALL PLAYERS TO FINISH";
 
                 GameLogicManager.Instance.SetIsPlayerFinished();
+
                 switch ((lapManager.racersfinished))
                 {
                     case 1:
                         saveGameManager.GameState.FirstRaceTime = playerRaceTime;
                         saveGameManager.GameState.FirstPlaceID = vehicleBehavior.PlayerID;
+                        saveGameManager.GameState.P1Character = playerHUD.gameObject.GetComponent<SimpleCharacterSelection>().whichCharacterDidISelectDuringTheGameScene;
+                       
                         break;
                     case 2:
                         saveGameManager.GameState.SecondRaceTime = playerRaceTime;
                         saveGameManager.GameState.SecondPlaceID = vehicleBehavior.PlayerID;
+                        saveGameManager.GameState.P2Character = playerHUD.gameObject.GetComponent<SimpleCharacterSelection>().whichCharacterDidISelectDuringTheGameScene;
                         break;
                     case 3:
                         saveGameManager.GameState.ThirdRaceTime = playerRaceTime;
                         saveGameManager.GameState.ThirdPlaceID = vehicleBehavior.PlayerID;
+                        saveGameManager.GameState.P3Character = playerHUD.gameObject.GetComponent<SimpleCharacterSelection>().whichCharacterDidISelectDuringTheGameScene;
                         break;
                     case 4:
                         saveGameManager.GameState.FourthRaceTime = playerRaceTime;
                         saveGameManager.GameState.FourthPlaceID = vehicleBehavior.PlayerID;
+                        saveGameManager.GameState.P4Character = playerHUD.gameObject.GetComponent<SimpleCharacterSelection>().whichCharacterDidISelectDuringTheGameScene;
                         break;
                 }
 
@@ -148,6 +154,7 @@ public class VehicleLapData : MonoBehaviour
             }
             else if (GameLogicManager.Instance.CheckEveryPlayerFinished() && timer <= 0)
             {
+                saveGameManager.GameState.numPlayer = lapManager.racersfinished;
                 GameObject.FindGameObjectWithTag("SaveGameManager").GetComponent<SaveGameManager>().Save();
 
                 timer = Time.time + 5.0f;
