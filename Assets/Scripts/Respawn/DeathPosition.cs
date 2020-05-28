@@ -17,9 +17,12 @@ public class DeathPosition : MonoBehaviour
             vehicleObj = other.gameObject;
             respawnTransform = vehicleObj.GetComponent<VehicleLapData>().GetRespawnTransform();
             other.transform.position = respawnTransform.position;
-            //vehicleObj.transform.forward = respawnTransform.forward;
-            //other.GetComponent<VehicleBehavior>().vehicle_heading_transform.forward = respawnTransform.forward;
-            //other.GetComponent<VehicleBehavior>().vehicle_heading_transform.rotation = Quaternion.Euler(0, other.GetComponent<VehicleBehavior>().vehicle_heading_transform.rotation.y, 0);
+
+            vehicleObj.GetComponent<VehicleBehavior>().accel_magnitude_float = 0;
+
+            vehicleObj.transform.forward = respawnTransform.forward;
+            other.GetComponent<VehicleBehavior>().vehicle_heading_transform.forward = respawnTransform.forward;
+            other.GetComponent<VehicleBehavior>().vehicle_heading_transform.rotation = Quaternion.Euler(0, other.GetComponent<VehicleBehavior>().vehicle_heading_transform.rotation.y, 0);
 
 
 
