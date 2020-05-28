@@ -168,7 +168,7 @@ namespace ModuloKart.CustomVehiclePhysics
             //axel_fr_transform = vehicle_model_transform.GetChild(1).GetChild(0).GetChild(2);
             //axel_fl_transform = vehicle_model_transform.GetChild(1).GetChild(0).GetChild(3);
 
-            vehicle_camera_transform = vehicle_heading_transform.GetChild(0);
+            //vehicle_camera_transform = vehicle_heading_transform.GetChild(0);
 
             if (vehicle_heading_transform.GetChild(0).GetComponent<PostProcessingBehaviour>() != null)
             {
