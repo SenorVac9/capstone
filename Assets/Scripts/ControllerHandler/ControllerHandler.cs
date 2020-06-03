@@ -12,7 +12,7 @@ namespace ModuloKart.Controls
     {
         public static ControllerHandler Instance;
 
-        [SerializeField] public VehicleBehavior[] vehicles;
+        public VehicleBehavior[] vehicles;
         [HideInInspector] public VehicleBehavior vehicle1;
         [HideInInspector] public VehicleBehavior vehicle2;
         [HideInInspector] public VehicleBehavior vehicle3;
