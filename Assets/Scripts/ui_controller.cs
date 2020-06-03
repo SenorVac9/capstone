@@ -99,8 +99,7 @@ public class ui_controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (!vechicle.GetComponent<VehicleBehavior>().isControllerInitialized) return;
-        if (!vechicle.GetComponent<VehicleBehavior>().playerHUD.simpleCharacterSeleciton.isCharacterSelected) return;
+        if (!vechicle.GetComponent<VehicleBehavior>().isControllerInitialized) return;
 
         if (Input.GetButtonDown(vechicle.GetComponent<VehicleBehavior>().input_ItemNext))
         {

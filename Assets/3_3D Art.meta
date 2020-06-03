@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/3_3D Art.meta
 guid: 268799e46a2cdf543829851047b5831e
+=======
+guid: 77e22accf4cbbc84aa6b4a48567ffdee
+>>>>>>> parent of 5df181c... Merge pull request #66 from JunkinDriversGameDev/peter:Assets/Materials/Metallic.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

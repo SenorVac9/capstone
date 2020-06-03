@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/3_3D Art/carlos.meta
 guid: 81de0c9399384aa449adceb9928cfcfe
+=======
+guid: 19653b7bf41a1654391ff89aa3b894b8
+>>>>>>> parent of 5df181c... Merge pull request #66 from JunkinDriversGameDev/peter:Assets/Resources/MapCam.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

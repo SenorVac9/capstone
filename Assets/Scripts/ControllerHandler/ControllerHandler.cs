@@ -131,8 +131,7 @@ namespace ModuloKart.Controls
 
                     LapManager.Instance.AddPlayerToScoreList(playerID: vehicle1.PlayerID);
                     assignedControllerCount++;
-
-                   // GameManager.Instance.ReadyUp();
+                    GameManager.Instance.ReadyUp();
                 }
             }
             else if (vehicle2.JoyStick == -1)
@@ -157,7 +156,7 @@ namespace ModuloKart.Controls
 
                     LapManager.Instance.AddPlayerToScoreList(playerID: vehicle2.PlayerID);
                     assignedControllerCount++;
-                  //  GameManager.Instance.ReadyUp();
+                    GameManager.Instance.ReadyUp();
                 }
             }
             else if (vehicle3.JoyStick == -1)
@@ -182,7 +181,7 @@ namespace ModuloKart.Controls
 
                     LapManager.Instance.AddPlayerToScoreList(playerID: vehicle3.PlayerID);
                     assignedControllerCount++;
-                   // GameManager.Instance.ReadyUp();
+                    GameManager.Instance.ReadyUp();
                 }
             }
             else if (vehicle4.JoyStick == -1)
@@ -207,7 +206,7 @@ namespace ModuloKart.Controls
 
                     LapManager.Instance.AddPlayerToScoreList(playerID: vehicle4.PlayerID);
                     assignedControllerCount++;
-                 //   GameManager.Instance.ReadyUp();
+                    GameManager.Instance.ReadyUp();
                 }
             }
 

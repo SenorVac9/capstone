@@ -24,8 +24,12 @@ public class GameLogicManager : MonoBehaviour
     {
         foreach (VehicleBehavior flickballarenaPlayer in ControllerHandler.Instance.vehicles)
         {
+<<<<<<< HEAD
             if (!flickballarenaPlayer.playerHUD.simpleCharacterSeleciton) continue;
             if (flickballarenaPlayer.playerHUD.simpleCharacterSeleciton.isCharacterSelected)
+=======
+            if (flickballarenaPlayer.isControllerInitialized)
+>>>>>>> parent of 5df181c... Merge pull request #66 from JunkinDriversGameDev/peter
             {
                 if (flickballarenaPlayer.GetComponent<VehicleLapData>().IsPlayerFinishedRace == false)
                 {
@@ -42,8 +46,12 @@ public class GameLogicManager : MonoBehaviour
     {
         foreach (VehicleBehavior v in ControllerHandler.Instance.vehicles)
         {
+<<<<<<< HEAD
             if (!v.playerHUD.simpleCharacterSeleciton) continue;
             if (v.playerHUD.simpleCharacterSeleciton.isCharacterSelected)
+=======
+            if (v.isControllerInitialized)
+>>>>>>> parent of 5df181c... Merge pull request #66 from JunkinDriversGameDev/peter
             {
                 if (!v.GetComponent<VehicleLapData>().IsPlayerFinishedRace)
                 {

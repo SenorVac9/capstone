@@ -11,7 +11,10 @@ namespace ModuloKart.HUD
     {
         VehicleBehavior[] vehicleBehaviors;
         [HideInInspector] public VehicleBehavior vehicleBehavior;
+<<<<<<< HEAD
         public SimpleCharacterSelection simpleCharacterSeleciton;
+=======
+>>>>>>> parent of 5df181c... Merge pull request #66 from JunkinDriversGameDev/peter
         public int PlayerID;
         public Text Value_Velocity;
         public Text Value_Nitros;
@@ -30,18 +33,21 @@ namespace ModuloKart.HUD
         public GameObject WrongDirectionWarning;
         public GameObject placeshower;
 
+
         private void Start()
         {
+<<<<<<< HEAD
             simpleCharacterSeleciton = GetComponent<SimpleCharacterSelection>();
             if (simpleCharacterSeleciton)
                 Debug.Log("Has Character Selection");
+=======
+>>>>>>> parent of 5df181c... Merge pull request #66 from JunkinDriversGameDev/peter
             vehicleBehaviors = GameObject.FindObjectsOfType<VehicleBehavior>();
             foreach (VehicleBehavior v in vehicleBehaviors)
             {
                 if (v.PlayerID == PlayerID)
                 {
                     vehicleBehavior = v;
-                    //simpleCharacterSeleciton.BeginCharacterSelection(vehicleBehavior);
                 }
             }
         }
