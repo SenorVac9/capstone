@@ -12,6 +12,7 @@ public enum AVerySimpleEnumOfCharacters
     Second_The_Best = 2,
     Third_The_One_With_The_Hairy_Chest = 3,
     Maxine = 4,
+    NotInGame = 0
 }
 
 public class SimpleCharacterSelection : MonoBehaviour
