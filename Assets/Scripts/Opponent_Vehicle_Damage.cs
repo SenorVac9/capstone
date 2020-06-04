@@ -57,6 +57,34 @@ public class Opponent_Vehicle_Damage : MonoBehaviour
                     //Randomly Detaches any one caar part when collided with an obstacles
                     int randLostPartindex = Random.Range(0, carParts.Count - 1);
                     lostPart = carParts[randLostPartindex];//carParts[Random.Range(0, carParts.Count - 1)];
+
+                    //AUDIO STUFF
+                    //Calling the audio based on the character selected
+                    //It checks which character has been selected and play accordingly
+                    //IF Maxime
+                    if (vehicleBehavior.playerHUD.simpleCharacterSeleciton.whichCharacterDidISelectDuringTheGameScene == AVerySimpleEnumOfCharacters.Maxine)
+                    {
+                        AudioManager.instance.Play("Maxime_Hit");
+                    }
+
+                    //IF Felix
+                    if (vehicleBehavior.playerHUD.simpleCharacterSeleciton.whichCharacterDidISelectDuringTheGameScene == AVerySimpleEnumOfCharacters.Felix)
+                    {
+                        AudioManager.instance.Play("Felix_Hit");
+                    }
+
+                    //IF Paul
+                    if (vehicleBehavior.playerHUD.simpleCharacterSeleciton.whichCharacterDidISelectDuringTheGameScene == AVerySimpleEnumOfCharacters.Paul)
+                    {
+                        AudioManager.instance.Play("Paul_Hit");
+                    }
+
+                    //IF Toby
+                    if (vehicleBehavior.playerHUD.simpleCharacterSeleciton.whichCharacterDidISelectDuringTheGameScene == AVerySimpleEnumOfCharacters.Toby)
+                    {
+                        AudioManager.instance.Play("Toby_Hit");
+                    }
+
                     if (carParts != null)
                     {
                         

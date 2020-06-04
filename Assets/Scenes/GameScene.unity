@@ -17534,6 +17534,180 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - audioName: Maxime_Hit
+    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Felix_Hit
+    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Paul_Hit
+    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Toby_Hit
+    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Maxime_Throw_Tire
+    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Felix_Throw_Tire
+    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Paul_Throw_Tire
+    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Toby_Throw_Tire
+    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Drift
+    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Drift
+    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Drift
+    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Drift
+    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Drift
+    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Drift
+    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Drift
+    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Drift
+    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Drift
+    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Drift
+    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Drift
+    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Drift
+    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Drift
+    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Drift
+    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Drift
+    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Drift
+    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Drift
+    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Drift
+    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Drift
+    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Drift
+    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Drift
+    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!1 &850770755
 GameObject:
   m_ObjectHideFlags: 0
