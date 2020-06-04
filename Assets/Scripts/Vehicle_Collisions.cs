@@ -66,6 +66,7 @@ public class Vehicle_Collisions : MonoBehaviour
                 if (!isLimitCollision)
                 {
                     isLimitCollision = true;
+                    StartCoroutine(PreventPartCollision());
                     vehicleBehavior.hasVehicleControl = false;
                     vehicleBehavior.accel_magnitude_float = 0;
                     vehicleBehavior.SpinOutBehavior();
@@ -86,31 +87,31 @@ public class Vehicle_Collisions : MonoBehaviour
                     {
                         case 0:
                             ui_Controller.has_tire_1 = false;
-                            ui_Controller.ui_item[0].SetActive(false);
+                            //ui_Controller.ui_item[0].SetActive(false);
                             break;
                         case 2:
                             ui_Controller.has_tire_2 = false;
-                            ui_Controller.ui_item[1].SetActive(false);
+                            //ui_Controller.ui_item[1].SetActive(false);
                             break;
                         case 5:
                             ui_Controller.has_tire_3 = false;
-                            ui_Controller.ui_item[5].SetActive(false);
+                            //ui_Controller.ui_item[5].SetActive(false);
                             break;
                         case 7:
                             ui_Controller.has_tire_4 = false;
-                            ui_Controller.ui_item[7].SetActive(false);
+                            //ui_Controller.ui_item[7].SetActive(false);
                             break;
                         case 6:
                             ui_Controller.has_Milk = false;
-                            ui_Controller.ui_item[6].SetActive(false);
+                            //ui_Controller.ui_item[6].SetActive(false);
                             break;
                         case 3:
                             ui_Controller.has_door_1 = false;
-                            ui_Controller.ui_item[3].SetActive(false);
+                            //ui_Controller.ui_item[3].SetActive(false);
                             break;
                         case 4:
                             ui_Controller.has_door_2 = false;
-                            ui_Controller.ui_item[4].SetActive(false);
+                            //ui_Controller.ui_item[4].SetActive(false);
                             break;
                         default:
                             Debug.Log("nothing happened");
@@ -153,6 +154,10 @@ public class Vehicle_Collisions : MonoBehaviour
         isLimitCollision = false;
         vehicleBehavior.hasVehicleControl = true;
 
+    }
+    IEnumerator PreventPartCollision()
+    {
+        yield return new WaitForSeconds(1);
     }
     private void OnCollisionStay(Collision collision)
     {

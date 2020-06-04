@@ -185,8 +185,8 @@ GameObject:
   - component: {fileID: 443800255}
   - component: {fileID: 2219710091349697472}
   - component: {fileID: 270310861}
-  - component: {fileID: 2703678531577850221}
   - component: {fileID: 3614991133007794912}
+  - component: {fileID: 1727199633756796981}
   m_Layer: 8
   m_Name: JunkinVehiclePrefab
   m_TagString: GameController
@@ -247,6 +247,7 @@ MonoBehaviour:
   wheel3: {fileID: 5194755951398006146}
   wheel4: {fileID: 4980507543750844109}
   hood: {fileID: 1798675936498290}
+  cam: {fileID: 0}
   isEditorGUI: 0
   keepTabsOpen: 1
   showRunTimeVariablesOnly: 0
@@ -408,31 +409,6 @@ MonoBehaviour:
   _minDistance: 1
   _maxDistance: 500
   OnlyPlayForClosestCamera: 0
---- !u!114 &2703678531577850221
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1165680260921162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aee8716726b91f4409911708c1f0b19f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  carParts:
-  - {fileID: 7380823106638228033}
-  - {fileID: 2331978931893722180}
-  - {fileID: 3643310411135238525}
-  - {fileID: 728961652150682458}
-  - {fileID: 8594615631966400972}
-  - {fileID: 5809609837662823139}
-  - {fileID: 174874482}
-  - {fileID: 3218124884432419742}
-  damageForce: 50000
-  dF: {fileID: 443800255}
-  crashSource: {fileID: 0}
-  crash: {fileID: 0}
 --- !u!114 &3614991133007794912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -455,6 +431,31 @@ MonoBehaviour:
   spark_reverse_FL: {fileID: 3567040856053908272}
   isforward: 0
   isreverse: 0
+--- !u!114 &1727199633756796981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1165680260921162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a67f4a5e91f75b94fa79d5bc8c2c8dd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carParts:
+  - {fileID: 7380823106638228033}
+  - {fileID: 2331978931893722180}
+  - {fileID: 3643310411135238525}
+  - {fileID: 728961652150682458}
+  - {fileID: 8594615631966400972}
+  - {fileID: 5809609837662823139}
+  - {fileID: 174874482}
+  - {fileID: 3218124884432419742}
+  damageForce: 5000
+  dF: {fileID: 443800255}
+  crashSource: {fileID: 0}
+  crash: {fileID: 0}
 --- !u!1 &1190379883037866
 GameObject:
   m_ObjectHideFlags: 0
@@ -1260,7 +1261,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 497068092888993770}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.75, y: 0, z: 0}
+  m_LocalPosition: {x: 13.25, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8005804398654680191}
@@ -2355,7 +2356,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2087283999988298974}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.828, y: 0.703, z: 0.214}
+  m_LocalPosition: {x: -1.38, y: 0.703, z: 0.214}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children:
   - {fileID: 8914708583944104501}
@@ -4069,7 +4070,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3757508555496000170}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.26, y: 0, z: -8.56}
+  m_LocalPosition: {x: -0.52, y: 0, z: -7.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8005804398654680191}
@@ -4309,7 +4310,6 @@ MonoBehaviour:
   Maxine_part_spawnpoint2: {fileID: 2325465872924756421}
   Part1: {fileID: 6941023959656063515, guid: e395dace9943b19488c54093ffdfb964, type: 3}
   Part2: {fileID: 6941023959656063515, guid: 154e59b1157400e40b848fcb44332a7f, type: 3}
-  P_Part3: {fileID: 6941023959656063515, guid: e395dace9943b19488c54093ffdfb964, type: 3}
   cam_p1: {fileID: 20147978221968630}
   speed: 0
 --- !u!1 &4346608468535577247
@@ -5222,7 +5222,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5387515058735749786}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 1.42, y: 0.1789999, z: -0.92}
+  m_LocalPosition: {x: 1.61, y: -0.211, z: -0.927}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children:
   - {fileID: 6410129552968792748}
@@ -5743,7 +5743,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5736092836083324238}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.9, y: 0, z: -8.73}
+  m_LocalPosition: {x: 13.44, y: 0, z: -7.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8005804398654680191}
@@ -5927,7 +5927,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5964223928804422331}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.88, y: -1.87, z: 0.3}
+  m_LocalPosition: {x: 10.38, y: -1.87, z: 0.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7875818876096824125}
@@ -8365,7 +8365,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8497172910201402577}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.924, z: -3.444}
+  m_LocalPosition: {x: 0, y: 1.924, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4071689955366572}
@@ -8858,10 +8858,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1226144165539522910}
     m_Modifications:
-    - target: {fileID: 100000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
-      propertyPath: m_Name
-      value: TyreBurnoutSmoke
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -8909,6 +8905,10 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
+      propertyPath: m_Name
+      value: TyreBurnoutSmoke
       objectReference: {fileID: 0}
     - target: {fileID: 1876785031727104935, guid: 98c58c8dd46640c49bb5f557afafea7c,
         type: 3}
@@ -9254,10 +9254,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7725178297829727477}
     m_Modifications:
-    - target: {fileID: 100000, guid: 921a3ff88856fe04ebc86b196fd8cc59, type: 3}
-      propertyPath: m_Name
-      value: Smoke
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 921a3ff88856fe04ebc86b196fd8cc59, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.361
@@ -9302,6 +9298,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 921a3ff88856fe04ebc86b196fd8cc59, type: 3}
+      propertyPath: m_Name
+      value: Smoke
+      objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 921a3ff88856fe04ebc86b196fd8cc59, type: 3}
       propertyPath: lengthInSec
       value: 125.87
@@ -9321,10 +9321,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3036716658092913401}
     m_Modifications:
-    - target: {fileID: 100000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
-      propertyPath: m_Name
-      value: TyreBurnoutSmoke
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -9369,6 +9365,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
+      propertyPath: m_Name
+      value: TyreBurnoutSmoke
+      objectReference: {fileID: 0}
     - target: {fileID: 1876785031727104935, guid: 98c58c8dd46640c49bb5f557afafea7c,
         type: 3}
       propertyPath: vehicleBehavior
@@ -9389,10 +9389,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8501409009365990271}
     m_Modifications:
-    - target: {fileID: 100000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
-      propertyPath: m_Name
-      value: TyreBurnoutSmoke
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -9441,6 +9437,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
+      propertyPath: m_Name
+      value: TyreBurnoutSmoke
+      objectReference: {fileID: 0}
     - target: {fileID: 1876785031727104935, guid: 98c58c8dd46640c49bb5f557afafea7c,
         type: 3}
       propertyPath: vehicleBehavior
@@ -9461,11 +9461,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8063753436073107878}
     m_Modifications:
-    - target: {fileID: 8761066532264796731, guid: 3653020573faccf45a880ebcaee0c348,
-        type: 3}
-      propertyPath: m_Name
-      value: Sparks_Reverse_FL
-      objectReference: {fileID: 0}
     - target: {fileID: 7026825691517956785, guid: 3653020573faccf45a880ebcaee0c348,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9521,6 +9516,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8761066532264796731, guid: 3653020573faccf45a880ebcaee0c348,
+        type: 3}
+      propertyPath: m_Name
+      value: Sparks_Reverse_FL
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3653020573faccf45a880ebcaee0c348, type: 3}
 --- !u!4 &2866039547509752361 stripped
@@ -9542,11 +9542,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5075671628867370310}
     m_Modifications:
-    - target: {fileID: 8761066532264796731, guid: 49e5b7b2889632f4fadfbe92ac86a9b9,
-        type: 3}
-      propertyPath: m_Name
-      value: Sparks_Forward_RR
-      objectReference: {fileID: 0}
     - target: {fileID: 7026825691517956785, guid: 49e5b7b2889632f4fadfbe92ac86a9b9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9602,6 +9597,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8761066532264796731, guid: 49e5b7b2889632f4fadfbe92ac86a9b9,
+        type: 3}
+      propertyPath: m_Name
+      value: Sparks_Forward_RR
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49e5b7b2889632f4fadfbe92ac86a9b9, type: 3}
 --- !u!198 &3444757158227853934 stripped
@@ -9623,11 +9623,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8063753436073107878}
     m_Modifications:
-    - target: {fileID: 8761066532264796731, guid: 66daf70d6396e7a439fbf66b92adffe5,
-        type: 3}
-      propertyPath: m_Name
-      value: Sparks_Forward_FL
-      objectReference: {fileID: 0}
     - target: {fileID: 7026825691517956785, guid: 66daf70d6396e7a439fbf66b92adffe5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9683,6 +9678,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8761066532264796731, guid: 66daf70d6396e7a439fbf66b92adffe5,
+        type: 3}
+      propertyPath: m_Name
+      value: Sparks_Forward_FL
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66daf70d6396e7a439fbf66b92adffe5, type: 3}
 --- !u!198 &2054242417944424548 stripped
@@ -9704,11 +9704,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5075671628867370310}
     m_Modifications:
-    - target: {fileID: 8761066532264796731, guid: 42d11a7899fb3974f9db4cc828a5e766,
-        type: 3}
-      propertyPath: m_Name
-      value: Sparks_Reverse_RR
-      objectReference: {fileID: 0}
     - target: {fileID: 7026825691517956785, guid: 42d11a7899fb3974f9db4cc828a5e766,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9764,6 +9759,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8761066532264796731, guid: 42d11a7899fb3974f9db4cc828a5e766,
+        type: 3}
+      propertyPath: m_Name
+      value: Sparks_Reverse_RR
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42d11a7899fb3974f9db4cc828a5e766, type: 3}
 --- !u!4 &736099414472282129 stripped
@@ -9785,10 +9785,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4841766516257184}
     m_Modifications:
-    - target: {fileID: 100000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
-      propertyPath: m_Name
-      value: TyreBurnoutSmoke
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -9836,6 +9832,10 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
+      propertyPath: m_Name
+      value: TyreBurnoutSmoke
       objectReference: {fileID: 0}
     - target: {fileID: 1876785031727104935, guid: 98c58c8dd46640c49bb5f557afafea7c,
         type: 3}
