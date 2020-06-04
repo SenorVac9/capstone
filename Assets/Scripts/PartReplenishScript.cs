@@ -10,6 +10,7 @@ public class PartReplenishScript : MonoBehaviour
     //variables needed
     bool retry;
     public GameObject player;
+    public GameObject Pickup;
     // public GameObject hud;
     int partBack;
     public VehicleBehavior car;
@@ -18,14 +19,13 @@ public class PartReplenishScript : MonoBehaviour
     Collider ThisCollider;
     //I had to make the bools in "ui_controller.cs" public
 
+
     // Start is called before the first frame update
     void Start()
     {
-
+        Pickup = GameObject.FindWithTag("Pickup");
         Debug.Log("Randomizer Active");
-
-
-
+  
     }
 
     // Update is called once per frame
@@ -212,7 +212,16 @@ public class PartReplenishScript : MonoBehaviour
             Debug.Log("We have no 'Heads up' Object");
             return;
         }
-        Destroy(gameObject);
+        
+        StartCoroutine(PickupRespawn());
+
+    }
+
+    IEnumerator PickupRespawn()
+    {
+        Pickup.SetActive(false);       
+        yield return new WaitForSeconds(2);
+        Pickup.SetActive(true);
     }
 }
 
