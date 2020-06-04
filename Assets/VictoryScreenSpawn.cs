@@ -38,16 +38,16 @@ public class VictoryScreenSpawn : MonoBehaviour
             character = SaveManager.GameState.P1Character;
             switch (character)
             {
+                case AVerySimpleEnumOfCharacters.Felix:
+                    Instantiate(Felix, First.position, First.rotation);
+                    break;
+                case AVerySimpleEnumOfCharacters.Toby:
+                    Instantiate(Toby, First.position, First.rotation);
+                    break;
                 case AVerySimpleEnumOfCharacters.Maxine:
                     Instantiate(Maxine, First.position, First.rotation);
                     break;
-                case AVerySimpleEnumOfCharacters.First_The_Worst:
-                    Instantiate(Felix, First.position, First.rotation);
-                    break;
-                case AVerySimpleEnumOfCharacters.Second_The_Best:
-                    Instantiate(Toby, First.position, First.rotation);
-                    break;
-                case AVerySimpleEnumOfCharacters.Third_The_One_With_The_Hairy_Chest:
+                case AVerySimpleEnumOfCharacters.Paul:
                     Instantiate(Paul, First.position, First.rotation);
                     break;
 
@@ -58,16 +58,16 @@ public class VictoryScreenSpawn : MonoBehaviour
             character = SaveManager.GameState.P2Character;
             switch (character)
             {
-                case AVerySimpleEnumOfCharacters.Maxine:
-                    Instantiate(Maxine, Second.position, Second.rotation);
-                    break;
-                case AVerySimpleEnumOfCharacters.First_The_Worst:
+                case AVerySimpleEnumOfCharacters.Felix:
                     Instantiate(Felix, Second.position, Second.rotation);
                     break;
-                case AVerySimpleEnumOfCharacters.Second_The_Best:
+                case AVerySimpleEnumOfCharacters.Toby:
                     Instantiate(Toby, Second.position, Second.rotation);
                     break;
-                case AVerySimpleEnumOfCharacters.Third_The_One_With_The_Hairy_Chest:
+                case AVerySimpleEnumOfCharacters.Maxine:
+                    Instantiate(Toby, Second.position, Second.rotation);
+                    break;
+                case AVerySimpleEnumOfCharacters.Paul:
                     Instantiate(Paul, Second.position, Second.rotation);
                     break;
 
@@ -78,16 +78,16 @@ public class VictoryScreenSpawn : MonoBehaviour
             character = SaveManager.GameState.P3Character;
             switch (character)
             {
-                case AVerySimpleEnumOfCharacters.Maxine:
-                    Instantiate(Maxine, Third.position, Third.rotation);
-                    break;
-                case AVerySimpleEnumOfCharacters.First_The_Worst:
+                case AVerySimpleEnumOfCharacters.Felix:
                     Instantiate(Felix, Third.position, Third.rotation);
                     break;
-                case AVerySimpleEnumOfCharacters.Second_The_Best:
+                case AVerySimpleEnumOfCharacters.Toby:
                     Instantiate(Toby, Third.position, Third.rotation);
                     break;
-                case AVerySimpleEnumOfCharacters.Third_The_One_With_The_Hairy_Chest:
+                case AVerySimpleEnumOfCharacters.Maxine:
+                    Instantiate(Toby, Third.position, Third.rotation);
+                    break;
+                case AVerySimpleEnumOfCharacters.Paul:
                     Instantiate(Paul, Third.position, Third.rotation);
                     break;
 
@@ -98,16 +98,16 @@ public class VictoryScreenSpawn : MonoBehaviour
             character = SaveManager.GameState.P4Character;
             switch (character)
             {
-                case AVerySimpleEnumOfCharacters.Maxine:
-                    Instantiate(Maxine, Fourth.position, Fourth.rotation);
-                    break;
-                case AVerySimpleEnumOfCharacters.First_The_Worst:
+                case AVerySimpleEnumOfCharacters.Felix:
                     Instantiate(Felix, Fourth.position, Fourth.rotation);
                     break;
-                case AVerySimpleEnumOfCharacters.Second_The_Best:
+                case AVerySimpleEnumOfCharacters.Toby:
                     Instantiate(Toby, Fourth.position, Fourth.rotation);
                     break;
-                case AVerySimpleEnumOfCharacters.Third_The_One_With_The_Hairy_Chest:
+                case AVerySimpleEnumOfCharacters.Maxine:
+                    Instantiate(Toby, Fourth.position, Fourth.rotation);
+                    break;
+                case AVerySimpleEnumOfCharacters.Paul:
                     Instantiate(Paul, Fourth.position, Fourth.rotation);
                     break;
 
