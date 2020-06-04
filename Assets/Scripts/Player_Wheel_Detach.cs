@@ -34,6 +34,33 @@ public class Player_Wheel_Detach : MonoBehaviour
     public void Throw_Wheel(int tirenum)
     {
 
+        //AUDIO STUFF
+        //Calling the audio based on the character selected
+        //It checks which character has been selected and play accordingly
+        //IF Maxime
+        if (vehicleBehavior.playerHUD.simpleCharacterSeleciton.whichCharacterDidISelectDuringTheGameScene == AVerySimpleEnumOfCharacters.Maxine)
+        {
+            AudioManager.instance.Play("Maxime_Throw_Tire");
+        }
+
+        //IF Felix
+        if (vehicleBehavior.playerHUD.simpleCharacterSeleciton.whichCharacterDidISelectDuringTheGameScene == AVerySimpleEnumOfCharacters.Felix)
+        {
+            AudioManager.instance.Play("Felix_Throw_Tire");
+        }
+
+        //IF Paul
+        if (vehicleBehavior.playerHUD.simpleCharacterSeleciton.whichCharacterDidISelectDuringTheGameScene == AVerySimpleEnumOfCharacters.Paul)
+        {
+            AudioManager.instance.Play("Paul_Throw_Tire");
+        }
+
+        //IF Toby
+        if (vehicleBehavior.playerHUD.simpleCharacterSeleciton.whichCharacterDidISelectDuringTheGameScene == AVerySimpleEnumOfCharacters.Toby)
+        {
+            AudioManager.instance.Play("Toby_Throw_Tire");
+        }
+
         /* 
          1 back left
          2 back right 
