@@ -48,6 +48,7 @@ namespace ModuloKart.CustomVehiclePhysics
         public float length_float = 6f;
         public float height_float = 2f;
         public bool is_4wd = false;
+        public AVerySimpleEnumOfCharacters selectedCharacter;
 
         [Header("Cinematics")]
         public bool is_Cinematic_View;
@@ -192,7 +193,7 @@ namespace ModuloKart.CustomVehiclePhysics
         //just add yags to colliders and keep the code as it is
 
         int isCollisionHit;
-        /*public void OnCollisionEnter(Collision c)
+        public void OnCollisionEnter(Collision c)
         {
             if (!GameManager.Instance.GameStart) return;
 
@@ -225,7 +226,7 @@ namespace ModuloKart.CustomVehiclePhysics
                 }
             }
             isCollisionHit = 0;
-        }*/
+        }
 
         private void OnTriggerEnter(Collider other)
         {
@@ -238,7 +239,8 @@ namespace ModuloKart.CustomVehiclePhysics
         private void FixedUpdate()
         {
             //InitializePlayerJoystick();
-            if (!isControllerInitialized) return;
+            //if (!isControllerInitialized) return;
+            if (!playerHUD.simpleCharacterSeleciton.isCharacterSelected) return;
             if (!GameManager.Instance.GameStart) return;
 
             VehicleGroundCheck();
