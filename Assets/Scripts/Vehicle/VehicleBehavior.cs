@@ -19,6 +19,7 @@ namespace ModuloKart.CustomVehiclePhysics
         [Header("Debug")]
         [SerializeField] public bool isCodeDebug = false;
         public GameObject wheel1, wheel2, wheel3, wheel4, hood;
+        SimpleCharacterSelection character;
 
         public bool isEditorGUI = false;
         public bool keepTabsOpen;
@@ -28,6 +29,7 @@ namespace ModuloKart.CustomVehiclePhysics
         private float pitch = 0;
         #region Public Variables
         [Header("Vehicle Components")]
+        public float extra_nitros_meter_float=0;
         public Transform vehicle_transform;
         public Rigidbody vehicle_rigidbody;
         public Transform vehicle_heading_transform;
@@ -157,6 +159,8 @@ namespace ModuloKart.CustomVehiclePhysics
 
         private void Start()
         {
+            character = GameObject.FindObjectOfType<SimpleCharacterSelection>();
+          
             //Caching variables
             //tempTransform = GameObject.FindGameObjectWithTag("TempTransform").transform;
             //vehicle_transform = GetComponent<Transform>();
@@ -168,7 +172,7 @@ namespace ModuloKart.CustomVehiclePhysics
             //axel_fr_transform = vehicle_model_transform.GetChild(1).GetChild(0).GetChild(2);
             //axel_fl_transform = vehicle_model_transform.GetChild(1).GetChild(0).GetChild(3);
 
-            vehicle_camera_transform = vehicle_heading_transform.GetChild(0);
+            //vehicle_camera_transform = vehicle_heading_transform.GetChild(0);
 
             if (vehicle_heading_transform.GetChild(0).GetComponent<PostProcessingBehaviour>() != null)
             {
@@ -185,6 +189,8 @@ namespace ModuloKart.CustomVehiclePhysics
             input_nitros = "NitroKey";
 
             hasVehicleControl = true;
+
+            
 
         }
 
@@ -991,8 +997,11 @@ namespace ModuloKart.CustomVehiclePhysics
                         vehicle_camera_transform.GetComponent<Camera>().fieldOfView += Time.fixedDeltaTime * pan_away_float;
                     }
                 }
-
-                nitros_meter_float = nitros_meter_float > 0 ? nitros_meter_float -= Time.fixedDeltaTime * nitros_depletion_rate : 0;
+                extra_nitros_meter_float = extra_nitros_meter_float > 0 ? extra_nitros_meter_float -= Time.fixedDeltaTime * nitros_depletion_rate : 0;
+                if (extra_nitros_meter_float <= 0)
+                {
+                    nitros_meter_float = nitros_meter_float > 0 ? nitros_meter_float -= Time.fixedDeltaTime * nitros_depletion_rate : 0;
+                }
 
             }
             else

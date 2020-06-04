@@ -8,17 +8,19 @@ using ModuloKart.CountDown;
 
 public enum AVerySimpleEnumOfCharacters
 {
-    First_The_Worst = 1,
-    Second_The_Best = 2,
-    Third_The_One_With_The_Hairy_Chest = 3,
+    Toby = 1,
+    Felix = 2,
+    Paul = 3,
     Maxine = 4,
+    NotInGame = 0
 }
 
 public class SimpleCharacterSelection : MonoBehaviour
 {
     public int PlayerID;
+    ui_controller ui;
     public bool isCharacterSelected;
-    public AVerySimpleEnumOfCharacters whichCharacterDidISelectDuringTheGameScene = AVerySimpleEnumOfCharacters.First_The_Worst;
+    public AVerySimpleEnumOfCharacters whichCharacterDidISelectDuringTheGameScene = AVerySimpleEnumOfCharacters.Toby;
     public Sprite[] CharacterSprites;
 
     public GameObject SimpleCharacterSelectionPanel;
@@ -108,7 +110,29 @@ public class SimpleCharacterSelection : MonoBehaviour
                 CharacterDisplayText.text += whichCharacterDidISelectDuringTheGameScene.ToString();
                 SimpleCharacterSelectionPanel.SetActive(false);
                 isCharacterSelected = true;
+                gameObject.GetComponentInChildren<ui_controller>().Initialize_Character(whichCharacterDidISelectDuringTheGameScene);
                 GameManager.Instance.ReadyUp();
+                if (whichCharacterDidISelectDuringTheGameScene == AVerySimpleEnumOfCharacters.Toby)
+                {
+                    vehicleBehavior.extra_nitros_meter_float= 25f;
+                    Debug.Log("nitro1" + vehicleBehavior.extra_nitros_meter_float);
+
+                }
+                if (whichCharacterDidISelectDuringTheGameScene == AVerySimpleEnumOfCharacters.Felix)
+                {
+                    vehicleBehavior.extra_nitros_meter_float = 50f;
+                    Debug.Log("nitro2" + vehicleBehavior.extra_nitros_meter_float);
+
+                }
+                if (whichCharacterDidISelectDuringTheGameScene == AVerySimpleEnumOfCharacters.Paul || whichCharacterDidISelectDuringTheGameScene==AVerySimpleEnumOfCharacters.Maxine)
+                {
+                    vehicleBehavior.extra_nitros_meter_float = 0f;
+                    Debug.Log("nitro3" + vehicleBehavior.extra_nitros_meter_float);
+
+                }
+
+
+
             }
         }
     }
@@ -129,6 +153,7 @@ public class SimpleCharacterSelection : MonoBehaviour
 
     private void Awake()
     {
+        ui = GameObject.FindObjectOfType<ui_controller>();
         InitCharacterSeleection();
     }
 

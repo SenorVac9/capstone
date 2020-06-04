@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Player_Maxine : MonoBehaviour
 {
-    public Transform Maxine_part_spawnpoint;
-    public GameObject Prefab1;
+    public Transform Maxine_part_spawnpoint1,Maxine_part_spawnpoint2;
+    public GameObject Part1,Part2;
     public Camera cam_p1;
     VehicleBehavior vehicleBehaviour;
     //public GameObject ui_part_extra;
@@ -23,15 +23,37 @@ public class Player_Maxine : MonoBehaviour
     {
         //Maxine_Extrapart();
     }
-    public void Maxine_Extrapart()
+    public void Maxine_Extrapart1()
     {
         
        
-            GameObject Extrapart = Instantiate(Prefab1) as GameObject;
-            Extrapart.transform.position = Maxine_part_spawnpoint.transform.position;
-            Rigidbody rb = Extrapart.GetComponent<Rigidbody>();
+            GameObject Extrapart1 = Instantiate(Part1) as GameObject;
+            Extrapart1.transform.position = Maxine_part_spawnpoint1.transform.position;
+            Rigidbody rb = Extrapart1.GetComponent<Rigidbody>();
             rb.velocity = cam_p1.transform.forward * -speed;
             //ui_part_extra.SetActive(false);
         
     }
+    public void Maxine_Extrapart2()
+    {
+
+
+        GameObject Extrapart2 = Instantiate(Part2) as GameObject;
+        Extrapart2.transform.position = Maxine_part_spawnpoint2.transform.position;
+        Rigidbody rb = Extrapart2.GetComponent<Rigidbody>();
+        rb.velocity = cam_p1.transform.forward * -speed;
+        //ui_part_extra.SetActive(false);
+
+    }
+   /* public void Toby_Extrapart()
+    {
+
+
+        GameObject Extrapart = Instantiate(P_Part3) as GameObject;
+        Extrapart.transform.position = Maxine_part_spawnpoint2.transform.position;
+        Rigidbody rb = Extrapart.GetComponent<Rigidbody>();
+        rb.velocity = cam_p1.transform.forward * -speed;
+        //ui_part_extra.SetActive(false);*/
+
+    //}
 }
