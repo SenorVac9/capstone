@@ -29,7 +29,12 @@ TagManager:
   - Maxine_Extra_Parts
   - JumpObject
   - PickupCollider
+<<<<<<< HEAD
+  - Toby_Extra_Part
+  - Paul_extrapart
+=======
   - Pickup
+>>>>>>> 1ef02b30bd1e5541dea92df303ec154e7037956e
   layers:
   - Default
   - TransparentFX
