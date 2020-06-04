@@ -66,6 +66,7 @@ namespace ModuloKart.Controls
             if (SceneManager.GetActiveScene().buildIndex == 3)
             {
                 LoadRaceData("GameData.xml");
+                Debug.Log("Player 1 played " + GameState.P1Character.ToString());
             }
 
 
@@ -77,12 +78,14 @@ namespace ModuloKart.Controls
         public class GhostData
         {
             public List<Vector3> ghostPostions;
-            public float ghostTime;
+            public float ghostTime=0;
+            public AVerySimpleEnumOfCharacters GhostCharacter;
         }
         public class RacerData
         {
             public float Lap1Time = 999, Lap2Time = 999, Lap3Time = 999;
             public int RacerID;
+           
         }
 
         public class GameStateData
@@ -91,7 +94,8 @@ namespace ModuloKart.Controls
             public float FirstRaceTime = 0, SecondRaceTime = 0, ThirdRaceTime = 0, FourthRaceTime = 0;
             public float oldGhostTime;
             public int numPlayer = 999;
-
+            public AVerySimpleEnumOfCharacters P1Character, P2Character, P3Character, P4Character = 0;
+            
         }
        
         public GameStateData GameState = new GameStateData();
@@ -168,7 +172,7 @@ namespace ModuloKart.Controls
                 newGhostPostions = Ghost.ghostPostions;
                 Ghost.ghostPostions = new List<Vector3>();
                 GhostLoaded = true;
-
+                
                 Debug.Log("Ghost Loaded");
 
             }
@@ -185,6 +189,7 @@ namespace ModuloKart.Controls
         public void SaveGhost()
         {
             Ghost.ghostTime = GameState.FirstRaceTime;
+            Ghost.GhostCharacter = GameState.P1Character;
             XmlSerializer Serializers = new XmlSerializer(typeof(GhostData));
             FileStream Streams = new FileStream("Ghost Data.xml", FileMode.Create);
             Serializers.Serialize(Streams, Ghost);
@@ -195,11 +200,7 @@ namespace ModuloKart.Controls
         {
             if (Ghost.ghostTime == 0 || GameState.FirstRaceTime <= Ghost.ghostTime)
             {
-                Ghost.ghostTime = GameState.FirstRaceTime;
-                XmlSerializer Serializers = new XmlSerializer(typeof(GhostData));
-                FileStream Streams = new FileStream("Ghost Data.xml", FileMode.Create);
-                Serializers.Serialize(Streams, Ghost);
-                Streams.Close();
+                SaveGhost();
             }
             else
                 Debug.Log("Ghost not updated");
@@ -239,14 +240,14 @@ namespace ModuloKart.Controls
             {
                 if(GameState.FirstPlaceID == -1)
                 {
-                    GameObject.FindGameObjectWithTag("first").GetComponent<TMPro.TextMeshProUGUI>().text = "Your previous fastest time was better by " + (GameState.SecondRaceTime - GameState.FirstRaceTime) + " seconds";
+                    GameObject.FindGameObjectWithTag("first").GetComponent<TMPro.TextMeshProUGUI>().text = "Your previous fastest time was better by " + Mathf.Abs(GameState.SecondRaceTime - GameState.FirstRaceTime) + " seconds";
                 }
                 else
                 {
                     if(GameObject.FindGameObjectWithTag("PlayerCountTracker").GetComponent<PlayerSelectionManager>().numPlayerOption == NumPlayerOption.players1)
                     {
                         //GameObject.FindGameObjectWithTag("first").GetComponent<TMPro.TextMeshProUGUI>().text = "Your new time was faster than previous fastest time by  " + ( GameState.FirstRaceTime - GameState.oldGhostTime ) + " seconds ";
-                        GameObject.FindGameObjectWithTag("first").GetComponent<TMPro.TextMeshProUGUI>().text = "Your new time was faster than previous fastest time by  " + (GameState.oldGhostTime - GameState.FirstRaceTime) + " seconds ";
+                        GameObject.FindGameObjectWithTag("first").GetComponent<TMPro.TextMeshProUGUI>().text = "Your new time was faster than previous fastest time by  " + Mathf.Abs(GameState.oldGhostTime - GameState.FirstRaceTime) + " seconds ";
                     }
                     else
                     GameObject.FindGameObjectWithTag("first").GetComponent<TMPro.TextMeshProUGUI>().text = "First Place was player " + GameState.FirstPlaceID + " with a time of " + GameState.FirstRaceTime;
