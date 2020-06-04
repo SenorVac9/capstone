@@ -28,6 +28,8 @@ TagManager:
   - Rim_Sparks
   - Maxine_Extra_Parts
   - JumpObject
+  - PickupCollider
+  - Paul_extrapart
   layers:
   - Default
   - TransparentFX
