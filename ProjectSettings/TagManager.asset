@@ -29,6 +29,7 @@ TagManager:
   - Maxine_Extra_Parts
   - JumpObject
   - PickupCollider
+  - Toby_Extra_Part
   - Paul_extrapart
   layers:
   - Default

@@ -4238,7 +4238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Maxine_part_spawnpoint1: {fileID: 2325465872924756421}
   Maxine_part_spawnpoint2: {fileID: 2325465872924756421}
-  Part1: {fileID: 6941023959656063515, guid: 154e59b1157400e40b848fcb44332a7f, type: 3}
+  Part1: {fileID: 6941023959656063515, guid: e395dace9943b19488c54093ffdfb964, type: 3}
   Part2: {fileID: 6941023959656063515, guid: 154e59b1157400e40b848fcb44332a7f, type: 3}
   P_Part3: {fileID: 6941023959656063515, guid: e395dace9943b19488c54093ffdfb964, type: 3}
   cam_p1: {fileID: 20147978221968630}
