@@ -30,7 +30,7 @@ public class spark_script : MonoBehaviour
         //wheel1
         if (ui.has_tire_1 == false)
         {
-            if (vehicleBehavior.accel_magnitude_float > 0)
+            if (vehicleBehavior.accel_magnitude_float > 0 && vehicleBehavior.is_grounded==true)
             {
                 isforward = true;
                 isreverse = false;
@@ -48,7 +48,7 @@ public class spark_script : MonoBehaviour
                     Debug.Log("forward sparks already shooting");
                 }
             }
-            else if (vehicleBehavior.accel_magnitude_float < 0)
+            else if (vehicleBehavior.accel_magnitude_float < 0 && vehicleBehavior.is_grounded == true)
             {
                 isreverse = true;
                 isforward = false;
@@ -76,7 +76,7 @@ public class spark_script : MonoBehaviour
         }
         if (ui.has_tire_2 == false)
         {
-            if (vehicleBehavior.accel_magnitude_float > 0)
+            if (vehicleBehavior.accel_magnitude_float > 0 && vehicleBehavior.is_grounded == true)
             {
                 isforward = true;
                 isreverse = false;
@@ -94,7 +94,7 @@ public class spark_script : MonoBehaviour
                     Debug.Log("forward sparks already shooting");
                 }
             }
-            else if (vehicleBehavior.accel_magnitude_float < 0)
+            else if (vehicleBehavior.accel_magnitude_float < 0 && vehicleBehavior.is_grounded == true)
             {
                 isreverse = true;
                 isforward = false;
@@ -122,7 +122,7 @@ public class spark_script : MonoBehaviour
         }
         if (ui.has_tire_3 == false)
         {
-            if (vehicleBehavior.accel_magnitude_float > 0)
+            if (vehicleBehavior.accel_magnitude_float > 0 && vehicleBehavior.is_grounded == true)
             {
                 isforward = true;
                 isreverse = false;
@@ -140,7 +140,7 @@ public class spark_script : MonoBehaviour
                     Debug.Log("forward sparks already shooting");
                 }
             }
-            else if (vehicleBehavior.accel_magnitude_float < 0)
+            else if (vehicleBehavior.accel_magnitude_float < 0 && vehicleBehavior.is_grounded == true)
             {
                 isreverse = true;
                 isforward = false;
@@ -168,7 +168,7 @@ public class spark_script : MonoBehaviour
         }
         if (ui.has_tire_4 == false)
         {
-            if (vehicleBehavior.accel_magnitude_float > 0)
+            if (vehicleBehavior.accel_magnitude_float > 0 && vehicleBehavior.is_grounded == true)
             {
                 isforward = true;
                 isreverse = false;
@@ -186,7 +186,7 @@ public class spark_script : MonoBehaviour
                     Debug.Log("forward sparks already shooting");
                 }
             }
-            else if (vehicleBehavior.accel_magnitude_float < 0)
+            else if (vehicleBehavior.accel_magnitude_float < 0 && vehicleBehavior.is_grounded == true)
             {
                 isreverse = true;
                 isforward = false;
