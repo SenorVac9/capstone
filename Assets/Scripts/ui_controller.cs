@@ -280,12 +280,12 @@ public class ui_controller : MonoBehaviour
 
 
             }
-            else if (ui_item[item_selected].gameObject.tag == "Maxine_Extra_Parts")
+            else if (ui_item[item_selected].gameObject.tag == "Toby_Extra_Part")
             {
                 if (has_extra1)
                 {
                     vehicleBehaviour.GetComponentInChildren<Player_Maxine>().Maxine_Extrapart1();
-                    Debug.Log("Used toby spl");
+                    Debug.Log("Used toby/maxine spl");
                     has_extra1 = false;
                     ui_item[item_selected].gameObject.SetActive(false);
                 }
@@ -295,7 +295,7 @@ public class ui_controller : MonoBehaviour
                 if (has_extra2)
                 {
                     vehicleBehaviour.GetComponentInChildren<Player_Maxine>().Maxine_Extrapart2();
-                    Debug.Log("Used toby/maxine spl");
+                    Debug.Log("Used maxine spl");
                     has_extra2 = false;
                     ui_item[item_selected].gameObject.SetActive(false);
                 }
