@@ -19,7 +19,12 @@ namespace ModuloKart.CustomVehiclePhysics
         [Header("Debug")]
         [SerializeField] public bool isCodeDebug = false;
         public GameObject wheel1, wheel2, wheel3, wheel4, hood;
+<<<<<<< Updated upstream
+        SimpleCharacterSelection character;
 
+=======
+        public GameObject cam;
+>>>>>>> Stashed changes
         public bool isEditorGUI = false;
         public bool keepTabsOpen;
         public bool showRunTimeVariablesOnly;
