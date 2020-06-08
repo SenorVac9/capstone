@@ -442,6 +442,10 @@ namespace ModuloKart.CustomVehiclePhysics
                 }
                 vehicle_transform.position += (vehicle_heading_transform.forward * accel_magnitude_float - Vector3.up * gravity_float) * Time.fixedDeltaTime;
             }
+            if (Input.GetKeyDown(KeyCode.Y))
+            {
+                Jump();
+            }
             //Jump();
             if (isJump)
             {
@@ -463,7 +467,7 @@ namespace ModuloKart.CustomVehiclePhysics
             {
                 jumpTime += Time.fixedDeltaTime;
                 isJump = true;
-                vert = Vector3.up * max_gravity_float * 10;
+                vert = Vector3.up * max_gravity_float * 1000;
                 //gravity_float = -max_gravity_float * 10;
                 Debug.Log("Jump!: " + gravity_float);
             }
@@ -846,7 +850,7 @@ namespace ModuloKart.CustomVehiclePhysics
 
         private void VehicleTiltSlope()
         {
-            tiltLerp_float = Mathf.Max(.1f, (1f - accel_magnitude_float / 60));
+            tiltLerp_float = Mathf.Max(.1f, (.25f - accel_magnitude_float / 60));
             properUpDirection = vehicle_transform.up;
             if (isOnLoop)
                 vehicle_transform.up = VehicleGetSlope(vehicle_transform);// Vector3.Lerp(vehicle_transform.up, VehicleGetSlope(vehicle_transform), 1);

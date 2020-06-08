@@ -15190,6 +15190,10 @@ PrefabInstance:
       propertyPath: playerHUD
       value: 
       objectReference: {fileID: 843184874}
+    - target: {fileID: 1870334581, guid: da0abe8a147139749b99d326b0abe510, type: 3}
+      propertyPath: GRAVITY
+      value: 500
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da0abe8a147139749b99d326b0abe510, type: 3}
 --- !u!4 &768462741 stripped
@@ -19513,7 +19517,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &992989440
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30093,7 +30097,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1623879387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63317,7 +63321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDebugMode: 1
-  LapsToComplete: 1
+  LapsToComplete: 2
   playerLapDataList: []
   RankVal: 0
   racersfinished: 0
@@ -88879,6 +88883,56 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3164034831171160146, guid: 66efadd9ed136dd418ea823fae13778d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.00048828125
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290341430932051891, guid: 66efadd9ed136dd418ea823fae13778d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.00048828125
+      objectReference: {fileID: 0}
+    - target: {fileID: 5208528556320961194, guid: 66efadd9ed136dd418ea823fae13778d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -20.000488
+      objectReference: {fileID: 0}
+    - target: {fileID: 3390313103732037130, guid: 66efadd9ed136dd418ea823fae13778d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -59.99951
+      objectReference: {fileID: 0}
+    - target: {fileID: 6717835113522200052, guid: 66efadd9ed136dd418ea823fae13778d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.00048828125
+      objectReference: {fileID: 0}
+    - target: {fileID: 263604923062089101, guid: 66efadd9ed136dd418ea823fae13778d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.00048828125
+      objectReference: {fileID: 0}
+    - target: {fileID: 5432485142257739486, guid: 66efadd9ed136dd418ea823fae13778d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -39.99951
+      objectReference: {fileID: 0}
+    - target: {fileID: 920715169544623354, guid: 66efadd9ed136dd418ea823fae13778d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -59.99951
+      objectReference: {fileID: 0}
+    - target: {fileID: 6196138883955000719, guid: 66efadd9ed136dd418ea823fae13778d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 63.899902
+      objectReference: {fileID: 0}
+    - target: {fileID: 1231619848982359368, guid: 66efadd9ed136dd418ea823fae13778d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.0009765625
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66efadd9ed136dd418ea823fae13778d, type: 3}
