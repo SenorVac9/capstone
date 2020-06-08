@@ -103,8 +103,8 @@ public class LegTriggerBehavior : MonoBehaviour
         //currentPlaceTiming[other.GetComponent<VehicleLapData>().LapsCompleted] = other.GetComponent<VehicleLapData>().playerRaceTime;
 
         //SetBestTimeForLegAtLap(other.GetComponent<VehicleLapData>().LapsCompleted);
-        
-        if(vehicleTimingsPerLegPerLap[other.GetComponent<VehicleLapData>().LapsCompleted, other.GetComponent<VehicleBehavior>().PlayerID - 1] < firstPlaceTiming[other.GetComponent<VehicleLapData>().LapsCompleted])
+
+        if (vehicleTimingsPerLegPerLap[other.GetComponent<VehicleLapData>().LapsCompleted, other.GetComponent<VehicleBehavior>().PlayerID - 1] < firstPlaceTiming[other.GetComponent<VehicleLapData>().LapsCompleted])
         {
             //bestTimeToReachSegment = vehicleTimingsPerLegPerLap[other.GetComponent<VehicleLapData>().LapsCompleted, other.GetComponent<VehicleBehavior>().PlayerID - 1];
             Debug.Log("We have to update the new First Place time from: " + firstPlaceTiming[other.GetComponent<VehicleLapData>().LapsCompleted] + ", to: " + other.GetComponent<VehicleLapData>().playerRaceTime);
