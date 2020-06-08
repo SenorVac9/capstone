@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - CarHeading
+  - CarMain
+  - Track
+  - Hood_projectile
+  - Ramp
+  - Fire
+  - Obstacle
+  - Waypoint
+  - Tire
+  - Door
+  - Hood
+  - TrackColliders
+  - Ghost
+  - SaveGameManager
+  - second
+  - first
+  - third
+  - fourth
+  - PlayerCountTracker
+  - Milk
+  - TestField
+  - Rim_Sparks
+  - Maxine_Extra_Parts
+  - JumpObject
+  - PickupCollider
+<<<<<<< HEAD
+  - Toby_Extra_Part
+  - Paul_extrapart
+=======
+  - Pickup
+>>>>>>> 1ef02b30bd1e5541dea92df303ec154e7037956e
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - VehicleLayer
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
