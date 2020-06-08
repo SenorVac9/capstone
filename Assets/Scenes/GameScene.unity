@@ -16289,6 +16289,10 @@ PrefabInstance:
       propertyPath: vehicle_camera_postprocess_behavior
       value: 
       objectReference: {fileID: 769297638}
+    - target: {fileID: 1870334581, guid: da0abe8a147139749b99d326b0abe510, type: 3}
+      propertyPath: GRAVITY
+      value: 250
+      objectReference: {fileID: 0}
     - target: {fileID: 8005804398654680191, guid: da0abe8a147139749b99d326b0abe510,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -66139,7 +66143,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3770863787338627706}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -532.5, y: 359.3, z: -865.5}
+  m_LocalPosition: {x: -532.5, y: 348.94, z: -865.5}
   m_LocalScale: {x: 16.35701, y: 100, z: 10}
   m_Children: []
   m_Father: {fileID: 3770863788273900553}
