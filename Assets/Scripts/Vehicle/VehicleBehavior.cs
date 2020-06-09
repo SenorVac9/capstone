@@ -453,10 +453,14 @@ namespace ModuloKart.CustomVehiclePhysics
             {
                 if (gravity_float > 0) gravity_float = 0;
                 gravity_float -= Time.fixedDeltaTime * GRAVITY;
-                if (gravity_float <= -250)
+                if (gravity_float <= -75)
                 {
                     isJump = false;
                 }
+            }
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                Jump();
             }
         }
 
@@ -469,7 +473,7 @@ namespace ModuloKart.CustomVehiclePhysics
             {
                 jumpTime += Time.fixedDeltaTime;
                 isJump = true;
-                vert = Vector3.up * max_gravity_float * 10;
+                vert = Vector3.up * max_gravity_float * 1000;
                 //gravity_float = -max_gravity_float * 10;
                 Debug.Log("Jump!: " + gravity_float);
             }
