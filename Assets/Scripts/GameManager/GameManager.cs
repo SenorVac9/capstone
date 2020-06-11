@@ -23,13 +23,13 @@ public class GameManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetButtonDown("Y_ANYPLAYER"))
-        {
-            SceneManager.LoadScene(0);
-        }
-    }
+    //void Update()
+    //{
+    //    if (Input.GetButtonDown("Y_ANYPLAYER"))
+    //    {
+    //        SceneManager.LoadScene(0);
+    //    }
+    //}
 
 
     public void ReadyUp()
