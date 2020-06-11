@@ -12,7 +12,7 @@ namespace ModuloKart.Controls
     {
         public static ControllerHandler Instance;
 
-        [SerializeField] public VehicleBehavior[] vehicles;
+        public VehicleBehavior[] vehicles;
         [HideInInspector] public VehicleBehavior vehicle1;
         [HideInInspector] public VehicleBehavior vehicle2;
         [HideInInspector] public VehicleBehavior vehicle3;
@@ -66,20 +66,36 @@ namespace ModuloKart.Controls
                 if (h.PlayerID == 1)
                 {
                     HUDPlayer1 = h;
+                   // HUDPlayer1.gameObject.SetActive(false);
                 }
                 if (h.PlayerID == 2)
                 {
                     HUDPlayer2 = h;
+                   // HUDPlayer2.gameObject.SetActive(false);
                 }
                 if (h.PlayerID == 3)
                 {
                     HUDPlayer3 = h;
+                  //  HUDPlayer3.gameObject.SetActive(false);
                 }
                 if (h.PlayerID == 4)
                 {
                     HUDPlayer4 = h;
+                 //   HUDPlayer4.gameObject.SetActive(false);
                 }
             }
+        }
+
+        public void AssignHUD(bool isActive)
+        {
+            if (HUDPlayer1)
+                HUDPlayer1.gameObject.SetActive(isActive);
+            if (HUDPlayer2)
+                HUDPlayer2.gameObject.SetActive(isActive);
+            if (HUDPlayer3)
+                HUDPlayer3.gameObject.SetActive(isActive);
+            if (HUDPlayer4)
+                HUDPlayer4.gameObject.SetActive(isActive);
         }
 
         private void Update()
@@ -104,6 +120,7 @@ namespace ModuloKart.Controls
                 {
                     vehicle1.input_steering = "LeftJoyStickX_P" + vehicle1.JoyStick;
                     vehicle1.input_accelerate = "RightTrigger_P" + vehicle1.JoyStick;
+                    vehicle1.input_reverse = "LeftTrigger_P" + vehicle1.JoyStick;
                     vehicle1.input_drift = "B_P" + vehicle1.JoyStick;
                     vehicle1.input_projectile = "X_P" + vehicle1.JoyStick;
                     vehicle1.input_nitros = "A_P" + vehicle1.JoyStick;
@@ -114,6 +131,8 @@ namespace ModuloKart.Controls
 
                     LapManager.Instance.AddPlayerToScoreList(playerID: vehicle1.PlayerID);
                     assignedControllerCount++;
+
+                   // GameManager.Instance.ReadyUp();
                 }
             }
             else if (vehicle2.JoyStick == -1)
@@ -127,6 +146,7 @@ namespace ModuloKart.Controls
                 {
                     vehicle2.input_steering = "LeftJoyStickX_P" + vehicle2.JoyStick;
                     vehicle2.input_accelerate = "RightTrigger_P" + vehicle2.JoyStick;
+                    vehicle2.input_reverse = "LeftTrigger_P" + vehicle2.JoyStick;
                     vehicle2.input_drift = "B_P" + vehicle2.JoyStick;
                     vehicle2.input_projectile = "X_P" + vehicle2.JoyStick;
                     vehicle2.input_nitros = "A_P" + vehicle2.JoyStick;
@@ -137,6 +157,7 @@ namespace ModuloKart.Controls
 
                     LapManager.Instance.AddPlayerToScoreList(playerID: vehicle2.PlayerID);
                     assignedControllerCount++;
+                  //  GameManager.Instance.ReadyUp();
                 }
             }
             else if (vehicle3.JoyStick == -1)
@@ -150,6 +171,7 @@ namespace ModuloKart.Controls
                 {
                     vehicle3.input_steering = "LeftJoyStickX_P" + vehicle3.JoyStick;
                     vehicle3.input_accelerate = "RightTrigger_P" + vehicle3.JoyStick;
+                    vehicle3.input_reverse = "LeftTrigger_P" + vehicle3.JoyStick;
                     vehicle3.input_drift = "B_P" + vehicle3.JoyStick;
                     vehicle3.input_projectile = "X_P" + vehicle3.JoyStick;
                     vehicle3.input_nitros = "A_P" + vehicle3.JoyStick;
@@ -160,6 +182,7 @@ namespace ModuloKart.Controls
 
                     LapManager.Instance.AddPlayerToScoreList(playerID: vehicle3.PlayerID);
                     assignedControllerCount++;
+                   // GameManager.Instance.ReadyUp();
                 }
             }
             else if (vehicle4.JoyStick == -1)
@@ -173,6 +196,7 @@ namespace ModuloKart.Controls
                 {
                     vehicle4.input_steering = "LeftJoyStickX_P" + vehicle4.JoyStick;
                     vehicle4.input_accelerate = "RightTrigger_P" + vehicle4.JoyStick;
+                    vehicle4.input_reverse = "LeftTrigger_P" + vehicle4.JoyStick;
                     vehicle4.input_drift = "B_P" + vehicle4.JoyStick;
                     vehicle4.input_projectile = "X_P" + vehicle4.JoyStick;
                     vehicle4.input_nitros = "A_P" + vehicle4.JoyStick;
@@ -183,6 +207,7 @@ namespace ModuloKart.Controls
 
                     LapManager.Instance.AddPlayerToScoreList(playerID: vehicle4.PlayerID);
                     assignedControllerCount++;
+                 //   GameManager.Instance.ReadyUp();
                 }
             }
 

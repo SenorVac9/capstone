@@ -9,8 +9,12 @@ public class Player_Wheel_Detach : MonoBehaviour
     public GameObject prefab1;
     public Camera cam_p1;
     VehicleBehavior vehicleBehavior;
-    public int speed = 2;
+   int speed = 50;
     public GameObject wheel_destroy1, wheel_destroy2, wheel_destroy3, wheel_destroy4;
+    public int[] reserveParts;
+    public List<int> reservePartsList = new List<int>();
+    public int partsUsed;
+    
 
     // Start is called before the first frame update
 
@@ -30,47 +34,81 @@ public class Player_Wheel_Detach : MonoBehaviour
     public void Throw_Wheel(int tirenum)
     {
 
+        //AUDIO STUFF
+        //Calling the audio based on the character selected
+        //It checks which character has been selected and play accordingly
+        //IF Maxime
+        //if (vehicleBehavior.playerHUD.simpleCharacterSeleciton.whichCharacterDidISelectDuringTheGameScene == AVerySimpleEnumOfCharacters.Maxine)
+        //{
+        //    AudioManager.instance.Play("Maxime_Throw_Tire");
+        //}
+
+        ////IF Felix
+        //if (vehicleBehavior.playerHUD.simpleCharacterSeleciton.whichCharacterDidISelectDuringTheGameScene == AVerySimpleEnumOfCharacters.Felix)
+        //{
+        //    AudioManager.instance.Play("Felix_Throw_Tire");
+        //}
+
+        ////IF Paul
+        //if (vehicleBehavior.playerHUD.simpleCharacterSeleciton.whichCharacterDidISelectDuringTheGameScene == AVerySimpleEnumOfCharacters.Paul)
+        //{
+        //     AudioManager.instance.Play("Paul_Throw_Tire");
+        //}
+
+        ////IF Toby
+        //if (vehicleBehavior.playerHUD.simpleCharacterSeleciton.whichCharacterDidISelectDuringTheGameScene == AVerySimpleEnumOfCharacters.Toby)
+        //{
+        //    AudioManager.instance.Play("Toby_Throw_Tire");
+        //}
+
         /* 
-         1 front left
-         2 front right 
-         3 back left
-         4 back right
+         1 back left
+         2 back right 
+         3 front left
+         4 front right
          */
         if (tirenum == 2)
         {
-            GameObject Wheel = Instantiate(prefab1) as GameObject;
-            Wheel.transform.position = spawnpoint1.transform.position;
+           
+            GameObject Wheel = Instantiate<GameObject>(prefab1, spawnpoint1.transform.position, spawnpoint1.rotation);
+          
             Rigidbody rb = Wheel.GetComponent<Rigidbody>();
-            rb.velocity = cam_p1.transform.forward * -speed;
-
+            rb.velocity = spawnpoint1.transform.forward * speed;
+            partsUsed++;
+            
+            reservePartsList.Add(2);
             wheel_destroy1.SetActive(false);
+            Debug.Log(reservePartsList);
         }
         else if (tirenum == 1)
         {
-            GameObject Wheel = Instantiate(prefab1) as GameObject;
-            Wheel.transform.position = spawnpoint2.transform.position;
+            GameObject Wheel = Instantiate<GameObject>(prefab1, spawnpoint2.transform.position, spawnpoint2.rotation);
             Rigidbody rb = Wheel.GetComponent<Rigidbody>();
-            rb.velocity = cam_p1.transform.forward * -speed;
-
+            rb.velocity = spawnpoint2.transform.forward * speed;
+            reservePartsList.Add(1);
+            Debug.Log(reservePartsList);
             wheel_destroy2.SetActive(false);
+            partsUsed++;
         }
         else if (tirenum == 4)
         {
-            GameObject Wheel = Instantiate(prefab1) as GameObject;
-            Wheel.transform.position = spawnpoint3.transform.position;
+            GameObject Wheel = Instantiate<GameObject>(prefab1, spawnpoint3.transform.position, spawnpoint3.rotation);
             Rigidbody rb = Wheel.GetComponent<Rigidbody>();
-            rb.velocity = cam_p1.transform.forward * -speed;
-
+            rb.velocity = spawnpoint3.transform.forward * speed;
+            reservePartsList.Add(4);
+            Debug.Log(reservePartsList);
             wheel_destroy3.SetActive(false);
+            partsUsed++;
         }
         else if (tirenum == 3)
         {
-            GameObject Wheel = Instantiate(prefab1) as GameObject;
-            Wheel.transform.position = spawnpoint4.transform.position;
+            GameObject Wheel = Instantiate<GameObject>(prefab1, spawnpoint4.transform.position, spawnpoint4.rotation);
             Rigidbody rb = Wheel.GetComponent<Rigidbody>();
-            rb.velocity = cam_p1.transform.forward * -speed;
-
+            rb.velocity = spawnpoint4.transform.forward * speed;
+            reservePartsList.Add(3);
+            Debug.Log(reservePartsList);
             wheel_destroy4.SetActive(false);
+            partsUsed++;
         }
     }
 

@@ -7,6 +7,8 @@ using ModuloKart.CustomVehiclePhysics;
 
 namespace ModuloKart.PlayerSelectionMenu
 {
+
+    
     public enum NumPlayerOption
     {
         players1 = 1,
@@ -18,7 +20,7 @@ namespace ModuloKart.PlayerSelectionMenu
     public class PlayerSelectionManager : MonoBehaviour
     {
         public static PlayerSelectionManager Instance;
-
+        
         private GameObject bg_Numplayers1;
         private GameObject bg_Numplayers2;
         private GameObject bg_Numplayers3;
@@ -240,6 +242,7 @@ namespace ModuloKart.PlayerSelectionMenu
                 switch (numPlayerOption)
                 {
                     case NumPlayerOption.players1:
+                        //ask if they wanna race ghost
                         ButtonBehavior_LoadGameScene();
                         break;
                     case NumPlayerOption.players2:
@@ -290,8 +293,14 @@ namespace ModuloKart.PlayerSelectionMenu
                 {
                     case NumPlayerOption.players1:
                         controllerHandler.vehicle2.gameObject.SetActive(false);
+                        controllerHandler.vehicle2.cam.SetActive(false);
+                        
                         controllerHandler.vehicle3.gameObject.SetActive(false);
+                        controllerHandler.vehicle3.cam.SetActive(false);
+                        
                         controllerHandler.vehicle4.gameObject.SetActive(false);
+                        controllerHandler.vehicle4.cam.SetActive(false);
+
 
                         controllerHandler.HUDPlayer2.gameObject.SetActive(false);
                         controllerHandler.HUDPlayer3.gameObject.SetActive(false);
@@ -306,7 +315,9 @@ namespace ModuloKart.PlayerSelectionMenu
                         break;
                     case NumPlayerOption.players2:
                         controllerHandler.vehicle3.gameObject.SetActive(false);
+                        controllerHandler.vehicle3.cam.SetActive(false);
                         controllerHandler.vehicle4.gameObject.SetActive(false);
+                        controllerHandler.vehicle4.cam.SetActive(false);
 
                         controllerHandler.HUDPlayer3.gameObject.SetActive(false);
                         controllerHandler.HUDPlayer4.gameObject.SetActive(false);
@@ -330,6 +341,7 @@ namespace ModuloKart.PlayerSelectionMenu
                         break;
                     case NumPlayerOption.players3:
                         controllerHandler.vehicle4.gameObject.SetActive(false);
+                        controllerHandler.vehicle4.cam.SetActive(false);
 
                         controllerHandler.HUDPlayer4.gameObject.SetActive(false);
 

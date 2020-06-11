@@ -15,6 +15,21 @@ TagManager:
   - Tire
   - Door
   - Hood
+  - TrackColliders
+  - Ghost
+  - SaveGameManager
+  - second
+  - first
+  - third
+  - fourth
+  - PlayerCountTracker
+  - Milk
+  - TestField
+  - Rim_Sparks
+  - Maxine_Extra_Parts
+  - JumpObject
+  - PickupCollider
+  - Pickup
   layers:
   - Default
   - TransparentFX
