@@ -20,6 +20,8 @@ namespace ModuloKart.HUD
         public Image velocityRadial;
         public Image velocityRadialRed;
         public Image nitrosRadial;
+        public Image extra_nitros_radial;
+        SimpleCharacterSelection character;
 
         public GameObject GameOverBackgroundObject;
         public Text TextGameOver;
@@ -29,9 +31,13 @@ namespace ModuloKart.HUD
         public Text TextLastLapTime;
         public GameObject WrongDirectionWarning;
         public GameObject placeshower;
+        public GameObject TimeSplitsObj;
+       
 
         private void Start()
         {
+            BeginBackgroundObject.SetActive(false);
+            character = GameObject.FindObjectOfType<SimpleCharacterSelection>();
             simpleCharacterSeleciton = GetComponent<SimpleCharacterSelection>();
             if (simpleCharacterSeleciton)
                 Debug.Log("Has Character Selection");
@@ -54,6 +60,7 @@ namespace ModuloKart.HUD
 
             Value_Velocity.text = (Mathf.FloorToInt(vehicleBehavior.accel_magnitude_float)).ToString();
             Value_Nitros.text = (Mathf.FloorToInt(vehicleBehavior.nitros_meter_float)).ToString();
+            Extra_NitrosMeter(vehicleBehavior.extra_nitros_meter_float);
 
             Speedometer(vehicleBehavior.accel_magnitude_float);
             NitrosMeter(vehicleBehavior.nitros_meter_float);
@@ -82,6 +89,13 @@ namespace ModuloKart.HUD
             
             nitrosRadial.fillAmount = amount;
         }
+        void Extra_NitrosMeter(float fillValue)
+        {
+            float amount = ((fillValue) / 50.0f);
+
+           extra_nitros_radial.fillAmount = amount;
+        }
+       
     }
 
 }
