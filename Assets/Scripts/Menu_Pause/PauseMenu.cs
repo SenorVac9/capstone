@@ -13,7 +13,7 @@ public enum PauseMenuOption
 }
 public class PauseMenu : MonoBehaviour
 {
-  
+
     public static bool GameIsPaused = false;
 
     public GameObject pauseMenuUI;
@@ -53,29 +53,29 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-   
-        bool isPressPrev;
-        bool isPressPrevRelease;
-        private void PauseMenuPrev()
-        {
-            if (Input.GetAxis("LeftJoyStickY_ANYPLAYER") < 0)
-            {
-                isPressPrev = true;
-            }
-            if (isPressPrev)
-            {
-                if (Input.GetAxis("LeftJoyStickY_ANYPLAYER") == 0)
-                {
-                    isPressPrev = false;
-                    isPressPrevRelease = true;
-                }
-            }
-            if (isPressPrevRelease)
-            {
-                isPressPrevRelease = false;
 
-                switch (mainMenuOption)
-                {
+    bool isPressPrev;
+    bool isPressPrevRelease;
+    private void PauseMenuPrev()
+    {
+        if (Input.GetAxis("LeftJoyStickY_ANYPLAYER") < 0)
+        {
+            isPressPrev = true;
+        }
+        if (isPressPrev)
+        {
+            if (Input.GetAxis("LeftJoyStickY_ANYPLAYER") == 0)
+            {
+                isPressPrev = false;
+                isPressPrevRelease = true;
+            }
+        }
+        if (isPressPrevRelease)
+        {
+            isPressPrevRelease = false;
+
+            switch (mainMenuOption)
+            {
                 case PauseMenuOption.resume:
                     mainMenuOption = PauseMenuOption.quit;
                     ResumeButton.SetActive(false);
@@ -105,35 +105,35 @@ public class PauseMenu : MonoBehaviour
                     QuitButton.SetActive(false);
                     break;
                 default:
-                        Debug.Log("Unexpected Player Number Selection Option");
-                        break;
-                }
+                    Debug.Log("Unexpected Player Number Selection Option");
+                    break;
             }
         }
+    }
 
 
-        bool isPressNext;
-        bool isPressNextRelease;
-        private void PauseMenuNext()
+    bool isPressNext;
+    bool isPressNextRelease;
+    private void PauseMenuNext()
+    {
+        if (Input.GetAxis("LeftJoyStickY_ANYPLAYER") > 0)
         {
-            if (Input.GetAxis("LeftJoyStickY_ANYPLAYER") > 0)
+            isPressNext = true;
+        }
+        if (isPressNext)
+        {
+            if (Input.GetAxis("LeftJoyStickY_ANYPLAYER") == 0)
             {
-                isPressNext = true;
+                isPressNext = false;
+                isPressNextRelease = true;
             }
-            if (isPressNext)
-            {
-                if (Input.GetAxis("LeftJoyStickY_ANYPLAYER") == 0)
-                {
-                    isPressNext = false;
-                    isPressNextRelease = true;
-                }
-            }
-            if (isPressNextRelease)
-            {
-                isPressNextRelease = false;
+        }
+        if (isPressNextRelease)
+        {
+            isPressNextRelease = false;
 
-                switch (mainMenuOption)
-                {
+            switch (mainMenuOption)
+            {
                 case PauseMenuOption.resume:
                     mainMenuOption = PauseMenuOption.menu;
                     ResumeButton.SetActive(false);
@@ -161,33 +161,33 @@ public class PauseMenu : MonoBehaviour
                     MenuButton.SetActive(false);
                     OptionsButton.SetActive(false);
                     QuitButton.SetActive(false);
-                    break;    
-                    default:
-                        Debug.Log("Unexpected Player Number Selection Option");
-                        break;
-                }
+                    break;
+                default:
+                    Debug.Log("Unexpected Player Number Selection Option");
+                    break;
             }
         }
+    }
 
-        private void InitPauseMenu()
+    private void InitPauseMenu()
+    {
+        mainMenuOption = PauseMenuOption.resume;
+        ResumeButton.SetActive(true);
+        MenuButton.SetActive(false);
+        OptionsButton.SetActive(false);
+        QuitButton.SetActive(false);
+    }
+
+    private void GetMenuOptions()
+    {
+        MenuSelectionOption[] temp = GameObject.FindObjectsOfType<MenuSelectionOption>();
+
+        foreach (MenuSelectionOption t in temp)
         {
-            mainMenuOption = PauseMenuOption.resume;
-            ResumeButton.SetActive(true);
-            MenuButton.SetActive(false);
-            OptionsButton.SetActive(false);
-            QuitButton.SetActive(false);
-        }
-
-        private void GetMenuOptions()
-        {
-            MenuSelectionOption[] temp = GameObject.FindObjectsOfType<MenuSelectionOption>();
-
-            foreach (MenuSelectionOption t in temp)
+            if (t.mainMenuOption.Equals(PauseMenuOption.resume))
             {
-                if (t.mainMenuOption.Equals(PauseMenuOption.resume))
-                {
-                    ResumeButton = t.bg;
-                }
+                ResumeButton = t.bg;
+            }
             else if (t.mainMenuOption.Equals(PauseMenuOption.menu))
             {
                 MenuButton = t.bg;
@@ -197,22 +197,22 @@ public class PauseMenu : MonoBehaviour
                 OptionsButton = t.bg;
             }
             else if (t.mainMenuOption.Equals(PauseMenuOption.quit))
-                {
-                    QuitButton = t.bg;
-                }
+            {
+                QuitButton = t.bg;
             }
         }
+    }
 
-        private void ConfirmPauseMenuOption()
+    private void ConfirmPauseMenuOption()
+    {
+        if (Input.GetButtonDown("A_ANYPLAYER"))
         {
-            if (Input.GetButtonDown("A_ANYPLAYER"))
+            Debug.Log("Do Something");
+            switch (mainMenuOption)
             {
-                Debug.Log("Do Something");
-                switch (mainMenuOption)
-                {
-                    case PauseMenuOption.resume:
+                case PauseMenuOption.resume:
                     Resume();
-                        break;
+                    break;
                 case PauseMenuOption.menu:
                     Menu();
                     break;
@@ -221,13 +221,13 @@ public class PauseMenu : MonoBehaviour
                     break;
                 case PauseMenuOption.quit:
                     Quit();
-                        break;
-                    default:
-                        Debug.Log("Unexpected Player Number Selection Option");
-                        break;
-                }
+                    break;
+                default:
+                    Debug.Log("Unexpected Player Number Selection Option");
+                    break;
             }
         }
+    }
 
 
     public void Resume()

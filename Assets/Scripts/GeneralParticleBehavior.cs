@@ -6,17 +6,17 @@ using ModuloKart.CustomVehiclePhysics;
 public enum ParticleType
 {
     CarTireParticle,
-    //CarExhaustParticle,
-    CarRimSparkParticle_rear_left,
-    CarRimSparkParticle_rear_right,
-    CarRimSparkParticle_front_left,
-    CarRimSparkParticle_front_right
+       //CarExhaustParticle,
+   // CarRimSparkParticle_rear_left,
+   // CarRimSparkParticle_rear_right,
+    //CarRimSparkParticle_front_left,
+    //CarRimSparkParticle_front_right
 
 }
 public class GeneralParticleBehavior : MonoBehaviour
 {
     ui_controller ui;
-    public Transform Spark_Spawnpoint_Rear_Right, Spark_Spawnpoint_Rear_Left, Spark_Spawnpoint_Front_Right, Spark_Spawnpoint_Fornt_Left;
+    //public Transform Spark_Spawnpoint_Rear_Right, Spark_Spawnpoint_Rear_Left, Spark_Spawnpoint_Front_Right, Spark_Spawnpoint_Fornt_Left;
     public GameObject Prefab1;
     public float multiplier = 1;
     [SerializeField] public VehicleBehavior vehicleBehavior;
@@ -54,7 +54,7 @@ public class GeneralParticleBehavior : MonoBehaviour
             case ParticleType.CarTireParticle:
                 //if (particleSystem == null) break;
 
-                if (vehicleBehavior.is_drift== true && vehicleBehavior.accel_magnitude_float!=0)
+                if (vehicleBehavior.is_drift == true && vehicleBehavior.accel_magnitude_float != 0)
                 {
                     if (!mainModule.loop)
                     {
@@ -77,125 +77,14 @@ public class GeneralParticleBehavior : MonoBehaviour
                 }
                 break;
 
-          /*  case ParticleType.CarRimSparkParticle_rear_left:
-                {
-                    if (ui.has_tire_4 == false && vehicleBehavior.accel_magnitude_float > 0)
-                    {
-                        if (!mainModule.loop)
-                        {
-                            Instantiate(particleSystem,Spark_Spawnpoint_Rear_Left.transform) ;
-                           
-                            //particleSystem.emission.rateOverTime = 20;
-                            //particleSystem.Clear();
-                            mainModule.loop = true;
-                            particleSystem.Play();
-                        }
-                    }
-                    if (ui.has_tire_4 == false && vehicleBehavior.accel_magnitude_float < 0)
-                    {
-                        if (!mainModule.loop)
-                        {
-                            //particleSystem.emission.rateOverTime = 20;
-                            //particleSystem.Clear();
-                            mainModule.loop = true;
-                            particleSystem.Play();
-                        }
-                    }
-                    else 
-                    {
-                        //particleSystem.Clear();
-                        if (mainModule.loop)
-                        {
-                            //particleSystem.emission.rateOverTime = 5;
-                            //particleSystem.Clear();
-                            mainModule.loop = false;
-                            particleSystem.Stop();
-                        }
-                    }
-                    break;
+          
+        
 
-                }
-            case ParticleType.CarRimSparkParticle_rear_right    :
-                {
-                    if (ui.has_tire_3 == false && vehicleBehavior.accel_magnitude_float != 0)
-                    {
-                        if (!mainModule.loop)
-                        {
-                            //particleSystem.emission.rateOverTime = 20;
-                            //particleSystem.Clear();
-                            mainModule.loop = true;
-                            particleSystem.Play();
-                        }
-                    }
-                    else 
-                    {
-                        //particleSystem.Clear();
-                        if (mainModule.loop)
-                        {
-                            //particleSystem.emission.rateOverTime = 5;
-                            //particleSystem.Clear();
-                            mainModule.loop = false;
-                            particleSystem.Stop();
-                        }
-                    }
 
-                    break;
 
-                }
 
-            case ParticleType.CarRimSparkParticle_front_left:
-                {
-                    if (ui.has_tire_2 == false && vehicleBehavior.accel_magnitude_float != 0)
-                    {
-                        if (!mainModule.loop)
-                        {
-                            //particleSystem.emission.rateOverTime = 20;
-                            //particleSystem.Clear();
-                            mainModule.loop = true;
-                            particleSystem.Play();
-                        }
-                    }
-                    else 
-                    {
-                        //particleSystem.Clear();
-                        if (mainModule.loop)
-                        {
-                            //particleSystem.emission.rateOverTime = 5;
-                            //particleSystem.Clear();
-                            mainModule.loop = false;
-                            particleSystem.Stop();
-                        }
-                    }
-                    break;
 
-                }
-            case ParticleType.CarRimSparkParticle_front_right:
-                {
-                    if (ui.has_tire_1 == false && vehicleBehavior.accel_magnitude_float != 0)
-                    {
-                        if (!mainModule.loop)
-                        {
-                            //particleSystem.emission.rateOverTime = 20;
-                            //particleSystem.Clear();
-                            mainModule.loop = true;
-                            particleSystem.Play();
-                        }
-                    }
-                    else 
-                    {
-                        //particleSystem.Clear();
-                        if (mainModule.loop)
-                        {
-                            //particleSystem.emission.rateOverTime = 5;
-                            //particleSystem.Clear();
-                            mainModule.loop = false;
-                            particleSystem.Stop();
-                        }
-                    }
-                    break;
-
-                }*/
-            default:
+        default:
                 break;
         }
     }

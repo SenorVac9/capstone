@@ -163,7 +163,7 @@ namespace ModuloKart.MainMenu
 
         public void ButtonBehavior_LoadPlayerSelectionScene()
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2);
         }
 
 

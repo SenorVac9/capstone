@@ -31,7 +31,7 @@ namespace ModuloKart.Controls
             Ghost = new GhostData();
 
 
-            if (SceneManager.GetActiveScene().buildIndex == 2)
+            if (SceneManager.GetActiveScene().buildIndex == 3)
             {
 
 
@@ -63,7 +63,7 @@ namespace ModuloKart.Controls
 
 
 
-            if (SceneManager.GetActiveScene().buildIndex == 3)
+            if (SceneManager.GetActiveScene().buildIndex == 4)
             {
                 LoadRaceData("GameData.xml");
                 Debug.Log("Player 1 played " + GameState.P1Character.ToString());
@@ -103,7 +103,7 @@ namespace ModuloKart.Controls
         public GhostData Ghost = new GhostData();
         private void FixedUpdate()
         {
-            if (SceneManager.GetActiveScene().buildIndex == 2)
+            if (SceneManager.GetActiveScene().buildIndex == 3)
             {
 
 
@@ -236,7 +236,7 @@ namespace ModuloKart.Controls
         void Update()
         {
 
-            if (SceneManager.GetActiveScene().buildIndex == 3)
+            if (SceneManager.GetActiveScene().buildIndex == 4)
             {
                 if(GameState.FirstPlaceID == -1)
                 {
@@ -262,7 +262,7 @@ namespace ModuloKart.Controls
 
                 if (Input.anyKey || Input.GetButton("A_P1"))
                 {
-                    SceneManager.LoadScene(0);
+                    SceneManager.LoadScene(1);
                 }
             }
         }
