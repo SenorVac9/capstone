@@ -152,7 +152,7 @@ public class VehicleLapData : MonoBehaviour
 
             if (GameLogicManager.Instance.CheckEveryPlayerFinished() && timer < Time.time && timer > 0)
             {
-                SceneManager.LoadScene(3);
+                SceneManager.LoadScene(4);
             }
             else if (GameLogicManager.Instance.CheckEveryPlayerFinished() && timer <= 0)
             {
