@@ -21,6 +21,7 @@ public class ui_controller : MonoBehaviour
     public bool has_Milk = true;
     public bool has_extra1 = false;
     public bool has_extra2 = false;
+    public bool has_Shield = false;
     //public bool has_Paul_extra = true;
     public int playerNum;
     public GameObject vechicle;
