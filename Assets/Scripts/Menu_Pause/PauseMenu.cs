@@ -58,55 +58,58 @@ public class PauseMenu : MonoBehaviour
     bool isPressPrevRelease;
     private void PauseMenuPrev()
     {
-        if (Input.GetAxis("LeftJoyStickY_ANYPLAYER") < 0)
+        if (GameIsPaused)
         {
-            isPressPrev = true;
-        }
-        if (isPressPrev)
-        {
-            if (Input.GetAxis("LeftJoyStickY_ANYPLAYER") == 0)
+            if (Input.GetAxis("LeftJoyStickY_ANYPLAYER") < 0)
             {
-                isPressPrev = false;
-                isPressPrevRelease = true;
+                isPressPrev = true;
             }
-        }
-        if (isPressPrevRelease)
-        {
-            isPressPrevRelease = false;
-
-            switch (mainMenuOption)
+            if (isPressPrev)
             {
-                case PauseMenuOption.resume:
-                    mainMenuOption = PauseMenuOption.quit;
-                    ResumeButton.SetActive(false);
-                    MenuButton.SetActive(false);
-                    OptionsButton.SetActive(false);
-                    QuitButton.SetActive(true);
-                    break;
-                case PauseMenuOption.menu:
-                    mainMenuOption = PauseMenuOption.resume;
-                    ResumeButton.SetActive(true);
-                    MenuButton.SetActive(false);
-                    OptionsButton.SetActive(false);
-                    QuitButton.SetActive(false);
-                    break;
-                case PauseMenuOption.options:
-                    mainMenuOption = PauseMenuOption.menu;
-                    ResumeButton.SetActive(false);
-                    MenuButton.SetActive(true);
-                    OptionsButton.SetActive(false);
-                    QuitButton.SetActive(false);
-                    break;
-                case PauseMenuOption.quit:
-                    mainMenuOption = PauseMenuOption.options;
-                    ResumeButton.SetActive(false);
-                    MenuButton.SetActive(false);
-                    OptionsButton.SetActive(true);
-                    QuitButton.SetActive(false);
-                    break;
-                default:
-                    Debug.Log("Unexpected Player Number Selection Option");
-                    break;
+                if (Input.GetAxis("LeftJoyStickY_ANYPLAYER") == 0)
+                {
+                    isPressPrev = false;
+                    isPressPrevRelease = true;
+                }
+            }
+            if (isPressPrevRelease)
+            {
+                isPressPrevRelease = false;
+
+                switch (mainMenuOption)
+                {
+                    case PauseMenuOption.resume:
+                        mainMenuOption = PauseMenuOption.quit;
+                        ResumeButton.SetActive(false);
+                        MenuButton.SetActive(false);
+                        OptionsButton.SetActive(false);
+                        QuitButton.SetActive(true);
+                        break;
+                    case PauseMenuOption.menu:
+                        mainMenuOption = PauseMenuOption.resume;
+                        ResumeButton.SetActive(true);
+                        MenuButton.SetActive(false);
+                        OptionsButton.SetActive(false);
+                        QuitButton.SetActive(false);
+                        break;
+                    case PauseMenuOption.options:
+                        mainMenuOption = PauseMenuOption.menu;
+                        ResumeButton.SetActive(false);
+                        MenuButton.SetActive(true);
+                        OptionsButton.SetActive(false);
+                        QuitButton.SetActive(false);
+                        break;
+                    case PauseMenuOption.quit:
+                        mainMenuOption = PauseMenuOption.options;
+                        ResumeButton.SetActive(false);
+                        MenuButton.SetActive(false);
+                        OptionsButton.SetActive(true);
+                        QuitButton.SetActive(false);
+                        break;
+                    default:
+                        Debug.Log("Unexpected Player Number Selection Option");
+                        break;
+                }
             }
         }
     }
@@ -116,55 +119,58 @@ public class PauseMenu : MonoBehaviour
     bool isPressNextRelease;
     private void PauseMenuNext()
     {
-        if (Input.GetAxis("LeftJoyStickY_ANYPLAYER") > 0)
+        if (GameIsPaused)
         {
-            isPressNext = true;
-        }
-        if (isPressNext)
-        {
-            if (Input.GetAxis("LeftJoyStickY_ANYPLAYER") == 0)
+            if (Input.GetAxis("LeftJoyStickY_ANYPLAYER") > 0)
             {
-                isPressNext = false;
-                isPressNextRelease = true;
+                isPressNext = true;
             }
-        }
-        if (isPressNextRelease)
-        {
-            isPressNextRelease = false;
-
-            switch (mainMenuOption)
+            if (isPressNext)
             {
-                case PauseMenuOption.resume:
-                    mainMenuOption = PauseMenuOption.menu;
-                    ResumeButton.SetActive(false);
-                    MenuButton.SetActive(true);
-                    OptionsButton.SetActive(false);
-                    QuitButton.SetActive(false);
-                    break;
-                case PauseMenuOption.menu:
-                    mainMenuOption = PauseMenuOption.options;
-                    ResumeButton.SetActive(false);
-                    MenuButton.SetActive(false);
-                    OptionsButton.SetActive(true);
-                    QuitButton.SetActive(false);
-                    break;
-                case PauseMenuOption.options:
-                    mainMenuOption = PauseMenuOption.quit;
-                    ResumeButton.SetActive(false);
-                    MenuButton.SetActive(false);
-                    OptionsButton.SetActive(false);
-                    QuitButton.SetActive(true);
-                    break;
-                case PauseMenuOption.quit:
-                    mainMenuOption = PauseMenuOption.resume;
-                    ResumeButton.SetActive(true);
-                    MenuButton.SetActive(false);
-                    OptionsButton.SetActive(false);
-                    QuitButton.SetActive(false);
-                    break;
-                default:
-                    Debug.Log("Unexpected Player Number Selection Option");
-                    break;
+                if (Input.GetAxis("LeftJoyStickY_ANYPLAYER") == 0)
+                {
+                    isPressNext = false;
+                    isPressNextRelease = true;
+                }
+            }
+            if (isPressNextRelease)
+            {
+                isPressNextRelease = false;
+
+                switch (mainMenuOption)
+                {
+                    case PauseMenuOption.resume:
+                        mainMenuOption = PauseMenuOption.menu;
+                        ResumeButton.SetActive(false);
+                        MenuButton.SetActive(true);
+                        OptionsButton.SetActive(false);
+                        QuitButton.SetActive(false);
+                        break;
+                    case PauseMenuOption.menu:
+                        mainMenuOption = PauseMenuOption.options;
+                        ResumeButton.SetActive(false);
+                        MenuButton.SetActive(false);
+                        OptionsButton.SetActive(true);
+                        QuitButton.SetActive(false);
+                        break;
+                    case PauseMenuOption.options:
+                        mainMenuOption = PauseMenuOption.quit;
+                        ResumeButton.SetActive(false);
+                        MenuButton.SetActive(false);
+                        OptionsButton.SetActive(false);
+                        QuitButton.SetActive(true);
+                        break;
+                    case PauseMenuOption.quit:
+                        mainMenuOption = PauseMenuOption.resume;
+                        ResumeButton.SetActive(true);
+                        MenuButton.SetActive(false);
+                        OptionsButton.SetActive(false);
+                        QuitButton.SetActive(false);
+                        break;
+                    default:
+                        Debug.Log("Unexpected Player Number Selection Option");
+                        break;
+                }
             }
         }
     }
