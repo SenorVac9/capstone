@@ -9,8 +9,8 @@ public class spark_script : MonoBehaviour
 {
     ui_controller ui;
     VehicleBehavior vehicleBehavior;
-   // public Transform Spark_Spawnpoint_Rear_Right, Spark_Spawnpoint_Rear_Left, Spark_Spawnpoint_Front_Right, Spark_Spawnpoint_Front_Left;
-    public new ParticleSystem spark_forward_RR, spark_forward_RL, spark_forward_FR, spark_forward_FL, spark_reverse_RR,spark_reverse_RL, spark_reverse_FR, spark_reverse_FL;
+    // public Transform Spark_Spawnpoint_Rear_Right, Spark_Spawnpoint_Rear_Left, Spark_Spawnpoint_Front_Right, Spark_Spawnpoint_Front_Left;
+    public new ParticleSystem spark_forward_RR, spark_forward_RL, spark_forward_FR, spark_forward_FL, spark_reverse_RR, spark_reverse_RL, spark_reverse_FR, spark_reverse_FL;
     public bool isforward, isreverse;
 
 
@@ -74,6 +74,11 @@ public class spark_script : MonoBehaviour
 
 
         }
+        else if (ui.has_tire_1==true)
+        {
+            spark_forward_FR.Stop();
+            spark_reverse_FR.Stop();
+        }
         if (ui.has_tire_2 == false)
         {
             if (vehicleBehavior.accel_magnitude_float > 0 && vehicleBehavior.is_grounded == true)
@@ -119,6 +124,11 @@ public class spark_script : MonoBehaviour
 
 
 
+        }
+        else if (ui.has_tire_2 == true)
+        {
+            spark_forward_FL.Stop();
+            spark_reverse_FL.Stop();
         }
         if (ui.has_tire_3 == false)
         {
@@ -166,6 +176,11 @@ public class spark_script : MonoBehaviour
 
 
         }
+        else if (ui.has_tire_3 == true)
+        {
+            spark_forward_RR.Stop();
+            spark_reverse_RR.Stop();
+        }
         if (ui.has_tire_4 == false)
         {
             if (vehicleBehavior.accel_magnitude_float > 0 && vehicleBehavior.is_grounded == true)
@@ -212,7 +227,14 @@ public class spark_script : MonoBehaviour
 
 
         }
+        else if (ui.has_tire_4 == true)
+        {
+            spark_forward_RL.Stop();
+            spark_reverse_RL.Stop();
+        }
 
+
+       
 
 
         /* if (ui.has_tire_1 == false && vehicleBehavior.accel_magnitude_float < 0)

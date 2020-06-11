@@ -49,7 +49,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -4657,14 +4657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05bc0f4eb9c1a944ebd6ed5e7b5ca87c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CarRimSparkParticle_rear_left: {fileID: 0}
-  CarRimSparkParticle_front_right: {fileID: 0}
-  CarRimSparkParticle_rear_right: {fileID: 0}
-  CarRimSparkParticle_front_left: {fileID: 0}
-  Spark_Spawnpoint_Front_Left: {fileID: 0}
-  Spark_Spawnpoint_Front_Right: {fileID: 0}
-  Spark_Spawnpoint_Rear_Left: {fileID: 0}
-  Spark_Spawnpoint_Rear_Right: {fileID: 0}
+  Prefab1: {fileID: 0}
   multiplier: 1
   vehicleBehavior: {fileID: 0}
   particleType: 0
