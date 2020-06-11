@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
 <GameStateData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <FirstPlaceID>1</FirstPlaceID>
-  <SecondPlaceID>0</SecondPlaceID>
+  <FirstPlaceID>-1</FirstPlaceID>
+  <SecondPlaceID>1</SecondPlaceID>
   <ThirdPlaceID>0</ThirdPlaceID>
   <FourthPlaceID>0</FourthPlaceID>
-  <FirstRaceTime>120.136635</FirstRaceTime>
-  <SecondRaceTime>0</SecondRaceTime>
+  <FirstRaceTime>77.23892</FirstRaceTime>
+  <SecondRaceTime>82.72057</SecondRaceTime>
   <ThirdRaceTime>0</ThirdRaceTime>
   <FourthRaceTime>0</FourthRaceTime>
-  <oldGhostTime>0</oldGhostTime>
-  <numPlayer>1</numPlayer>
-  <P1Character>Maxine</P1Character>
-  <P2Character>NotInGame</P2Character>
+  <oldGhostTime>77.23892</oldGhostTime>
+  <numPlayer>2</numPlayer>
+  <P1Character>NotInGame</P1Character>
+  <P2Character>Toby</P2Character>
   <P3Character>NotInGame</P3Character>
   <P4Character>NotInGame</P4Character>
 </GameStateData>
