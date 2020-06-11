@@ -25,6 +25,11 @@ TagManager:
   - PlayerCountTracker
   - Milk
   - TestField
+  - Rim_Sparks
+  - Maxine_Extra_Parts
+  - JumpObject
+  - PickupCollider
+  - Pickup
   layers:
   - Default
   - TransparentFX

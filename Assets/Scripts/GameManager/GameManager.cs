@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
             switch (playerLapData.GetComponent<VehicleBehavior>().PlayerID)
             {
                 case 1:
-                    if (playerLapData.GetComponent<VehicleBehavior>().isControllerInitialized)
+                    if (playerLapData.GetComponent<VehicleBehavior>().playerHUD.simpleCharacterSeleciton.isCharacterSelected)
                     {
                         InitializedPlayers++;
                         Debug.Log(InitializedPlayers + " out of: " + (int)PlayerSelectionManager.Instance.numPlayerOption + " Players have been initialized");
@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
                         beginCountDown = true;
                     break;
                 case 2:
-                    if (playerLapData.GetComponent<VehicleBehavior>().isControllerInitialized)
+                    if (playerLapData.GetComponent<VehicleBehavior>().playerHUD.simpleCharacterSeleciton.isCharacterSelected)
                     {
                         InitializedPlayers++;
                         Debug.Log(InitializedPlayers + " out of: " + (int)PlayerSelectionManager.Instance.numPlayerOption + " Players have been initialized");
@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
                         beginCountDown = true;
                     break;
                 case 3:
-                    if (playerLapData.GetComponent<VehicleBehavior>().isControllerInitialized)
+                    if (playerLapData.GetComponent<VehicleBehavior>().playerHUD.simpleCharacterSeleciton.isCharacterSelected)
                     {
                         InitializedPlayers++;
                         Debug.Log(InitializedPlayers + " out of: " + (int)PlayerSelectionManager.Instance.numPlayerOption + " Players have been initialized");
@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
                         beginCountDown = true;
                     break;
                 case 4:
-                    if (playerLapData.GetComponent<VehicleBehavior>().isControllerInitialized)
+                    if (playerLapData.GetComponent<VehicleBehavior>().playerHUD.simpleCharacterSeleciton.isCharacterSelected)
                     {
                         InitializedPlayers++;
                         Debug.Log(InitializedPlayers + " out of: " + (int)PlayerSelectionManager.Instance.numPlayerOption + " Players have been initialized");

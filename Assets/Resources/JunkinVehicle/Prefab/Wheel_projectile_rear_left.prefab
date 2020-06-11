@@ -197,6 +197,7 @@ GameObject:
   - component: {fileID: 8410258088611983643}
   - component: {fileID: 6010059736105987443}
   - component: {fileID: -3316628415799221295}
+  - component: {fileID: 4830989100492869096}
   m_Layer: 8
   m_Name: Wheel_projectile_rear_left
   m_TagString: CarMain
@@ -248,3 +249,15 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4830989100492869096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7709651634955788957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8c8a87af1659f43b6ed15194d981f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

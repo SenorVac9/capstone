@@ -7,10 +7,10 @@ public class Player_Door_Detach : MonoBehaviour
 {
 
     public Transform Spawnpoint_door1, Spawnpoint_door2;
-    public GameObject Prefab1;
+    public GameObject Prefab1, door_left, door_right;
     public Camera cam_p1;
     VehicleBehavior vehicleBehaviour;
-    public float speed = 2f;
+    float speed = 50f;
     //public GameObject Door_destory1, Door_destroy2;
     // public int[] reserveParts;
     //public List<int> reservePartsList = new List<int>();
@@ -33,26 +33,28 @@ void Update()
         //2 right door
         if (doornum == 1)
         {
+            Debug.Log("left door should launch");
             GameObject Door = Instantiate(Prefab1) as GameObject;
             Door.transform.position = Spawnpoint_door1.transform.position;
             Rigidbody rb = Door.GetComponent<Rigidbody>();
-            rb.velocity = cam_p1.transform.forward * -speed;
+            rb.velocity = Spawnpoint_door1.transform.forward * speed;
             // partsUsed++;
             //reservePartsList.Add(1);
-            //Door_destroy1.SetACtive(false);
+            door_left.SetActive(false);
             //Debug.log(reservePartsList);
 
         }
 
         else if (doornum == 2)
         {
+            Debug.Log("right door should launch");
             GameObject Door = Instantiate(Prefab1) as GameObject;
             Door.transform.position = Spawnpoint_door2.transform.position;
             Rigidbody rb = Door.GetComponent<Rigidbody>();
-            rb.velocity = cam_p1.transform.forward * speed;
+            rb.velocity = Spawnpoint_door2.transform.forward * speed;
             //partsUsed++;
             //reservePartsList.Add(2);
-            //Door_destroy1.SetACtive(false);
+            door_right.SetActive(false);
             //Debug.log(reservePartsList);
 
 

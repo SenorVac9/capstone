@@ -74,6 +74,7 @@ namespace ModuloKart.MainMenu
 
         bool isPressNext;
         bool isPressNextRelease;
+
         private void MainMenuNext()
         {
             if (Input.GetAxis("LeftJoyStickY_ANYPLAYER") > 0)
@@ -162,7 +163,7 @@ namespace ModuloKart.MainMenu
 
         public void ButtonBehavior_LoadPlayerSelectionScene()
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2);
         }
 
 
