@@ -12,7 +12,7 @@ namespace ModuloKart.CustomVehiclePhysics
         KeyboardAndMouse,
         Xbox,
     }
-
+    
     [RequireComponent(typeof(Rigidbody))]
     public class VehicleBehavior : MonoBehaviour
     {
@@ -88,7 +88,7 @@ namespace ModuloKart.CustomVehiclePhysics
         public bool is_nitrosboost;
         [Header("Vehicle Spin Out")]
         public bool hasVehicleControl = false;
-
+        spark_script nitro;
 
         [Header("Maximum and Minimum Vehicle Movement Values")]
         [Range(0, 500)] public float max_gravity_float = 250f;
@@ -159,6 +159,7 @@ namespace ModuloKart.CustomVehiclePhysics
 
         private void Start()
         {
+            nitro = GameObject.FindObjectOfType<spark_script>();
             character = GameObject.FindObjectOfType<SimpleCharacterSelection>();
           
             //Caching variables
@@ -1001,6 +1002,7 @@ namespace ModuloKart.CustomVehiclePhysics
                 if (extra_nitros_meter_float <= 0)
                 {
                     nitros_meter_float = nitros_meter_float > 0 ? nitros_meter_float -= Time.fixedDeltaTime * nitros_depletion_rate : 0;
+                    
                 }
 
             }
@@ -1025,6 +1027,7 @@ namespace ModuloKart.CustomVehiclePhysics
 
                 is_nitrosboost = false;
                 nitros_speed_float = 0;
+               
             }
         }
 
@@ -1091,34 +1094,33 @@ namespace ModuloKart.CustomVehiclePhysics
                 }
 
 
-                if (!is_drift || 1 == 1)
-                {
-                    if (target_accel_modified < 0) target_accel_modified = 0;
 
-                    if (is_nitrosboost)
+                if (target_accel_modified < 0) target_accel_modified = 0;
+
+                if (is_nitrosboost)
+                {
+                    target_accel_modified = max_accel_float - Mathf.Abs(steer_magnitude_float) * STEER_DECELERATION + nitros_speed_float;
+                }
+                else
+                {
+                    if (target_accel_modified > max_accel_float - Mathf.Abs(steer_magnitude_float) * STEER_DECELERATION + nitros_speed_float)
                     {
-                        target_accel_modified = max_accel_float - Mathf.Abs(steer_magnitude_float) * STEER_DECELERATION + nitros_speed_float;
+                        target_accel_modified -= DRAG * Time.fixedDeltaTime;
+                        if (target_accel_modified < max_accel_float - Mathf.Abs(steer_magnitude_float) * STEER_DECELERATION + nitros_speed_float)
+                        {
+                            target_accel_modified = max_accel_float - Mathf.Abs(steer_magnitude_float) * STEER_DECELERATION + nitros_speed_float;
+                        }
                     }
                     else
                     {
+                        target_accel_modified += DRAG * Time.fixedDeltaTime;
                         if (target_accel_modified > max_accel_float - Mathf.Abs(steer_magnitude_float) * STEER_DECELERATION + nitros_speed_float)
                         {
-                            target_accel_modified -= DRAG * Time.fixedDeltaTime;
-                            if (target_accel_modified < max_accel_float - Mathf.Abs(steer_magnitude_float) * STEER_DECELERATION + nitros_speed_float)
-                            {
-                                target_accel_modified = max_accel_float - Mathf.Abs(steer_magnitude_float) * STEER_DECELERATION + nitros_speed_float;
-                            }
-                        }
-                        else
-                        {
-                            target_accel_modified += DRAG * Time.fixedDeltaTime;
-                            if (target_accel_modified > max_accel_float - Mathf.Abs(steer_magnitude_float) * STEER_DECELERATION + nitros_speed_float)
-                            {
-                                target_accel_modified = max_accel_float - Mathf.Abs(steer_magnitude_float) * STEER_DECELERATION + nitros_speed_float;
-                            }
+                            target_accel_modified = max_accel_float - Mathf.Abs(steer_magnitude_float) * STEER_DECELERATION + nitros_speed_float;
                         }
                     }
                 }
+
 
 
 
