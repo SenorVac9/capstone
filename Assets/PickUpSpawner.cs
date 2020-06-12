@@ -22,6 +22,19 @@ public class PickUpSpawner : MonoBehaviour
             {
                 PickUp.SetActive(true);
                 Timer = 0;
+                int r = Random.Range(0, 3);
+                switch (r)
+                {
+                    case 0:
+                        PickUp.GetComponent<PartReplenishScript>().setPickUpType(PartReplenishScript.PickUpType.Character);
+                        break;
+                    case 1:
+                        PickUp.GetComponent<PartReplenishScript>().setPickUpType(PartReplenishScript.PickUpType.Nitro);
+                        break;
+                    case 2:
+                        PickUp.GetComponent<PartReplenishScript>().setPickUpType(PartReplenishScript.PickUpType.Tires);
+                        break;
+                }
             }
         }
     }
