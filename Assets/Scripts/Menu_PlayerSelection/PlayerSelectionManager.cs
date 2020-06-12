@@ -266,23 +266,23 @@ namespace ModuloKart.PlayerSelectionMenu
 
         public void ButtonBehavior_ReturnToMain()
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         }
 
         public void ButtonBehavior_LoadGameScene()
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(3);
         }
 
         ControllerHandler controller;
         private void OnLevelWasLoaded(int level)
         {
-            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(0))
+            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(1))
             {
                 Destroy(this.gameObject);
             }
 
-                if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(2))
+                if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(3))
             {
                 inGameScene = true;
                 ControllerHandler controllerHandler = GameObject.FindObjectOfType<ControllerHandler>();
