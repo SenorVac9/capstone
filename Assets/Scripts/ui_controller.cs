@@ -21,6 +21,7 @@ public class ui_controller : MonoBehaviour
     public bool has_Milk = true;
     public bool has_extra1 = false;
     public bool has_extra2 = false;
+    public bool has_Shield = false;
     //public bool has_Paul_extra = true;
     public int playerNum;
     public GameObject vechicle;
@@ -101,7 +102,30 @@ public class ui_controller : MonoBehaviour
             case 9:
                 has_extra2 = true;
                 break;
+            
         }
+        ui_item[item_selected].transform.localScale -= new Vector3(0.5f, 0.5f);
+
+
+        item_selected -= 1;
+        if (item_selected < 0)
+
+        {
+            item_selected = 9;
+        }
+
+        while (ui_item[item_selected].gameObject.activeSelf == false && !allItemsGone())
+        {
+            item_selected -= 1;
+            if (item_selected < 0)
+            {
+                item_selected = 9;
+            }
+        }
+
+
+
+        ui_item[item_selected].transform.localScale += new Vector3(0.5f, 0.5f);
     }
     // Update is called once per frame
     void Update()

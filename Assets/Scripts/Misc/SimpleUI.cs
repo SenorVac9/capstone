@@ -31,10 +31,12 @@ namespace ModuloKart.HUD
         public Text TextLastLapTime;
         public GameObject WrongDirectionWarning;
         public GameObject placeshower;
+        public GameObject TimeSplitsObj;
        
 
         private void Start()
         {
+            BeginBackgroundObject.SetActive(false);
             character = GameObject.FindObjectOfType<SimpleCharacterSelection>();
             simpleCharacterSeleciton = GetComponent<SimpleCharacterSelection>();
             if (simpleCharacterSeleciton)
