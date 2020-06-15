@@ -109,6 +109,9 @@ MonoBehaviour:
   car: {fileID: 0}
   wheels: {fileID: 0}
   headsUp: {fileID: 0}
+  CharMaterial: {fileID: 2100000, guid: b4431a7b187ac46458e3da2a20ff42ab, type: 2}
+  TireMaterial: {fileID: 2100000, guid: 3c02d5c6ffec724428f14ea6e91f0256, type: 2}
+  NitroMaterial: {fileID: 2100000, guid: 20a596ac527a5b54998edc4aa4ef4a20, type: 2}
 --- !u!1 &7675475269260460727
 GameObject:
   m_ObjectHideFlags: 0
