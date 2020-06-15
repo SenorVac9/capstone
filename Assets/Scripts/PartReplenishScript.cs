@@ -39,6 +39,19 @@ public class PartReplenishScript : MonoBehaviour
        
         Debug.Log("Randomizer Active");
         spawner = gameObject.GetComponentInParent<PickUpSpawner>();
+        int r = Random.Range(0, 3);
+        switch (r)
+        {
+            case 0:
+                setPickUpType(PickUpType.Tires);
+                break;
+            case 1:
+                setPickUpType(PickUpType.Nitro);
+                break;
+            case 2:
+                setPickUpType(PickUpType.Character);
+                break;
+        }
   
     }
     public void setPickUpType(PickUpType type)
@@ -148,9 +161,10 @@ public class PartReplenishScript : MonoBehaviour
                     Debug.Log("Not supposed to show");
                     //  break;
                 }
-              
 
-            }
+                    spawner.Timer = Time.time + 5.0f;
+                    gameObject.SetActive(false);
+                }
             else
             {
                 //it needs to hit a specific part of the car, otherwise, this activates
@@ -160,20 +174,59 @@ public class PartReplenishScript : MonoBehaviour
             }
            else if(upType == PickUpType.Nitro)
             {
-
-            }
-            else if(upType == PickUpType.Character)
-            {             
-                if (headsUp.has_door_1 == true && headsUp.has_Shield == true && headsUp.has_extra1 == true && headsUp.has_extra2 == true && headsUp.has_door_2 == true)
+                if (c.gameObject.CompareTag("GameController"))
                 {
                     spawner.Timer = Time.time + 5.0f;
                     gameObject.SetActive(false);
-                    //if this is true, then it nullifies the script
-                    return;
                 }
+               
+            }
+            else if(upType == PickUpType.Character)
+            {
+                AVerySimpleEnumOfCharacters character = headsUp.GetCharacter();
+                switch (character){
+                    case AVerySimpleEnumOfCharacters.Felix:
+                        if (headsUp.has_door_1 == true && headsUp.has_Shield == true  && headsUp.has_door_2 == true)
+                        {
+                            spawner.Timer = Time.time + 5.0f;
+                            gameObject.SetActive(false);
+                            //if this is true, then it nullifies the script
+                            return;
+                        }
+                        break;
+                    case AVerySimpleEnumOfCharacters.Maxine:
+                        if (headsUp.has_door_1 == true  && headsUp.has_extra1 == true && headsUp.has_extra2 == true && headsUp.has_door_2 == true)
+                        {
+                            spawner.Timer = Time.time + 5.0f;
+                            gameObject.SetActive(false);
+                            //if this is true, then it nullifies the script
+                            return;
+                        }
+                        break;
+                    case AVerySimpleEnumOfCharacters.Paul:
+                        if (headsUp.has_door_1 == true && headsUp.has_Shield == true && headsUp.has_door_2 == true)
+                        {
+                            spawner.Timer = Time.time + 5.0f;
+                            gameObject.SetActive(false);
+                            //if this is true, then it nullifies the script
+                            return;
+                        }
+                        break;
+                    case AVerySimpleEnumOfCharacters.Toby:
+                        if (headsUp.has_door_1 == true  && headsUp.has_extra1 == true  && headsUp.has_door_2 == true)
+                        {
+                            spawner.Timer = Time.time + 5.0f;
+                            gameObject.SetActive(false);
+                            //if this is true, then it nullifies the script
+                            return;
+                        }
+                        break;
+                }
+              
                 if (c.gameObject.CompareTag("GameController"))
                 {
                     bool retry = true;
+                   
                     partBack = Random.Range(0, 5);
                     while (retry == true)
                     {
@@ -204,7 +257,7 @@ public class PartReplenishScript : MonoBehaviour
 
                                 break;
                             case 2:
-                                if (headsUp.has_Shield)
+                                if (headsUp.has_Shield||character != AVerySimpleEnumOfCharacters.Paul)
                                 {
                                     partBack++;
                                 }
@@ -216,7 +269,7 @@ public class PartReplenishScript : MonoBehaviour
 
                                 break;
                             case 3:
-                                if (headsUp.has_extra1)
+                                if (headsUp.has_extra1|| character == AVerySimpleEnumOfCharacters.Felix || character == AVerySimpleEnumOfCharacters.Paul||character == AVerySimpleEnumOfCharacters.NotInGame)
                                 {
                                     partBack++;
                                 }
@@ -227,9 +280,10 @@ public class PartReplenishScript : MonoBehaviour
                                 }
                                 break;
                             case 4:
-                                if (headsUp.has_extra2)
+                                if (headsUp.has_extra2||character != AVerySimpleEnumOfCharacters.Maxine)
                                 {
                                     partBack = 0;
+                                 //   retry = false;
                                 }
                                 else
                                 {
@@ -240,7 +294,8 @@ public class PartReplenishScript : MonoBehaviour
                                 break;
                         }
                     }
-
+                    spawner.Timer = Time.time + 5.0f;
+                    gameObject.SetActive(false);
                 }
             }
         }
@@ -249,8 +304,7 @@ public class PartReplenishScript : MonoBehaviour
             Debug.Log("We have no 'Heads up' Object");
             return;
         }
-        spawner.Timer = Time.time + 5.0f;
-        gameObject.SetActive(false);
+        
 
     }
 
