@@ -118,7 +118,7 @@ SphereCollider:
   m_GameObject: {fileID: 2020277165}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -213,7 +213,6 @@ Transform:
   - {fileID: 7875818876096824125}
   - {fileID: 2020277166}
   - {fileID: 507611522093983739}
-  - {fileID: 4647115640715150009}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -925,7 +924,7 @@ BoxCollider:
   m_GameObject: {fileID: 1798675936498290}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -4624,59 +4623,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!1 &4876897394338480144
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4647115640715150009}
-  - component: {fileID: 53064284406192724}
-  - component: {fileID: 1024359855592391237}
-  m_Layer: 8
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4647115640715150009
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4876897394338480144}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4941976934902108}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &53064284406192724
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4876897394338480144}
-  m_Mesh: {fileID: 4300004, guid: ef6178546f77bc546af127fb4c56da0c, type: 3}
---- !u!65 &1024359855592391237
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4876897394338480144}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2, y: 1, z: 2}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4980507543750844109
 GameObject:
   m_ObjectHideFlags: 0
@@ -7443,7 +7389,7 @@ BoxCollider:
   m_GameObject: {fileID: 7443447636367398821}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -8876,6 +8822,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8986415062285484189}
     m_Modifications:
+    - target: {fileID: 100000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
+      propertyPath: m_Name
+      value: TyreBurnoutSmoke
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -8932,10 +8882,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.4777644
       objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
-      propertyPath: m_Name
-      value: TyreBurnoutSmoke
-      objectReference: {fileID: 0}
     - target: {fileID: 1876785031727104935, guid: 98c58c8dd46640c49bb5f557afafea7c,
         type: 3}
       propertyPath: vehicleBehavior
@@ -8956,6 +8902,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7468395932529442024}
     m_Modifications:
+    - target: {fileID: 100000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
+      propertyPath: m_Name
+      value: TyreBurnoutSmoke
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -8999,10 +8949,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
-      propertyPath: m_Name
-      value: TyreBurnoutSmoke
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
@@ -9096,15 +9042,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4228c9e4cacf7184d8e00226d0e1300f, type: 3}
---- !u!4 &8484016431316892039 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7026825691517956785, guid: 4228c9e4cacf7184d8e00226d0e1300f,
-    type: 3}
-  m_PrefabInstance: {fileID: 1457208336297249590}
-  m_PrefabAsset: {fileID: 0}
 --- !u!198 &7204594972003416222 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 8629697014699422632, guid: 4228c9e4cacf7184d8e00226d0e1300f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1457208336297249590}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8484016431316892039 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7026825691517956785, guid: 4228c9e4cacf7184d8e00226d0e1300f,
     type: 3}
   m_PrefabInstance: {fileID: 1457208336297249590}
   m_PrefabAsset: {fileID: 0}
@@ -9403,6 +9349,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7725178297829727477}
     m_Modifications:
+    - target: {fileID: 100000, guid: 921a3ff88856fe04ebc86b196fd8cc59, type: 3}
+      propertyPath: m_Name
+      value: Smoke
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 921a3ff88856fe04ebc86b196fd8cc59, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.27800003
@@ -9447,10 +9397,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 921a3ff88856fe04ebc86b196fd8cc59, type: 3}
-      propertyPath: m_Name
-      value: Smoke
-      objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 921a3ff88856fe04ebc86b196fd8cc59, type: 3}
       propertyPath: lengthInSec
       value: 125.87
@@ -9486,6 +9432,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3036716658092913401}
     m_Modifications:
+    - target: {fileID: 100000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
+      propertyPath: m_Name
+      value: TyreBurnoutSmoke
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -9530,10 +9480,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
-      propertyPath: m_Name
-      value: TyreBurnoutSmoke
-      objectReference: {fileID: 0}
     - target: {fileID: 1876785031727104935, guid: 98c58c8dd46640c49bb5f557afafea7c,
         type: 3}
       propertyPath: vehicleBehavior
@@ -9554,6 +9500,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2617196330058060560}
     m_Modifications:
+    - target: {fileID: 100000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
+      propertyPath: m_Name
+      value: TyreBurnoutSmoke
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -9598,10 +9548,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
-      propertyPath: m_Name
-      value: TyreBurnoutSmoke
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
 --- !u!4 &3750555069230494438 stripped
@@ -9617,6 +9563,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8501409009365990271}
     m_Modifications:
+    - target: {fileID: 100000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
+      propertyPath: m_Name
+      value: TyreBurnoutSmoke
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -9665,10 +9615,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.25
       objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
-      propertyPath: m_Name
-      value: TyreBurnoutSmoke
-      objectReference: {fileID: 0}
     - target: {fileID: 1876785031727104935, guid: 98c58c8dd46640c49bb5f557afafea7c,
         type: 3}
       propertyPath: vehicleBehavior
@@ -9689,6 +9635,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7468395932529442024}
     m_Modifications:
+    - target: {fileID: 8761066532264796731, guid: 3653020573faccf45a880ebcaee0c348,
+        type: 3}
+      propertyPath: m_Name
+      value: Sparks_Reverse_FL
+      objectReference: {fileID: 0}
     - target: {fileID: 7026825691517956785, guid: 3653020573faccf45a880ebcaee0c348,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9759,11 +9710,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.4777648
       objectReference: {fileID: 0}
-    - target: {fileID: 8761066532264796731, guid: 3653020573faccf45a880ebcaee0c348,
-        type: 3}
-      propertyPath: m_Name
-      value: Sparks_Reverse_FL
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3653020573faccf45a880ebcaee0c348, type: 3}
 --- !u!198 &3567040856053908272 stripped
@@ -9785,6 +9731,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1015975139373076436}
     m_Modifications:
+    - target: {fileID: 100004, guid: 59f4ac200a9b5cf48bc9c11147fae71b, type: 3}
+      propertyPath: m_Name
+      value: nitroexhaust
+      objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 59f4ac200a9b5cf48bc9c11147fae71b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.48450002
@@ -9829,10 +9779,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: 59f4ac200a9b5cf48bc9c11147fae71b, type: 3}
-      propertyPath: m_Name
-      value: nitroexhaust
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59f4ac200a9b5cf48bc9c11147fae71b, type: 3}
 --- !u!4 &5220714733702795097 stripped
@@ -9854,6 +9800,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8371928597384948817}
     m_Modifications:
+    - target: {fileID: 100000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
+      propertyPath: m_Name
+      value: TyreBurnoutSmoke
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -9898,10 +9848,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
-      propertyPath: m_Name
-      value: TyreBurnoutSmoke
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
 --- !u!4 &6023206058352702479 stripped
@@ -9917,6 +9863,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2617196330058060560}
     m_Modifications:
+    - target: {fileID: 8761066532264796731, guid: 49e5b7b2889632f4fadfbe92ac86a9b9,
+        type: 3}
+      propertyPath: m_Name
+      value: Sparks_Forward_RR
+      objectReference: {fileID: 0}
     - target: {fileID: 7026825691517956785, guid: 49e5b7b2889632f4fadfbe92ac86a9b9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9987,22 +9938,17 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.4777644
       objectReference: {fileID: 0}
-    - target: {fileID: 8761066532264796731, guid: 49e5b7b2889632f4fadfbe92ac86a9b9,
-        type: 3}
-      propertyPath: m_Name
-      value: Sparks_Forward_RR
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49e5b7b2889632f4fadfbe92ac86a9b9, type: 3}
---- !u!198 &3444757158227853934 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 8629697014699422632, guid: 49e5b7b2889632f4fadfbe92ac86a9b9,
-    type: 3}
-  m_PrefabInstance: {fileID: 6344705271256822214}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4145747524265411447 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7026825691517956785, guid: 49e5b7b2889632f4fadfbe92ac86a9b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 6344705271256822214}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &3444757158227853934 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8629697014699422632, guid: 49e5b7b2889632f4fadfbe92ac86a9b9,
     type: 3}
   m_PrefabInstance: {fileID: 6344705271256822214}
   m_PrefabAsset: {fileID: 0}
@@ -10013,6 +9959,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7468395932529442024}
     m_Modifications:
+    - target: {fileID: 8761066532264796731, guid: 66daf70d6396e7a439fbf66b92adffe5,
+        type: 3}
+      propertyPath: m_Name
+      value: Sparks_Forward_FL
+      objectReference: {fileID: 0}
     - target: {fileID: 7026825691517956785, guid: 66daf70d6396e7a439fbf66b92adffe5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10083,11 +10034,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.4777663
       objectReference: {fileID: 0}
-    - target: {fileID: 8761066532264796731, guid: 66daf70d6396e7a439fbf66b92adffe5,
-        type: 3}
-      propertyPath: m_Name
-      value: Sparks_Forward_FL
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66daf70d6396e7a439fbf66b92adffe5, type: 3}
 --- !u!198 &2054242417944424548 stripped
@@ -10109,6 +10055,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2617196330058060560}
     m_Modifications:
+    - target: {fileID: 8761066532264796731, guid: 42d11a7899fb3974f9db4cc828a5e766,
+        type: 3}
+      propertyPath: m_Name
+      value: Sparks_Reverse_RR
+      objectReference: {fileID: 0}
     - target: {fileID: 7026825691517956785, guid: 42d11a7899fb3974f9db4cc828a5e766,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10179,11 +10130,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.4777644
       objectReference: {fileID: 0}
-    - target: {fileID: 8761066532264796731, guid: 42d11a7899fb3974f9db4cc828a5e766,
-        type: 3}
-      propertyPath: m_Name
-      value: Sparks_Reverse_RR
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42d11a7899fb3974f9db4cc828a5e766, type: 3}
 --- !u!4 &736099414472282129 stripped
@@ -10205,6 +10151,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4841766516257184}
     m_Modifications:
+    - target: {fileID: 100000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
+      propertyPath: m_Name
+      value: TyreBurnoutSmoke
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -10252,10 +10202,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
-      propertyPath: m_Name
-      value: TyreBurnoutSmoke
       objectReference: {fileID: 0}
     - target: {fileID: 1876785031727104935, guid: 98c58c8dd46640c49bb5f557afafea7c,
         type: 3}
