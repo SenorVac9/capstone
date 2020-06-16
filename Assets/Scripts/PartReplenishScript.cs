@@ -19,6 +19,7 @@ public class PartReplenishScript : MonoBehaviour
     public Material CharMaterial;
     public Material TireMaterial;
     public Material NitroMaterial;
+    float nitroPickUp =25;
     Collider ThisCollider;
     PickUpSpawner spawner;
     PickUpType upType = PickUpType.Tires;
@@ -100,7 +101,8 @@ public class PartReplenishScript : MonoBehaviour
         //  {
         if (headsUp)
         {
-            if(upType == PickUpType.Tires)
+            AVerySimpleEnumOfCharacters character = headsUp.GetCharacter();
+            if (upType == PickUpType.Tires)
             {
             if (headsUp.has_tire_1 == true && headsUp.has_tire_2 == true && headsUp.has_tire_3 == true && headsUp.has_tire_4 == true )
             {
@@ -176,6 +178,29 @@ public class PartReplenishScript : MonoBehaviour
             {
                 if (c.gameObject.CompareTag("GameController"))
                 {
+                    
+                    if(car.nitros_meter_float + nitroPickUp > car.max_nitros_meter_float)
+                    {
+                        if(character == AVerySimpleEnumOfCharacters.Felix || character == AVerySimpleEnumOfCharacters.Toby)
+                        {
+                            float dif = car.max_nitros_meter_float - car.nitros_meter_float;
+                            car.nitros_meter_float = car.max_nitros_meter_float;
+                            car.extra_nitros_meter_float += (nitroPickUp - dif);
+                            if(car.extra_nitros_meter_float > 100 && character == AVerySimpleEnumOfCharacters.Felix)
+                            {                        
+                                    car.extra_nitros_meter_float = 100;
+                               
+                                if (car.extra_nitros_meter_float > 50 && character == AVerySimpleEnumOfCharacters.Toby)
+                                    car.extra_nitros_meter_float = 50;
+                            }
+                        }
+                        else
+                        car.nitros_meter_float = car.max_nitros_meter_float;
+                    }
+                    else
+                    {
+                        car.nitros_meter_float += nitroPickUp; 
+                    }
                     spawner.Timer = Time.time + 5.0f;
                     gameObject.SetActive(false);
                 }
@@ -183,7 +208,7 @@ public class PartReplenishScript : MonoBehaviour
             }
             else if(upType == PickUpType.Character)
             {
-                AVerySimpleEnumOfCharacters character = headsUp.GetCharacter();
+               
                 switch (character){
                     case AVerySimpleEnumOfCharacters.Felix:
                         if (headsUp.has_door_1 == true && headsUp.has_Shield == true  && headsUp.has_door_2 == true)
