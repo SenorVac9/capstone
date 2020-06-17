@@ -171,7 +171,7 @@ public class Vehicle_Collisions : MonoBehaviour
     }
     IEnumerator PreventPartCollision()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
     }
     private void OnCollisionStay(Collision collision)
     {
