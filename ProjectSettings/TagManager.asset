@@ -44,8 +44,8 @@ TagManager:
   - VehicleLayer
   - DeathLayer
   - Terrain
-  - 
-  - 
+  - Minimap
+  - MinimapIcons
   - 
   - 
   - 
