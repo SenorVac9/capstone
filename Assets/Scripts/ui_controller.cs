@@ -31,7 +31,8 @@ public class ui_controller : MonoBehaviour
     void Start()
     {
         vehicleBehaviour = GameObject.FindObjectOfType<VehicleBehavior>();
-        character = GameObject.FindObjectOfType<SimpleCharacterSelection>();
+      //  character = GameObject.FindObjectOfType<SimpleCharacterSelection>();
+        character = gameObject.GetComponentInParent<SimpleCharacterSelection>();
         if (gameObject.tag == "Player1")
             playerNum = 1;
         else if (gameObject.tag == "Player2")
@@ -69,6 +70,10 @@ public class ui_controller : MonoBehaviour
         }
 
         return false;
+    }
+    public AVerySimpleEnumOfCharacters GetCharacter()
+    {
+        return character.whichCharacterDidISelectDuringTheGameScene;
     }
     public void RegainPart(int partRecovered)
     {

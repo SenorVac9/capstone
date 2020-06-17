@@ -29,11 +29,10 @@ void Update()
     }
     public void Detach_Door(int doornum)
     {
-        //1 left door
-        //2 right door
+       
         if (doornum == 1)
         {
-            Debug.Log("left door should launch");
+         
             GameObject Door = Instantiate(Prefab1) as GameObject;
             Door.transform.position = Spawnpoint_door1.transform.position;
             Rigidbody rb = Door.GetComponent<Rigidbody>();
@@ -47,7 +46,7 @@ void Update()
 
         else if (doornum == 2)
         {
-            Debug.Log("right door should launch");
+           
             GameObject Door = Instantiate(Prefab1) as GameObject;
             Door.transform.position = Spawnpoint_door2.transform.position;
             Rigidbody rb = Door.GetComponent<Rigidbody>();
