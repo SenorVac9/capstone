@@ -19,6 +19,7 @@ public class Vehicle_Collisions : MonoBehaviour
     ForceField forceField;
     public AudioClip crash;
     private bool isLimitCollision = false;
+    bool collisionsDisabled = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -66,11 +67,10 @@ public class Vehicle_Collisions : MonoBehaviour
         {
             if (c.gameObject.CompareTag("Obstacle"))
             {
-
-                if (!isLimitCollision)
+                
+                if (!isLimitCollision && !collisionsDisabled)
                 {
                     isLimitCollision = true;
-                    StartCoroutine(PreventPartCollision());
                     vehicleBehavior.hasVehicleControl = false;
                     vehicleBehavior.accel_magnitude_float = 0;
                     vehicleBehavior.SpinOutBehavior();
@@ -169,9 +169,14 @@ public class Vehicle_Collisions : MonoBehaviour
         vehicleBehavior.hasVehicleControl = true;
 
     }
+     public void CollisionDisabler()
+    {
+        StartCoroutine(PreventPartCollision());
+    }
     IEnumerator PreventPartCollision()
     {
         yield return new WaitForSeconds(2);
+        collisionsDisabled = false;
     }
     private void OnCollisionStay(Collision collision)
     {
