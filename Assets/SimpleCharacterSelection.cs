@@ -52,7 +52,7 @@ public class SimpleCharacterSelection : MonoBehaviour
 
     private void ToggleCharacterSelection()
     {
-        if (vehicleBehavior.isControllerInitialized)
+        if (vehicleBehavior.isControllerInitialized && !isCharacterSelected)
         {
             if (Input.GetButtonDown(vehicleBehavior.input_ItemNext))
             {
