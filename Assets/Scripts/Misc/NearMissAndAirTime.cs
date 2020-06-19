@@ -7,7 +7,8 @@ using ModuloKart.CustomVehiclePhysics;
 
 public class NearMissAndAirTime : MonoBehaviour
 {
-    public GameObject nearMissText, airTimeCounter;
+    public GameObject nearMissText , airTimeText;
+    public Text airTimeCounter;
     public bool isCollided = false;
     public bool isNearMissActive = false;
     public float airTimeGainRate = 12.5f;
@@ -21,12 +22,13 @@ public class NearMissAndAirTime : MonoBehaviour
      
         vehicleBehavior = GameObject.FindObjectOfType<VehicleBehavior>();
         nearMissText.SetActive(false);
-        airTimeCounter.SetActive(false);
+        airTimeText.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (airTimeCounter == null) return;
         if (vehicleBehavior == null) return;
         //NearMissCall(vehicleBehavior.max_nitros_meter_float);
         if (vehicleBehavior.nitros_meter_float > 100)
@@ -39,7 +41,7 @@ public class NearMissAndAirTime : MonoBehaviour
 
     void OnCollisionEnter(Collision c)
     {
-        if (c.gameObject.CompareTag("Obstacles"))
+        if (c.gameObject.CompareTag("Obstacle"))
         {
             isCollided = true;
             Debug.Log("collided");
@@ -50,7 +52,7 @@ public class NearMissAndAirTime : MonoBehaviour
     void OnTriggerExit(Collider c)
     {
 
-        if (c.gameObject.CompareTag("Obstacles") && !isCollided)
+        if (c.gameObject.CompareTag("Obstacle") && !isCollided)
         {
             Debug.Log("exited trigger");
             Debug.Log("isCollided" + isCollided);
@@ -95,12 +97,20 @@ public class NearMissAndAirTime : MonoBehaviour
     {
         if (!vehicleBehavior.is_grounded)
         {
-
-            //airTimeCounter.SetActive(true);
-            //airTimeCounter = Time.deltaTime;
-            gain = Time.deltaTime * rate;
+            float countr = Time.deltaTime;
+            if (countr >= 0.5)
+            {
+                airTimeText.SetActive(true);
+                gain = Time.deltaTime * rate;
+                nitro += gain;
+            }
+            airTimeCounter.text = (countr).ToString();
             nitro += gain;
             
+        }
+        else
+        {
+            airTimeText.SetActive(false) ;
         }
         return nitro;
     }
