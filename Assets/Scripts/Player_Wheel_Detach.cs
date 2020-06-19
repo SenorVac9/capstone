@@ -14,13 +14,14 @@ public class Player_Wheel_Detach : MonoBehaviour
     public int[] reserveParts;
     public List<int> reservePartsList = new List<int>();
     public int partsUsed;
-    
+    Vehicle_Collisions _vehicleCollisions;
+
 
     // Start is called before the first frame update
 
     void Start()
     {
-
+        _vehicleCollisions = GameObject.FindObjectOfType<Vehicle_Collisions>();
     }
 
     // Update is called once per frame
@@ -52,7 +53,7 @@ public class Player_Wheel_Detach : MonoBehaviour
         ////IF Paul
         //if (vehicleBehavior.playerHUD.simpleCharacterSeleciton.whichCharacterDidISelectDuringTheGameScene == AVerySimpleEnumOfCharacters.Paul)
         //{
-        //    AudioManager.instance.Play("Paul_Throw_Tire");
+        //     AudioManager.instance.Play("Paul_Throw_Tire");
         //}
 
         ////IF Toby
@@ -69,7 +70,7 @@ public class Player_Wheel_Detach : MonoBehaviour
          */
         if (tirenum == 2)
         {
-           
+            _vehicleCollisions.CollisionDisabler();
             GameObject Wheel = Instantiate<GameObject>(prefab1, spawnpoint1.transform.position, spawnpoint1.rotation);
           
             Rigidbody rb = Wheel.GetComponent<Rigidbody>();
@@ -82,6 +83,7 @@ public class Player_Wheel_Detach : MonoBehaviour
         }
         else if (tirenum == 1)
         {
+            _vehicleCollisions.CollisionDisabler();
             GameObject Wheel = Instantiate<GameObject>(prefab1, spawnpoint2.transform.position, spawnpoint2.rotation);
             Rigidbody rb = Wheel.GetComponent<Rigidbody>();
             rb.velocity = spawnpoint2.transform.forward * speed;
@@ -92,6 +94,7 @@ public class Player_Wheel_Detach : MonoBehaviour
         }
         else if (tirenum == 4)
         {
+            _vehicleCollisions.CollisionDisabler();
             GameObject Wheel = Instantiate<GameObject>(prefab1, spawnpoint3.transform.position, spawnpoint3.rotation);
             Rigidbody rb = Wheel.GetComponent<Rigidbody>();
             rb.velocity = spawnpoint3.transform.forward * speed;
@@ -102,6 +105,7 @@ public class Player_Wheel_Detach : MonoBehaviour
         }
         else if (tirenum == 3)
         {
+            _vehicleCollisions.CollisionDisabler();
             GameObject Wheel = Instantiate<GameObject>(prefab1, spawnpoint4.transform.position, spawnpoint4.rotation);
             Rigidbody rb = Wheel.GetComponent<Rigidbody>();
             rb.velocity = spawnpoint4.transform.forward * speed;
