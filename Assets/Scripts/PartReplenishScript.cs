@@ -211,7 +211,7 @@ public class PartReplenishScript : MonoBehaviour
                
                 switch (character){
                     case AVerySimpleEnumOfCharacters.Felix:
-                        if (headsUp.has_door_1 == true && headsUp.has_Shield == true  && headsUp.has_door_2 == true)
+                        if (headsUp.has_door_1 == true  && headsUp.has_door_2 == true)
                         {
                             spawner.Timer = Time.time + 5.0f;
                             gameObject.SetActive(false);
