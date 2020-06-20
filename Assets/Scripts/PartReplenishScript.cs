@@ -16,9 +16,9 @@ public class PartReplenishScript : MonoBehaviour
     public VehicleBehavior car;
     public Player_Wheel_Detach wheels;
     public ui_controller headsUp;
-    public Material CharMaterial;
-    public Material TireMaterial;
-    public Material NitroMaterial;
+    GameObject CharPickUp;
+    GameObject NitroPickUp;
+    GameObject TirePickUp;
     float nitroPickUp =25;
     Collider ThisCollider;
     PickUpSpawner spawner;
@@ -40,6 +40,9 @@ public class PartReplenishScript : MonoBehaviour
        
         Debug.Log("Randomizer Active");
         spawner = gameObject.GetComponentInParent<PickUpSpawner>();
+        CharPickUp = gameObject.transform.GetChild(0).gameObject;
+        NitroPickUp = gameObject.transform.GetChild(1).gameObject;
+        TirePickUp = gameObject.transform.GetChild(2).gameObject;
         int r = Random.Range(0, 3);
         switch (r)
         {
@@ -61,19 +64,30 @@ public class PartReplenishScript : MonoBehaviour
         switch (upType)
         {
             case PickUpType.Character:
-                gameObject.GetComponent<MeshRenderer>().material = CharMaterial;
+                NitroPickUp.SetActive(false);
+                TirePickUp.SetActive(false);
+                CharPickUp.SetActive(true);
                 break;
             case PickUpType.Nitro:
-                gameObject.GetComponent<MeshRenderer>().material = NitroMaterial;
+                NitroPickUp.SetActive(true);
+                TirePickUp.SetActive(false);
+                CharPickUp.SetActive(false);
                 break;
             case PickUpType.Tires:
-                gameObject.GetComponent<MeshRenderer>().material = TireMaterial;
+                NitroPickUp.SetActive(false);
+                TirePickUp.SetActive(true);
+                CharPickUp.SetActive(false);
                 break;
         }
     }
-   
-   
-    
+
+    private void FixedUpdate()
+    {
+        gameObject.transform.Rotate(Vector3.up * Time.deltaTime*3);
+            
+            
+            }
+
     private void OnTriggerEnter(Collider c)
     {
         if (c.gameObject.tag == "GameController")
@@ -186,12 +200,12 @@ public class PartReplenishScript : MonoBehaviour
                             float dif = car.max_nitros_meter_float - car.nitros_meter_float;
                             car.nitros_meter_float = car.max_nitros_meter_float;
                             car.extra_nitros_meter_float += (nitroPickUp - dif);
-                            if(car.extra_nitros_meter_float > 100 && character == AVerySimpleEnumOfCharacters.Felix)
+                            if(car.extra_nitros_meter_float > 50 && character == AVerySimpleEnumOfCharacters.Felix)
                             {                        
-                                    car.extra_nitros_meter_float = 100;
-                               
-                                if (car.extra_nitros_meter_float > 50 && character == AVerySimpleEnumOfCharacters.Toby)
                                     car.extra_nitros_meter_float = 50;
+                               
+                                if (car.extra_nitros_meter_float > 25 && character == AVerySimpleEnumOfCharacters.Toby)
+                                    car.extra_nitros_meter_float = 25;
                             }
                         }
                         else
@@ -212,6 +226,7 @@ public class PartReplenishScript : MonoBehaviour
                 switch (character){
                     case AVerySimpleEnumOfCharacters.Felix:
                         if (headsUp.has_door_1 == true  && headsUp.has_door_2 == true)
+
                         {
                             spawner.Timer = Time.time + 5.0f;
                             gameObject.SetActive(false);
