@@ -186,12 +186,12 @@ public class PartReplenishScript : MonoBehaviour
                             float dif = car.max_nitros_meter_float - car.nitros_meter_float;
                             car.nitros_meter_float = car.max_nitros_meter_float;
                             car.extra_nitros_meter_float += (nitroPickUp - dif);
-                            if(car.extra_nitros_meter_float > 100 && character == AVerySimpleEnumOfCharacters.Felix)
+                            if(car.extra_nitros_meter_float > 50 && character == AVerySimpleEnumOfCharacters.Felix)
                             {                        
-                                    car.extra_nitros_meter_float = 100;
-                               
-                                if (car.extra_nitros_meter_float > 50 && character == AVerySimpleEnumOfCharacters.Toby)
                                     car.extra_nitros_meter_float = 50;
+                               
+                                if (car.extra_nitros_meter_float > 25 && character == AVerySimpleEnumOfCharacters.Toby)
+                                    car.extra_nitros_meter_float = 25;
                             }
                         }
                         else
@@ -212,6 +212,7 @@ public class PartReplenishScript : MonoBehaviour
                 switch (character){
                     case AVerySimpleEnumOfCharacters.Felix:
                         if (headsUp.has_door_1 == true  && headsUp.has_door_2 == true)
+
                         {
                             spawner.Timer = Time.time + 5.0f;
                             gameObject.SetActive(false);
