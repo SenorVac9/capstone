@@ -454,10 +454,14 @@ namespace ModuloKart.CustomVehiclePhysics
             {
                 if (gravity_float > 0) gravity_float = 0;
                 gravity_float -= Time.fixedDeltaTime * GRAVITY;
-                if (gravity_float <= -250)
+                if (gravity_float <= -75)
                 {
                     isJump = false;
                 }
+            }
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                Jump();
             }
         }
 
@@ -470,7 +474,7 @@ namespace ModuloKart.CustomVehiclePhysics
             {
                 jumpTime += Time.fixedDeltaTime;
                 isJump = true;
-                vert = Vector3.up * max_gravity_float * 10;
+                vert = Vector3.up * max_gravity_float * 1000;
                 //gravity_float = -max_gravity_float * 10;
                 Debug.Log("Jump!: " + gravity_float);
             }
@@ -826,11 +830,18 @@ namespace ModuloKart.CustomVehiclePhysics
             //    tempUpVectorForSlopeMeasurement = vehicle_transform.up;
             //}
 
-            vehicleUpDirection = (Vector3.Cross(right_rear_hit.point - tempUpVectorForSlopeMeasurement, left_rear_hit.point - tempUpVectorForSlopeMeasurement) +
-                                                    Vector3.Cross(left_rear_hit.point - tempUpVectorForSlopeMeasurement, left_forward_hit.point - tempUpVectorForSlopeMeasurement) +
-                                                    Vector3.Cross(left_forward_hit.point - tempUpVectorForSlopeMeasurement, right_forward_hit.point - tempUpVectorForSlopeMeasurement) +
-                                                    Vector3.Cross(right_forward_hit.point - tempUpVectorForSlopeMeasurement, right_rear_hit.point - tempUpVectorForSlopeMeasurement)
-                                                    ).normalized;
+            if (left_rear_hit.collider && right_rear_hit.collider && left_forward_hit.collider && right_forward_hit.collider)
+            {
+                vehicleUpDirection = (Vector3.Cross(right_rear_hit.point - tempUpVectorForSlopeMeasurement, left_rear_hit.point - tempUpVectorForSlopeMeasurement) +
+                                                        Vector3.Cross(left_rear_hit.point - tempUpVectorForSlopeMeasurement, left_forward_hit.point - tempUpVectorForSlopeMeasurement) +
+                                                        Vector3.Cross(left_forward_hit.point - tempUpVectorForSlopeMeasurement, right_forward_hit.point - tempUpVectorForSlopeMeasurement) +
+                                                        Vector3.Cross(right_forward_hit.point - tempUpVectorForSlopeMeasurement, right_rear_hit.point - tempUpVectorForSlopeMeasurement)
+                                                        ).normalized;
+            }
+            else
+            {
+                vehicleUpDirection = Vector3.up;
+            }
             if (isCodeDebug)
             {
                 Debug.DrawRay(tr.position - Vector3.forward * length_float - (Vector3.right * width_float) + Vector3.up, Vector3.down * 20, Color.green);
@@ -853,10 +864,13 @@ namespace ModuloKart.CustomVehiclePhysics
 
         private void VehicleTiltSlope()
         {
-            tiltLerp_float = Mathf.Max(.1f, (1f - accel_magnitude_float / 60));
+                tiltLerp_float = Mathf.Max(.1f, (.5f - accel_magnitude_float / 60));
             properUpDirection = vehicle_transform.up;
             if (isOnLoop)
-                vehicle_transform.up = VehicleGetSlope(vehicle_transform);// Vector3.Lerp(vehicle_transform.up, VehicleGetSlope(vehicle_transform), 1);
+            {
+                //vehicle_transform.up = VehicleGetSlope(vehicle_transform);// Vector3.Lerp(vehicle_transform.up, VehicleGetSlope(vehicle_transform), 1);
+                vehicle_transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(transform.forward, VehicleGetSlope(transform)), tiltLerp_float);
+            }
             else
                 vehicle_transform.up = Vector3.Lerp(vehicle_transform.up, VehicleGetSlope(vehicle_transform), tiltLerp_float);
             //if(!(tempUpDirection.x < 0 && properUpDirection.x < 0) || (tempUpDirection.x > 0 && properUpDirection.x > 0))
@@ -1440,6 +1454,7 @@ namespace ModuloKart.CustomVehiclePhysics
             Start();
         }
         #endregion
+
 
     }
 

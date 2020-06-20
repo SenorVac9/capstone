@@ -10,11 +10,13 @@ public class Vehicle_Collisions : MonoBehaviour
     GameObject lostPart;
     VehicleBehavior vehicleBehavior;
     ui_controller ui_Controller;
+    Player_Wheel_Detach Wheel_Detach;
     public float damageForce = 5000;
     float collisionDamage = 5;
     public Rigidbody dF;
     float temp_accel = 0;
     public AudioSource crashSource;
+    ForceField forceField;
     public AudioClip crash;
     private bool isLimitCollision = false;
     // Start is called before the first frame update
@@ -22,6 +24,8 @@ public class Vehicle_Collisions : MonoBehaviour
     {
         vehicleBehavior = FindObjectOfType<VehicleBehavior>();
         ui_Controller = FindObjectOfType<ui_controller>();
+        Wheel_Detach = gameObject.GetComponentInChildren<Player_Wheel_Detach>();
+        forceField = gameObject.GetComponentInChildren<ForceField>();
         //dF = GetComponent<Rigidbody>();
     }
 
@@ -82,23 +86,33 @@ public class Vehicle_Collisions : MonoBehaviour
 
                     Debug.Log(lostPart);
                     //lostPart.active = false;
+                    if (ui_Controller.has_Shield)
+                    {
+                        ui_Controller.has_Shield = false;
+                        forceField.Activate();
+                        return;
+                    }
                     ui_Controller.ui_item[randLostPartindex].SetActive(false);
                     switch (randLostPartindex)
                     {
                         case 0:
                             ui_Controller.has_tire_1 = false;
+                           Wheel_Detach.reservePartsList.Add(4);
                             //ui_Controller.ui_item[0].SetActive(false);
                             break;
                         case 2:
                             ui_Controller.has_tire_2 = false;
+                            Wheel_Detach.reservePartsList.Add(3);
                             //ui_Controller.ui_item[1].SetActive(false);
                             break;
                         case 5:
                             ui_Controller.has_tire_3 = false;
+                            Wheel_Detach.reservePartsList.Add(2);
                             //ui_Controller.ui_item[5].SetActive(false);
                             break;
                         case 7:
                             ui_Controller.has_tire_4 = false;
+                            Wheel_Detach.reservePartsList.Add(1);
                             //ui_Controller.ui_item[7].SetActive(false);
                             break;
                         case 6:
@@ -157,7 +171,7 @@ public class Vehicle_Collisions : MonoBehaviour
     }
     IEnumerator PreventPartCollision()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
     }
     private void OnCollisionStay(Collision collision)
     {

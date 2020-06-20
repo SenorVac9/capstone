@@ -21,6 +21,7 @@ public class ui_controller : MonoBehaviour
     public bool has_Milk = true;
     public bool has_extra1 = false;
     public bool has_extra2 = false;
+    public bool has_Shield = false;
     //public bool has_Paul_extra = true;
     public int playerNum;
     public GameObject vechicle;
@@ -30,7 +31,8 @@ public class ui_controller : MonoBehaviour
     void Start()
     {
         vehicleBehaviour = GameObject.FindObjectOfType<VehicleBehavior>();
-        character = GameObject.FindObjectOfType<SimpleCharacterSelection>();
+      //  character = GameObject.FindObjectOfType<SimpleCharacterSelection>();
+        character = gameObject.GetComponentInParent<SimpleCharacterSelection>();
         if (gameObject.tag == "Player1")
             playerNum = 1;
         else if (gameObject.tag == "Player2")
@@ -69,6 +71,10 @@ public class ui_controller : MonoBehaviour
 
         return false;
     }
+    public AVerySimpleEnumOfCharacters GetCharacter()
+    {
+        return character.whichCharacterDidISelectDuringTheGameScene;
+    }
     public void RegainPart(int partRecovered)
     {
         ui_item[partRecovered].gameObject.SetActive(true);
@@ -101,7 +107,38 @@ public class ui_controller : MonoBehaviour
             case 9:
                 has_extra2 = true;
                 break;
+            
         }
+        ui_item[item_selected].transform.localScale -= new Vector3(0.5f, 0.5f);
+
+
+        item_selected -= 1;
+        if (item_selected < 0)
+
+        {
+            item_selected = 9;
+        }
+
+        while (ui_item[item_selected].gameObject.activeSelf == false && !allItemsGone())
+        {
+            item_selected -= 1;
+            if (item_selected < 0)
+            {
+                item_selected = 9;
+            }
+        }
+
+
+
+        ui_item[item_selected].transform.localScale += new Vector3(0.5f, 0.5f);
+    }
+    public void Performance_Loss()
+    {
+        vehicleBehaviour.max_accel_float -= 5;
+    }
+    public void Performance_Gain()
+    {
+        vehicleBehaviour.max_accel_float += 5;
     }
     // Update is called once per frame
     void Update()
@@ -177,10 +214,14 @@ public class ui_controller : MonoBehaviour
                     {
                         vechicle.GetComponentInChildren<Player_Wheel_Detach>().Throw_Wheel(4);
                         Debug.Log("used front right tire");
+                        Performance_Loss();
                         has_tire_1 = false;
                     }
                     else
+                    {
+                       
                         Debug.Log("tire already used");
+                    }
                 }
 
                 if (item_selected == 2)
@@ -189,6 +230,7 @@ public class ui_controller : MonoBehaviour
                     {
                         vechicle.GetComponentInChildren<Player_Wheel_Detach>().Throw_Wheel(3);
                         Debug.Log("used front left tire");
+                        Performance_Loss();
                         has_tire_2 = false;
                     }
                     else
@@ -201,6 +243,7 @@ public class ui_controller : MonoBehaviour
                     {
                         vechicle.GetComponentInChildren<Player_Wheel_Detach>().Throw_Wheel(2);
                         Debug.Log("used back right tire");
+                        Performance_Loss();
                         has_tire_3 = false;
                     }
                     else
@@ -213,6 +256,7 @@ public class ui_controller : MonoBehaviour
                     {
                         vechicle.GetComponentInChildren<Player_Wheel_Detach>().Throw_Wheel(1);
                         Debug.Log("used back left tire");
+                        Performance_Loss();
                         has_tire_4 = false;
                     }
                     else
@@ -232,6 +276,7 @@ public class ui_controller : MonoBehaviour
 
                         Debug.Log("used left door");
                         has_door_1 = false;
+                        Performance_Loss();
                         ui_item[item_selected].gameObject.SetActive(false);
                     }
                     else
@@ -245,6 +290,7 @@ public class ui_controller : MonoBehaviour
                         vechicle.GetComponentInChildren<Player_Door_Detach>().Detach_Door(2);
                         Debug.Log("used right door");
                         has_door_2 = false;
+                        Performance_Loss();
                         ui_item[item_selected].gameObject.SetActive(false);
                     }
                 }
@@ -258,6 +304,7 @@ public class ui_controller : MonoBehaviour
                 {
                     vechicle.GetComponentInChildren<Player_Projectile>().Throw_Hood();
                     Debug.Log("used hood");
+                    Performance_Loss();
                     has_hood = false;
                     //call hood item function use here
                 }

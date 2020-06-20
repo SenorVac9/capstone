@@ -30,6 +30,9 @@ TagManager:
   - JumpObject
   - PickupCollider
   - Pickup
+  - Paul_extrapart
+  - Toby_Extra_Part
+  - Road_Bridge
   layers:
   - Default
   - TransparentFX
@@ -40,10 +43,10 @@ TagManager:
   - 
   - 
   - VehicleLayer
-  - 
-  - 
-  - 
-  - 
+  - DeathLayer
+  - Terrain
+  - Minimap
+  - MinimapIcons
   - 
   - 
   - 

@@ -24,7 +24,7 @@ public class Player_Spawn_Ramp : MonoBehaviour
     {
         //enter = true;
         Debug.Log("Your enter Coroutine at" + Time.time);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(100.0f);
         //enter = false;
         
     }
@@ -39,9 +39,25 @@ public class Player_Spawn_Ramp : MonoBehaviour
                 projectile.prefab1.gameObject.SetActive(false);
                 Debug.Log("spawning");
                 cnt++;
-                StartCoroutine(Ramp_timer());
-                ramp.gameObject.SetActive(false);
+              //  StartCoroutine(Ramp_timer());
+                //  ramp.gameObject.SetActive(false);
 
+
+            }
+        }
+        if (collision.gameObject.tag == "Road_Bridge")
+        {
+            if (cnt == 0)
+            {
+                ramp.transform.Rotate(0,-120, 0);
+                Instantiate(ramp, transform.position, projectile.spawnpoint.transform.rotation);
+                // DestroyImmediate(projectile.prefab1);
+                projectile.prefab1.gameObject.SetActive(false);
+                Debug.Log("spawning");
+                cnt++;
+               // StartCoroutine(Ramp_timer());
+               // ramp.gameObject.SetActive(false);
+                
 
             }
         }
