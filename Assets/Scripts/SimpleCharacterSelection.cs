@@ -98,7 +98,22 @@ public class SimpleCharacterSelection : MonoBehaviour
     {
         Debug.Log((int)whichCharacterDidISelectDuringTheGameScene - 1);
         selectedCharacterImage.sprite = CharacterSprites[(int)whichCharacterDidISelectDuringTheGameScene - 1];
-        currentCharacterSelectionText.text = whichCharacterDidISelectDuringTheGameScene.ToString();
+        switch (whichCharacterDidISelectDuringTheGameScene)
+        {
+            case AVerySimpleEnumOfCharacters.Felix:
+                currentCharacterSelectionText.text = whichCharacterDidISelectDuringTheGameScene.ToString() + " has a much larger SpeedNip bar";
+                break;
+
+            case AVerySimpleEnumOfCharacters.Toby:
+                currentCharacterSelectionText.text = whichCharacterDidISelectDuringTheGameScene.ToString() + " has one extra part and a slightly bigger SpeedNip Bar";
+                break;
+            case AVerySimpleEnumOfCharacters.Maxine:
+                currentCharacterSelectionText.text = whichCharacterDidISelectDuringTheGameScene.ToString() + " has two extra parts";
+                break;
+            case AVerySimpleEnumOfCharacters.Paul:
+                currentCharacterSelectionText.text = whichCharacterDidISelectDuringTheGameScene.ToString() + " has a shield to protect agaisnt a hit";
+                break;
+        }
     }
 
     private void ConfirmSelection()

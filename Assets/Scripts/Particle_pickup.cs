@@ -21,7 +21,7 @@ public class Particle_pickup : MonoBehaviour
         if(other.tag=="GameController")
         {
             Instantiate(particle_pickup, transform.position,transform.rotation);
-            Destroy(gameObject);
+            
         }
     }
 }
