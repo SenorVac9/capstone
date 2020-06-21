@@ -26,6 +26,8 @@ namespace ModuloKart.Controls
         public bool wantsToRaceGhost = true;
         GameObject GameCar;
         GameManager gameManager;
+        float ghostT;
+        float raceT;
 
         // Start is called before the first frame update
         void Start()
@@ -105,6 +107,9 @@ namespace ModuloKart.Controls
         public GhostData Ghost = new GhostData();
         private void FixedUpdate()
         {
+            ghostT = Ghost.ghostTime;
+            raceT = GameState.FirstRaceTime;
+
             if (SceneManager.GetActiveScene().buildIndex == 3)
             {
 
@@ -203,7 +208,7 @@ namespace ModuloKart.Controls
         }
         public void Save(string FileName = "GameData.xml")
         {
-            if (Ghost.ghostTime == 0 || GameState.FirstRaceTime <= Ghost.ghostTime)
+            if (Ghost.ghostTime == 0 || GameState.FirstRaceTime < Ghost.ghostTime)
             {
                 SaveGhost();
             }
