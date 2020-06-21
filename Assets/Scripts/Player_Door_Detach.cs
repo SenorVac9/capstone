@@ -11,6 +11,7 @@ public class Player_Door_Detach : MonoBehaviour
     public Camera cam_p1;
     VehicleBehavior vehicleBehaviour;
     float speed = 50f;
+    Vehicle_Collisions _vehicleCollisions;
     //public GameObject Door_destory1, Door_destroy2;
     // public int[] reserveParts;
     //public List<int> reservePartsList = new List<int>();
@@ -18,9 +19,9 @@ public class Player_Door_Detach : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-    
 
-}
+        _vehicleCollisions = GameObject.FindObjectOfType<Vehicle_Collisions>();
+    }
 
 // Update is called once per frame
 void Update()
@@ -32,11 +33,13 @@ void Update()
        
         if (doornum == 1)
         {
-         
+
+            _vehicleCollisions.CollisionDisabler();
             GameObject Door = Instantiate(Prefab1) as GameObject;
             Door.transform.position = Spawnpoint_door1.transform.position;
             Rigidbody rb = Door.GetComponent<Rigidbody>();
             rb.velocity = Spawnpoint_door1.transform.forward * speed;
+            _vehicleCollisions.CollisionDisabler();
             // partsUsed++;
             //reservePartsList.Add(1);
             door_left.SetActive(false);
@@ -46,7 +49,8 @@ void Update()
 
         else if (doornum == 2)
         {
-           
+
+            _vehicleCollisions.CollisionDisabler();
             GameObject Door = Instantiate(Prefab1) as GameObject;
             Door.transform.position = Spawnpoint_door2.transform.position;
             Rigidbody rb = Door.GetComponent<Rigidbody>();
