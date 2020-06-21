@@ -131,7 +131,7 @@ public class Vehicle_Collisions : MonoBehaviour
                             Debug.Log("nothing happened");
                             break;
                     }
-                    DamageFromCollisions();
+                    //DamageFromCollisions();
                     // Stores all the lost item in queue.
                     if (lostParts != null)
                     {
