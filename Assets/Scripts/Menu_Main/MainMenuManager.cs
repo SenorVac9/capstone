@@ -8,12 +8,19 @@ namespace ModuloKart.MainMenu
     public enum MainMenuOption
     {
         play,
+        credit,
         quit,
     }
     public class MainMenuManager : MonoBehaviour
     {
+        public GameObject Credit_Text;
+        public GameObject Play_B;
+        public GameObject Credit_B;
+        public GameObject Quit_B;
         private GameObject bg_Play;
         private GameObject bg_Quit;
+        private GameObject bg_Credit;
+
 
         public MainMenuOption mainMenuOption;
 
@@ -57,11 +64,19 @@ namespace ModuloKart.MainMenu
                     case MainMenuOption.play:
                         mainMenuOption = MainMenuOption.quit;
                         bg_Play.SetActive(true);
+                        bg_Credit.SetActive(true);
                         bg_Quit.SetActive(false);
                         break;
-                    case MainMenuOption.quit:
+                    case MainMenuOption.credit:
                         mainMenuOption = MainMenuOption.play;
                         bg_Play.SetActive(false);
+                        bg_Credit.SetActive(true);
+                        bg_Quit.SetActive(true);
+                        break;
+                    case MainMenuOption.quit:
+                        mainMenuOption = MainMenuOption.credit;
+                        bg_Play.SetActive(true);
+                        bg_Credit.SetActive(false);
                         bg_Quit.SetActive(true);
                         break;
                     default:
@@ -96,13 +111,21 @@ namespace ModuloKart.MainMenu
                 switch (mainMenuOption)
                 {
                     case MainMenuOption.play:
+                        mainMenuOption = MainMenuOption.credit;
+                        bg_Play.SetActive(true);
+                        bg_Credit.SetActive(false);
+                        bg_Quit.SetActive(true);
+                        break;
+                    case MainMenuOption.credit:
                         mainMenuOption = MainMenuOption.quit;
                         bg_Play.SetActive(true);
+                        bg_Credit.SetActive(true);
                         bg_Quit.SetActive(false);
                         break;
                     case MainMenuOption.quit:
                         mainMenuOption = MainMenuOption.play;
                         bg_Play.SetActive(false);
+                        bg_Credit.SetActive(true);
                         bg_Quit.SetActive(true);
                         break;
                     default:
@@ -116,6 +139,7 @@ namespace ModuloKart.MainMenu
         {
             mainMenuOption = MainMenuOption.play;
             bg_Play.SetActive(false);
+            bg_Credit.SetActive(true);
             bg_Quit.SetActive(true);
         }
 
@@ -128,6 +152,10 @@ namespace ModuloKart.MainMenu
                 if (t.mainMenuOption.Equals(MainMenuOption.play))
                 {
                     bg_Play = t.bg;
+                }
+                else if (t.mainMenuOption.Equals(MainMenuOption.credit))
+                {
+                    bg_Credit = t.bg;
                 }
                 else if (t.mainMenuOption.Equals(MainMenuOption.quit))
                 {
@@ -145,6 +173,9 @@ namespace ModuloKart.MainMenu
                 {
                     case MainMenuOption.play:
                         ButtonBehavior_LoadPlayerSelectionScene();
+                        break;
+                    case MainMenuOption.credit:
+                        ButtonBehavior_Credit();
                         break;
                     case MainMenuOption.quit:
                         ButtonBehavior_Quit();
@@ -164,6 +195,19 @@ namespace ModuloKart.MainMenu
         public void ButtonBehavior_LoadPlayerSelectionScene()
         {
             SceneManager.LoadScene(2);
+        }
+        public void ButtonBehavior_Credit()
+        {
+            SceneManager.LoadScene("Credit_Scene");
+            /*bg_Play.SetActive(false);
+            bg_Credit.SetActive(false);
+            bg_Quit.SetActive(false);
+            Credit_Text.SetActive(true);
+            Play_B.SetActive(false);
+            Credit_B.SetActive(false);
+            Quit_B.SetActive(false);
+            }*/
+          
         }
 
 
