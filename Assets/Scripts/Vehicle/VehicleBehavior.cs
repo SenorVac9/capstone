@@ -1012,7 +1012,35 @@ namespace ModuloKart.CustomVehiclePhysics
                         vehicle_camera_transform.GetComponent<Camera>().fieldOfView += Time.fixedDeltaTime * pan_away_float;
                     }
                 }
+
+
+                //AudioStuff
+
+
+                if (character.whichCharacterDidISelectDuringTheGameScene == AVerySimpleEnumOfCharacters.Felix)
+                {
+                    AudioManager.instance.Play("Felix_Using_Nitro");
+                }
+
+                if (character.whichCharacterDidISelectDuringTheGameScene == AVerySimpleEnumOfCharacters.Maxine)
+                {
+                    AudioManager.instance.Play("Max_Using_Nitro");
+                }
+
+                if (character.whichCharacterDidISelectDuringTheGameScene == AVerySimpleEnumOfCharacters.Paul)
+                {
+                    AudioManager.instance.Play("Pauline_Using_Nitro");
+                }
+
+                if (character.whichCharacterDidISelectDuringTheGameScene == AVerySimpleEnumOfCharacters.Toby)
+                {
+                    AudioManager.instance.Play("Tobias_Using_Nitro");
+                }
+
+
+
                 extra_nitros_meter_float = extra_nitros_meter_float > 0 ? extra_nitros_meter_float -= Time.fixedDeltaTime * nitros_depletion_rate : 0;
+
                 if (extra_nitros_meter_float <= 0)
                 {
                     nitros_meter_float = nitros_meter_float > 0 ? nitros_meter_float -= Time.fixedDeltaTime * nitros_depletion_rate : 0;
