@@ -4,14 +4,14 @@
   <SecondPlaceID>1</SecondPlaceID>
   <ThirdPlaceID>0</ThirdPlaceID>
   <FourthPlaceID>0</FourthPlaceID>
-  <FirstRaceTime>120.136635</FirstRaceTime>
-  <SecondRaceTime>104.43634</SecondRaceTime>
+  <FirstRaceTime>104.5277</FirstRaceTime>
+  <SecondRaceTime>169.417984</SecondRaceTime>
   <ThirdRaceTime>0</ThirdRaceTime>
   <FourthRaceTime>0</FourthRaceTime>
-  <oldGhostTime>120.136635</oldGhostTime>
+  <oldGhostTime>104.5277</oldGhostTime>
   <numPlayer>2</numPlayer>
   <P1Character>NotInGame</P1Character>
-  <P2Character>Felix</P2Character>
+  <P2Character>Toby</P2Character>
   <P3Character>NotInGame</P3Character>
   <P4Character>NotInGame</P4Character>
 </GameStateData>

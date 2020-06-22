@@ -44,6 +44,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pedestrian_2_Light
       objectReference: {fileID: 0}
+    - target: {fileID: 3741181357240350266, guid: 069ed804e883c204fb1609c155ea3072,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3572810246859622309, guid: 069ed804e883c204fb1609c155ea3072,
         type: 3}
       propertyPath: m_LocalPosition.x

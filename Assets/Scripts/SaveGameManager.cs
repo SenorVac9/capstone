@@ -7,8 +7,10 @@ using System.IO;
 using UnityEngine.SceneManagement;
 using ModuloKart.CustomVehiclePhysics;
 using ModuloKart.HUD;
+using System;
 using ModuloKart.PlayerSelectionMenu;
 namespace ModuloKart.Controls
+
 
 {
     public class SaveGameManager : MonoBehaviour
@@ -23,7 +25,9 @@ namespace ModuloKart.Controls
         public ControllerHandler Handler;
         public bool wantsToRaceGhost = true;
         GameObject GameCar;
-
+        GameManager gameManager;
+        float ghostT;
+        float raceT;
 
         // Start is called before the first frame update
         void Start()
@@ -53,8 +57,8 @@ namespace ModuloKart.Controls
 
                 GhostCar = GameObject.FindGameObjectWithTag("Ghost");
                 LoadGhost();
-               
-                
+
+                gameManager = GameObject.FindObjectOfType<GameManager>();
                 
                 if(GhostLoaded)
                 GameState.oldGhostTime = Ghost.ghostTime;
@@ -103,51 +107,57 @@ namespace ModuloKart.Controls
         public GhostData Ghost = new GhostData();
         private void FixedUpdate()
         {
+            ghostT = Ghost.ghostTime;
+            raceT = GameState.FirstRaceTime;
+
             if (SceneManager.GetActiveScene().buildIndex == 3)
             {
 
 
-                if (Handler.ControllersToAssign == 1 || wantsToRaceGhost)
+                if (Handler.ControllersToAssign == 1)
                 {
 
-                    if(Handler.assignedControllerCount == 1)
+                    if (gameManager.isReady())
                     {
-                        if (GhostLoaded)
+                        if (Handler.assignedControllerCount == 1)
                         {
-
-                            if (GhostFrameCounter < GhostFrameMax)
+                            if (GhostLoaded)
                             {
-                                //We are at the Last Array Index
-                                if (GhostFrameCounter == GhostFrameMax - 1)
-                                {
-                                    //So if we are at the last position of the array, the next value should be the start.
-                                    GhostCar.transform.LookAt(newGhostPostions[0]);
-                                }
-                                else
-                                {
-                                    GhostCar.transform.LookAt(newGhostPostions[GhostFrameCounter + 1]);
-                                }
-                                GhostCar.transform.position = newGhostPostions[GhostFrameCounter];
 
-                                GhostFrameCounter++;
+                                if (GhostFrameCounter < GhostFrameMax)
+                                {
+                                    //We are at the Last Array Index
+                                    if (GhostFrameCounter == GhostFrameMax - 1)
+                                    {
+                                        //So if we are at the last position of the array, the next value should be the start.
+                                        GhostCar.transform.LookAt(newGhostPostions[0]);
+                                    }
+                                    else
+                                    {
+                                        GhostCar.transform.LookAt(newGhostPostions[GhostFrameCounter + 1]);
+                                    }
+                                    GhostCar.transform.position = newGhostPostions[GhostFrameCounter];
+
+                                    GhostFrameCounter++;
+
+                                }
+                                else if (GhostDone == false && GhostFrameCounter >= GhostFrameMax)
+                                {
+                                    GhostDone = true;
+                                    GameObject.FindGameObjectWithTag("GameController").GetComponent<VehicleLapData>().GhostFinished();
+                                }
 
                             }
-                            else if (GhostDone == false && GhostFrameCounter >= GhostFrameMax)
+                            else if (GhostCar)
                             {
-                                GhostDone = true;
-                                GameObject.FindGameObjectWithTag("GameController").GetComponent<VehicleLapData>().GhostFinished();
+                                Destroy(GhostCar);
                             }
+                            //    Debug.Log(GameObject.FindGameObjectWithTag("GameController").transform.position);
+                            Ghost.ghostPostions.Add(GameObject.FindGameObjectWithTag("GameController").transform.position);
 
                         }
-                        else if (GhostCar)
-                        {
-                            Destroy(GhostCar);
-                        }
-                    //    Debug.Log(GameObject.FindGameObjectWithTag("GameController").transform.position);
-                        Ghost.ghostPostions.Add(GameObject.FindGameObjectWithTag("GameController").transform.position);
-                        
                     }
-                   
+              
                 }
                 else if (GhostCar)
                 {
@@ -198,7 +208,7 @@ namespace ModuloKart.Controls
         }
         public void Save(string FileName = "GameData.xml")
         {
-            if (Ghost.ghostTime == 0 || GameState.FirstRaceTime <= Ghost.ghostTime)
+            if (Ghost.ghostTime == 0 || GameState.FirstRaceTime < Ghost.ghostTime)
             {
                 SaveGhost();
             }
@@ -235,12 +245,12 @@ namespace ModuloKart.Controls
         // Update is called once per frame
         void Update()
         {
-
+            
             if (SceneManager.GetActiveScene().buildIndex == 4)
             {
                 if(GameState.FirstPlaceID == -1)
                 {
-                    GameObject.FindGameObjectWithTag("first").GetComponent<TMPro.TextMeshProUGUI>().text = "Your previous fastest time was better by " + Mathf.Abs(GameState.SecondRaceTime - GameState.FirstRaceTime) + " seconds";
+                    GameObject.FindGameObjectWithTag("first").GetComponent<TMPro.TextMeshProUGUI>().text = "Your previous fastest time was better by " + Math.Round(Mathf.Abs(GameState.SecondRaceTime - GameState.FirstRaceTime),2) + " seconds";
                 }
                 else
                 {

@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: -5695582320462453036}
   - component: {fileID: 6089563266559428062}
   - component: {fileID: 1753713936098323165}
+  - component: {fileID: 6456447827692962223}
+  - component: {fileID: 1044489782616563081}
   m_Layer: 0
   m_Name: Wheel_Projectile
   m_TagString: Obstacle
@@ -30,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 3854164557277174669}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -122,3 +124,28 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: -482012455659364091, guid: 9954dce3b8afd894dbb8f5a9b1afc835, type: 3}
+--- !u!122 &6456447827692962223
+Halo:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3854164557277174669}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 2214592767
+  m_Size: 2.19
+--- !u!65 &1044489782616563081
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3854164557277174669}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.48863935, y: 0.6986773, z: 0.6891725}
+  m_Center: {x: 0.006513834, y: -0.0053785644, z: 0.0126249}

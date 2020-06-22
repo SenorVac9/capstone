@@ -8,10 +8,10 @@ public class NitroBoost : MonoBehaviour
     VehicleBehavior vehicleBehavior;
     public bool isSpeedboost = false;
     public float speedBoost_float = 10;
-    public float max_speedboost_float = 100;
+    public float max_speedboost_float = 60;
     public float speedboost_meter_float = 50;
     public float startTime = 0;
-    public float timeLimit = 10;
+    public float timeLimit = 5;
     public float timetaken = 0;
     public float target_speedboost_accel;
     // Start is called before the first frame update

@@ -5,9 +5,11 @@ using UnityEngine.SceneManagement;
 using ModuloKart.CustomVehiclePhysics;
 using ModuloKart.HUD;
 using ModuloKart.Controls;
+using UnityEngine.UI;
 
 public class VehicleLapData : MonoBehaviour
 {
+    public Text LapDisplay;
     public bool isDebugMode;
     public int LapsCompleted;
     public int LapsTarget;
@@ -42,7 +44,7 @@ public class VehicleLapData : MonoBehaviour
     void Awake()
     {
         saveGameManager = GameObject.FindGameObjectWithTag("SaveGameManager").GetComponent<SaveGameManager>();
-
+        
         LapsCompleted = 0;
         currentLegID = LegId.Zero;
         legDatas = GameObject.FindObjectsOfType<LegTriggerBehavior>();
@@ -105,6 +107,7 @@ public class VehicleLapData : MonoBehaviour
     }
     private void Update()
     {
+        LapDisplay.text ="Laps"+ LapsCompleted + "/1";
         //if (!vehicleBehavior.isControllerInitialized) return;
         if (!vehicleBehavior.playerHUD.simpleCharacterSeleciton.isCharacterSelected) return;
         //if (!GameLogicManager.Instance.IsGameStarted) return;
