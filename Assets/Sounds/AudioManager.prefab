@@ -48,13 +48,13 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: d5e4cd839a02de447a294fd1934c11d0, type: 3}
     volume: 1
     pitch: 1
-    loop: 0
+    loop: 1
     source: {fileID: 0}
   - audioName: Game Soundtrack
     clip: {fileID: 8300000, guid: 4f7b9d36ae74c34458d11c12c2bd647d, type: 3}
     volume: 1
     pitch: 1
-    loop: 0
+    loop: 1
     source: {fileID: 0}
   - audioName: Felix_Being_Hit
     clip: {fileID: 8300000, guid: 203dd7155261d0a4b8a644b816e9fa63, type: 3}
@@ -182,8 +182,56 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - audioName: Drift
-    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
+  - audioName: Cancel_Menu_Panel
+    clip: {fileID: 8300000, guid: c004f6dca0b2747419d03c46b2d204b7, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Collectible_Sound
+    clip: {fileID: 8300000, guid: 58f9a881cbe32d942beabe829b6ec5b4, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Confirm_Option
+    clip: {fileID: 8300000, guid: eb476cad9680715438d3b0618b4b2a40, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: First_Two_Beeps_Countdown
+    clip: {fileID: 8300000, guid: 3eab262ed99ab874cb8f3992b306c205, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Hood Fired
+    clip: {fileID: 8300000, guid: d86dee9fc86bccb4aad0c0cde3cdaded, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Junken_Throw_Tire
+    clip: {fileID: 8300000, guid: 9fbf4f596dde5a248bd4db37fb954646, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Milk
+    clip: {fileID: 8300000, guid: 5a4d9882a1b87d54187c0a9489ef10ff, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Move_Through_Menu_Panels
+    clip: {fileID: 8300000, guid: d1553808590fae4459e7e1ecdeba6188, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Third_Beep_Countdown
+    clip: {fileID: 8300000, guid: 31cdac2904498ad47b5978f80aa7e352, type: 3}
     volume: 1
     pitch: 1
     loop: 0
@@ -206,51 +254,4 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - audioName: Drift
-    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - audioName: Drift
-    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - audioName: Drift
-    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - audioName: Drift
-    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - audioName: Drift
-    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - audioName: Drift
-    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - audioName: Drift
-    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - audioName: Drift
-    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
+  switchMusic: 0

@@ -95,16 +95,5 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (!MusicStart)
-        {
-            if (GameStart)
-            {
-                MusicStart = true;
-                AudioManager.instance.Play("Game Soundtrack");
-
-            }
-        }
-    }
+  
 }

@@ -18,7 +18,7 @@ public class StartScreenLoadUp : MonoBehaviour
         if (Input.GetButtonDown("A_ANYPLAYER"))
         {
             SceneManager.LoadScene(1);
-
+            AudioManager.instance.Play("Confirm_Option");
         }
     }
 }

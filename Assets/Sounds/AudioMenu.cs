@@ -17,15 +17,15 @@ public class AudioMenu : MonoBehaviour
 
     // Update is called once per frame
 
-    void Update()
-    {
-        if (SceneManager.GetActiveScene().name == ("GameScene"))
-        {
-            if (GameManagerIstance.GameStart == true)
-            {
-                gameObject.SetActive(false);
-            }
-        }
-    }
+    //void Update()
+    //{
+    //    if (SceneManager.GetActiveScene().name == ("GameScene"))
+    //    {
+    //        if (GameManagerIstance.GameStart == true)
+    //        {
+    //            gameObject.SetActive(false);
+    //        }
+    //    }
+    //}
 }
 

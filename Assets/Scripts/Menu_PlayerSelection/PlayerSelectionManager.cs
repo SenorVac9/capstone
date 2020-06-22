@@ -63,12 +63,14 @@ namespace ModuloKart.PlayerSelectionMenu
         {
             if (Input.GetAxis("LeftJoyStickY_ANYPLAYER") < 0)
             {
+                AudioManager.instance.Play("Move_Through_Menu_Panels");
                 isPressPrev = true;
             }
             if (isPressPrev)
             {
                 if (Input.GetAxis("LeftJoyStickY_ANYPLAYER") == 0)
                 {
+                    AudioManager.instance.Play("Move_Through_Menu_Panels");
                     isPressPrev = false;
                     isPressPrevRelease = true;
                 }
@@ -133,12 +135,14 @@ namespace ModuloKart.PlayerSelectionMenu
         {
             if (Input.GetAxis("LeftJoyStickY_ANYPLAYER") > 0)
             {
+                AudioManager.instance.Play("Move_Through_Menu_Panels");
                 isPressNext = true;
             }
             if (isPressNext)
             {
                 if (Input.GetAxis("LeftJoyStickY_ANYPLAYER") == 0)
                 {
+                    AudioManager.instance.Play("Move_Through_Menu_Panels");
                     isPressNext = false;
                     isPressNextRelease = true;
                 }
@@ -239,6 +243,7 @@ namespace ModuloKart.PlayerSelectionMenu
         {
             if (Input.GetButtonDown("A_ANYPLAYER"))
             {
+                AudioManager.instance.Play("Confirm_Option");
                 switch (numPlayerOption)
                 {
                     case NumPlayerOption.players1:

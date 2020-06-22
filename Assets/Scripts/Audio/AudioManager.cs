@@ -1,25 +1,28 @@
 ﻿using UnityEngine.Audio;
 using System;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class AudioManager : MonoBehaviour
 {
 
     public Sound[] sounds;
     public static AudioManager instance; //prevents it from creating 2 audio managers when changing scenes.
 
+    GameManager GameManagerIstance;
+    public bool switchMusic;
     private void Awake()
     {
-        Play("Menu Soundtrack");
         if (instance == null)
             instance = this;
         else
         {
             Destroy(gameObject);
             return;
-       }
+        }
 
-        
+        Play("Menu Soundtrack");
+
+        switchMusic = false;
 
         DontDestroyOnLoad(gameObject);
 
@@ -28,7 +31,7 @@ public class AudioManager : MonoBehaviour
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
 
-            
+
         }
     }
 
@@ -47,8 +50,8 @@ public class AudioManager : MonoBehaviour
         s.source.loop = s.loop;
 
         s.source.Play();
-        
-        
+
+
     }
 
     public void Stop(string name)
@@ -70,5 +73,16 @@ public class AudioManager : MonoBehaviour
 
     }
 
-
+    private void Update()
+    {
+        if (SceneManager.GetActiveScene().name == "GameScene")
+        {
+            if (GameManagerIstance.GameStart == true && switchMusic == false)
+            {
+                switchMusic = true;
+                Stop("Menu Soundtrack");
+                Play("Game Soundtrack");
+            }
+        }
+    }
 }

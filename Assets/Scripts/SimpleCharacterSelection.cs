@@ -56,10 +56,12 @@ public class SimpleCharacterSelection : MonoBehaviour
         {
             if (Input.GetButtonDown(vehicleBehavior.input_ItemNext))
             {
+                AudioManager.instance.Play("Move_Through_Menu_Panels");
                 CycleCharacters(isNext: true);
             }
             else if (Input.GetButtonDown(vehicleBehavior.input_ItemPrev))
             {
+                AudioManager.instance.Play("Move_Through_Menu_Panels");
                 CycleCharacters(isNext: false);
             }
         }
@@ -124,6 +126,7 @@ public class SimpleCharacterSelection : MonoBehaviour
         {
             if (Input.GetButtonDown(vehicleBehavior.input_nitros))
             {
+                AudioManager.instance.Play("Confirm_Option");
                 CharacterDisplayText.text += whichCharacterDidISelectDuringTheGameScene.ToString();
                 SimpleCharacterSelectionPanel.SetActive(false);
                 isCharacterSelected = true;
@@ -134,25 +137,25 @@ public class SimpleCharacterSelection : MonoBehaviour
                 {
                     vehicleBehavior.extra_nitros_meter_float = 25f;
                     Debug.Log("nitro1" + vehicleBehavior.extra_nitros_meter_float);
-                    AudioManager.instance.Play("Drift");
+                    AudioManager.instance.Play("Tobias_Character_Selected");
                 }
                 if (whichCharacterDidISelectDuringTheGameScene == AVerySimpleEnumOfCharacters.Felix)
                 {
                     vehicleBehavior.extra_nitros_meter_float = 50f;
                     Debug.Log("nitro2" + vehicleBehavior.extra_nitros_meter_float);
-                    AudioManager.instance.Play("Drift");
+                    AudioManager.instance.Play("Felix_Character_Selected");
                 }
                 if (whichCharacterDidISelectDuringTheGameScene == AVerySimpleEnumOfCharacters.Paul)
                 {
                     vehicleBehavior.extra_nitros_meter_float = 0f;
                     Debug.Log("nitro3" + vehicleBehavior.extra_nitros_meter_float);
-                    AudioManager.instance.Play("Drift");
+                    AudioManager.instance.Play("Pauline_Character_Selected");
                 }
                 if (whichCharacterDidISelectDuringTheGameScene == AVerySimpleEnumOfCharacters.Maxine)
                 {
                     vehicleBehavior.extra_nitros_meter_float = 0f;
                     Debug.Log("nitro3" + vehicleBehavior.extra_nitros_meter_float);
-                    AudioManager.instance.Play("Drift");
+                    AudioManager.instance.Play("Max_Character_Selected");
                 }
             }
         }

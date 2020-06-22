@@ -1012,7 +1012,12 @@ namespace ModuloKart.CustomVehiclePhysics
                         vehicle_camera_transform.GetComponent<Camera>().fieldOfView += Time.fixedDeltaTime * pan_away_float;
                     }
                 }
+                if (selectedCharacter.Equals(1))
+                {
+                    AudioManager.instance.Play("Felix_using_Nitro");
+                }
                 extra_nitros_meter_float = extra_nitros_meter_float > 0 ? extra_nitros_meter_float -= Time.fixedDeltaTime * nitros_depletion_rate : 0;
+
                 if (extra_nitros_meter_float <= 0)
                 {
                     nitros_meter_float = nitros_meter_float > 0 ? nitros_meter_float -= Time.fixedDeltaTime * nitros_depletion_rate : 0;
