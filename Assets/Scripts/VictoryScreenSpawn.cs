@@ -18,6 +18,7 @@ public class VictoryScreenSpawn : MonoBehaviour
     GameObject Felix, Maxine, Toby, Paul;
     AVerySimpleEnumOfCharacters character;
     bool hasSpawned;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +26,7 @@ public class VictoryScreenSpawn : MonoBehaviour
       
 
         SaveManager = GameObject.FindGameObjectWithTag("SaveGameManager").GetComponent<SaveGameManager>();
-       
+        
     }
 
    
@@ -39,22 +40,42 @@ public class VictoryScreenSpawn : MonoBehaviour
             if (SaveManager.GameState.P1Character != AVerySimpleEnumOfCharacters.NotInGame)
             {
                 character = SaveManager.GameState.P1Character;
+                if (character == AVerySimpleEnumOfCharacters.Felix)
+                {
+                    AudioManager.instance.Play("Felix_Victory_Podium");
+                }
+
+                if (character == AVerySimpleEnumOfCharacters.Maxine)
+                {
+                    AudioManager.instance.Play("Max_Victory_Podium");
+                }
+
+                if (character == AVerySimpleEnumOfCharacters.Paul)
+                {
+                    AudioManager.instance.Play("Pauline_Victory_Podium");
+                }
+
+                if (character == AVerySimpleEnumOfCharacters.Toby)
+                {
+                    AudioManager.instance.Play("Tobias_Victory_Podium");
+                }
+
                 switch (character)
                 {
                     case AVerySimpleEnumOfCharacters.Felix:
-                        AudioManager.instance.Play("Felix_Victory_Podium");
+                        
                         Instantiate(Felix, First.position, First.rotation);
                         break;
                     case AVerySimpleEnumOfCharacters.Toby:
-                        AudioManager.instance.Play("Tobias_Victory_Podium");
+                       
                         Instantiate(Toby, First.position, First.rotation);
                         break;
                     case AVerySimpleEnumOfCharacters.Maxine:
-                        AudioManager.instance.Play("Max_Victory_Podium");
+                        
                         Instantiate(Maxine, First.position, First.rotation);
                         break;
                     case AVerySimpleEnumOfCharacters.Paul:
-                        AudioManager.instance.Play("Pauline_Victory_Podium");
+                       
                         Instantiate(Paul, First.position, First.rotation);
                         break;
 
