@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 7790021201763068327, guid: 9a59c152c90dce242be8ec174e02e077,
         type: 3}
       propertyPath: m_Name
-      value: Toby
+      value: Toby Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6503460484481522612, guid: 9a59c152c90dce242be8ec174e02e077,
         type: 3}

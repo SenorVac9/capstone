@@ -207,11 +207,10 @@ public class PartReplenishScript : MonoBehaviour
                             car.extra_nitros_meter_float += (nitroPickUp - dif);
                             if(car.extra_nitros_meter_float > 50 && character == AVerySimpleEnumOfCharacters.Felix)
                             {                        
-                                    car.extra_nitros_meter_float = 50;
-                               
-                                if (car.extra_nitros_meter_float > 25 && character == AVerySimpleEnumOfCharacters.Toby)
-                                    car.extra_nitros_meter_float = 25;
+                                    car.extra_nitros_meter_float = 50;                          
                             }
+                            else if (car.extra_nitros_meter_float > 25 && character == AVerySimpleEnumOfCharacters.Toby)
+                                car.extra_nitros_meter_float = 25;
                         }
                         else
                         car.nitros_meter_float = car.max_nitros_meter_float;

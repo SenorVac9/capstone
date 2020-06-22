@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using UnityEngine.PostProcessing;
 
 public class OptionsMenu : MonoBehaviour
 {
     public AudioMixer AudioMixer;
     public Dropdown ResolutionsDropdown;
-    //motion blur toggle
+    public Toggle MotionBlurToggle;
+
+    public PostProcessingProfile DemoPostProcess;
+    //public MotionBlurComponent MotionBlur;
     //antialiasing
     //low medium high
     //post processing setting 
@@ -19,7 +23,8 @@ public class OptionsMenu : MonoBehaviour
     void Start()
     {
         resolutions = Screen.resolutions;
-        
+        DemoPostProcess.motionBlur.enabled = true;
+
         ResolutionsDropdown.ClearOptions();
 
         List<string> options = new List<string>();
@@ -63,5 +68,20 @@ public class OptionsMenu : MonoBehaviour
     public void SetFullScreen (bool isFullScreen)
     {
         Screen.fullScreen = isFullScreen;
+    }
+
+    public void SetMotionBlur (bool isMotionBlur)
+    {
+        MotionBlurToggle.enabled = isMotionBlur;
+        if (MotionBlurToggle.enabled)
+        {
+            DemoPostProcess.motionBlur.enabled = true;
+            
+        }
+        else
+        {
+            DemoPostProcess.motionBlur.enabled = false;
+
+        }
     }
 }
