@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
-    //private void OnTriggerEnter(Collider c)
+    //private void ontriggerenter(collider c)
     //{
-    //    if (c.gameObject.CompareTag("GameController"))
+    //    if (c.gameobject.comparetag("gamecontroller"))
     //    {
-    //        GameManager.Instance.lastCheckpoint = transform;
+    //        gamemanager.instance.lastcheckpoint = transform;
     //    }
     //}
 }

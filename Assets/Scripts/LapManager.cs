@@ -14,6 +14,8 @@ public class LapManager : MonoBehaviour
     public List<VehicleLapData> playerLapDataList;
     public int RankVal;
     public int racersfinished;
+   
+    public int Lapnum;
     void Awake()
     {
         Instance = this;
@@ -33,6 +35,7 @@ public class LapManager : MonoBehaviour
             for (int playerid = 0; playerid < 4; playerid++)
             {
                 vehicleTimingsPerLegPerLap[lapID, playerid] = Mathf.Infinity;
+               
             }
         }
     }
@@ -47,6 +50,8 @@ public class LapManager : MonoBehaviour
             StartCoroutine(PlayerRankOrderHandle);
         }
     }
+
+   
 
     int i;
     IEnumerator PlayerRankOrderHandle;
