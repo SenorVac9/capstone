@@ -20,8 +20,6 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
-        Play("Menu Soundtrack");
-
         switchMusic = false;
 
         DontDestroyOnLoad(gameObject);
@@ -33,6 +31,11 @@ public class AudioManager : MonoBehaviour
 
 
         }
+    }
+
+    private void Start()
+    {
+        Play("Menu Soundtrack");
     }
 
     public void Play(string name)

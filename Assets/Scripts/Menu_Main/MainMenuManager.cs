@@ -45,7 +45,7 @@ namespace ModuloKart.MainMenu
         {
             if (Input.GetAxis("LeftJoyStickY_ANYPLAYER") < 0)
             {
-                AudioManager.instance.Play("Move_Through_Menu_Panels");
+                //AudioManager.instance.Play("Move_Through_Menu_Panels");
                 isPressPrev = true;
             }
             if (isPressPrev)
@@ -96,7 +96,7 @@ namespace ModuloKart.MainMenu
         {
             if (Input.GetAxis("LeftJoyStickY_ANYPLAYER") > 0)
             {
-                AudioManager.instance.Play("Move_Through_Menu_Panels");
+                //AudioManager.instance.Play("Move_Through_Menu_Panels");
                 isPressNext = true;
             }
             if (isPressNext)
