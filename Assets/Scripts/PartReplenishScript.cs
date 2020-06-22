@@ -92,6 +92,9 @@ public class PartReplenishScript : MonoBehaviour
     {
         if (c.gameObject.tag == "GameController")
         {
+
+            AudioManager.instance.Play("Collectible_Sound");
+
             ThisCollider = c;
             player = c.gameObject;
             car = player.GetComponentInChildren<VehicleBehavior>();
@@ -127,7 +130,8 @@ public class PartReplenishScript : MonoBehaviour
             }
             if (c.gameObject.CompareTag("GameController"))
             {
-                   
+                
+                AudioManager.instance.Play("Collectible_Sound");
 
                 partBack = Random.Range(0, wheels.reservePartsList.Count);
                 if (wheels.reservePartsList[partBack] == 2)
@@ -192,8 +196,9 @@ public class PartReplenishScript : MonoBehaviour
             {
                 if (c.gameObject.CompareTag("GameController"))
                 {
-                    
-                    if(car.nitros_meter_float + nitroPickUp > car.max_nitros_meter_float)
+                    AudioManager.instance.Play("Collectible_Sound");
+
+                    if (car.nitros_meter_float + nitroPickUp > car.max_nitros_meter_float)
                     {
                         if(character == AVerySimpleEnumOfCharacters.Felix || character == AVerySimpleEnumOfCharacters.Toby)
                         {
@@ -264,6 +269,8 @@ public class PartReplenishScript : MonoBehaviour
               
                 if (c.gameObject.CompareTag("GameController"))
                 {
+                    AudioManager.instance.Play("Collectible_Sound");
+
                     bool retry = true;
                    
                     partBack = Random.Range(0, 5);
