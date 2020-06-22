@@ -56,10 +56,12 @@ public class SimpleCharacterSelection : MonoBehaviour
         {
             if (Input.GetButtonDown(vehicleBehavior.input_ItemNext))
             {
+                AudioManager.instance.Play("Move_Through_Menu_Panels");
                 CycleCharacters(isNext: true);
             }
             else if (Input.GetButtonDown(vehicleBehavior.input_ItemPrev))
             {
+                AudioManager.instance.Play("Move_Through_Menu_Panels");
                 CycleCharacters(isNext: false);
             }
         }
@@ -107,9 +109,11 @@ public class SimpleCharacterSelection : MonoBehaviour
             case AVerySimpleEnumOfCharacters.Toby:
                 currentCharacterSelectionText.text = whichCharacterDidISelectDuringTheGameScene.ToString() + " has one extra part and a slightly bigger SpeedNip Bar";
                 break;
+
             case AVerySimpleEnumOfCharacters.Maxine:
                 currentCharacterSelectionText.text = whichCharacterDidISelectDuringTheGameScene.ToString() + " has two extra parts";
                 break;
+
             case AVerySimpleEnumOfCharacters.Paul:
                 currentCharacterSelectionText.text = whichCharacterDidISelectDuringTheGameScene.ToString() + " has a shield to protect agaisnt a hit";
                 break;
@@ -122,35 +126,41 @@ public class SimpleCharacterSelection : MonoBehaviour
         {
             if (Input.GetButtonDown(vehicleBehavior.input_nitros))
             {
+                AudioManager.instance.Play("Confirm_Option");
                 CharacterDisplayText.text += whichCharacterDidISelectDuringTheGameScene.ToString();
                 SimpleCharacterSelectionPanel.SetActive(false);
                 isCharacterSelected = true;
                 gameObject.GetComponentInChildren<ui_controller>().Initialize_Character(whichCharacterDidISelectDuringTheGameScene);
                 GameManager.Instance.ReadyUp();
+
                 if (whichCharacterDidISelectDuringTheGameScene == AVerySimpleEnumOfCharacters.Toby)
                 {
-                    vehicleBehavior.extra_nitros_meter_float= 25f;
+                    vehicleBehavior.extra_nitros_meter_float = 25f;
                     Debug.Log("nitro1" + vehicleBehavior.extra_nitros_meter_float);
-
+                    AudioManager.instance.Play("Tobias_Character_Selected");
                 }
                 if (whichCharacterDidISelectDuringTheGameScene == AVerySimpleEnumOfCharacters.Felix)
                 {
                     vehicleBehavior.extra_nitros_meter_float = 50f;
                     Debug.Log("nitro2" + vehicleBehavior.extra_nitros_meter_float);
-
+                    AudioManager.instance.Play("Felix_Character_Selected");
                 }
-                if (whichCharacterDidISelectDuringTheGameScene == AVerySimpleEnumOfCharacters.Paul || whichCharacterDidISelectDuringTheGameScene==AVerySimpleEnumOfCharacters.Maxine)
+                if (whichCharacterDidISelectDuringTheGameScene == AVerySimpleEnumOfCharacters.Paul)
                 {
                     vehicleBehavior.extra_nitros_meter_float = 0f;
                     Debug.Log("nitro3" + vehicleBehavior.extra_nitros_meter_float);
-
+                    AudioManager.instance.Play("Pauline_Character_Selected");
                 }
-
-
-
+                if (whichCharacterDidISelectDuringTheGameScene == AVerySimpleEnumOfCharacters.Maxine)
+                {
+                    vehicleBehavior.extra_nitros_meter_float = 0f;
+                    Debug.Log("nitro3" + vehicleBehavior.extra_nitros_meter_float);
+                    AudioManager.instance.Play("Max_Character_Selected");
+                }
             }
         }
     }
+    
 
     private IEnumerator ToggleImageAnimateCO;
     private IEnumerator ToggleImageAnimate(bool isNext)

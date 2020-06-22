@@ -9,6 +9,7 @@ public class GameLogicManager : MonoBehaviour
     public static GameLogicManager Instance;
     public bool arePlayersFinished;
 
+
     [HideInInspector] private bool isPlayerStarted;
     [HideInInspector] private bool isPlayerFinished;
 
@@ -20,6 +21,7 @@ public class GameLogicManager : MonoBehaviour
         Instance = this;
     }
 
+   
     public void SetIsPlayerFinished()
     {
         foreach (VehicleBehavior flickballarenaPlayer in ControllerHandler.Instance.vehicles)
