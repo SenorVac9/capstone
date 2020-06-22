@@ -1,0 +1,256 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6359391075075998401
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6359391075075998406}
+  - component: {fileID: 6359391075075998407}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6359391075075998406
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6359391075075998401}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 497.51102, y: 205.3143, z: 516.3988}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6359391075075998407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6359391075075998401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6371ce1a73ddf8f429ee4b74c2d9f896, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - audioName: Menu Soundtrack
+    clip: {fileID: 8300000, guid: d5e4cd839a02de447a294fd1934c11d0, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Game Soundtrack
+    clip: {fileID: 8300000, guid: 4f7b9d36ae74c34458d11c12c2bd647d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Felix_Being_Hit
+    clip: {fileID: 8300000, guid: 203dd7155261d0a4b8a644b816e9fa63, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Felix_Character_Selected
+    clip: {fileID: 8300000, guid: 8159ae2bdd3ea9f4c913fd9c3fe7e34a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Felix_using_Nitro
+    clip: {fileID: 8300000, guid: cb7197ba6f598c84881b352358d6f632, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Felix_Using_Item
+    clip: {fileID: 8300000, guid: 943eb7e4d1b5944498987b1d2dc5e414, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Felix_Victory_Podium
+    clip: {fileID: 8300000, guid: 4b5bc639170558f4cab244ef73dd7c74, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Max_Being_Hit
+    clip: {fileID: 8300000, guid: a0da33c9a1525434d805d92275023e71, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Max_Character_Selected
+    clip: {fileID: 8300000, guid: ac9e8f641286e9b4fbc4a05fd1a97d1b, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Max_Using_Nitro
+    clip: {fileID: 8300000, guid: a6dcd1a88d35e764e9b408a374220a35, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Max_Using_Item
+    clip: {fileID: 8300000, guid: 6a36c9c7f7a238140b3d7c8abba4eb92, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Max_Victory_Podium
+    clip: {fileID: 8300000, guid: 49918b2d86e1a9b4485d553ca54ba390, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Pauline_Being_Hit
+    clip: {fileID: 8300000, guid: 4932405937b13674d969d1cb699a18ab, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Pauline_Character_Selected
+    clip: {fileID: 8300000, guid: f5b4834933ef7804398d582f287d67e3, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Pauline_Using_Nitro
+    clip: {fileID: 8300000, guid: a3e5b1f6ad60b7741bfa8a1970878e3c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Pauline_Using_Item
+    clip: {fileID: 8300000, guid: 13bc98f1c2140e6449740994fafbe002, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Pauline_Victory_Podium
+    clip: {fileID: 8300000, guid: 3d968f7ea592c224189496fdb1a47c26, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Tobias_Being_Hit
+    clip: {fileID: 8300000, guid: 55304472e05c39a46bcdc05847754186, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Tobias_Character_Selected
+    clip: {fileID: 8300000, guid: 347b8eb456577674d939c788185d5240, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Tobias_Using_Nitro
+    clip: {fileID: 8300000, guid: 1007b6226a3783c448934d09249fd5af, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Tobias_Using_Item
+    clip: {fileID: 8300000, guid: 1ee78aa30f50b8a4d88143f41a2aaa33, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Tobias_Victory_Podium
+    clip: {fileID: 8300000, guid: 50c4fef554ff28947bb005185c1f0c67, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Drift
+    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Drift
+    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Drift
+    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Drift
+    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Drift
+    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Drift
+    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Drift
+    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Drift
+    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Drift
+    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Drift
+    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Drift
+    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Drift
+    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioName: Drift
+    clip: {fileID: 8300000, guid: b78f80ecb24ddb6459f4f32687b0dcf8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}

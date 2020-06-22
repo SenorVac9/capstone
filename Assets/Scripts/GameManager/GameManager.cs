@@ -16,9 +16,12 @@ public class GameManager : MonoBehaviour
     public int InitializedPlayers;
     // Start is called before the first frame update
 
+    public bool MusicStart;
+
     public Transform lastCheckpoint;
     void Awake()
     {
+        MusicStart = false;
         Instance = this;
     }
 
@@ -34,6 +37,7 @@ public class GameManager : MonoBehaviour
     {
         return beginCountDown;
     }
+
 
 
     public void ReadyUp()
@@ -91,5 +95,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (!MusicStart)
+        {
+            if (GameStart)
+            {
+                MusicStart = true;
+                AudioManager.instance.Play("Game Soundtrack");
 
+            }
+        }
+    }
 }
