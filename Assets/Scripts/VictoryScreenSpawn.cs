@@ -42,15 +42,19 @@ public class VictoryScreenSpawn : MonoBehaviour
                 switch (character)
                 {
                     case AVerySimpleEnumOfCharacters.Felix:
+                        AudioManager.instance.Play("Felix_Victory_Podium");
                         Instantiate(Felix, First.position, First.rotation);
                         break;
                     case AVerySimpleEnumOfCharacters.Toby:
+                        AudioManager.instance.Play("Tobias_Victory_Podium");
                         Instantiate(Toby, First.position, First.rotation);
                         break;
                     case AVerySimpleEnumOfCharacters.Maxine:
+                        AudioManager.instance.Play("Max_Victory_Podium");
                         Instantiate(Maxine, First.position, First.rotation);
                         break;
                     case AVerySimpleEnumOfCharacters.Paul:
+                        AudioManager.instance.Play("Pauline_Victory_Podium");
                         Instantiate(Paul, First.position, First.rotation);
                         break;
 

@@ -5,6 +5,9 @@ using ModuloKart.CustomVehiclePhysics;
 
 public class Vehicle_Collisions : MonoBehaviour
 {
+
+    private SimpleCharacterSelection character;
+
     public GameObject[] carParts;
     public Queue<GameObject> lostParts = new Queue<GameObject>();
     GameObject lostPart;
@@ -70,6 +73,32 @@ public class Vehicle_Collisions : MonoBehaviour
                 
                 if (!isLimitCollision && !collisionsDisabled)
                 {
+                    
+
+                    if (character.whichCharacterDidISelectDuringTheGameScene == AVerySimpleEnumOfCharacters.Felix)
+                    {
+                        AudioManager.instance.Play("Felix_Being_Hit");
+                       
+                    }
+
+                    if (character.whichCharacterDidISelectDuringTheGameScene == AVerySimpleEnumOfCharacters.Maxine)
+                    {
+                        AudioManager.instance.Play("Max_Being_Hit");
+                    }
+
+                    if (character.whichCharacterDidISelectDuringTheGameScene == AVerySimpleEnumOfCharacters.Paul)
+                    {
+                        AudioManager.instance.Play("Pauline_Being_Hit");
+                    }
+
+                    if (character.whichCharacterDidISelectDuringTheGameScene == AVerySimpleEnumOfCharacters.Toby)
+                    {
+                        AudioManager.instance.Play("Tobias_Being_Hit");
+                    }
+
+
+
+
                     isLimitCollision = true;
                     vehicleBehavior.hasVehicleControl = false;
                     vehicleBehavior.accel_magnitude_float = 0;

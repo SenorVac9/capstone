@@ -1400,11 +1400,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
-    - target: {fileID: 6359391075075998401, guid: 602d859460c24464ca194f35d41ed688,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6359391075075998406, guid: 602d859460c24464ca194f35d41ed688,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1459,11 +1454,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6359391075075998407, guid: 602d859460c24464ca194f35d41ed688,
-        type: 3}
-      propertyPath: sounds.Array.data[1].loop
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 602d859460c24464ca194f35d41ed688, type: 3}
@@ -13418,7 +13408,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameStart: 0
   InitializedPlayers: 0
-  MusicStart: 0
+  musicChanged: 0
   lastCheckpoint: {fileID: 0}
 --- !u!114 &1144307651
 MonoBehaviour:

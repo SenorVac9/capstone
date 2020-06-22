@@ -205,9 +205,30 @@ public class ui_controller : MonoBehaviour
         {
             Debug.Log("TEST SHOOT INPUT");
 
+            if (character.whichCharacterDidISelectDuringTheGameScene == AVerySimpleEnumOfCharacters.Felix)
+            {
+                AudioManager.instance.Play("Felix_Using_Item");
+            }
+
+            if (character.whichCharacterDidISelectDuringTheGameScene == AVerySimpleEnumOfCharacters.Maxine)
+            {
+                AudioManager.instance.Play("Max_Using_Item");
+            }
+
+            if (character.whichCharacterDidISelectDuringTheGameScene == AVerySimpleEnumOfCharacters.Paul)
+            {
+                AudioManager.instance.Play("Pauline_Using_Item");
+            }
+
+            if (character.whichCharacterDidISelectDuringTheGameScene == AVerySimpleEnumOfCharacters.Toby)
+            {
+                AudioManager.instance.Play("Tobias_Using_Item");
+            }
 
             if (ui_item[item_selected].gameObject.tag == "Tire")
             {
+                AudioManager.instance.Play("Junken_Throw_Tire");
+                
                 if (item_selected == 0)
                 {
                     if (has_tire_1)
@@ -216,6 +237,7 @@ public class ui_controller : MonoBehaviour
                         Debug.Log("used front right tire");
                         Performance_Loss();
                         has_tire_1 = false;
+
                     }
                     else
                     {
@@ -267,6 +289,7 @@ public class ui_controller : MonoBehaviour
             }
             else if (ui_item[item_selected].gameObject.tag == "Door")
             {
+                AudioManager.instance.Play("Hood Fired");
 
                 if (item_selected == 3)
                 {
@@ -300,6 +323,8 @@ public class ui_controller : MonoBehaviour
             }
             else if (ui_item[item_selected].gameObject.tag == "Hood")
             {
+                AudioManager.instance.Play("Hood Fired");
+
                 if (has_hood)
                 {
                     vechicle.GetComponentInChildren<Player_Projectile>().Throw_Hood();
@@ -316,6 +341,8 @@ public class ui_controller : MonoBehaviour
             }
             else if (ui_item[item_selected].gameObject.tag == "Milk")
             {
+                AudioManager.instance.Play("Milk");
+
                 if (has_Milk)
                 {
 

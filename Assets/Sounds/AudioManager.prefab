@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6359391075075998406
 Transform:
   m_ObjectHideFlags: 0
@@ -46,7 +46,7 @@ MonoBehaviour:
   sounds:
   - audioName: Menu Soundtrack
     clip: {fileID: 8300000, guid: d5e4cd839a02de447a294fd1934c11d0, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     loop: 1
     source: {fileID: 0}
@@ -68,7 +68,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - audioName: Felix_using_Nitro
+  - audioName: Felix_Using_Nitro
     clip: {fileID: 8300000, guid: cb7197ba6f598c84881b352358d6f632, type: 3}
     volume: 1
     pitch: 1
