@@ -8,10 +8,11 @@ public class AudioManager : MonoBehaviour
     public Sound[] sounds;
     public static AudioManager instance; //prevents it from creating 2 audio managers when changing scenes.
 
-    GameManager GameManagerIstance;
+    
     public bool switchMusic;
     private void Awake()
     {
+        
         if (instance == null)
             instance = this;
         else
@@ -20,7 +21,7 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
-        switchMusic = false;
+        switchMusic = true;
 
         DontDestroyOnLoad(gameObject);
 
@@ -35,7 +36,10 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
+
+        
         Play("Menu Soundtrack");
+        
     }
 
     public void Play(string name)
@@ -78,13 +82,24 @@ public class AudioManager : MonoBehaviour
 
     private void Update()
     {
-        if (SceneManager.GetActiveScene().name == "GameScene")
+        
+        //if (SceneManager.GetActiveScene().name == "GameScene")
+        //{
+            
+        //    if (GameManagerIstance.GameStart == true && switchMusic == false)
+        //    {
+        //        switchMusic = true;
+        //        Stop("Menu Soundtrack");
+        //        Play("Game Soundtrack");
+        //    }
+        //}
+        if (SceneManager.GetActiveScene().name == "MainMenuScene")
         {
-            if (GameManagerIstance.GameStart == true && switchMusic == false)
+            if(switchMusic == true)
             {
-                switchMusic = true;
-                Stop("Menu Soundtrack");
-                Play("Game Soundtrack");
+                switchMusic = false;
+                Stop("Game Soundtrack");
+                Play("Menu Soundtrack");
             }
         }
     }
