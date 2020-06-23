@@ -8388,10 +8388,10 @@ MonoBehaviour:
   isCharacterSelected: 0
   whichCharacterDidISelectDuringTheGameScene: 1
   CharacterSprites:
-  - {fileID: 21300000, guid: a019612089afd9242ad794b640358833, type: 3}
-  - {fileID: 21300000, guid: 634f2e30dd3a8ac44a0ed69921a63acf, type: 3}
-  - {fileID: 21300000, guid: b31ed9043ed8cf346b9b90c00cb3772f, type: 3}
-  - {fileID: 21300000, guid: 76771a8ae53ea0040a75072bc02655a0, type: 3}
+  - {fileID: 21300000, guid: 83d586b2c47b75c4bb3a87c8292770b7, type: 3}
+  - {fileID: 21300000, guid: d207a9a24cc6ee04b90137115e521cf1, type: 3}
+  - {fileID: 21300000, guid: 7fd1b04e228cdc24f804c7d4c4de7fa1, type: 3}
+  - {fileID: 21300000, guid: 971134ab20083674a8d4a2a83e1f5a5f, type: 3}
   SimpleCharacterSelectionPanel: {fileID: 3520090153182688067}
   selectedCharacterImage: {fileID: 4996887772771069018}
   ToggleImage_PrevCharacter: {fileID: 1402591724202365815}
@@ -8707,10 +8707,10 @@ MonoBehaviour:
   isCharacterSelected: 0
   whichCharacterDidISelectDuringTheGameScene: 1
   CharacterSprites:
-  - {fileID: 21300000, guid: a019612089afd9242ad794b640358833, type: 3}
-  - {fileID: 21300000, guid: 634f2e30dd3a8ac44a0ed69921a63acf, type: 3}
-  - {fileID: 21300000, guid: b31ed9043ed8cf346b9b90c00cb3772f, type: 3}
-  - {fileID: 21300000, guid: 76771a8ae53ea0040a75072bc02655a0, type: 3}
+  - {fileID: 21300000, guid: 83d586b2c47b75c4bb3a87c8292770b7, type: 3}
+  - {fileID: 21300000, guid: d207a9a24cc6ee04b90137115e521cf1, type: 3}
+  - {fileID: 21300000, guid: 7fd1b04e228cdc24f804c7d4c4de7fa1, type: 3}
+  - {fileID: 21300000, guid: 971134ab20083674a8d4a2a83e1f5a5f, type: 3}
   SimpleCharacterSelectionPanel: {fileID: 2193759016845163279}
   selectedCharacterImage: {fileID: 3728910756090780631}
   ToggleImage_PrevCharacter: {fileID: 9094513597904778218}
@@ -9278,10 +9278,10 @@ MonoBehaviour:
   isCharacterSelected: 0
   whichCharacterDidISelectDuringTheGameScene: 1
   CharacterSprites:
-  - {fileID: 21300000, guid: a019612089afd9242ad794b640358833, type: 3}
-  - {fileID: 21300000, guid: 634f2e30dd3a8ac44a0ed69921a63acf, type: 3}
-  - {fileID: 21300000, guid: b31ed9043ed8cf346b9b90c00cb3772f, type: 3}
-  - {fileID: 21300000, guid: 76771a8ae53ea0040a75072bc02655a0, type: 3}
+  - {fileID: 21300000, guid: 83d586b2c47b75c4bb3a87c8292770b7, type: 3}
+  - {fileID: 21300000, guid: d207a9a24cc6ee04b90137115e521cf1, type: 3}
+  - {fileID: 21300000, guid: 7fd1b04e228cdc24f804c7d4c4de7fa1, type: 3}
+  - {fileID: 21300000, guid: 971134ab20083674a8d4a2a83e1f5a5f, type: 3}
   SimpleCharacterSelectionPanel: {fileID: 4739113791235590001}
   selectedCharacterImage: {fileID: 2842933854423125298}
   ToggleImage_PrevCharacter: {fileID: 7926002942617510496}
@@ -10274,10 +10274,10 @@ MonoBehaviour:
   isCharacterSelected: 0
   whichCharacterDidISelectDuringTheGameScene: 1
   CharacterSprites:
-  - {fileID: 21300000, guid: a019612089afd9242ad794b640358833, type: 3}
-  - {fileID: 21300000, guid: 634f2e30dd3a8ac44a0ed69921a63acf, type: 3}
-  - {fileID: 21300000, guid: b31ed9043ed8cf346b9b90c00cb3772f, type: 3}
-  - {fileID: 21300000, guid: 76771a8ae53ea0040a75072bc02655a0, type: 3}
+  - {fileID: 21300000, guid: 83d586b2c47b75c4bb3a87c8292770b7, type: 3}
+  - {fileID: 21300000, guid: d207a9a24cc6ee04b90137115e521cf1, type: 3}
+  - {fileID: 21300000, guid: 7fd1b04e228cdc24f804c7d4c4de7fa1, type: 3}
+  - {fileID: 21300000, guid: 971134ab20083674a8d4a2a83e1f5a5f, type: 3}
   SimpleCharacterSelectionPanel: {fileID: 8576901702794012922}
   selectedCharacterImage: {fileID: 8721269709292771220}
   ToggleImage_PrevCharacter: {fileID: 2097050239004330331}
