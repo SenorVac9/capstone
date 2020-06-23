@@ -453,7 +453,9 @@ public class PauseMenu : MonoBehaviour
 
     public void Menu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
+        AudioManager.instance.Stop("Game Soundtrack");
+        AudioManager.instance.Play("Menu Soundtrack");
         Debug.Log("Menu works?");
     }
 
