@@ -273,6 +273,9 @@ namespace ModuloKart.Controls
                 if (Input.anyKey || Input.GetButton("A_P1"))
                 {
                     SceneManager.LoadScene(1);
+                    AudioManager.instance.Stop("Game Soundtrack");
+                    AudioManager.instance.Play("Menu Soundtrack");
+
                 }
             }
         }
