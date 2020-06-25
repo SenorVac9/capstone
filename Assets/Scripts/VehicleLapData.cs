@@ -32,7 +32,7 @@ public class VehicleLapData : MonoBehaviour
 
     VehicleBehavior vehicleBehavior;
 
-    Transform leg1, leg2, leg3, leg4, lapTransform;
+    Transform leg1, leg2, leg3, leg4, leg5, leg6, leg7, leg8, leg9, leg10, leg11,leg12, leg13, lapTransform;
 
     SimpleUI playerHUD;
 
@@ -65,6 +65,36 @@ public class VehicleLapData : MonoBehaviour
                     continue;
                 case LegId.Three:
                     leg3 = l.transform;
+                    continue;
+                case LegId.Four:
+                    leg4 = l.transform;
+                    continue;
+                case LegId.Five:
+                    leg5 = l.transform;
+                    continue;
+                case LegId.Six:
+                    leg6 = l.transform;
+                    continue;
+                case LegId.Seven:
+                    leg7 = l.transform;
+                    continue;
+                case LegId.Eight:
+                    leg8 = l.transform;
+                    continue;
+                case LegId.Nine:
+                    leg9 = l.transform;
+                    continue;
+                case LegId.Ten:
+                    leg10 = l.transform;
+                    continue;
+                case LegId.Eleven:
+                    leg11 = l.transform;
+                    continue;
+                case LegId.Twelve:
+                    leg12 = l.transform;
+                    continue;
+                case LegId.Thirteen:
+                    leg13 = l.transform;
                     continue;
                 default:
                     break;
@@ -171,7 +201,7 @@ public class VehicleLapData : MonoBehaviour
         switch (currentLegID)
         {
             case LegId.Zero:
-                GetLegDistance(leg4, leg1);
+                GetLegDistance(leg13, leg1);
                 GetPlayerDistanceToNextLeg(leg1);
                 break;
             case LegId.One:
@@ -185,6 +215,46 @@ public class VehicleLapData : MonoBehaviour
             case LegId.Three:
                 GetLegDistance(leg3, leg4);
                 GetPlayerDistanceToNextLeg(leg4);
+                break;
+            case LegId.Four:
+                GetLegDistance(leg4, leg5);
+                GetPlayerDistanceToNextLeg(leg5);
+                break;
+            case LegId.Five:
+                GetLegDistance(leg5, leg6);
+                GetPlayerDistanceToNextLeg(leg6);
+                break;
+            case LegId.Six:
+                GetLegDistance(leg6, leg7);
+                GetPlayerDistanceToNextLeg(leg7);
+                break;
+            case LegId.Seven:
+                GetLegDistance(leg7, leg8);
+                GetPlayerDistanceToNextLeg(leg8);
+                break;
+            case LegId.Eight:
+                GetLegDistance(leg8, leg9);
+                GetPlayerDistanceToNextLeg(leg9);
+                break;
+            case LegId.Nine:
+                GetLegDistance(leg9, leg10);
+                GetPlayerDistanceToNextLeg(leg10);
+                break;
+            case LegId.Ten:
+                GetLegDistance(leg10, leg11);
+                GetPlayerDistanceToNextLeg(leg11);
+                break;
+            case LegId.Eleven:
+                GetLegDistance(leg11, leg12);
+                GetPlayerDistanceToNextLeg(leg12);
+                break;
+            case LegId.Twelve:
+                GetLegDistance(leg12, leg13);
+                GetPlayerDistanceToNextLeg(leg13);
+                break;
+            case LegId.Thirteen:
+                GetLegDistance(leg13, lapTransform);
+                GetPlayerDistanceToNextLeg(lapTransform);
                 break;
             default:
                 break;
@@ -260,6 +330,26 @@ public class VehicleLapData : MonoBehaviour
                 return leg2;
             case LegId.Three:
                 return leg3;
+            case LegId.Four:
+                return leg4;
+            case LegId.Five:
+                return leg5;
+            case LegId.Six:
+                return leg6;
+            case LegId.Seven:
+                return leg7;
+            case LegId.Eight:
+                return leg8;
+            case LegId.Nine:
+                return leg9;
+            case LegId.Ten:
+                return leg10;
+            case LegId.Eleven:
+                return leg11;
+            case LegId.Twelve:
+                return leg12;
+            case LegId.Thirteen:
+                return leg13;
             default:
                 return lapTransform;
                 break;

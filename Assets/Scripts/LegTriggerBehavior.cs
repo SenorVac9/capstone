@@ -9,6 +9,16 @@ public enum LegId
     One = 1,
     Two = 2,
     Three = 3,
+    Four = 4,
+    Five = 5,
+    Six = 6,
+    Seven = 7,
+    Eight = 8,
+    Nine = 9, 
+    Ten = 10,
+    Eleven = 11,
+    Twelve = 12,
+    Thirteen = 13,
 }
 
 public class LegTriggerBehavior : MonoBehaviour
@@ -48,7 +58,7 @@ public class LegTriggerBehavior : MonoBehaviour
 
                 if (other.GetComponent<VehicleLapData>().currentLegID < legID)
                 {
-                    if (other.GetComponent<VehicleLapData>().currentLegID.Equals(LegId.Zero) && legID.Equals(LegId.Three))
+                    if (other.GetComponent<VehicleLapData>().currentLegID.Equals(LegId.Zero) && legID.Equals(LegId.Thirteen))
                     {
                         //currentPlayerLeg 0 < (Final Leg = 3), so we make playerCurrentLeg = 3
                         other.GetComponent<VehicleLapData>().currentLegID = legID;
@@ -57,13 +67,13 @@ public class LegTriggerBehavior : MonoBehaviour
                     else
                     {
                         //Increment Leg Condition
-                        if (other.GetComponent<VehicleLapData>().currentLegID + 1 == legID)
-                        {
+                        //if (other.GetComponent<VehicleLapData>().currentLegID + 1 == legID)
+                        
                             //The LapManager Component Dictates the Final Leg of the Lap, thus scoring a Lap. See Lap Manager for Lap incrementation.
                             other.GetComponent<VehicleLapData>().currentLegID = legID;
                             LegTimingUpdate(other);
                             if (isDebugMode) Debug.Log("We are Now at LEG: " + other.GetComponent<VehicleLapData>().currentLegID.ToString());
-                        }
+                        
                     }
 
                 }
