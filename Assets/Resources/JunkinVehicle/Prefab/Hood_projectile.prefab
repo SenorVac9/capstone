@@ -109,6 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ramp: {fileID: 100000, guid: 4e11ef4f39bc65e44a4b0755ecac6ea1, type: 3}
+  spawnpoint: {fileID: 1165680260921162, guid: da0abe8a147139749b99d326b0abe510, type: 3}
 --- !u!64 &8847346171700228289
 MeshCollider:
   m_ObjectHideFlags: 0
