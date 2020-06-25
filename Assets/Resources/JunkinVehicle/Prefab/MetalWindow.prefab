@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: -1464132027068652606}
   - component: {fileID: 5772462404297689534}
   - component: {fileID: 8125530957670698982}
+  - component: {fileID: 6507415072107825873}
   m_Layer: 0
   m_Name: MetalWindow
   m_TagString: Obstacle
@@ -181,3 +182,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.22549218, y: 0.33071914, z: 0.42365825}
   m_Center: {x: 0.5131022, y: 0.0602634, z: 0.5100588}
+--- !u!114 &6507415072107825873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6474517258699021887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a8f077bd739adf44a366b2398dc9ad5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collider: {fileID: 8125530957670698982}
+  trigger: {fileID: 5772462404297689534}

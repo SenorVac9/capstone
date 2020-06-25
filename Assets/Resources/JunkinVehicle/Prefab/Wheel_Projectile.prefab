@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1753713936098323165}
   - component: {fileID: 6456447827692962223}
   - component: {fileID: 1044489782616563081}
+  - component: {fileID: 2403516922177510628}
   m_Layer: 0
   m_Name: Wheel_Projectile
   m_TagString: Obstacle
@@ -149,3 +150,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.48863935, y: 0.6986773, z: 0.6891725}
   m_Center: {x: 0.006513834, y: -0.0053785644, z: 0.0126249}
+--- !u!114 &2403516922177510628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3854164557277174669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a8f077bd739adf44a366b2398dc9ad5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collider: {fileID: 1753713936098323165}
+  trigger: {fileID: 1044489782616563081}
