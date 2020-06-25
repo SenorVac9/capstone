@@ -149,7 +149,7 @@ public class LapManager : MonoBehaviour
 
                 if (other.GetComponent<VehicleLapData>().currentLegID.Equals(LegId.Zero))
                 {
-                    other.GetComponent<VehicleLapData>().currentLegID = LegId.Three;
+                    other.GetComponent<VehicleLapData>().currentLegID = LegId.Thirteen;
                     other.GetComponent<VehicleLapData>().LapsCompleted = other.GetComponent<VehicleLapData>().LapsCompleted >= 0 ? other.GetComponent<VehicleLapData>().LapsCompleted -= 1 : -1;
                     LegTimingUpdate(other);
 
