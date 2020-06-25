@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player_Spawn_Ramp : MonoBehaviour
 {
     public GameObject ramp;
+    public GameObject rampSpawnpoint;
     Player_Projectile projectile;
    
     int cnt = 0;
@@ -34,7 +35,7 @@ public class Player_Spawn_Ramp : MonoBehaviour
         {
             if (cnt == 0)
             {
-                Instantiate(ramp, transform.position, projectile.spawnpoint.transform.rotation) ;
+                Instantiate(ramp, transform.position, rampSpawnpoint.transform.rotation) ;
                // DestroyImmediate(projectile.prefab1);
                 projectile.prefab1.gameObject.SetActive(false);
                 Debug.Log("spawning");
@@ -45,21 +46,21 @@ public class Player_Spawn_Ramp : MonoBehaviour
 
             }
         }
-        if (collision.gameObject.tag == "Road_Bridge")
-        {
-            if (cnt == 0)
-            {
-                ramp.transform.Rotate(0,-120, 0);
-                Instantiate(ramp, transform.position, projectile.spawnpoint.transform.rotation);
-                // DestroyImmediate(projectile.prefab1);
-                projectile.prefab1.gameObject.SetActive(false);
-                Debug.Log("spawning");
-                cnt++;
-               // StartCoroutine(Ramp_timer());
-               // ramp.gameObject.SetActive(false);
+        //if (collision.gameObject.tag == "Road_Bridge")
+        //{
+        //    if (cnt == 0)
+        //    {
+        //        ramp.transform.Rotate(0,-120, 0);
+        //        Instantiate(ramp, transform.position, projectile.spawnpoint.transform.rotation);
+        //        // DestroyImmediate(projectile.prefab1);
+        //        projectile.prefab1.gameObject.SetActive(false);
+        //        Debug.Log("spawning");
+        //        cnt++;
+        //       // StartCoroutine(Ramp_timer());
+        //       // ramp.gameObject.SetActive(false);
                 
 
-            }
-        }
+        //    }
+        //}
     }
 }
