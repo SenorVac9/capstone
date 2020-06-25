@@ -135,7 +135,7 @@ public class LapManager : MonoBehaviour
             {
                 other.GetComponent<VehicleBehavior>().playerHUD.WrongDirectionWarning.SetActive(false);
 
-                if (other.GetComponent<VehicleLapData>().currentLegID.Equals(LegId.Three))
+                if (other.GetComponent<VehicleLapData>().currentLegID.Equals(LegId.Thirteen))
                 {
                     PlayerLapCompleted(other.gameObject);
                     LegTimingUpdate(other);
