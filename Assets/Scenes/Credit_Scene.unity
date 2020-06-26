@@ -228,8 +228,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -420, y: -139.5}
-  m_SizeDelta: {x: 218.5, y: 483.1}
+  m_AnchoredPosition: {x: -420, y: -309.6}
+  m_SizeDelta: {x: 218.5, y: 675.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &133477103
 MonoBehaviour:
@@ -264,8 +264,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Creative Director\r:\n\r\nGame Design\r:\n\r\nTechnical Director\r:\n\r\nProgrammers\r:\n\n\n\r\nArt
-    Lead:\n\nSpecial Thanks:"
+  m_Text: "Creative Director\r:\n\r\nGame Idea\r:\n\r\nTechnical Director\r:\n\r\nProgrammers\r:\n\n\n\r\nArtists:\n\nSpecial
+    Thanks:"
 --- !u!222 &133477104
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -544,8 +544,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 329, y: -141.49997}
-  m_SizeDelta: {x: 407.4, y: 485.4}
+  m_AnchoredPosition: {x: 565.1, y: -320.9}
+  m_SizeDelta: {x: 674.6, y: 688.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &931220739
 MonoBehaviour:
@@ -581,9 +581,9 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Cody Gardener\r\n\r\nSasha Greene\r\n\r\nPeter Tan\r\n\r\nNiel Yashodhar\r,
-    Abhi Shroff\r,\nFarid Badran\r, Giacomo Ponzi,\nCody Gardner, Peter Tan\r\n\r\nCarlos
-    \n\nBrad Furminger, Domenico Caronzo\r\nAli Kokulu,Rob Elsworthy\r,\r\nAbhishek
-    Chandra,Darrel Moen"
+    Abhi Shroff\r, Farid Badran\r, \nGiacomo Ponzi,Cody Gardner, Peter Tan\r,\nCory
+    Rentz, Greg Mallin\n\r\nCarlos Cusumano, Wen Zhi Lee,Jaden Taylor\n\nBrad Furminger,
+    Domenico Caronzo\rAli Kokulu,\nRob Elsworthy\r, Abhishek Chandra,Darrel Moen"
 --- !u!222 &931220740
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -627,7 +627,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.5968628, y: 35}
+  m_AnchoredPosition: {x: -31, y: 100}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1661379207
