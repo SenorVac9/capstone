@@ -244,6 +244,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec13d8ea53454e1429ee87da9f8ae39b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isMusicPlaying: 0
+  counter: 0
   isCodeDebug: 0
   wheel1: {fileID: 7131942346239327838}
   wheel2: {fileID: 8605285831783965919}
@@ -369,6 +371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6961af432ebd0441902cee9440ae92e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LapDisplay: {fileID: 0}
   isDebugMode: 0
   LapsCompleted: 0
   LapsTarget: 0
@@ -4547,7 +4550,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4664460101546618036}
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 1.21, z: -1.33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4071689955366572}
@@ -9091,6 +9094,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8986415062285484189}
     m_Modifications:
+    - target: {fileID: 100000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
+      propertyPath: m_Name
+      value: TyreBurnoutSmoke
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -9147,10 +9154,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.4777644
       objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
-      propertyPath: m_Name
-      value: TyreBurnoutSmoke
-      objectReference: {fileID: 0}
     - target: {fileID: 1876785031727104935, guid: 98c58c8dd46640c49bb5f557afafea7c,
         type: 3}
       propertyPath: vehicleBehavior
@@ -9171,6 +9174,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7468395932529442024}
     m_Modifications:
+    - target: {fileID: 100000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
+      propertyPath: m_Name
+      value: TyreBurnoutSmoke
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -9214,10 +9221,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
-      propertyPath: m_Name
-      value: TyreBurnoutSmoke
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
@@ -9618,6 +9621,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7725178297829727477}
     m_Modifications:
+    - target: {fileID: 100000, guid: 921a3ff88856fe04ebc86b196fd8cc59, type: 3}
+      propertyPath: m_Name
+      value: Smoke
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 921a3ff88856fe04ebc86b196fd8cc59, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.27800003
@@ -9662,10 +9669,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 921a3ff88856fe04ebc86b196fd8cc59, type: 3}
-      propertyPath: m_Name
-      value: Smoke
-      objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 921a3ff88856fe04ebc86b196fd8cc59, type: 3}
       propertyPath: lengthInSec
       value: 125.87
@@ -9701,6 +9704,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3036716658092913401}
     m_Modifications:
+    - target: {fileID: 100000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
+      propertyPath: m_Name
+      value: TyreBurnoutSmoke
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -9745,10 +9752,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
-      propertyPath: m_Name
-      value: TyreBurnoutSmoke
-      objectReference: {fileID: 0}
     - target: {fileID: 1876785031727104935, guid: 98c58c8dd46640c49bb5f557afafea7c,
         type: 3}
       propertyPath: vehicleBehavior
@@ -9769,6 +9772,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2617196330058060560}
     m_Modifications:
+    - target: {fileID: 100000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
+      propertyPath: m_Name
+      value: TyreBurnoutSmoke
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -9813,10 +9820,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
-      propertyPath: m_Name
-      value: TyreBurnoutSmoke
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
 --- !u!4 &3750555069230494438 stripped
@@ -9832,6 +9835,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8501409009365990271}
     m_Modifications:
+    - target: {fileID: 100000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
+      propertyPath: m_Name
+      value: TyreBurnoutSmoke
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -9880,10 +9887,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.25
       objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
-      propertyPath: m_Name
-      value: TyreBurnoutSmoke
-      objectReference: {fileID: 0}
     - target: {fileID: 1876785031727104935, guid: 98c58c8dd46640c49bb5f557afafea7c,
         type: 3}
       propertyPath: vehicleBehavior
@@ -9904,6 +9907,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7468395932529442024}
     m_Modifications:
+    - target: {fileID: 8761066532264796731, guid: 3653020573faccf45a880ebcaee0c348,
+        type: 3}
+      propertyPath: m_Name
+      value: Sparks_Reverse_FL
+      objectReference: {fileID: 0}
     - target: {fileID: 7026825691517956785, guid: 3653020573faccf45a880ebcaee0c348,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9974,11 +9982,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.4777648
       objectReference: {fileID: 0}
-    - target: {fileID: 8761066532264796731, guid: 3653020573faccf45a880ebcaee0c348,
-        type: 3}
-      propertyPath: m_Name
-      value: Sparks_Reverse_FL
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3653020573faccf45a880ebcaee0c348, type: 3}
 --- !u!4 &2866039547509752361 stripped
@@ -10000,6 +10003,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1015975139373076436}
     m_Modifications:
+    - target: {fileID: 100004, guid: 59f4ac200a9b5cf48bc9c11147fae71b, type: 3}
+      propertyPath: m_Name
+      value: nitroexhaust
+      objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 59f4ac200a9b5cf48bc9c11147fae71b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.48450002
@@ -10044,18 +10051,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: 59f4ac200a9b5cf48bc9c11147fae71b, type: 3}
-      propertyPath: m_Name
-      value: nitroexhaust
+    - target: {fileID: 13500000, guid: 59f4ac200a9b5cf48bc9c11147fae71b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19900000, guid: 59f4ac200a9b5cf48bc9c11147fae71b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 33574fa1b36c9244ebeedb7e591ed39b, type: 2}
-    - target: {fileID: 13500000, guid: 59f4ac200a9b5cf48bc9c11147fae71b, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 19900002, guid: 59f4ac200a9b5cf48bc9c11147fae71b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -10081,6 +10084,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8371928597384948817}
     m_Modifications:
+    - target: {fileID: 100000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
+      propertyPath: m_Name
+      value: TyreBurnoutSmoke
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -10125,10 +10132,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
-      propertyPath: m_Name
-      value: TyreBurnoutSmoke
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
 --- !u!4 &6023206058352702479 stripped
@@ -10144,6 +10147,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2617196330058060560}
     m_Modifications:
+    - target: {fileID: 8761066532264796731, guid: 49e5b7b2889632f4fadfbe92ac86a9b9,
+        type: 3}
+      propertyPath: m_Name
+      value: Sparks_Forward_RR
+      objectReference: {fileID: 0}
     - target: {fileID: 7026825691517956785, guid: 49e5b7b2889632f4fadfbe92ac86a9b9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10214,11 +10222,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.4777644
       objectReference: {fileID: 0}
-    - target: {fileID: 8761066532264796731, guid: 49e5b7b2889632f4fadfbe92ac86a9b9,
-        type: 3}
-      propertyPath: m_Name
-      value: Sparks_Forward_RR
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49e5b7b2889632f4fadfbe92ac86a9b9, type: 3}
 --- !u!198 &3444757158227853934 stripped
@@ -10240,6 +10243,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7468395932529442024}
     m_Modifications:
+    - target: {fileID: 8761066532264796731, guid: 66daf70d6396e7a439fbf66b92adffe5,
+        type: 3}
+      propertyPath: m_Name
+      value: Sparks_Forward_FL
+      objectReference: {fileID: 0}
     - target: {fileID: 7026825691517956785, guid: 66daf70d6396e7a439fbf66b92adffe5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10310,11 +10318,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.4777663
       objectReference: {fileID: 0}
-    - target: {fileID: 8761066532264796731, guid: 66daf70d6396e7a439fbf66b92adffe5,
-        type: 3}
-      propertyPath: m_Name
-      value: Sparks_Forward_FL
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66daf70d6396e7a439fbf66b92adffe5, type: 3}
 --- !u!198 &2054242417944424548 stripped
@@ -10336,6 +10339,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2617196330058060560}
     m_Modifications:
+    - target: {fileID: 8761066532264796731, guid: 42d11a7899fb3974f9db4cc828a5e766,
+        type: 3}
+      propertyPath: m_Name
+      value: Sparks_Reverse_RR
+      objectReference: {fileID: 0}
     - target: {fileID: 7026825691517956785, guid: 42d11a7899fb3974f9db4cc828a5e766,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10406,11 +10414,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.4777644
       objectReference: {fileID: 0}
-    - target: {fileID: 8761066532264796731, guid: 42d11a7899fb3974f9db4cc828a5e766,
-        type: 3}
-      propertyPath: m_Name
-      value: Sparks_Reverse_RR
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42d11a7899fb3974f9db4cc828a5e766, type: 3}
 --- !u!198 &2049627725547835656 stripped
@@ -10432,6 +10435,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4841766516257184}
     m_Modifications:
+    - target: {fileID: 100000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
+      propertyPath: m_Name
+      value: TyreBurnoutSmoke
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -10479,10 +10486,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
-      propertyPath: m_Name
-      value: TyreBurnoutSmoke
       objectReference: {fileID: 0}
     - target: {fileID: 1876785031727104935, guid: 98c58c8dd46640c49bb5f557afafea7c,
         type: 3}
